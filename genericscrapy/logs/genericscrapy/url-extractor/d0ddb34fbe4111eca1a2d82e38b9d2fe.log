@@ -1,0 +1,367 @@
+2022-04-17 12:30:48 [scrapy.utils.log] INFO: Scrapy 2.5.1 started (bot: genericscrapy)
+2022-04-17 12:30:48 [scrapy.utils.log] INFO: Versions: lxml 4.7.1.0, libxml2 2.9.12, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 22.1.0, Python 3.8.5 (default, Sep  3 2020, 21:29:08) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 22.0.0 (OpenSSL 1.1.1m  14 Dec 2021), cryptography 36.0.1, Platform Windows-10-10.0.18362-SP0
+2022-04-17 12:30:48 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.selectreactor.SelectReactor
+2022-04-17 12:30:48 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'genericscrapy',
+ 'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
+ 'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage',
+ 'LOG_FILE': 'logs\\genericscrapy\\url-extractor\\d0ddb34fbe4111eca1a2d82e38b9d2fe.log',
+ 'NEWSPIDER_MODULE': 'genericscrapy.spiders',
+ 'SPIDER_MODULES': ['genericscrapy.spiders'],
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
+2022-04-17 12:30:48 [scrapy.extensions.telnet] INFO: Telnet Password: 6341a6a1bc4aceda
+2022-04-17 12:30:48 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2022-04-17 12:30:48 [url-extractor] INFO: [LE] Source: https://www.appeloffres.com/ Depth: 0 Kwargs: {'_job': 'd0ddb34fbe4111eca1a2d82e38b9d2fe'}
+2022-04-17 12:30:48 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy_splash.SplashCookiesMiddleware',
+ 'scrapy_splash.SplashMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2022-04-17 12:30:48 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy_splash.SplashDeduplicateArgsMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2022-04-17 12:30:48 [kafka.producer.kafka] DEBUG: Starting the Kafka producer
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name connections-closed
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name connections-created
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name select-time
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name io-time
+2022-04-17 12:30:48 [kafka.client] DEBUG: Initiating connection to node bootstrap-0 at localhost:9092
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name bytes-sent-received
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name bytes-sent
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name bytes-received
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name request-latency
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name node-bootstrap-0.bytes-sent
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name node-bootstrap-0.bytes-received
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name node-bootstrap-0.latency
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <disconnected> [unspecified None]>: creating new socket
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <disconnected> [IPv6 ('::1', 9092, 0, 0)]>: setting socket option (6, 1, 1)
+2022-04-17 12:30:48 [kafka.conn] INFO: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: connecting to localhost:9092 [('::1', 9092, 0, 0) IPv6]
+2022-04-17 12:30:48 [kafka.conn] INFO: Probing node bootstrap-0 broker version
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: established TCP connection
+2022-04-17 12:30:48 [kafka.conn] INFO: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connecting> [IPv6 ('::1', 9092, 0, 0)]>: Connection complete.
+2022-04-17 12:30:48 [kafka.client] DEBUG: Node bootstrap-0 connected
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Sending request ApiVersionRequest_v0()
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]> Request 1: ApiVersionRequest_v0()
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Sending request MetadataRequest_v0(topics=[])
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]> Request 2: MetadataRequest_v0(topics=[])
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Received correlation id: 1
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Processing response ApiVersionResponse_v0
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]> Response 1 (103.08504104614258 ms): ApiVersionResponse_v0(error_code=0, api_versions=[(api_key=0, min_version=0, max_version=9), (api_key=1, min_version=0, max_version=13), (api_key=2, min_version=0, max_version=7), (api_key=3, min_version=0, max_version=12), (api_key=4, min_version=0, max_version=5), (api_key=5, min_version=0, max_version=3), (api_key=6, min_version=0, max_version=7), (api_key=7, min_version=0, max_version=3), (api_key=8, min_version=0, max_version=8), (api_key=9, min_version=0, max_version=8), (api_key=10, min_version=0, max_version=4), (api_key=11, min_version=0, max_version=7), (api_key=12, min_version=0, max_version=4), (api_key=13, min_version=0, max_version=4), (api_key=14, min_version=0, max_version=5), (api_key=15, min_version=0, max_version=5), (api_key=16, min_version=0, max_version=4), (api_key=17, min_version=0, max_version=1), (api_key=18, min_version=0, max_version=3), (api_key=19, min_version=0, max_version=7), (api_key=20, min_version=0, max_version=6), (api_key=21, min_version=0, max_version=2), (api_key=22, min_version=0, max_version=4), (api_key=23, min_version=0, max_version=4), (api_key=24, min_version=0, max_version=3), (api_key=25, min_version=0, max_version=3), (api_key=26, min_version=0, max_version=3), (api_key=27, min_version=0, max_version=1), (api_key=28, min_version=0, max_version=3), (api_key=29, min_version=0, max_version=2), (api_key=30, min_version=0, max_version=2), (api_key=31, min_version=0, max_version=2), (api_key=32, min_version=0, max_version=4), (api_key=33, min_version=0, max_version=2), (api_key=34, min_version=0, max_version=2), (api_key=35, min_version=0, max_version=2), (api_key=36, min_version=0, max_version=2), (api_key=37, min_version=0, max_version=3), (api_key=38, min_version=0, max_version=2), (api_key=39, min_version=0, max_version=2), (api_key=40, min_version=0, max_version=2), (api_key=41, min_version=0, max_version=2), (api_key=42, min_version=0, max_version=2), (api_key=43, min_version=0, max_version=2), (api_key=44, min_version=0, max_version=1), (api_key=45, min_version=0, max_version=0), (api_key=46, min_version=0, max_version=0), (api_key=47, min_version=0, max_version=0), (api_key=48, min_version=0, max_version=1), (api_key=49, min_version=0, max_version=1), (api_key=50, min_version=0, max_version=0), (api_key=51, min_version=0, max_version=0), (api_key=56, min_version=0, max_version=0), (api_key=57, min_version=0, max_version=0), (api_key=60, min_version=0, max_version=0), (api_key=61, min_version=0, max_version=0), (api_key=65, min_version=0, max_version=0), (api_key=66, min_version=0, max_version=0), (api_key=67, min_version=0, max_version=0)])
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Received correlation id: 2
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Processing response MetadataResponse_v0
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]> Response 2 (15.013933181762695 ms): MetadataResponse_v0(brokers=[(node_id=0, host='DESKTOP-RTIL2HE', port=9092)], topics=[(error_code=0, topic='__consumer_offsets', partitions=[(error_code=0, partition=0, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=10, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=20, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=40, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=30, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=9, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=11, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=31, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=39, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=13, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=18, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=22, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=8, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=32, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=43, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=29, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=34, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=1, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=6, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=41, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=27, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=48, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=5, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=15, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=35, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=25, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=46, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=26, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=36, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=44, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=16, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=37, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=17, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=45, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=3, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=24, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=38, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=33, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=23, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=28, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=2, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=12, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=19, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=14, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=4, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=47, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=49, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=42, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=7, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=21, leader=0, replicas=[0], isr=[0])]), (error_code=0, topic='numtest', partitions=[(error_code=0, partition=0, leader=0, replicas=[0], isr=[0])])])
+2022-04-17 12:30:48 [kafka.conn] INFO: Broker version identified as 2.5.0
+2022-04-17 12:30:48 [kafka.conn] INFO: Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name bufferpool-wait-time
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name batch-size
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name compression-rate
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name queue-time
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name produce-throttle-time
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name records-per-request
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name bytes
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name record-retries
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name errors
+2022-04-17 12:30:48 [kafka.metrics.metrics] DEBUG: Added sensor with name record-size-max
+2022-04-17 12:30:48 [kafka.producer.sender] DEBUG: Starting Kafka producer I/O thread.
+2022-04-17 12:30:48 [kafka.producer.kafka] DEBUG: Kafka producer started
+2022-04-17 12:30:48 [kafka.client] DEBUG: Sending metadata request MetadataRequest_v1(topics=NULL) to node bootstrap-0
+2022-04-17 12:30:48 [scrapy.middleware] INFO: Enabled item pipelines:
+['genericscrapy.pipelines.LinkExtratorPipeline']
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Sending request MetadataRequest_v1(topics=NULL)
+2022-04-17 12:30:48 [scrapy.core.engine] INFO: Spider opened
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]> Request 3: MetadataRequest_v1(topics=NULL)
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Received correlation id: 3
+2022-04-17 12:30:48 [kafka.protocol.parser] DEBUG: Processing response MetadataResponse_v1
+2022-04-17 12:30:48 [kafka.conn] DEBUG: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]> Response 3 (6.005048751831055 ms): MetadataResponse_v1(brokers=[(node_id=0, host='DESKTOP-RTIL2HE', port=9092, rack=None)], controller_id=0, topics=[(error_code=0, topic='__consumer_offsets', is_internal=True, partitions=[(error_code=0, partition=0, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=10, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=20, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=40, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=30, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=9, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=11, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=31, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=39, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=13, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=18, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=22, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=8, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=32, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=43, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=29, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=34, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=1, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=6, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=41, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=27, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=48, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=5, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=15, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=35, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=25, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=46, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=26, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=36, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=44, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=16, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=37, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=17, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=45, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=3, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=24, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=38, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=33, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=23, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=28, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=2, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=12, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=19, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=14, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=4, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=47, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=49, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=42, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=7, leader=0, replicas=[0], isr=[0]), (error_code=0, partition=21, leader=0, replicas=[0], isr=[0])]), (error_code=0, topic='numtest', is_internal=False, partitions=[(error_code=0, partition=0, leader=0, replicas=[0], isr=[0])])])
+2022-04-17 12:30:48 [kafka.cluster] DEBUG: Updated cluster metadata to ClusterMetadata(brokers: 1, topics: 2, groups: 0)
+2022-04-17 12:30:49 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2022-04-17 12:30:49 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2022-04-17 12:30:49 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.appeloffres.com/> (referer: None)
+2022-04-17 12:30:49 [scrapy.spidermiddlewares.offsite] DEBUG: Filtered offsite request to 'www.appeloffres.com': <GET https://www.appeloffres.com/login>
+2022-04-17 12:30:49 [scrapy.spidermiddlewares.offsite] DEBUG: Filtered offsite request to 'www.tunisiebateaux.com': <GET http://www.tunisiebateaux.com>
+2022-04-17 12:30:49 [scrapy.spidermiddlewares.offsite] DEBUG: Filtered offsite request to 'www.africa-company.net': <GET http://www.africa-company.net>
+2022-04-17 12:30:49 [scrapy.spidermiddlewares.offsite] DEBUG: Filtered offsite request to 'www.apavetunisie.com': <GET http://www.apavetunisie.com/>
+2022-04-17 12:30:49 [scrapy.spidermiddlewares.offsite] DEBUG: Filtered offsite request to 'www.revolon.com': <GET http://www.revolon.com>
+2022-04-17 12:30:49 [scrapy.spidermiddlewares.offsite] DEBUG: Filtered offsite request to 'www.cnctunisie.com': <GET http://www.cnctunisie.com>
+2022-04-17 12:30:49 [kafka.client] DEBUG: Initializing connection to node 0 for metadata request
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/login', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Allocating a new 16384 byte message buffer for TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Waking up the sender since TopicPartition(topic='numtest', partition=0) is either full or getting a new batch
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/abonnement', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Node 0 not ready; delaying produce of accumulated batch
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.client] DEBUG: Initiating connection to node 0 at DESKTOP-RTIL2HE:9092
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name node-0.bytes-sent
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/resultat?p=tunisie', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name node-0.bytes-received
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name node-0.latency
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/resultat?p=algerie', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/resultat?p=maroc', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/forgotten-password', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/recherche-avancee', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/cuir-chaussure-et-textile', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/telecom', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/informatique-materiels-et-logiciels', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/btp-batiment', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <disconnected> [unspecified None]>: creating new socket
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/immobilier', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/textile', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <disconnected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]>: setting socket option (6, 1, 1)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.conn] INFO: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connecting> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]>: connecting to DESKTOP-RTIL2HE:9092 [('fe80::1116:61b1:3d63:1dce', 9092, 0, 47) IPv6]
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/fournitures-industrielles', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/fournitures-de-bureaux-et-mobilier', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connecting> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]>: established TCP connection
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/services', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.conn] INFO: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connecting> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]>: Connection complete.
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.client] DEBUG: Node 0 connected
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/voitures-camions-et-engins', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.conn] INFO: <BrokerConnection node_id=bootstrap-0 host=localhost:9092 <connected> [IPv6 ('::1', 9092, 0, 0)]>: Closing connection. 
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Node 0 not ready; delaying produce of accumulated batch
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/etudes-et-consulting', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.client] DEBUG: Sending metadata request MetadataRequest_v1(topics=['numtest']) to node 0
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request MetadataRequest_v1(topics=['numtest'])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/agriculture-et-agroalimentaire', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 1: MetadataRequest_v1(topics=['numtest'])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Node 0 not ready; delaying produce of accumulated batch
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/electricite', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 1
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response MetadataResponse_v1
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/produits-chimiques', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 1 (3.9980411529541016 ms): MetadataResponse_v1(brokers=[(node_id=0, host='DESKTOP-RTIL2HE', port=9092, rack=None)], controller_id=0, topics=[(error_code=0, topic='numtest', is_internal=False, partitions=[(error_code=0, partition=0, leader=0, replicas=[0], isr=[0])])])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.cluster] DEBUG: Updated cluster metadata to ClusterMetadata(brokers: 1, topics: 1, groups: 0)
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/sante', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name topic.numtest.records-per-batch
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Allocating a new 16384 byte message buffer for TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name topic.numtest.bytes
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Waking up the sender since TopicPartition(topic='numtest', partition=0) is either full or getting a new batch
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name topic.numtest.compression-rate
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name topic.numtest.record-retries
+2022-04-17 12:30:49 [kafka.metrics.metrics] DEBUG: Added sensor with name topic.numtest.record-errors
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Nodes with data ready to send: {0}
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Created 1 produce requests: {0: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0eo\x00\x00\x00\x00\x02Zy\xc8\x13\x00\x00\x00\x00\x00\x15\x00\x00\x01\x807J,R\x00\x00\x01\x807J,i\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x16\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])}
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Sending Produce Request: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0eo\x00\x00\x00\x00\x02Zy\xc8\x13\x00\x00\x00\x00\x00\x15\x00\x00\x01\x807J,R\x00\x00\x01\x807J,i\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x16\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/btp-tp', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0eo\x00\x00\x00\x00\x02Zy\xc8\x13\x00\x00\x00\x00\x00\x15\x00\x00\x01\x807J,R\x00\x00\x01\x807J,i\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x16\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 2: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0eo\x00\x00\x00\x00\x02Zy\xc8\x13\x00\x00\x00\x00\x00\x15\x00\x00\x01\x807J,R\x00\x00\x01\x807J,i\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x16\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/appels-offres/entretien-et-peinture', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Nodes with data ready to send: {0}
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Allocating a new 16384 byte message buffer for TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Created 1 produce requests: {0: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01p\x00\x00\x00\x00\x02\xb9\xde\x99\x92\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,l\x00\x00\x01\x807J,o\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xba\x02\x00\x00\x00\x01\xac\x02{"link": "https://www.appeloffr...')])])}
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Waking up the sender since TopicPartition(topic='numtest', partition=0) is either full or getting a new batch
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Sending Produce Request: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01p\x00\x00\x00\x00\x02\xb9\xde\x99\x92\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,l\x00\x00\x01\x807J,o\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xba\x02\x00\x00\x00\x01\xac\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01p\x00\x00\x00\x00\x02\xb9\xde\x99\x92\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,l\x00\x00\x01\x807J,o\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xba\x02\x00\x00\x00\x01\xac\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 3: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01p\x00\x00\x00\x00\x02\xb9\xde\x99\x92\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,l\x00\x00\x01\x807J,o\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xba\x02\x00\x00\x00\x01\xac\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Nodes with data ready to send: {0}
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/newsletter', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Created 1 produce requests: {0: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\x00\x02\xecv\xa5\x91\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,q\x00\x00\x01\x807J,q\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\xda\x02\x00\x00\x00\x01\xcc\x02{"link": "https://www.appeloffr...')])])}
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Allocating a new 16384 byte message buffer for TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Sending Produce Request: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\x00\x02\xecv\xa5\x91\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,q\x00\x00\x01\x807J,q\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\xda\x02\x00\x00\x00\x01\xcc\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Waking up the sender since TopicPartition(topic='numtest', partition=0) is either full or getting a new batch
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\x00\x02\xecv\xa5\x91\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,q\x00\x00\x01\x807J,q\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\xda\x02\x00\x00\x00\x01\xcc\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 4: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xe0\x00\x00\x00\x00\x02\xecv\xa5\x91\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,q\x00\x00\x01\x807J,q\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\xda\x02\x00\x00\x00\x01\xcc\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/clients/profil', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Nodes with data ready to send: {0}
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/devis', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Created 1 produce requests: {0: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01a\x00\x00\x00\x00\x02\xa98\xdc\xd6\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,u\x00\x00\x01\x807J,y\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])}
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Allocating a new 16384 byte message buffer for TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Sending Produce Request: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01a\x00\x00\x00\x00\x02\xa98\xdc\xd6\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,u\x00\x00\x01\x807J,y\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Waking up the sender since TopicPartition(topic='numtest', partition=0) is either full or getting a new batch
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01a\x00\x00\x00\x00\x02\xa98\xdc\xd6\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,u\x00\x00\x01\x807J,y\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 5: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01a\x00\x00\x00\x00\x02\xa98\xdc\xd6\x00\x00\x00\x00\x00\x01\x00\x00\x01\x807J,u\x00\x00\x01\x807J,y\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x02\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Nodes with data ready to send: {0}
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/conditions', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Created 1 produce requests: {0: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc2\x00\x00\x00\x00\x02^b\xce\x96\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,|\x00\x00\x01\x807J,|\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])}
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Allocating a new 16384 byte message buffer for TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Sending Produce Request: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc2\x00\x00\x00\x00\x02^b\xce\x96\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,|\x00\x00\x01\x807J,|\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Waking up the sender since TopicPartition(topic='numtest', partition=0) is either full or getting a new batch
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc2\x00\x00\x00\x00\x02^b\xce\x96\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,|\x00\x00\x01\x807J,|\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 6: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc2\x00\x00\x00\x00\x02^b\xce\x96\x00\x00\x00\x00\x00\x00\x00\x00\x01\x807J,|\x00\x00\x01\x807J,|\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x01\x9e\x02\x00\x00\x00\x01\x90\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/contact', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Node 0 not ready; delaying produce of accumulated batch
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/services', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.appeloffres.com/resultat', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.appeloffres.com/abonnement', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.appeloffres.com/newsletter', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.appeloffres.com/contact', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.tunisiebateaux.com', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.africa-company.net', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.apavetunisie.com/', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.revolon.com', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'http://www.cnctunisie.com', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/clients/alerte', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/client/commandes', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/reabonnement', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/clients/factures', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: Sending (key=None value={'link': 'https://www.appeloffres.com/client/support', 'meta': {'source': 'https://www.appeloffres.com/', 'depth': 0}, 'spider': 'url-extractor'} headers=[]) to TopicPartition(topic='numtest', partition=0)
+2022-04-17 12:30:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/>
+None
+2022-04-17 12:30:49 [scrapy.core.engine] INFO: Closing spider (finished)
+2022-04-17 12:30:49 [kafka.producer.kafka] INFO: Closing the Kafka producer with 4294967.0 secs timeout.
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Beginning shutdown of Kafka producer I/O thread, sending remaining records.
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Node 0 not ready; delaying produce of accumulated batch
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 2
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response ProduceResponse_v7
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 2 (80.98936080932617 ms): ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2595, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Parsing produce response: ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2595, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Produced messages to topic-partition TopicPartition(topic='numtest', partition=0) with base offset 2595 log start offset 0 and error None.
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Nodes with data ready to send: {0}
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Created 1 produce requests: {0: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t\xf6\x00\x00\x00\x00\x02\x7f?#\x9c\x00\x00\x00\x00\x00\x10\x00\x00\x01\x807J,~\x00\x00\x01\x807J,\x8d\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x11\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])}
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Sending Produce Request: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t\xf6\x00\x00\x00\x00\x02\x7f?#\x9c\x00\x00\x00\x00\x00\x10\x00\x00\x01\x807J,~\x00\x00\x01\x807J,\x8d\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x11\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Sending request ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t\xf6\x00\x00\x00\x00\x02\x7f?#\x9c\x00\x00\x00\x00\x00\x10\x00\x00\x01\x807J,~\x00\x00\x01\x807J,\x8d\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x11\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Request 7: ProduceRequest_v7(transactional_id=None, required_acks=1, timeout=30000, topics=[(topic='numtest', partitions=[(partition=0, messages=b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t\xf6\x00\x00\x00\x00\x02\x7f?#\x9c\x00\x00\x00\x00\x00\x10\x00\x00\x01\x807J,~\x00\x00\x01\x807J,\x8d\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x11\xa8\x02\x00\x00\x00\x01\x9a\x02{"link": "https://www.appeloffr...')])])
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 3
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response ProduceResponse_v7
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 4
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response ProduceResponse_v7
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 3 (85.00027656555176 ms): ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2617, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 4 (78.99665832519531 ms): ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2619, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Parsing produce response: ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2617, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Produced messages to topic-partition TopicPartition(topic='numtest', partition=0) with base offset 2617 log start offset 0 and error None.
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Parsing produce response: ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2619, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Produced messages to topic-partition TopicPartition(topic='numtest', partition=0) with base offset 2619 log start offset 0 and error None.
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 5
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response ProduceResponse_v7
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 5 (98.00267219543457 ms): ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2620, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Parsing produce response: ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2620, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Produced messages to topic-partition TopicPartition(topic='numtest', partition=0) with base offset 2620 log start offset 0 and error None.
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 6
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response ProduceResponse_v7
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 6 (96.9841480255127 ms): ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2622, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Parsing produce response: ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2622, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Produced messages to topic-partition TopicPartition(topic='numtest', partition=0) with base offset 2622 log start offset 0 and error None.
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Received correlation id: 7
+2022-04-17 12:30:49 [kafka.protocol.parser] DEBUG: Processing response ProduceResponse_v7
+2022-04-17 12:30:49 [kafka.conn] DEBUG: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]> Response 7 (29.0067195892334 ms): ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2623, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Parsing produce response: ProduceResponse_v7(topics=[(topic='numtest', partitions=[(partition=0, error_code=0, offset=2623, timestamp=-1, log_start_offset=0)])], throttle_time_ms=0)
+2022-04-17 12:30:49 [kafka.producer.record_accumulator] DEBUG: Produced messages to topic-partition TopicPartition(topic='numtest', partition=0) with base offset 2623 log start offset 0 and error None.
+2022-04-17 12:30:49 [kafka.conn] INFO: <BrokerConnection node_id=0 host=DESKTOP-RTIL2HE:9092 <connected> [IPv6 ('fe80::1116:61b1:3d63:1dce', 9092, 0, 47)]>: Closing connection. 
+2022-04-17 12:30:49 [kafka.producer.sender] DEBUG: Shutdown of Kafka producer I/O thread has completed.
+2022-04-17 12:30:49 [kafka.producer.kafka] DEBUG: The Kafka producer has closed.
+2022-04-17 12:30:49 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 299,
+ 'downloader/request_count': 1,
+ 'downloader/request_method_count/GET': 1,
+ 'downloader/response_bytes': 30901,
+ 'downloader/response_count': 1,
+ 'downloader/response_status_count/200': 1,
+ 'elapsed_time_seconds': 0.698231,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2022, 4, 17, 11, 30, 49, 701371),
+ 'item_scraped_count': 45,
+ 'log_count/DEBUG': 244,
+ 'log_count/INFO': 21,
+ 'offsite/domains': 6,
+ 'offsite/filtered': 45,
+ 'request_depth_max': 1,
+ 'response_received_count': 1,
+ 'scheduler/dequeued': 1,
+ 'scheduler/dequeued/memory': 1,
+ 'scheduler/enqueued': 1,
+ 'scheduler/enqueued/memory': 1,
+ 'start_time': datetime.datetime(2022, 4, 17, 11, 30, 49, 3140)}
+2022-04-17 12:30:49 [scrapy.core.engine] INFO: Spider closed (finished)
