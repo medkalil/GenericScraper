@@ -26,6 +26,12 @@ SPIDER_MIDDLEWARES = {
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
+#   scrapy_pyppeteer settings
+""" DOWNLOAD_HANDLERS = {
+    "http": "scrapy_pyppeteer.handler.ScrapyPyppeteerDownloadHandler",
+    "https": "scrapy_pyppeteer.handler.ScrapyPyppeteerDownloadHandler",
+}
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor" """
 
 # MONGO setup
 MONGO_URI = 'mongodb+srv://posts:posts@cluster0.lkclz.mongodb.net/'
@@ -79,9 +85,9 @@ ROBOTSTXT_OBEY = False
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
 
-# Configure item pipelines
+# Configure item 
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
+""" ITEM_PIPELINES = {
    #'genericscrapy.pipelines.GenericscrapyPipeline': 300,
    #    send url to kafka
    'genericscrapy.pipelines.LinkExtratorPipeline':1,
@@ -89,7 +95,7 @@ ITEM_PIPELINES = {
    'genericscrapy.pipelines.CardScraperPipeline':2,
    #    crape table
    'genericscrapy.pipelines.TableScraperPipeline':3,
-}
+} """
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -15,21 +15,14 @@ class Scraper(scrapy.Spider):
     #mandatory=None
     def __init__(self, page=None, config=None, mandatory="" ,  *args, **kwargs):
         self.page =page
-        #print("+++",type(config))
         self.config = json.loads(json.dumps(config))
-        #print(type(self.config))
         self.mandatory_fields = mandatory.split(',')
         super(Scraper, self).__init__(*args, **kwargs)
 
-
-    """ rules = (
-        Rule(LinkExtractor(), callback='start_requests',follow=True),
-    ) """
-
-
     def start_requests(self):
         self.logger.info('Start url: %s' % self.page)
-        yield SplashRequest(url=self.page , callback=self.parse)
+        #yield SplashRequest(url=self.page , callback=self.parse)
+        yield scrapy.Request(url=self.page , callback=self.parse)
         
     def parse(self, response):
         #for amazon : for it in response.css("._octopus-search-result-card_style_apbSearchResultItem__2-mx4"):

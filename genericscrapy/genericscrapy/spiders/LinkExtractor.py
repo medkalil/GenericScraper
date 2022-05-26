@@ -2,10 +2,14 @@ from scrapy.spiders import Spider
 from scrapy import Request
 from scrapy.linkextractors import LinkExtractor
 
+from genericscrapy.config import WORD_LIST_TO_AVOID
+from genericscrapy.config import get_valid_links
+
 class UrlExtractor(Spider):
     name = 'url-extractor'
-    custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
+    #custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
     start_urls = []
+
 
     def __init__(self, root=None, depth=0, *args, **kwargs):
         self.logger.info("[LE] Source: %s Depth: %s Kwargs: %s", root, depth, kwargs)
@@ -40,6 +44,9 @@ class UrlExtractor(Spider):
 
     def get_all_links(self, response):
         links = self.le.extract_links(response)
+        # filter links if they are the same as the root
+        links = get_valid_links(links,self.source)
+
         str_links = []
         for link in links:
             str_links.append(link.url)
@@ -59,3 +66,5 @@ class UrlExtractor(Spider):
 #   scrapy crawl url-extractor -a root=https://www.francemarches.com/ -a allow_domains="https://www.francemarches.com/" -a depth=0 -o lafrance.json
 
 #   scrapy crawl url-extractor -a root=https://centraledesmarches.com/ -a depth=0
+
+#   scrapy crawl url-extractor -a root=https://www.appeloffres.com/ -o linklist.json
