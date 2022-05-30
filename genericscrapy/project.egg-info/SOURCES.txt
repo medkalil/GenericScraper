@@ -1,5 +1,6 @@
 setup.py
 genericscrapy/__init__.py
+genericscrapy/config.py
 genericscrapy/items.py
 genericscrapy/middlewares.py
 genericscrapy/pipelines.py

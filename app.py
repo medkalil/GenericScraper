@@ -1,3 +1,5 @@
+from logging import root
+from os import urandom
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask import request
@@ -72,6 +74,7 @@ def test():
 # run scraper route
 @app.route('/run', methods=['POST'])
 def run():
+  url_list=  []
   """ configuration = {"configuration":{"root":"https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk","Name":"My 1 Scraper","config":"test"}}
   if configuration not in list(db.card_collection.find(configuration,{"_id":0})) :
     db.card_collection.insert_one(configuration)
@@ -79,11 +82,11 @@ def run():
     print("configuration exist")
   
   scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk") """
-
-  scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk")
+  #scrapy crawl scraper -a page=https://quotes.toscrape.com/js/ -a config="{'Nom':'.text::text'}" -a mandatory='Nom'
+  #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://quotes.toscrape.com/js/")
+  #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk")
   #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://centraledesmarches.com/")
-  #       scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.appeloffres.com/")
-  #scrapyd.schedule('genericscrapy', 'table', page="https://www.appeloffres.com/appels-offres/telecom")
+  scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.appeloffres.com/")
   # peut avoir des erreur si temps d'attende depasse le : 'consumer_timeout_ms=5000'
   consumer = KafkaConsumer(
     'numtest',
@@ -93,26 +96,40 @@ def run():
      group_id='my-group',
      consumer_timeout_ms=10000,
      value_deserializer=lambda x: loads(x.decode('utf-8')))
-
-    #requests.post("http://localhost:6800/schedule.json", data={
-    #    "project": "quotetuto",
-    #    "spider": "quotes"
-    #})
-
     
   print("before loop")
   for message in consumer:
       print("inside the for")
       #message = message.value
       message = message.value['link']
+      url_list.append(message)
       #print("Offset:", message.offset)
       #     scrapyd.schedule('genericscrapy', 'table', page=message)
-      scrapyd.schedule('genericscrapy', 'scraper', config="{'title':'.a-size-base-plus::text'}" , mandatory='title' , page=message)
+      #scrapyd.schedule('genericscrapy', 'scraper', config="{'title':'.a-size-base-plus::text'}" , mandatory='title' , page=message)
       print("the msg is :",message)
       #print("the link is:",message['link'])
   #consumer.close()
- 
-  return "xx" 
+  """ print("the len:",len(url_list))
+  print(type(url_list[0]))
+  url_list = " ".join([str(elem)+"," for elem in url_list])
+  url_list = ''.join(('https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk,',url_list))
+  #print("hayy",url_list)
+  scrapyd.schedule('genericscrapy', 'scraper', config="{'title':'.a-size-base-plus::text'}" , mandatory='title' , start_urls_list = url_list)
+  url_list="" """
+
+  #scrapy crawl scraper -a page=https://quotes.toscrape.com/js/ -a config="{'Nom':'.text::text'}" -a mandatory='Nom'
+  #test : quotes.toscrape
+  """ url_list = " ".join([str(elem)+",{}".format("https://quotes.toscrape.com/js/") for elem in url_list])
+  scrapyd.schedule('genericscrapy', 'scraper', config="{'Nom':'.text::text'}" , mandatory='Nom' , start_urls_list = url_list)
+  url_list="" """
+  
+  #test table scrapers
+  #change table scraper to accepting list of urls like CardScraper
+  url_list = "".join([str(elem)+"," for elem in url_list])
+  scrapyd.schedule('genericscrapy', 'table', start_urls_list=url_list)
+  url_list=""
+
+  return "xx"
 
 if __name__ == "__main__":
   app.run(debug=True , threaded=True)

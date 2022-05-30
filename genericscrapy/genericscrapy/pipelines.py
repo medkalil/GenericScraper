@@ -89,18 +89,9 @@ class CardScraperPipeline:
         self.client.close()
 
     def process_item(self, item, spider):
-        ## how to handle each post
-        #print("item is here",list(self.db[self.collection_name].find(item,{"_id":0}))[0])
-        #   if vide
+        #self.db[self.collection_name].update_one({},{'$addToSet':{'data':dict(item)}})
 
-        """ #   Add to data
-        print("here from Card pipe")
-        self.db[self.collection_name].update_one({},{'$push':{'data':dict(item)}}) """
-        #self.db[self.collection_name].insert_one(dict(item))
-
-        self.db[self.collection_name].update_one({},{'$addToSet':{'data':dict(item)}})
-
-        """ if len(list(self.db[self.collection_name].find({}))) == 0 :
+        if len(list(self.db[self.collection_name].find({}))) == 0 :
             self.db[self.collection_name].insert_one(dict(item))
         #   not vide
         elif item in list(self.db[self.collection_name].find(item,{"_id":0})) :
@@ -111,7 +102,7 @@ class CardScraperPipeline:
             #print("here is item",item)
             self.db[self.collection_name].insert_one(dict(item))
             logging.debug("Post added to MongoDB")
-            return item """
+            return item
 
 
 

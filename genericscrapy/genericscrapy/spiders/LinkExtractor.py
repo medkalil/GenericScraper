@@ -7,7 +7,7 @@ from genericscrapy.config import get_valid_links
 
 class UrlExtractor(Spider):
     name = 'url-extractor'
-    #custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
+    custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
     start_urls = []
 
 
@@ -46,7 +46,6 @@ class UrlExtractor(Spider):
         links = self.le.extract_links(response)
         # filter links if they are the same as the root
         links = get_valid_links(links,self.source)
-
         str_links = []
         for link in links:
             str_links.append(link.url)

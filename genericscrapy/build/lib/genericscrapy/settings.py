@@ -1,5 +1,7 @@
 # Scrapy settings for genericscrapy project
 from genericscrapy.utils import get_random_agent
+import logging
+import asyncio
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -8,10 +10,13 @@ from genericscrapy.utils import get_random_agent
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'genericscrapy'
 
+BOT_NAME = 'genericscrapy'
 SPIDER_MODULES = ['genericscrapy.spiders']
 NEWSPIDER_MODULE = 'genericscrapy.spiders'
+CLOSESPIDER_PAGECOUNT = 1000
+
+DOWNLOAD_DELAY=10
 
 # splash setup. source : https://github.com/scrapy-plugins/scrapy-splash
 SPLASH_URL = 'http://localhost:8050'
@@ -26,6 +31,33 @@ SPIDER_MIDDLEWARES = {
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
+#   scrapy_pyppeteer settings
+#   for fixing: "TypeError: ProactorEventLoop is not supported, got: <ProactorEventLoop running=False closed=False debug=False"
+""" asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_pyppeteer.handler.ScrapyPyppeteerDownloadHandler",
+    "https": "scrapy_pyppeteer.handler.ScrapyPyppeteerDownloadHandler",
+}
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+#   disabling the scrapy_pyppeteer loging
+pyppeteer_level = logging.WARNING
+logging.getLogger('pyppeteer').setLevel(pyppeteer_level)
+logging.getLogger('websockets.protocol').setLevel(pyppeteer_level)
+logging.getLogger('websockets.client').setLevel(pyppeteer_level) """
+
+#   gerapy_pyppeteer settings
+""" DOWNLOADER_MIDDLEWARES = {
+    'gerapy_pyppeteer.downloadermiddlewares.PyppeteerMiddleware': 543,
+}
+GERAPY_PYPPETEER_DOWNLOAD_TIMEOUT = 600
+GERAPY_PYPPETEER_LOGGING_LEVEL = logging.ERROR """
+
+# scrapy_playwright settings
+""" DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor" """
 
 # MONGO setup
 MONGO_URI = 'mongodb+srv://posts:posts@cluster0.lkclz.mongodb.net/'
@@ -79,7 +111,7 @@ ROBOTSTXT_OBEY = False
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
 
-# Configure item pipelines
+# Configure item 
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    #'genericscrapy.pipelines.GenericscrapyPipeline': 300,

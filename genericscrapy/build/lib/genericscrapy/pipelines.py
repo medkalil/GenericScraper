@@ -5,6 +5,7 @@
 
 
 # useful for handling different item types with a single interface
+from turtle import update
 from itemadapter import ItemAdapter
 import logging
 import pymongo
@@ -15,6 +16,7 @@ from kafka import KafkaProducer
 """ class GenericscrapyPipeline:
     def process_item(self, item, spider):
         return item """
+
 
 class LinkExtratorPipeline:
     def __init__(self,producer,topic):
@@ -29,6 +31,10 @@ class LinkExtratorPipeline:
         pass
 
     def process_item(self, item, spider):
+
+        mongo_collection = spider.source
+        print("this mongo_collection",mongo_collection)
+
         print("here is LinkExtratorPipeline")
         print("item:",item)
         item = dict(item)
@@ -53,6 +59,7 @@ class LinkExtratorPipeline:
 
 
 class CardScraperPipeline:
+
     collection_name = 'card_collection'
 
     def __init__(self, mongo_uri, mongo_db):
@@ -72,15 +79,18 @@ class CardScraperPipeline:
         ## opening db connection
         self.client = pymongo.MongoClient(self.mongo_uri)
         self.db = self.client[self.mongo_db]
+        
+        #   Add data key
+        #self.db[self.collection_name].insert_one({"data":[]})
+        
 
     def close_spider(self, spider):
         ## clean up when spider is closed
         self.client.close()
 
     def process_item(self, item, spider):
-        ## how to handle each post
-        #print("item is here",list(self.db[self.collection_name].find(item,{"_id":0}))[0])
-        #   if vide
+        #self.db[self.collection_name].update_one({},{'$addToSet':{'data':dict(item)}})
+
         if len(list(self.db[self.collection_name].find({}))) == 0 :
             self.db[self.collection_name].insert_one(dict(item))
         #   not vide
@@ -100,6 +110,11 @@ class CardScraperPipeline:
 class TableScraperPipeline:
     collection_name = 'table_collection'
 
+    """ 
+    self.df[self.collection] = {"data:[]"}
+        self.db[self.collection_name].data.insert_one(dict(item))
+    """
+
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
@@ -117,6 +132,7 @@ class TableScraperPipeline:
         ## opening db connection
         self.client = pymongo.MongoClient(self.mongo_uri)
         self.db = self.client[self.mongo_db]
+
 
     def close_spider(self, spider):
         ## clean up when spider is closed
