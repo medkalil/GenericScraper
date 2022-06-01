@@ -8,10 +8,12 @@ class QuotesSpider(scrapy.Spider):
     name = "table"
     custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.TableScraperPipeline':3}}
 
-    def __init__(self, start_urls_list, config=None, mandatory="" ,  *args, **kwargs):
+    def __init__(self, collection_name , start_urls_list, table_match="" , config=None, mandatory="" ,  *args, **kwargs):
         super(QuotesSpider, self).__init__(*args, **kwargs)
         self.start_urls_list = start_urls_list.split(',')
         self.start_urls = self.start_urls_list
+        self.table_match = table_match
+        self.collection_name = collection_name
 
     def start_requests(self):
         for url in self.start_urls:
@@ -19,7 +21,8 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
         print("isis:",response.request.url)
-        df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
+        #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
+        df = pd.read_html(response.request.url,match=self.table_match)
         df = df[0]
         df = df[df.columns.drop(list(df.filter(regex='Unnamed')))]
         result = df.to_json(orient="records")
@@ -42,5 +45,8 @@ class QuotesSpider(scrapy.Spider):
         #for x in df[0]:
         #    print(x)
 
+
+
 # scrapy crawl table -a page="https://www.appeloffres.com/appels-offres/telecom"
-# scrapy crawl table -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite"
+# new cmd: scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite"
+# scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite" -a collection_name="table_collection"

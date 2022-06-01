@@ -1,0 +1,212 @@
+2022-06-01 15:41:45 [scrapy.utils.log] INFO: Scrapy 2.5.1 started (bot: genericscrapy)
+2022-06-01 15:41:45 [scrapy.utils.log] INFO: Versions: lxml 4.7.1.0, libxml2 2.9.12, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 21.7.0, Python 3.8.5 (default, Sep  3 2020, 21:29:08) [MSC v.1916 64 bit (AMD64)], pyOpenSSL 22.0.0 (OpenSSL 1.1.1m  14 Dec 2021), cryptography 36.0.1, Platform Windows-10-10.0.18362-SP0
+2022-06-01 15:41:45 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.asyncioreactor.AsyncioSelectorReactor
+2022-06-01 15:41:45 [scrapy.utils.log] DEBUG: Using asyncio event loop: asyncio.windows_events._WindowsSelectorEventLoop
+2022-06-01 15:41:45 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'genericscrapy',
+ 'CLOSESPIDER_PAGECOUNT': 1000,
+ 'DOWNLOAD_DELAY': 10,
+ 'DUPEFILTER_CLASS': 'scrapy_splash.SplashAwareDupeFilter',
+ 'HTTPCACHE_STORAGE': 'scrapy_splash.SplashAwareFSCacheStorage',
+ 'LOG_FILE': 'logs\\genericscrapy\\table\\f2a69ac6e1b811ecbfa6d41e27300ada.log',
+ 'NEWSPIDER_MODULE': 'genericscrapy.spiders',
+ 'SPIDER_MODULES': ['genericscrapy.spiders'],
+ 'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+               '(KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
+2022-06-01 15:41:45 [scrapy.extensions.telnet] INFO: Telnet Password: ce4d2fcc4f635e1a
+2022-06-01 15:41:45 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.closespider.CloseSpider',
+ 'scrapy.extensions.logstats.LogStats']
+2022-06-01 15:41:45 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy_splash.SplashCookiesMiddleware',
+ 'scrapy_splash.SplashMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2022-06-01 15:41:45 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy_splash.SplashDeduplicateArgsMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2022-06-01 15:41:46 [scrapy.middleware] INFO: Enabled item pipelines:
+['genericscrapy.pipelines.TableScraperPipeline']
+2022-06-01 15:41:46 [scrapy.core.engine] INFO: Spider opened
+2022-06-01 15:41:46 [py.warnings] WARNING: c:\users\kalil\scrapy\venv\lib\site-packages\cryptography\x509\base.py:538: CryptographyDeprecationWarning: Parsed a negative serial number, which is disallowed by RFC 5280.
+  return rust_x509.load_der_x509_certificate(data)
+
+2022-06-01 15:41:46 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2022-06-01 15:41:46 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:46 [urllib3.connectionpool] DEBUG: Starting new HTTP connection (1): r3.o.lencr.org:80
+2022-06-01 15:41:46 [urllib3.connectionpool] DEBUG: Starting new HTTP connection (1): r3.o.lencr.org:80
+2022-06-01 15:41:46 [urllib3.connectionpool] DEBUG: Starting new HTTP connection (1): r3.o.lencr.org:80
+2022-06-01 15:41:46 [urllib3.connectionpool] DEBUG: http://r3.o.lencr.org:80 "POST / HTTP/1.1" 200 503
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP response status: <OCSPResponseStatus.SUCCESSFUL: 0>
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Verifying response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Responder is issuer
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Caching OCSP response.
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:41:46 [urllib3.connectionpool] DEBUG: http://r3.o.lencr.org:80 "POST / HTTP/1.1" 200 503
+2022-06-01 15:41:46 [urllib3.connectionpool] DEBUG: http://r3.o.lencr.org:80 "POST / HTTP/1.1" 200 503
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP response status: <OCSPResponseStatus.SUCCESSFUL: 0>
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Verifying response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP response status: <OCSPResponseStatus.SUCCESSFUL: 0>
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Responder is issuer
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Verifying response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Responder is issuer
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Caching OCSP response.
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Caching OCSP response.
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: Using cached OCSP response.
+2022-06-01 15:41:46 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Using cached OCSP response.
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: Using cached OCSP response.
+2022-06-01 15:41:47 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:41:52 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://www.appeloffres.com/appels-offres/service> (referer: None)
+2022-06-01 15:41:59 [pymongo.ocsp_support] DEBUG: Peer did not staple an OCSP response
+2022-06-01 15:41:59 [pymongo.ocsp_support] DEBUG: Requesting OCSP data
+2022-06-01 15:41:59 [pymongo.ocsp_support] DEBUG: Trying http://r3.o.lencr.org
+2022-06-01 15:41:59 [pymongo.ocsp_support] DEBUG: Using cached OCSP response.
+2022-06-01 15:41:59 [pymongo.ocsp_support] DEBUG: OCSP cert status: <OCSPCertStatus.GOOD: 0>
+2022-06-01 15:42:02 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:02 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'MI', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '04/2022 Avis de consultation 2ème Avis', "Description sommaire de l'appel d'offres": 'Acquisition de 05 systèmes de géo localisation GPS SIG', 'Catégorie': 'Informatique matériels et logiciels', 'Echéance': '01/07/2022 10:00:00'}
+2022-06-01 15:42:03 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:03 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'CO', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '43/2022 Consultation', "Description sommaire de l'appel d'offres": 'Acquisition de fil de fer pour pailles', 'Catégorie': 'Fournitures Industrielles', 'Echéance': '09/06/2022 00:00:00'}
+2022-06-01 15:42:04 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:04 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'LE', 'Date': '01/06/2022', 'Type': 'Rep./TUN', 'Référence': '15/2022', "Description sommaire de l'appel d'offres": "Report de l'appel d'offres relatif à l'acquisition de trois voitures utilitaires", 'Catégorie': 'Voitures camions et engins', 'Echéance': '15/06/2022 14:30:00'}
+2022-06-01 15:42:05 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:05 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'RE', 'Date': '01/06/2022', 'Type': 'Rep./TUN', 'Référence': '09/2022 inter', "Description sommaire de l'appel d'offres": "Report de l'appel d'offre relatif à l'acquisition de carton de renforcement Laize 94 mm", 'Catégorie': 'Fournitures Industrielles', 'Echéance': '10/06/2022 10:00:00'}
+2022-06-01 15:42:06 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:06 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': "L'", 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '32/DCME/2022 Avis de consultation', "Description sommaire de l'appel d'offres": 'Réalisation des prestations de plomberie et nettoyage des bâtiments et équipements et entretien des', 'Catégorie': 'Services', 'Echéance': '15/06/2022 12:00:00'}
+2022-06-01 15:42:07 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'MU', 'Date': '01/06/2022', 'Type': 'Rep./TUN', 'Référence': "1/2022 Manifestation d'intérêt", "Description sommaire de l'appel d'offres": "Annulation de l'appel d'offres relatif à la sélection de candidats en vue de participer à un appel", 'Catégorie': 'Études et consulting', 'Echéance': '15/06/2022 10:00:00'}
+2022-06-01 15:42:08 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:08 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'BA', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': None, "Description sommaire de l'appel d'offres": "Location d'un local commercial", 'Catégorie': 'Immobilier', 'Echéance': '00/00/0000 00:00:00'}
+2022-06-01 15:42:09 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:09 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'BA', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '09/2022', "Description sommaire de l'appel d'offres": "Choix d'un cabinet pour l'étude, l'assistance et l'accompagnement à la mise en place du système", 'Catégorie': 'Études et consulting', 'Echéance': '30/06/2022 10:00:00'}
+2022-06-01 15:42:10 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:10 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'AG', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '...', "Description sommaire de l'appel d'offres": "Prestation de nettoyage des locaux de l'établissement", 'Catégorie': 'Services', 'Echéance': '24/06/2022 12:00:00'}
+2022-06-01 15:42:11 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:11 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'OF', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '87/2022 Consultation', "Description sommaire de l'appel d'offres": "Travaux de réaménagement paysager de la fontaine de l'aéroport Tunis-Carthage", 'Catégorie': 'Services', 'Echéance': '09/06/2022 11:00:00'}
+2022-06-01 15:42:13 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:13 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'OF', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '87/2022 Consultation', "Description sommaire de l'appel d'offres": "Travaux de réaménagement paysager de la fontaine de l'aéroport Tunis-Carthage", 'Catégorie': 'BTP Bâtiment', 'Echéance': '09/06/2022 11:00:00'}
+2022-06-01 15:42:14 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:14 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'AG', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '03/2022', "Description sommaire de l'appel d'offres": 'Acquisition de deux voitures de service conduite intérieure', 'Catégorie': 'Voitures camions et engins', 'Echéance': '01/07/2022 10:00:00'}
+2022-06-01 15:42:15 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:15 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'AG', 'Date': '01/06/2022', 'Type': 'Inter./TUN', 'Référence': '04/2022', "Description sommaire de l'appel d'offres": "Choix des bureaux accrédités pour la réalisation des missions d'audits de conformités selon les", 'Catégorie': 'Études et consulting', 'Echéance': '16/06/2022 10:00:00'}
+2022-06-01 15:42:33 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:33 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'BA', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '8/2022', "Description sommaire de l'appel d'offres": "Elaboration d'un manuel des procédures standard et global qui sera adopté par toutes les nouvelles", 'Catégorie': 'Études et consulting', 'Echéance': '30/06/2022 10:00:00'}
+2022-06-01 15:42:35 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+None
+2022-06-01 15:42:36 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:36 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'CO', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '02/2022 2ème Avis', "Description sommaire de l'appel d'offres": "Acquisition d'habillements pour les ouvriers de la commune pour l'année 2022: Lot1: des vêtements et", 'Catégorie': 'Cuir, chaussure et textile', 'Echéance': '21/06/2022 10:00:00'}
+2022-06-01 15:42:37 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:37 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'TU', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '25/2022', "Description sommaire de l'appel d'offres": 'Réalisation des travaux de câblage avec la fourniture de poteaux téléphoniques et quelques', 'Catégorie': 'Fournitures Industrielles', 'Echéance': '22/06/2022 17:00:00'}
+2022-06-01 15:42:38 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:38 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'TU', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '25/2022', "Description sommaire de l'appel d'offres": 'Réalisation des travaux de câblage avec la fourniture de poteaux téléphoniques et quelques', 'Catégorie': 'BTP TP', 'Echéance': '22/06/2022 17:00:00'}
+2022-06-01 15:42:39 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:39 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'OF', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '24/2022', "Description sommaire de l'appel d'offres": "Réalisation des travaux de construction d'une salle de sport au port de commerce de Bizerte", 'Catégorie': 'BTP Bâtiment', 'Echéance': '05/07/2022 10:00:00'}
+2022-06-01 15:42:43 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:43 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'AG', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '02/2022', "Description sommaire de l'appel d'offres": 'Acquisition de 03 voitures de service', 'Catégorie': 'Voitures camions et engins', 'Echéance': '30/06/2022 09:00:00'}
+2022-06-01 15:42:44 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:44 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'MI', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '01/DFM/2022', "Description sommaire de l'appel d'offres": 'Acquisition des pesticides homologués', 'Catégorie': 'Produits chimiques', 'Echéance': '04/07/2022 10:00:00'}
+2022-06-01 15:42:45 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:45 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'MI', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '01/DFM/2022', "Description sommaire de l'appel d'offres": 'Acquisition des pesticides homologués', 'Catégorie': 'Agriculture et Agroalimentaire', 'Echéance': '04/07/2022 10:00:00'}
+2022-06-01 15:42:46 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:46 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': "L'", 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '22/DRGT/2022 Avis de consultation', "Description sommaire de l'appel d'offres": 'Travaux de déviation de la conduite de refoulement-cité El Fetah 2 dans la délégation de la', 'Catégorie': 'BTP TP', 'Echéance': '13/06/2022 17:00:00'}
+2022-06-01 15:42:46 [scrapy.extensions.logstats] INFO: Crawled 1 pages (at 1 pages/min), scraped 23 items (at 23 items/min)
+2022-06-01 15:42:47 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:47 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'EC', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '32/2022 Avis de consultation', "Description sommaire de l'appel d'offres": 'Acquisition des meubles pour salle de réunion (table + fauteuils)', 'Catégorie': 'Fournitures de bureaux et mobilier', 'Echéance': '16/06/2022 10:00:00'}
+2022-06-01 15:42:48 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:48 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'PH', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': 'INF 01/2022 Consultation', "Description sommaire de l'appel d'offres": "Extension et maintenance de l'infrastructure de virtualisation", 'Catégorie': 'Informatique matériels et logiciels', 'Echéance': '01/07/2022 09:00:00'}
+2022-06-01 15:42:49 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:49 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'OF', 'Date': '01/06/2022', 'Type': 'Rep./TUN', 'Référence': '08/2022', "Description sommaire de l'appel d'offres": "Report de l'appel d'offres relatif à la fourniture et la mise en exploitation d'équipements", 'Catégorie': 'Fournitures Industrielles', 'Echéance': '27/06/2022 10:00:00'}
+2022-06-01 15:42:51 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:51 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'CO', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '9/2022', "Description sommaire de l'appel d'offres": "Création et extension de réseau d'éclairage public dans la commune", 'Catégorie': 'BTP TP', 'Echéance': '01/07/2022 10:00:00'}
+2022-06-01 15:42:55 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+None
+2022-06-01 15:42:59 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:42:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'UN', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '05/2022 2ème Avis', "Description sommaire de l'appel d'offres": "Fourniture et pose des climatiseurs au siège de l'université", 'Catégorie': 'Fournitures Industrielles', 'Echéance': '17/06/2022 10:00:00'}
+2022-06-01 15:43:01 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+None
+2022-06-01 15:43:04 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:04 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'UN', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '05/2022 2ème Avis', "Description sommaire de l'appel d'offres": "Fourniture et pose des climatiseurs au siège de l'université", 'Catégorie': 'BTP Bâtiment', 'Echéance': '17/06/2022 10:00:00'}
+2022-06-01 15:43:05 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:05 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'EC', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': "ENIB-DGSE-E5-06/2022\tManifestation d'intérêt", "Description sommaire de l'appel d'offres": "Recrutement d'un bureau d'étude ou une société spécialisée en conception graphique pour la mission", 'Catégorie': 'Études et consulting', 'Echéance': '16/06/2022 10:00:00'}
+2022-06-01 15:43:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+None
+2022-06-01 15:43:08 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:08 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'MI', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '24/2022 A', "Description sommaire de l'appel d'offres": "Etude d'exécution et assistance technique au suivi et contrôle des travaux de construction du", 'Catégorie': 'Études et consulting', 'Echéance': '05/07/2022 10:00:00'}
+2022-06-01 15:43:11 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:11 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': "L'", 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '21/2022 Avis de consultation', "Description sommaire de l'appel d'offres": "Révision des surpresseurs d'air destinés à l'aération des chenaux d'oxydation de la station", 'Catégorie': 'Services', 'Echéance': '20/06/2022 17:00:00'}
+2022-06-01 15:43:13 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:13 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': "L'", 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '08/2022 Avis de consultation 2ème Avis', "Description sommaire de l'appel d'offres": "Choix d'une société pour la réalisation des travaux de rénovation du réseau d'assainissement dans le", 'Catégorie': 'BTP TP', 'Echéance': '20/06/2022 17:00:00'}
+2022-06-01 15:43:15 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:15 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': "L'", 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '20/2022 Avis de consultation', "Description sommaire de l'appel d'offres": "Acquisition des pièces de rechange pour l'unité de déshydratation mécanique des boues de la station", 'Catégorie': 'Fournitures Industrielles', 'Echéance': '20/06/2022 17:00:00'}
+2022-06-01 15:43:18 [root] DEBUG: Post added to MongoDB
+2022-06-01 15:43:18 [scrapy.core.scraper] DEBUG: Scraped from <200 https://www.appeloffres.com/appels-offres/service>
+{'Nom': 'CE', 'Date': '01/06/2022', 'Type': 'Nat./TUN', 'Référence': '11/2022 Avis de consultation', "Description sommaire de l'appel d'offres": "Acquisition d'une voiture de service", 'Catégorie': 'Voitures camions et engins', 'Echéance': '23/06/2022 11:00:00'}

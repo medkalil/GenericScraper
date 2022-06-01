@@ -59,9 +59,7 @@ class LinkExtratorPipeline:
 
 
 class CardScraperPipeline:
-
-    collection_name = 'card_collection'
-
+    #collection_name = 'card_collection'
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
@@ -83,24 +81,41 @@ class CardScraperPipeline:
         #   Add data key
         #self.db[self.collection_name].insert_one({"data":[]})
         
-
     def close_spider(self, spider):
         ## clean up when spider is closed
         self.client.close()
 
     def process_item(self, item, spider):
-        #self.db[self.collection_name].update_one({},{'$addToSet':{'data':dict(item)}})
+        collection_name = spider.collection_name
+        start_urls_list = spider.start_urls_list
+        config = spider.config
+        card_css_selector = spider.card_css_selector
+        print("spider name here",spider.name)
+        # add configuration
+        configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"card_scraper","config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
+        if configuration not in list(self.db[collection_name].find(configuration,{"_id":0})) :
+            self.db[collection_name].insert_one(configuration)
+            print("configuration saved")
+        else:
+            print("configuration exist")
 
-        if len(list(self.db[self.collection_name].find({}))) == 0 :
-            self.db[self.collection_name].insert_one(dict(item))
+        print("from cardpipe for coll_name",collection_name)
+        print("list_collection_names",self.db.list_collection_names())
+        if collection_name in self.db.list_collection_names():
+            print("yes is in")
+        else :
+            print("isn't")
+
+        if len(list(self.db[collection_name].find({}))) == 0 :
+            self.db[collection_name].insert_one(dict(item))
         #   not vide
-        elif item in list(self.db[self.collection_name].find(item,{"_id":0})) :
+        elif item in list(self.db[collection_name].find(item,{"_id":0})) :
             print("item exists")
             pass
         else:
             print("new item")
             #print("here is item",item)
-            self.db[self.collection_name].insert_one(dict(item))
+            self.db[collection_name].insert_one(dict(item))
             logging.debug("Post added to MongoDB")
             return item
 
@@ -108,13 +123,7 @@ class CardScraperPipeline:
 
 
 class TableScraperPipeline:
-    collection_name = 'table_collection'
-
-    """ 
-    self.df[self.collection] = {"data:[]"}
-        self.db[self.collection_name].data.insert_one(dict(item))
-    """
-
+    #collection_name = 'table_collection'
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
@@ -139,19 +148,33 @@ class TableScraperPipeline:
         self.client.close()
 
     def process_item(self, item, spider):
-        ## how to handle each post
-        #print("item is here",list(self.db[self.collection_name].find(item,{"_id":0}))[0])
-        #   if vide
-        print("here from table pipe")
-        if len(list(self.db[self.collection_name].find({}))) == 0 :
-            self.db[self.collection_name].insert_one(dict(item))
+        collection_name = spider.collection_name
+        start_urls_list = spider.start_urls_list
+        table_match = spider.table_match
+        # add configuration
+        configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"table_scraper","table_match":table_match,"collection_name":collection_name}}
+        if configuration not in list(self.db[collection_name].find(configuration,{"_id":0})) :
+            self.db[collection_name].insert_one(configuration)
+            print("configuration saved")
+        else:
+            print("configuration exist")
+
+        print("from cardpipe for coll_name",collection_name)
+        print("list_collection_names",self.db.list_collection_names())
+        if collection_name in self.db.list_collection_names():
+            print("yes is in")
+        else :
+            print("isn't")
+        
+        if len(list(self.db[collection_name].find({}))) == 0 :
+            self.db[collection_name].insert_one(dict(item))
         #   not vide
-        elif item in list(self.db[self.collection_name].find(item,{"_id":0})) :
+        elif item in list(self.db[collection_name].find(item,{"_id":0})) :
             print("item exists")
             pass
         else:
             print("new item")
             #print("here is item",item)
-            self.db[self.collection_name].insert_one(dict(item))
+            self.db[collection_name].insert_one(dict(item))
             logging.debug("Post added to MongoDB")
             return item

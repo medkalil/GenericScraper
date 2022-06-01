@@ -5,6 +5,7 @@ import scrapy
 import ast
 from scrapy_splash import SplashRequest
 from gerapy_pyppeteer import PyppeteerRequest
+import ast
 
 class Scraper(scrapy.Spider):
     name = 'scraper'
@@ -13,13 +14,17 @@ class Scraper(scrapy.Spider):
     #mandatory=None
 
     
-    def __init__(self , start_urls_list, config=None, mandatory="" ,  *args, **kwargs):
+    def __init__(self , collection_name , start_urls_list, config=None, card_css_selector="" , *args, **kwargs):
         self.config = json.loads(json.dumps(config))
-        self.mandatory_fields = mandatory.split(',')
+        """ mandatory = ast.literal_eval(self.config)
+        self.mandatory_fields = list(mandatory.keys()) """
+        #deleted operation tyhe new is just on top : self.mandatory_fields = mandatory.split(',')
         super(Scraper, self).__init__(*args, **kwargs)
         #self.start_urls_list = kwargs.get('start_urls_list').split(',')
         self.start_urls_list = start_urls_list.split(',')
         self.start_urls = self.start_urls_list
+        self.card_css_selector = card_css_selector
+        self.collection_name = collection_name
 
     def start_requests(self):
         print("ahhay:",self.start_urls)
@@ -30,7 +35,8 @@ class Scraper(scrapy.Spider):
         
     def parse(self, response):
         # for amazon : ._octopus-search-result-card_style_apbSearchResultItem__2-mx4
-        for it in response.css(".quote"):    
+        # for quote : .quote
+        for it in response.css(self.card_css_selector):    
             print("it is here",it)
             item = dict(url=response.url)
             # iterate over all keys in config and extract value for each of thems
@@ -45,15 +51,16 @@ class Scraper(scrapy.Spider):
                 if bool(re.search('url', key.lower())):
                     res = self.get_absolute_url(response, res)
                 item[key] = ' '.join(elem for elem in res).strip()
-                #yield dict(item)
+                
+                yield dict(item)
 
             # ensure that all mandatory fields are present, else discard this scrape
-            mandatory_fileds_present = True
+            """ mandatory_fileds_present = True
             for key in self.mandatory_fields:
                 if not item[key]:
                     mandatory_fileds_present = False
             if mandatory_fileds_present:
-                yield dict(item)
+                yield dict(item) """
 
     @staticmethod
     def get_absolute_url(response, urls):
@@ -65,6 +72,8 @@ class Scraper(scrapy.Spider):
                 final_url.append(url)
         return final_url
 
+
+# new cmd : scrapy crawl scraper -a start_urls_list="https://www.dogdog.com,https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&page=10&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk" -a config="{'title':'.a-size-base-plus::text'}" -a card_css_selector="._octopus-search-result-card_style_apbSearchResultItem__2-mx4" -a collection_name="card_collection"
 
 # new cmd with start_urls : scrapy crawl scraper -a start_urls_list="https://www.dogdog.com,https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&page=10&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk" -a config="{'title':'.a-size-base-plus::text'}" -a mandatory='title' 
 
