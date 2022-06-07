@@ -25,6 +25,10 @@ from scrapyd_api import ScrapydAPI
 import pymongo
 from pymongo import MongoClient
 from flask import jsonify
+# for loading the model
+import tensorflow as tf 
+from transformers import BertTokenizer
+import numpy as np
 
 app = Flask(__name__)
 api = Api(app)
@@ -35,6 +39,11 @@ client = MongoClient('mongodb+srv://posts:posts@cluster0.lkclz.mongodb.net/')
 #db = client['mydb']
 print(client.list_database_names())
 db = client['mydb']
+
+
+# loading the model
+
+
 
 
 # run scraper route

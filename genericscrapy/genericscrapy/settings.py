@@ -19,7 +19,7 @@ CLOSESPIDER_PAGECOUNT = 1000
 DOWNLOAD_DELAY=10
 
 # splash setup. source : https://github.com/scrapy-plugins/scrapy-splash
-SPLASH_URL = 'http://localhost:8050'
+""" SPLASH_URL = 'http://localhost:8050'
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
@@ -29,7 +29,7 @@ SPIDER_MIDDLEWARES = {
     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
 }
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
-HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage' """
 
 #   scrapy_pyppeteer settings
 #   for fixing: "TypeError: ProactorEventLoop is not supported, got: <ProactorEventLoop running=False closed=False debug=False"
@@ -46,11 +46,11 @@ logging.getLogger('websockets.protocol').setLevel(pyppeteer_level)
 logging.getLogger('websockets.client').setLevel(pyppeteer_level) """
 
 #   gerapy_pyppeteer settings
-""" DOWNLOADER_MIDDLEWARES = {
+DOWNLOADER_MIDDLEWARES = {
     'gerapy_pyppeteer.downloadermiddlewares.PyppeteerMiddleware': 543,
 }
 GERAPY_PYPPETEER_DOWNLOAD_TIMEOUT = 600
-GERAPY_PYPPETEER_LOGGING_LEVEL = logging.ERROR """
+GERAPY_PYPPETEER_LOGGING_LEVEL = logging.ERROR
 
 # scrapy_playwright settings
 """ DOWNLOAD_HANDLERS = {
