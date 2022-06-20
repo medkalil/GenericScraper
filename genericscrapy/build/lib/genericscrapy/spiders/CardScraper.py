@@ -30,7 +30,7 @@ class Scraper(scrapy.Spider):
         print("ahhay:",self.start_urls)
         for url in self.start_urls:
             yield SplashRequest(url=url , callback=self.parse, dont_filter = True )
-            #yield scrapy.Request(url=url , callback=self.parse ,dont_filter = True)
+            #yield scrapy.Request(url=url , callback=self.parse ,dont_filter = True, meta={"pyppeteer"})
             #yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
         
     def parse(self, response):

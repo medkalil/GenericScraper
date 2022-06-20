@@ -29,9 +29,9 @@ class Scraper(scrapy.Spider):
     def start_requests(self):
         print("ahhay:",self.start_urls)
         for url in self.start_urls:
-            #yield SplashRequest(url=url , callback=self.parse, dont_filter = True )
+            yield SplashRequest(url=url , callback=self.parse, dont_filter = True )
             #yield scrapy.Request(url=url , callback=self.parse ,dont_filter = True, meta={"pyppeteer"})
-            yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
+            #yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
         
     def parse(self, response):
         # for amazon : ._octopus-search-result-card_style_apbSearchResultItem__2-mx4

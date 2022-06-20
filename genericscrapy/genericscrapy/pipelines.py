@@ -11,12 +11,26 @@ import logging
 import pymongo
 from json import dumps
 from kafka import KafkaProducer
+import re
+import joblib
 
 
-""" class GenericscrapyPipeline:
-    def process_item(self, item, spider):
-        return item """
+def contains_url(s):
+    return re.search("(?P<url>https?://[^\s]+)|www", s)
+#print(contains_url("https://www.google"))
 
+# item must not containing list/dict -> just key:value
+# wel give it item[1] to bypass item[0]:configuration
+def find_title_filed(item):
+    #bypass url links
+    for res in list(item):
+        print(res)
+        if contains_url(item[res]):
+            print("item del",item[res])
+            del item[res]
+    #len(k[0]) : 0 -> lengest key
+    #len(k[1]) : 1 -> lengest value
+    return max(item.items(), key = lambda k :len(k[1]))[0]
 
 class LinkExtratorPipeline:
     def __init__(self,producer,topic):
@@ -106,6 +120,13 @@ class CardScraperPipeline:
         else :
             print("isn't")
 
+        #adding model
+        #print("the title is:",find_title_filed(item))
+        title = find_title_filed(item)
+        model_ml = joblib.load('model.pkl')
+        item['classified_as'] = model_ml.predict([item[title]])[0]
+
+        #saving item in DB
         if len(list(self.db[collection_name].find({}))) == 0 :
             self.db[collection_name].insert_one(dict(item))
         #   not vide
@@ -165,7 +186,14 @@ class TableScraperPipeline:
             print("yes is in")
         else :
             print("isn't")
+
+        #adding model
+        #print("the title is:",find_title_filed(item))
+        title = find_title_filed(item)
+        model_ml = joblib.load('model.pkl')
+        item['classified_as'] = model_ml.predict([item[title]])[0]
         
+        #saving item in DB
         if len(list(self.db[collection_name].find({}))) == 0 :
             self.db[collection_name].insert_one(dict(item))
         #   not vide

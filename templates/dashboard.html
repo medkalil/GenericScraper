@@ -1,0 +1,53 @@
+<div class="col-sm-12">
+  <form method="post" action="/run_search">
+    <div class="row mt-2">
+      <div class="col-md-5 mx-auto">
+        <div class="input-group">
+          <input
+            name="srch"
+            class="form-control border-end-0 border rounded-pill"
+            type="search"
+            placeholder="search"
+            id="example-search-input"
+            value=" {{request.form['srch'] }}  "
+          />
+          <!-- <span class="input-group-append">
+        <button
+          class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5"
+          type="button"
+        >
+          
+        </button>
+      </span> -->
+        </div>
+      </div>
+    </div>
+  </form>
+  <table style="width: auto" class="table table-striped w-auto">
+    {% for key in my_data.keys() %}
+    <!-- <h2>{{key}}</h2> -->
+    <thead>
+      <tr>
+        <th>
+          <h3>{{key}}</h3>
+        </th>
+      </tr>
+      <tr>
+        {% for k in my_data[key][1].keys() %}
+        <th>{{ k }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for item in my_data[key] %}
+      <tr>
+        {% for val in item.values() %}
+        <td>{{val}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+    {% endfor %}
+  </table>
+</div>

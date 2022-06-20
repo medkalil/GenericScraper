@@ -1,4 +1,5 @@
 from ast import Return
+#from crypt import methods
 from logging import root
 from os import urandom
 from flask import Flask
@@ -25,12 +26,15 @@ from scrapyd_api import ScrapydAPI
 import pymongo
 from pymongo import MongoClient
 from flask import jsonify
-# for loading the model
-import tensorflow as tf 
-from transformers import BertTokenizer
+from flask import Flask, render_template, redirect, url_for, session
+#from flask_ngrok import run_with_ngrok
+import pandas as pd
+
 import numpy as np
 
 app = Flask(__name__)
+app.secret_key = 'session_key'
+
 api = Api(app)
 scrapyd = ScrapydAPI('http://localhost:6800')
 PROJECT_NAME ="genericscrapy"
@@ -40,10 +44,104 @@ client = MongoClient('mongodb+srv://posts:posts@cluster0.lkclz.mongodb.net/')
 print(client.list_database_names())
 db = client['mydb']
 
+########################################### testing for the demo with flask : BEGIN ###############################
 
-# loading the model
+@app.route('/')
+def home():
+  #get data from Mongo :
+  # 1/ collection -> document -> store it in var
+  # 2/ display the data in a table form 
+  # 3/ search functionality  
+  print("col list",db.list_collection_names())
+  list_project = db.list_collection_names()
+  my_data = dict()
+  for col_name in list_project:
+      print("col_name",col_name)
+      #print("x",list(db[col_name].find({}).limit(5)))
+      res = list(db[col_name].find({},{"_id":0,"configuration":0}).limit(5))
+      if col_name not in my_data.keys():
+         my_data[col_name] = res
+  print("mydict is ",my_data)
+
+  #print("hehe",list(db.table_collection.find({}).limit(5)))
+  return render_template('index.html',my_data = my_data)
+
+""" @app.route('/run_search', methods = ['GET', 'POST'])
+def search():
+  srch = request.form['srch']
+  print("hehe",srch)
+  list_project = db.list_collection_names()
+  my_data = dict()
+  for col_name in list_project:
+      print("search col",col_name)
+      db[col_name].create_index([("Description sommaire de l'appel d'offres", 'text')])
+      res = list(db[col_name].find({"$text": {"$search": srch}}).limit(1))
+      if col_name not in my_data.keys():
+         my_data[col_name] = res
+  #return redirect(url_for('index.html'))
+  return render_template('index.html',my_data = my_data ) """
 
 
+
+
+@app.route("/scrape")
+def scrape():
+    return render_template("index.html", page="scrape.html")
+
+@app.route("/list_scraper")
+def list_scraper():
+    spiders_status = scrapyd.list_jobs(PROJECT_NAME)
+    print(spiders_status)
+    return render_template("index.html", page="list_scraper.html",spiders_status = spiders_status)
+
+@app.route("/contact")
+def contact():
+    return render_template("index.html", page="contact.html")
+
+@app.route("/about")
+def about():
+    return render_template("index.html", page="about.html")
+
+@app.route("/account")
+def account():
+    return render_template("index.html", page="account.html")
+
+
+
+#test form
+@app.route("/run_table" , methods = ['GET', 'POST'])
+def run_table():
+    spider_name = request.form['Spider_Name']
+    urls = request.form['urls']
+    table_match = request.form['table_match']
+    print(urls,spider_name,table_match)
+    scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=table_match, collection_name=spider_name)
+    return redirect(url_for('scrape'))
+    
+
+@app.route("/run_cardscrape" , methods = ['GET', 'POST'])
+def run_cardscrape():
+    spider_name = request.form['Spider_Name']
+    urls = request.form['urls']
+    config=request.form['config']
+    card_css_selector=request.form['card_css_selector']
+    print("spidername",spider_name)
+    print("urls",urls)
+    print("config",config)
+    print("card_css_selector",card_css_selector)
+    scrapyd.schedule(PROJECT_NAME, 'scraper', config=config, start_urls_list=urls, card_css_selector=card_css_selector,collection_name=spider_name)
+    
+    #pass data between views with session
+    """ spiders_status = scrapyd.list_jobs(PROJECT_NAME)
+    session['spiders_status'] = spiders_status
+    if session.get('spiders_status', None):
+        spiders_status = session.get('spiders_status', None)
+        print("from here:",spiders_status) """
+
+    return redirect(url_for('scrape'))
+
+  
+########################################### testing for the demo with flask : END ###############################
 
 
 # run scraper route
