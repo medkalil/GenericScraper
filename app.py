@@ -29,7 +29,7 @@ from flask import jsonify
 from flask import Flask, render_template, redirect, url_for, session
 #from flask_ngrok import run_with_ngrok
 import pandas as pd
-
+import re
 import numpy as np
 
 app = Flask(__name__)
@@ -55,33 +55,42 @@ def home():
   print("col list",db.list_collection_names())
   list_project = db.list_collection_names()
   my_data = dict()
+  data_len= dict()
+
   for col_name in list_project:
       print("col_name",col_name)
       #print("x",list(db[col_name].find({}).limit(5)))
       res = list(db[col_name].find({},{"_id":0,"configuration":0}).limit(5))
+      data_len_temp = len(list(db[col_name].find({},{"_id":0,"configuration":0})))
       if col_name not in my_data.keys():
          my_data[col_name] = res
+         data_len[col_name] = data_len_temp
   print("mydict is ",my_data)
 
   #print("hehe",list(db.table_collection.find({}).limit(5)))
-  return render_template('index.html',my_data = my_data)
+  return render_template('index.html',my_data = my_data, data_len = data_len)
 
-""" @app.route('/run_search', methods = ['GET', 'POST'])
+@app.route('/run_search', methods = ['GET', 'POST'])
 def search():
-  srch = request.form['srch']
-  print("hehe",srch)
+  search_query = request.form['search_query']
+  print("search_query",search_query)
   list_project = db.list_collection_names()
   my_data = dict()
+  data_len= dict()
+
   for col_name in list_project:
       print("search col",col_name)
-      db[col_name].create_index([("Description sommaire de l'appel d'offres", 'text')])
-      res = list(db[col_name].find({"$text": {"$search": srch}}).limit(1))
+      data_len_temp = len(list(db[col_name].find({},{"_id":0,"configuration":0})))
+
+      #searching by title col
+      first_item = list(db[col_name].find({},{"_id":0,"configuration":0}))[1]
+      title = find_title_filed(first_item)
+      res = list(db[col_name].find({title : { "$regex" : search_query.strip() }},{"_id":0,"configuration":0}).limit(5))
+      # mapping data to the col name
       if col_name not in my_data.keys():
          my_data[col_name] = res
-  #return redirect(url_for('index.html'))
-  return render_template('index.html',my_data = my_data ) """
-
-
+         data_len[col_name] = data_len_temp
+  return render_template('index.html',my_data = my_data ,data_len = data_len )
 
 
 @app.route("/scrape")
@@ -140,7 +149,81 @@ def run_cardscrape():
 
     return redirect(url_for('scrape'))
 
-  
+@app.route('/run_table_crawl', methods = ['GET', 'POST'])
+def run_table_crawl():
+  spider_name = request.form['Spider_Name']
+  root = request.form['root']
+  table_match = request.form['table_match']
+  url_list=  []
+
+  # Link Extractor
+  scrapyd.schedule(PROJECT_NAME, 'url-extractor', depth=0 , root = root)
+
+  #Message Queue
+  consumer = KafkaConsumer(
+    'numtest',
+     bootstrap_servers=['localhost:9092'],
+     auto_offset_reset='earliest',
+     enable_auto_commit=True,
+     group_id='my-group',
+     consumer_timeout_ms=10000,
+     value_deserializer=lambda x: loads(x.decode('utf-8')))
+
+  #reading from Queue  
+  print("before loop")
+  for message in consumer:
+      print("inside the for")
+      #message = message.value
+      message = message.value['link']
+      url_list.append(message)
+      print("the msg is :",message)
+
+  #mapping through the urls and adding it to the scraper   
+  url_list = "".join([str(elem)+"," for elem in url_list])
+  scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=url_list , table_match = table_match , collection_name = spider_name)
+  url_list=""
+
+  return redirect(url_for('scrape'))
+
+
+@app.route('/run_crad_crawl', methods = ['GET', 'POST'])
+def run_crad_crawl():
+    spider_name = request.form['Spider_Name']
+    root = request.form['root']
+    config = request.form['config']
+    card_css_selector = request.form['card_css_selector']
+    url_list=  []
+
+    scrapyd.schedule(PROJECT_NAME, 'url-extractor', depth=0 , root = root)
+    
+      #Message Queue
+    consumer = KafkaConsumer(
+    'numtest',
+     bootstrap_servers=['localhost:9092'],
+     auto_offset_reset='earliest',
+     enable_auto_commit=True,
+     group_id='my-group',
+     consumer_timeout_ms=10000,
+     value_deserializer=lambda x: loads(x.decode('utf-8')))
+
+  #reading from Queue  
+    print("before loop")
+    for message in consumer:
+      print("inside the for")
+      #message = message.value
+      message = message.value['link']
+      url_list.append(message)
+      print("the msg is :",message)
+    
+    #mapping through the urls and adding it to the scraper
+    url_list = "".join([str(elem)+"," for elem in url_list])
+    #url_list = ''.join(('https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk,',url_list))
+    print("is urlslist",url_list)
+    scrapyd.schedule(PROJECT_NAME, 'scraper', config = config, start_urls_list = url_list , card_css_selector=card_css_selector ,collection_name = spider_name)
+    url_list=""
+
+    return redirect(url_for('scrape'))
+
 ########################################### testing for the demo with flask : END ###############################
 
 
@@ -174,9 +257,9 @@ def run():
   scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk") """
   #scrapy crawl scraper -a page=https://quotes.toscrape.com/js/ -a config="{'Nom':'.text::text'}" -a mandatory='Nom'
   #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://quotes.toscrape.com/js/")
-  #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk")
+  scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk")
   #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://centraledesmarches.com/")
-  scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.appeloffres.com/")
+  #scrapyd.schedule('genericscrapy', 'url-extractor', depth=0 , root="https://www.appeloffres.com/")
   # peut avoir des erreur si temps d'attende depasse le : 'consumer_timeout_ms=5000'
   consumer = KafkaConsumer(
     'numtest',
@@ -199,13 +282,13 @@ def run():
       print("the msg is :",message)
       #print("the link is:",message['link'])
   #consumer.close()
-  """ print("the len:",len(url_list))
+  print("the len:",len(url_list))
   print(type(url_list[0]))
   url_list = " ".join([str(elem)+"," for elem in url_list])
   url_list = ''.join(('https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk,',url_list))
   #print("hayy",url_list)
-  scrapyd.schedule('genericscrapy', 'scraper', config="{'title':'.a-size-base-plus::text'}" , start_urls_list = url_list , card_css_selector="._octopus-search-result-card_style_apbSearchResultItem__2-mx4")
-  url_list="" """
+  scrapyd.schedule('genericscrapy', 'scraper', config="{'title':'.a-size-base-plus::text'}" , start_urls_list = url_list , card_css_selector="._octopus-search-result-card_style_apbSearchResultItem__2-mx4",collection_name="abay_card")
+  url_list=""
 
   #scrapy crawl scraper -a page=https://quotes.toscrape.com/js/ -a config="{'Nom':'.text::text'}" -a mandatory='Nom'
   #test : quotes.toscrape
@@ -215,9 +298,9 @@ def run():
   
   #test table scrapers
   #change table scraper to accepting list of urls like CardScraper
-  url_list = "".join([str(elem)+"," for elem in url_list])
-  scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=url_list , table_match="Description sommaire de l'appel d'offres")
-  url_list=""
+  """ url_list = "".join([str(elem)+"," for elem in url_list])
+  scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=url_list , table_match="Description sommaire de l'appel d'offres", collection_name = "abay")
+  url_list="" """
 
   return "xx"
 
@@ -267,6 +350,23 @@ def spiders_status():
 def list_spiders():
   list_spiders = scrapyd.list_spiders(PROJECT_NAME)
   return jsonify(list_spiders)
+
+
+def contains_url(s):
+    return re.search("(?P<url>https?://[^\s]+)|www", s)
+#print(contains_url("https://www.google"))
+
+# item must not containing list/dict -> just key:value
+# wel give it item[1] to bypass item[0]:configuration
+def find_title_filed(item):
+    #bypass url links
+    for res in list(item):
+        if contains_url(item[res]):
+            print("item del",item[res])
+            del item[res]
+    #len(k[0]) : 0 -> lengest key
+    #len(k[1]) : 1 -> lengest value
+    return max(item.items(), key = lambda k :len(k[1]))[0]
 
 
 if __name__ == "__main__":

@@ -35,30 +35,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <div class="sidebar">
-      <a class="nav-linkk" id="homebtn" href="/">Dashboard</a>
-      <a class="nav-linkk" href="{{url_for('scrape')}}">Scrape</a>
-      <a class="nav-linkk" href="{{url_for('list_scraper')}}">List_scraper</a>
-      <a class="nav-linkk" href="{{url_for('contact')}}">Contact</a>
-      <a class="nav-linkk" href="{{url_for('about')}}">About</a>
-      <a class="nav-linkk" href="{{url_for('account')}}">Account</a>
-    </div>
+    <div class="">
+      <div class="sidebar">
+        <a class="nav-linkk" id="homebtn" href="/">Dashboard</a>
+        <a class="nav-linkk" href="{{url_for('scrape')}}">Scrape</a>
+        <a class="nav-linkk" href="{{url_for('list_scraper')}}">List_scraper</a>
+        <a class="nav-linkk" href="{{url_for('contact')}}">Contact</a>
+        <a class="nav-linkk" href="{{url_for('about')}}">About</a>
+        <a class="nav-linkk" href="{{url_for('account')}}">Account</a>
+      </div>
 
-    <script>
-      /* Code for changing active 
+      <script>
+        /* Code for changing active 
             link on clicking */
-      var btns = $(".nav-linkk");
+        var btns = $(".nav-linkk");
 
-      for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-          this.className += " active";
-        });
-      }
-    </script>
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function () {
+            this.className += " active";
+          });
+        }
+      </script>
 
-    <div class="content">
-      {% if page%} {% include page %} {% else %} {% include "dashboard.html" %}
-      {% endif %}
+      <div class="content">
+        {% if page%} {% include page %} {% else %} {% include "dashboard.html"
+        %} {% endif %}
+      </div>
     </div>
   </body>
 </html>

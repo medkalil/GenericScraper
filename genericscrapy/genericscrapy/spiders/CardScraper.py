@@ -34,8 +34,6 @@ class Scraper(scrapy.Spider):
             #yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
         
     def parse(self, response):
-        # for amazon : ._octopus-search-result-card_style_apbSearchResultItem__2-mx4
-        # for quote : .quote
         for it in response.css(self.card_css_selector):    
             print("it is here",it)
             item = dict(url=response.url)
@@ -52,7 +50,7 @@ class Scraper(scrapy.Spider):
                     res = self.get_absolute_url(response, res)
                 item[key] = ' '.join(elem for elem in res).strip()
                 
-                yield dict(item)
+            yield dict(item)
 
             # ensure that all mandatory fields are present, else discard this scrape
             """ mandatory_fileds_present = True

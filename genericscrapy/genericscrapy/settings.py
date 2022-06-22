@@ -16,7 +16,12 @@ SPIDER_MODULES = ['genericscrapy.spiders']
 NEWSPIDER_MODULE = 'genericscrapy.spiders'
 CLOSESPIDER_PAGECOUNT = 1000
 
+#The amount of time (in secs) that the downloader should wait before downloading consecutive pages from the same website. This can be used to throttle the crawling speed to avoid hitting servers too hard. Decimal numbers are supported
 DOWNLOAD_DELAY=10
+
+#time-out after 1H
+#added for testing
+DOWNLOAD_TIMEOUT=3600
 
 # splash setup. source : https://github.com/scrapy-plugins/scrapy-splash
 SPLASH_URL = 'http://localhost:8050'
