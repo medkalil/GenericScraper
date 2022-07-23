@@ -1,0 +1,94 @@
+<div class="mb-4">
+  <h3 class="text-uppercase">Pending</h3>
+  <!-- Gradient divider -->
+  <hr data-content="AND" class="hr-text" />
+</div>
+
+{% if spiders_status.pending%}
+<table id="data" class="table table-striped">
+  <thead>
+    <tr>
+      <th>project</th>
+      <th>spider</th>
+      <th>start_time</th>
+      <th>end_time</th>
+    </tr>
+  </thead>
+  {% for it in spiders_status.pending %}
+
+  <tbody>
+    <tr>
+      <td>{{ it['project'] }}</td>
+      <td>{{ it['spider'] }}</td>
+      <td>{{ it['start_time'] }}</td>
+      <td>{{ it['end_time'] }}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <h5>no pending scraper</h5>
+    {% endif %}
+    <br />
+  </tbody>
+</table>
+
+<div class="mb-4">
+  <h3 class="text-uppercase">Running</h3>
+  <!-- Gradient divider -->
+  <hr data-content="AND" class="hr-text" />
+</div>
+
+{% if spiders_status.running%}
+<table id="data2" class="table table-striped">
+  <thead>
+    <tr>
+      <th>project</th>
+      <th>spider</th>
+      <th>start_time</th>
+      <th>end_time</th>
+    </tr>
+  </thead>
+  {% for it in spiders_status.running %}
+
+  <tbody>
+    <tr>
+      <td>{{ it['project'] }}</td>
+      <td>{{ it['spider'] }}</td>
+      <td>{{ it['start_time'] }}</td>
+      <td>{{ it['end_time'] }}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <h5>no running scraper</h5>
+    {% endif %}
+    <br />
+  </tbody>
+</table>
+
+<div class="mb-4">
+  <h3 class="text-uppercase">Finished</h3>
+  <!-- Gradient divider -->
+  <hr data-content="AND" class="hr-text" />
+</div>
+
+{% if spiders_status.finished%}
+<table id="data3" class="table table-striped">
+  <thead>
+    <tr>
+      <th>project</th>
+      <th>spider</th>
+      <th>start_time</th>
+      <th>end_time</th>
+    </tr>
+  </thead>
+  {% for it in spiders_status.finished %}
+
+  <tbody>
+    <tr>
+      <td>{{ it['project'] }}</td>
+      <td>{{ it['spider'] }}</td>
+      <td>{{ it['start_time'] }}</td>
+      <td>{{ it['end_time'] }}</td>
+    </tr>
+    {% endfor %} {% else %}
+    <h5>no finishied scraper</h5>
+    {% endif %}
+  </tbody>
+</table>
