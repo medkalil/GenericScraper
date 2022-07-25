@@ -24,7 +24,7 @@ class UrlExtractor(Spider):
         self.options = kwargs
         self.depth = depth
         self.listx = []
-        self.list_mot_cle = ["zarzis","HARDWARE","tunisie","Tunisie","SUPPLY"]
+        self.list_mot_cle = ["zarzis","HARDWARE","tunisie","SUPPLY"]
         UrlExtractor.start_urls.append(root)
         #UrlExtractor.allowed_domains = [self.options.get('allow_domains')]
         UrlExtractor.allowed_domains = self.get_domain_from_url(self.source)
@@ -65,13 +65,14 @@ class UrlExtractor(Spider):
         url = response.url
         print("depth  in parse_req is:",response.meta['depth'])
         if int(response.meta['depth']) < 2:
-            yield Request('%s' % url, callback=self.get_links,meta = {'dont_redirect': True,'handle_httpstatus_list': [301,302]},dont_filter=True)
+            yield Request('%s' % url, callback=self.get_links,dont_filter=True)
             yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
 
         elif any(word in content for word in self.list_mot_cle) or any(word in str(url) for word in self.list_mot_cle): 
             print("writing now in file.json")
             yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
-            yield Request('%s' % url, callback=self.get_links,meta = {'dont_redirect': True,'handle_httpstatus_list': [301,302]},dont_filter=True)
+            yield Request('%s' % url, callback=self.get_links,dont_filter=True)
+            print("the end")
                            
 
     def get_all_links(self, response):
@@ -104,5 +105,3 @@ class UrlExtractor(Spider):
     def get_domain_from_url(self,url):
         domain = urlparse(url).netloc
         return domain
-
-# scrapy crawl url-extractor -a root=https://www.j360.info/ -a depth=4 -o j360data.json
