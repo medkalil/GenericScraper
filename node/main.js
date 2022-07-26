@@ -5,6 +5,11 @@ const app = express();
 const port = 3000;
 
 app.get("/crawl", async (req, res, next) => {
+  //run LinkExtractor from Flask (Node)
+  //init Consumer (Node)
+  //detect schema (close consumer once we have the schema of the website) (Node)
+  //after we detect schema : Flask : for every n url/x min : run scraper (Flask)
+
   const website = req.query.website;
 
   if (!website) {
