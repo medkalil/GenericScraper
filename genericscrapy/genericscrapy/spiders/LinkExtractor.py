@@ -15,16 +15,17 @@ from urllib.parse import urlparse
 
 class UrlExtractor(Spider):
     name = 'url-extractor'
-    #custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
+    custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
     start_urls = []
 
-    def __init__(self, root=None, depth=0, *args, **kwargs):
+    def __init__(self, root=None,list_mot_cle="", depth=0, *args, **kwargs):
         self.logger.info("[LE] Source: %s Depth: %s Kwargs: %s", root, depth, kwargs)
         self.source = root
         self.options = kwargs
         self.depth = depth
         self.listx = []
-        self.list_mot_cle = ["zarzis","HARDWARE","tunisie","SUPPLY"]
+        #self.list_mot_cle = ["zarzis","HARDWARE","tunisie","SUPPLY"]
+        self.list_mot_cle = list_mot_cle.split(",")
         UrlExtractor.start_urls.append(root)
         #UrlExtractor.allowed_domains = [self.options.get('allow_domains')]
         UrlExtractor.allowed_domains = self.get_domain_from_url(self.source)
@@ -55,6 +56,7 @@ class UrlExtractor(Spider):
             all_urls = self.get_all_links(response)
             self.listx.extend(all_urls)
             for url in all_urls:
+                #TODO : if not self.url_contains_multiple_digits(url) and url == root:
                 if not self.url_contains_multiple_digits(url):
                     print("send url:",url)
                     yield Request('%s' % url, callback=self.parse_req, meta = {'dont_redirect': True,'handle_httpstatus_list': [301,302]},dont_filter=True)   
@@ -66,7 +68,7 @@ class UrlExtractor(Spider):
         print("depth  in parse_req is:",response.meta['depth'])
         if int(response.meta['depth']) < 2:
             yield Request('%s' % url, callback=self.get_links,dont_filter=True)
-            yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
+            #yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
 
         elif any(word in content for word in self.list_mot_cle) or any(word in str(url) for word in self.list_mot_cle): 
             print("writing now in file.json")

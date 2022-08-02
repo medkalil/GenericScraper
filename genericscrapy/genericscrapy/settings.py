@@ -118,7 +118,7 @@ ROBOTSTXT_OBEY = False
 
 # Configure item 
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-""" ITEM_PIPELINES = {
+ITEM_PIPELINES = {
    #'genericscrapy.pipelines.GenericscrapyPipeline': 300,
    #    send url to kafka
    'genericscrapy.pipelines.LinkExtratorPipeline':1,
@@ -126,7 +126,7 @@ ROBOTSTXT_OBEY = False
    'genericscrapy.pipelines.CardScraperPipeline':2,
    #    crape table
    'genericscrapy.pipelines.TableScraperPipeline':3,
-} """
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

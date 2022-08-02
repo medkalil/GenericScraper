@@ -1,166 +1,284 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
+var bodyParser = require("body-parser");
+const { Kafka, logLevel } = require("kafkajs");
+require("events").EventEmitter.prototype._maxListeners = 100;
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 const port = 3000;
 
-app.get("/crawl", async (req, res, next) => {
-  //run LinkExtractor from Flask (Node)
-  //init Consumer (Node)
-  //detect schema (close consumer once we have the schema of the website) (Node)
-  //after we detect schema : Flask : for every n url/x min : run scraper (Flask)
+/* kafka setup */
+/* const host = "localhost";
+const kafka = new Kafka({
+  logLevel: logLevel.INFO,
+  brokers: [`${host}:9092`],
+  //clientId: "example-consumer",
+});
+const topic = "numtest";
+const consumer = kafka.consumer({
+  groupId: "my-group",
+  maxWaitTimeInMs: 10000,
+}); */
 
-  const website = req.query.website;
+app.get("/cll", async (req, res, next) => {
+  // Retrieve array form post body
+  var url_list = req.body.url_list;
+  console.log(" conso test sucess");
+  console.log(" arr is here", url_list);
+  return res.json({ result: "test sucess" });
+});
 
-  if (!website) {
-    const err = new Error("Required query website missing");
-    err.status = 400;
-    next(err);
-  }
+app.post("/schema_detect", async (req, res, next) => {
+  var listofwebsite = req.body.url_list;
 
-  try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        "--no-sandbox",
-        '--user-data-dir="/tmp/chromium"',
-        "--disable-web-security",
-        "--disable-features=site-per-process",
-      ],
-    });
+  /* const listofwebsite = [
+    "https://www.google.fr/",
+    "https://www.kooora.fr/",
+    "https://www.e-marchespublics.com/appel-offre",
+  ]; */
+  /* var website = req.body.site;
+  console.log("this is it :", website); */
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: minimal_args,
+  });
+  const page = await browser.newPage();
 
-    const page = await browser.newPage();
-    await page.goto(website, { waitUntil: "domcontentloaded", timeout: 0 });
-    const html = await page.content();
-    const mot_cle = "Câblage";
+  for (let i = 0; i < listofwebsite.length; i++) {
+    website = listofwebsite[i];
 
-    const result = await page.evaluate(async (mytext) => {
-      //function declaration
-      const findNodeByContent = (text, root = document.body) => {
-        const treeWalker = document.createTreeWalker(
-          root,
-          NodeFilter.SHOW_TEXT
-        );
-        var nodeList;
-        while (treeWalker.nextNode()) {
-          const node = treeWalker.currentNode;
-          if (
-            node.nodeType === Node.TEXT_NODE &&
-            node.textContent.includes(text)
-          ) {
-            console.log("xx :", node.parentNode.getAttribute("class"));
+    //const website = req.query.website;
+    if (!website) {
+      const err = new Error("Required query website missing");
+      err.status = 400;
+      next(err);
+      continue;
+    }
 
-            if (node.parentNode.getAttribute("class") == null) {
-              nodeList = node.parentNode.parentNode.getAttribute("class");
-            } else {
-              nodeList = node.parentNode.getAttribute("class");
+    try {
+      await page.goto(website, { waitUntil: "domcontentloaded", timeout: 0 });
+      //const html = await page.content();
+      const mot_cle = "Tunisie";
+
+      const result = await page.evaluate(async (mytext) => {
+        var getVisibleText = (element) => {
+          //window.getSelection().removeAllRanges();
+          let range = document.createRange();
+          range.selectNode(element);
+          window.getSelection().addRange(range);
+          let visibleText = window.getSelection().toString().trim();
+          window.getSelection().removeAllRanges();
+          return visibleText;
+        };
+
+        //function declaration
+        const findNodeByContent = (text, root = document.body) => {
+          const treeWalker = document.createTreeWalker(
+            root,
+            NodeFilter.SHOW_TEXT
+          );
+          var nodeList;
+          while (treeWalker.nextNode()) {
+            var node = treeWalker.currentNode;
+            if (
+              node.nodeType === Node.TEXT_NODE &&
+              node.textContent.includes(text) &&
+              getVisibleText(node.parentNode).includes(text)
+            ) {
+              console.log("xx :", node.parentNode.getAttribute("class"));
+
+              if (node.parentNode.getAttribute("class") == null) {
+                while (node.parentNode.getAttribute("class") == null) {
+                  node = node.parentNode;
+                }
+                nodeList = node.parentNode.getAttribute("class");
+              } else {
+                nodeList = node.parentNode.getAttribute("class");
+              }
             }
           }
-        }
-        //console.log(nodeList.textContent);
-        return nodeList;
-      };
+          //console.log(nodeList.textContent);
+          return nodeList;
+        };
 
-      //check if multiple and same items
-      //list with lenght == 1 => only have 1 item
-      const list_contains_multiple_same_items = (arr) => {
-        return (
-          arr.every((v) => JSON.stringify(v) === JSON.stringify(arr[0])) &&
-          arr.length > 1
-        );
-      };
+        //function for get config declaration
+        const findNodeByContentOfGetConfig = (text, root = document.body) => {
+          const treeWalker = document.createTreeWalker(
+            root,
+            NodeFilter.SHOW_TEXT
+          );
+          var nodeList;
+          while (treeWalker.nextNode()) {
+            var node = treeWalker.currentNode;
+            if (
+              node.nodeType === Node.TEXT_NODE &&
+              node.textContent.includes(text)
+            ) {
+              console.log("xx :", node.parentNode.getAttribute("class"));
 
-      const page_schema_detect = (text_class) => {
-        text_class = text_class.toString();
-        regex = new RegExp(text_class, "g");
-        var node = document.getElementsByClassName(text_class)[0];
-        if (document.getElementsByClassName(text_class)[1]) {
+              if (node.parentNode.getAttribute("class") == null) {
+                while (node.parentNode.getAttribute("class") == null) {
+                  node = node.parentNode;
+                }
+                nodeList = node.parentNode.getAttribute("class");
+              } else {
+                nodeList = node.parentNode.getAttribute("class");
+              }
+            }
+          }
+          //console.log(nodeList.textContent);
+          return nodeList;
+        };
+
+        //check if multiple and same items
+        //list with lenght == 1 => only have 1 item
+        const list_contains_multiple_same_items = (arr) => {
+          return (
+            arr.every((v) => JSON.stringify(v) === JSON.stringify(arr[0])) &&
+            arr.length > 1
+          );
+        };
+
+        const page_schema_detect = (text_class, text) => {
+          text_class = text_class.toString();
+          regex = new RegExp(text_class, "g");
+
+          r = document.getElementsByClassName(text_class);
+          node = r[0];
+          for (let i = 0; i < r.length; i++) {
+            if (!getVisibleText(r[i]).includes(text)) {
+              continue;
+            } else {
+              node = r[i];
+              break;
+            }
+          }
           while ((node.parentNode.innerHTML.match(regex) || []).length < 2) {
             node = node.parentNode;
           }
-        } else {
-          node;
-        }
-        if (node.tagName == "TR") {
-          console.log("type: Table");
-          //return "table " + node.tagName;
-          return node.tagName;
-        } else {
-          console.log("type: Card");
-          return node.className;
-          //return "card with crad_css_selector : " + node.className;
-        }
-      };
 
-      const get_config = (card_css_selector) => {
-        //get text content
-        words = document
-          .getElementsByClassName(card_css_selector)[0]
-          .textContent.split("\n");
-        // trim + delete empty str
-        new_words = [];
-        for (var i = 0; i < words.length; i++) {
-          words[i] = words[i].trim();
-          if (words[i] !== "") {
-            new_words.push(words[i]);
+          if (node.tagName == "TR") {
+            console.log("type: Table");
+            //return "table " + node.tagName;
+            return node.tagName;
+          } else {
+            console.log("type: Card");
+            return node.className;
+            //return "card with crad_css_selector : " + node.className;
           }
-        }
-        if (new_words.length == 1) {
-          return "not a data page/ page with 1 item => can't detect page schema ";
-        } else {
-          var dict = {};
-          for (var i = 0; i < new_words.length; i++) {
-            item = "item " + i;
-            dict[new_words[i]] = findNodeByContent(new_words[i]);
+        };
+
+        const get_config = (card_css_selector) => {
+          //get text content
+          words = document
+            .getElementsByClassName(card_css_selector)[0]
+            .textContent.split("\n");
+          // trim + delete empty str
+          new_words = [];
+          for (var i = 0; i < words.length; i++) {
+            words[i] = words[i].trim();
+            if (words[i] !== "") {
+              new_words.push(words[i]);
+            }
           }
-          return dict;
-        }
-      };
-      //=================================================================================================//
-      //function usage
-      let type_page = null;
-      //TODO:
-      //findNodeByContent not getting the DOM :maybe need to wait for the page to load
-      let text_className = await findNodeByContent(
-        mytext,
-        (root = document.body)
-      );
-      let page_schema = await page_schema_detect(text_className);
-      if (page_schema === "TR") {
-        type_page = " is table";
-      } else {
-        let list_elements = Array.from(
-          document.getElementsByClassName(page_schema)
+          if (new_words.length == 1) {
+            return "not a data page/ page with 1 item => can't detect page schema ";
+          } else {
+            var dict = {};
+            for (var i = 0; i < new_words.length; i++) {
+              item = "item " + i;
+              dict[new_words[i]] = findNodeByContentOfGetConfig(new_words[i]);
+            }
+            return dict;
+          }
+        };
+        //=================================================================================================//
+        //function usage
+        let type_page = null;
+
+        let text_className = await findNodeByContent(
+          mytext,
+          (root = document.body)
         );
-        if (list_contains_multiple_same_items(list_elements)) {
-          type_page = get_config(page_schema);
+        let page_schema = await page_schema_detect(text_className, mytext);
+        if (page_schema === "TR") {
+          type_page = " is table";
         } else {
-          type_page = "page with 1 item";
+          let list_elements = Array.from(
+            document.getElementsByClassName(page_schema)
+          );
+          if (list_contains_multiple_same_items(list_elements)) {
+            type_page = { result: get_config(page_schema) };
+          } else {
+            type_page = { result: "page with 1 item" };
+            console.log("page with 1 item");
+          }
         }
+
+        return type_page;
+      }, mot_cle); //end evaluate
+
+      //continue puppeteer
+      console.log("res is", result);
+      return res.status(200).send(result);
+    } catch (e) {
+      //to iterate through the hole list urls (10 url)
+      if (i < listofwebsite.length - 1) {
+        console.log("pas de schema encore");
+        continue;
+      } else {
+        return res.json({ result: "no shecma" });
+        return "no shecma";
+        //console.log(e);
+        //return res.status(500).send("Something broke");
       }
-      return type_page;
-    }, mot_cle); //end evaluate
-
-    //continue puppeteer
-    console.log("res is", result);
-    await page.close();
-
-    browser.close();
-
-    return res.status(200).send();
-  } catch (e) {
-    console.log(e);
-    res.status(500).send("Something broke");
-  }
+    }
+  } //for x in listof websites
+  await page.close();
+  browser.close();
+  return "schema detect finished";
 });
+
+const minimal_args = [
+  "--autoplay-policy=user-gesture-required",
+  "--disable-background-networking",
+  "--disable-background-timer-throttling",
+  "--disable-backgrounding-occluded-windows",
+  "--disable-breakpad",
+  "--disable-client-side-phishing-detection",
+  "--disable-component-update",
+  "--disable-default-apps",
+  "--disable-dev-shm-usage",
+  "--disable-domain-reliability",
+  "--disable-extensions",
+  "--disable-features=AudioServiceOutOfProcess",
+  "--disable-hang-monitor",
+  "--disable-ipc-flooding-protection",
+  "--disable-notifications",
+  "--disable-offer-store-unmasked-wallet-cards",
+  "--disable-popup-blocking",
+  "--disable-print-preview",
+  "--disable-prompt-on-repost",
+  "--disable-renderer-backgrounding",
+  "--disable-setuid-sandbox",
+  "--disable-speech-api",
+  "--disable-sync",
+  "--hide-scrollbars",
+  "--ignore-gpu-blacklist",
+  "--metrics-recording-only",
+  "--mute-audio",
+  "--no-default-browser-check",
+  "--no-first-run",
+  "--no-pings",
+  "--no-sandbox",
+  "--no-zygote",
+  "--password-store=basic",
+  "--use-gl=swiftshader",
+  "--use-mock-keychain",
+];
 
 app.listen(port, () => {
   console.log(`app is running on port: ${port}`);
 });
-
-/* regex = new RegExp("desc_text");
-console.log("regex:",regex);
-var res = document.getElementsByClassName("desc_text")[0];
-console.log("res:",res);
-tt = res.parentNode.innerHTML.match(regex);
-console.log("tt :",tt[0]); */

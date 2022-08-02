@@ -3,12 +3,13 @@ import pandas as pd
 import json
 from collections import namedtuple
 from json import JSONEncoder
+from inline_requests import inline_requests
 
 class QuotesSpider(scrapy.Spider):
     name = "table"
     custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.TableScraperPipeline':3}}
 
-    def __init__(self, collection_name , start_urls_list, table_match="" , config=None, mandatory="" ,  *args, **kwargs):
+    def __init__(self, collection_name , start_urls_list, table_match="" ,  *args, **kwargs):
         super(QuotesSpider, self).__init__(*args, **kwargs)
         self.start_urls_list = start_urls_list.split(',')
         self.start_urls = self.start_urls_list
@@ -19,6 +20,7 @@ class QuotesSpider(scrapy.Spider):
         for url in self.start_urls:
             yield scrapy.Request(url=url, callback=self.parse,dont_filter = True)
 
+    @inline_requests
     def parse(self, response):
         print("isis:",response.request.url)
         #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")

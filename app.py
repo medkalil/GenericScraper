@@ -1,4 +1,5 @@
 from ast import Return
+from fileinput import close
 #from crypt import methods
 from logging import root
 from os import urandom
@@ -31,6 +32,9 @@ from flask import Flask, render_template, redirect, url_for, session
 import pandas as pd
 import re
 import numpy as np
+from urllib.parse import urlparse
+from kafka import TopicPartition
+
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
@@ -166,7 +170,7 @@ def run_table_crawl():
      auto_offset_reset='earliest',
      enable_auto_commit=True,
      group_id='my-group',
-     consumer_timeout_ms=10000,
+     consumer_timeout_ms=20000,
      value_deserializer=lambda x: loads(x.decode('utf-8')))
 
   #reading from Queue  
@@ -336,8 +340,9 @@ def cancel_job_with_id(task_id):
   return scrapyd.cancel(PROJECT_NAME, task_id)
 
 #Request status of a job:
-@app.route('/job_status/<int:task_id>',methods=['GET'])
-def job_status(task_id):
+@app.route('/job_status',methods=['GET'])
+def job_status():
+  task_id=request.args.get('task_id')
   return scrapyd.job_status(PROJECT_NAME,task_id )
 # spider status
 #exp: {u'finished': 0, u'running': 0, u'pending': 0, u'node_name': u'ScrapyMachine'}
@@ -350,6 +355,104 @@ def spiders_status():
 def list_spiders():
   list_spiders = scrapyd.list_spiders(PROJECT_NAME)
   return jsonify(list_spiders)
+
+##################################### Routes for Production #################################################
+@app.route('/run_crawl_test', methods=['GET','POST'])
+def run_crawl_test():
+    data = {"site":"https://centraledesmarches.com/regions/provence-alpes-cote-d-azur"} 
+    res = requests.get('http://localhost:3000/cll',json=data)  
+    #res = requests.post('http://localhost:3000/crawl')  
+    print("res :",res.json())
+    r = res.json()
+    return r
+
+@app.route('/flask_to_node', methods=['GET'])
+def flask_to_node():
+    res = requests.get('http://localhost:3000/cll')
+    print("res :",res.json())
+    r = res.json()
+    result = r['result'] 
+    print("resultat :", result)
+    return result
+
+@app.route('/run_linkextractor', methods=['POST','GET'])
+async def run_linkextractor():
+  url_list = []
+  ulr_for_scraping = []
+
+  root=request.args.get('root')
+  depth=int(request.args.get('depth'))
+  allow_domains = request.args.get('allow_domains')
+  list_mot_cle = request.args.get('list_mot_cle')
+
+#1 run LinkExtractor
+  link_extrator_process_id = scrapyd.schedule(PROJECT_NAME, 'url-extractor' ,allowed_domains = get_domain_from_url(root) ,root = root ,depth=depth,list_mot_cle=list_mot_cle )
+  #Message Queue
+  consumer = KafkaConsumer(
+    "numtest",
+     bootstrap_servers=['localhost:9092'],
+     auto_offset_reset='earliest',
+     enable_auto_commit=True,
+     group_id='my-group',
+     consumer_timeout_ms=180000,
+     value_deserializer=lambda x: loads(x.decode('utf-8')))
+     
+  
+  #reading from Queue  
+  print("before loop")
+  for message in consumer:
+      collection_list = db.list_collection_names()
+      print("inside the for")
+      message = message.value['link']
+      url_list.append(message)
+      ulr_for_scraping.append(message)
+      print("the msg is :",message)
+
+      #closing consumer after the UrlExtractor finishes  
+      """ if get_scraper_status(link_extrator_process_id) == "finished":
+        print("4ariba ends")
+        consumer.close() """
+
+      #1/Schema detection
+      if (len(url_list) == 10 and root not in collection_list):
+        data = {"url_list":url_list}
+        headers = requests.utils.default_headers()
+        headers.update({'User-Agent': 'My User Agent 1.0',})
+        res = requests.post('http://localhost:3000/schema_detect',headers={"User-Agent" :"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"},json=data) 
+        url_list = [] 
+        print("RETERNED RES IS:",res.json())
+        print("and RETERNED RES IS:",res.json()["result"])
+        #if (res.json()["result"] is dict):
+        if isinstance(res.json()["result"],dict):
+          print("collection is created")
+          db.create_collection(root)
+
+      #2/Scraping
+      elif (len(ulr_for_scraping) == 10 and root in collection_list):
+        print("root is in already")
+        #run scraper for every x url
+        # in db: root -> type(table/card),mot_cle,...
+        
+        #start scraping
+
+  return "xx"
+
+@app.route('/just_consume', methods=['POST','GET'])
+async def just_consume():
+  consumer = KafkaConsumer(
+    "numtest",
+     bootstrap_servers=['localhost:9092'],
+     auto_offset_reset='earliest',
+     enable_auto_commit=True,
+     group_id='my-group',
+     consumer_timeout_ms=180000,
+     value_deserializer=lambda x: loads(x.decode('utf-8')))
+  
+  for message in consumer:
+      message = message.value['link']
+      print("message:",message)
+  return "xx"
+#####################################END: Routes for Production #################################################
 
 
 def contains_url(s):
@@ -368,6 +471,13 @@ def find_title_filed(item):
     #len(k[1]) : 1 -> lengest value
     return max(item.items(), key = lambda k :len(k[1]))[0]
 
+
+def get_domain_from_url(url):
+        domain = urlparse(url).netloc
+        return domain
+
+def get_scraper_status(job_id):
+  return scrapyd.job_status(PROJECT_NAME,job_id )
 
 if __name__ == "__main__":
   app.run(debug=True , threaded=True)
