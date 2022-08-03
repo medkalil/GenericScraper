@@ -379,6 +379,7 @@ def flask_to_node():
 async def run_linkextractor():
   url_list = []
   ulr_for_scraping = []
+  page_type = ""
 
   root=request.args.get('root')
   depth=int(request.args.get('depth'))
@@ -417,19 +418,34 @@ async def run_linkextractor():
       if (len(url_list) == 10 and root not in collection_list):
         data = {"url_list":url_list}
         headers = requests.utils.default_headers()
-        headers.update({'User-Agent': 'My User Agent 1.0',})
-        res = requests.post('http://localhost:3000/schema_detect',headers={"User-Agent" :"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"},json=data) 
+        #headers.update({'User-Agent': 'My User Agent 1.0',})
+        #res = await requests.post('http://localhost:3000/schema_detect',headers={"User-Agent" :"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"},json=data) 
+        res = await call_shema_detect("http://localhost:3000/schema_detect",data)
         url_list = [] 
         print("RETERNED RES IS:",res.json())
         print("and RETERNED RES IS:",res.json()["result"])
         #if (res.json()["result"] is dict):
         if isinstance(res.json()["result"],dict):
           print("collection is created")
+          page_type = "card"
           db.create_collection(root)
-
+        elif isinstance(res.json()["result"],str):
+          print("collection is created")
+          page_type = "table"
+          db.create_collection(root)
+          
       #2/Scraping
-      elif (len(ulr_for_scraping) == 10 and root in collection_list):
-        print("root is in already")
+      elif (len(url_list) == 10 and root in collection_list):
+        print("*************************** root is IN already ***************************************")
+        if len(ulr_for_scraping) == 20:
+          urls = ulr_for_scraping[:20]
+          ulr_for_scraping = ulr_for_scraping[20:]
+          if page_type == "table":
+            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match="Description sommaire de", collection_name=root)
+          elif page_type == "card":  
+            scrapyd.schedule(PROJECT_NAME, 'scraper', config="{'title':'a.stretched-link.text-dark::text'}", start_urls_list=urls, card_css_selector="div.card.rounded-1.results-item.mb-3",collection_name=root)
+
+        url_list = []
         #run scraper for every x url
         # in db: root -> type(table/card),mot_cle,...
         
@@ -478,6 +494,11 @@ def get_domain_from_url(url):
 
 def get_scraper_status(job_id):
   return scrapyd.job_status(PROJECT_NAME,job_id )
+
+
+async def call_shema_detect(api,data):
+      return requests.post(api,headers={"User-Agent" :"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"},json=data) 
+
 
 if __name__ == "__main__":
   app.run(debug=True , threaded=True)

@@ -194,23 +194,26 @@ app.post("/schema_detect", async (req, res, next) => {
             return dict;
           }
         };
-        //=================================================================================================//
-        //function usage
+        //============================================function usage===========================================//
         let type_page = null;
-
         let text_className = await findNodeByContent(
           mytext,
           (root = document.body)
         );
         let page_schema = await page_schema_detect(text_className, mytext);
         if (page_schema === "TR") {
-          type_page = " is table";
+          type_page = { result: "Table" };
         } else {
           let list_elements = Array.from(
             document.getElementsByClassName(page_schema)
           );
           if (list_contains_multiple_same_items(list_elements)) {
-            type_page = { result: get_config(page_schema) };
+            type_page = {
+              result: {
+                card_css_selector: page_schema,
+                config: get_config(page_schema),
+              },
+            };
           } else {
             type_page = { result: "page with 1 item" };
             console.log("page with 1 item");
@@ -237,7 +240,7 @@ app.post("/schema_detect", async (req, res, next) => {
     }
   } //for x in listof websites
   await page.close();
-  browser.close();
+  await browser.close();
   return "schema detect finished";
 });
 
