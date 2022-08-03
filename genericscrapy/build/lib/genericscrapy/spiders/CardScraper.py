@@ -27,6 +27,7 @@ class Scraper(scrapy.Spider):
         self.card_css_selector = card_css_selector
         self.collection_name = collection_name
 
+ 
     def start_requests(self):
         print("ahhay:",self.start_urls)
         for url in self.start_urls:
@@ -81,6 +82,10 @@ class Scraper(scrapy.Spider):
                 if searchFor in v:
                     return k
         return None
+
+
+# working : scrapy crawl scraper -a start_urls_list="https://www.j360.info/appels-d-offres" -a config="{'title':'a.stretched-link.text-dark::text'}" -a card_css_selector="div.card.rounded-1.results-item.mb-3" -a collection_name="https://www.j360.info"
+# not working : scrapy crawl scraper -a start_urls_list="https://www.j360.info/appels-d-offres/" -a config="{'title':'.stretched-link text-dark::text'}" -a card_css_selector=".card rounded-1 results-item mb-3" -a collection_name="https://www.j360.info"
 
 # new cmd : scrapy crawl scraper -a start_urls_list="https://www.dogdog.com,https://www.amazon.com/b?node=16225016011&pf_rd_r=N5TD9AJ5M2MFZYTD40G8&page=10&pf_rd_p=e5b0c85f-569c-4c90-a58f-0c0a260e45a0&pd_rd_r=c1e8591e-f091-4da5-8604-4635be6844be&pd_rd_w=bM1cA&pd_rd_wg=jgaTh&ref_=pd_gw_unk" -a config="{'title':'.a-size-base-plus::text'}" -a card_css_selector="._octopus-search-result-card_style_apbSearchResultItem__2-mx4" -a collection_name="card_collection"
 

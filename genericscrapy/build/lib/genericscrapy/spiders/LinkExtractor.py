@@ -71,8 +71,9 @@ class UrlExtractor(Spider):
             #yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
 
         elif any(word in content for word in self.list_mot_cle) or any(word in str(url) for word in self.list_mot_cle): 
-            print("writing now in file.json")
-            yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
+            if self.source in url: 
+                print("writing now in file.json")
+                yield dict(link=url, meta=dict(source=self.source, depth=response.meta['depth']))
             yield Request('%s' % url, callback=self.get_links,dont_filter=True)
             print("the end")
                            
