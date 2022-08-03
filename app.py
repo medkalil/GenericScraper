@@ -395,7 +395,7 @@ async def run_linkextractor():
      auto_offset_reset='earliest',
      enable_auto_commit=True,
      group_id='my-group',
-     consumer_timeout_ms=180000,
+     #consumer_timeout_ms=180000,
      value_deserializer=lambda x: loads(x.decode('utf-8')))
      
   
@@ -429,7 +429,7 @@ async def run_linkextractor():
           print("collection is created")
           page_type = "card"
           db.create_collection(root)
-        elif isinstance(res.json()["result"],str):
+        elif res.json()["result"] == "Table":
           print("collection is created")
           page_type = "table"
           db.create_collection(root)
@@ -437,12 +437,14 @@ async def run_linkextractor():
       #2/Scraping
       elif (len(url_list) == 10 and root in collection_list):
         print("*************************** root is IN already ***************************************")
-        if len(ulr_for_scraping) == 20:
-          urls = ulr_for_scraping[:20]
-          ulr_for_scraping = ulr_for_scraping[20:]
+        if len(ulr_for_scraping) >= 10:
+          urls = ulr_for_scraping[:10]
+          ulr_for_scraping = ulr_for_scraping[10:]
           if page_type == "table":
-            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match="Description sommaire de", collection_name=root)
+            print("runnign TABLE CRAPER")
+            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match="Câblage", collection_name=root)
           elif page_type == "card":  
+            print("runnign CARD CRAPER")
             scrapyd.schedule(PROJECT_NAME, 'scraper', config="{'title':'a.stretched-link.text-dark::text'}", start_urls_list=urls, card_css_selector="div.card.rounded-1.results-item.mb-3",collection_name=root)
 
         url_list = []

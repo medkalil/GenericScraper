@@ -60,7 +60,7 @@ app.post("/schema_detect", async (req, res, next) => {
     try {
       await page.goto(website, { waitUntil: "domcontentloaded", timeout: 0 });
       //const html = await page.content();
-      const mot_cle = "Tunisie";
+      const mot_cle = "Câblage";
 
       const result = await page.evaluate(async (mytext) => {
         var getVisibleText = (element) => {
@@ -229,7 +229,7 @@ app.post("/schema_detect", async (req, res, next) => {
     } catch (e) {
       //to iterate through the hole list urls (10 url)
       if (i < listofwebsite.length - 1) {
-        console.log("pas de schema encore");
+        console.log(`pas de schema encore ${listofwebsite[i]}`);
         continue;
       } else {
         return res.json({ result: "no shecma" });

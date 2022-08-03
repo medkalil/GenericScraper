@@ -38,7 +38,9 @@ class QuotesSpider(scrapy.Spider):
         for x in range(len(parsed)):
             print(type(parsed[x]))
             #res = parsed[x].update( {'url' : self.page} )
-            yield parsed[x]
+            # return only the item that have mot_cle 
+            if self.check_mot_cle_in_item(parsed[x],self.table_match): 
+                yield parsed[x]
         
         #parsed = json.dumps(parsed,ensure_ascii=False)  
 
@@ -47,6 +49,12 @@ class QuotesSpider(scrapy.Spider):
         #for x in df[0]:
         #    print(x)
 
+    @staticmethod            
+    def check_mot_cle_in_item(item,mor_cle):
+        for x in item.values():
+            if mor_cle in x:
+                return True
+        return False
 
 
 # scrapy crawl table -a page="https://www.appeloffres.com/appels-offres/telecom"
