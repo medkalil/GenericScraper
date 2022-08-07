@@ -18,8 +18,10 @@ class QuotesSpider(scrapy.Spider):
 
     def start_requests(self):
         for url in self.start_urls:
-            yield scrapy.Request(url=url, callback=self.parse,dont_filter = True)
-
+            try:
+                yield scrapy.Request(url=url, callback=self.parse,dont_filter = True)
+            except:
+                continue
     @inline_requests
     def parse(self, response):
         print("isis:",response.request.url)
@@ -60,3 +62,6 @@ class QuotesSpider(scrapy.Spider):
 # scrapy crawl table -a page="https://www.appeloffres.com/appels-offres/telecom"
 # new cmd: scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite"
 # scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite" -a collection_name="table_collection"
+
+
+

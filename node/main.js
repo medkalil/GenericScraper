@@ -32,9 +32,15 @@ app.get("/cll", async (req, res, next) => {
 
 app.post("/schema_detect", async (req, res, next) => {
   var listofwebsite = req.body.url_list;
+  var list_mot_cle = req.body.list_mot_cle;
+
+  //const mot_cle = "conception";
+  const mot_cle = list_mot_cle[0];
+  console.log("here is 1st mot cle passed from flask to node", mot_cle);
 
   /* const listofwebsite = [
-    "https://www.google.fr/",
+    "https://www.j360.info/appels-d-offres/europe/france/bourgogne-franche-comte/nievre/?cat=it-telecoms",
+    "https://www.j360.info/appels-d-offres/europe/france/bourgogne-franche-comte/nievre/?cat=it-telecoms",
     "https://www.kooora.fr/",
     "https://www.e-marchespublics.com/appel-offre",
   ]; */
@@ -60,17 +66,29 @@ app.post("/schema_detect", async (req, res, next) => {
     try {
       await page.goto(website, { waitUntil: "domcontentloaded", timeout: 0 });
       //const html = await page.content();
-      const mot_cle = "Câblage";
 
       const result = await page.evaluate(async (mytext) => {
         var getVisibleText = (element) => {
-          //window.getSelection().removeAllRanges();
+          /* window.getSelection().removeAllRanges();
           let range = document.createRange();
           range.selectNode(element);
           window.getSelection().addRange(range);
-          let visibleText = window.getSelection().toString().trim();
+          let visibleText = window
+            .getSelection()
+            .toString()
+            .toLowerCase()
+            .trim();
           window.getSelection().removeAllRanges();
-          return visibleText;
+          return visibleText; */
+          return element.innerText.toLowerCase();
+        };
+
+        const getTagname_className = (element) => {
+          classname = element.getAttribute("class");
+          tagname = element.tagName;
+          classname = classname.replace(/ +/g, ".");
+          res = tagname.concat(".", classname);
+          return res;
         };
 
         //function declaration
@@ -84,7 +102,7 @@ app.post("/schema_detect", async (req, res, next) => {
             var node = treeWalker.currentNode;
             if (
               node.nodeType === Node.TEXT_NODE &&
-              node.textContent.includes(text) &&
+              node.textContent.toLowerCase().includes(text) &&
               getVisibleText(node.parentNode).includes(text)
             ) {
               console.log("xx :", node.parentNode.getAttribute("class"));
@@ -122,9 +140,11 @@ app.post("/schema_detect", async (req, res, next) => {
                 while (node.parentNode.getAttribute("class") == null) {
                   node = node.parentNode;
                 }
-                nodeList = node.parentNode.getAttribute("class");
+                nodeList = getTagname_className(node.parentNode);
+                //nodeList = node.parentNode.getAttribute("class");
               } else {
-                nodeList = node.parentNode.getAttribute("class");
+                nodeList = getTagname_className(node.parentNode);
+                //nodeList = node.parentNode.getAttribute("class");
               }
             }
           }
@@ -188,8 +208,9 @@ app.post("/schema_detect", async (req, res, next) => {
           } else {
             var dict = {};
             for (var i = 0; i < new_words.length; i++) {
-              item = "item " + i;
-              dict[new_words[i]] = findNodeByContentOfGetConfig(new_words[i]);
+              item = "item" + i;
+              dict[item] =
+                findNodeByContentOfGetConfig(new_words[i]) + " *::text";
             }
             return dict;
           }
@@ -210,7 +231,9 @@ app.post("/schema_detect", async (req, res, next) => {
           if (list_contains_multiple_same_items(list_elements)) {
             type_page = {
               result: {
-                card_css_selector: page_schema,
+                card_css_selector: getTagname_className(
+                  document.getElementsByClassName(page_schema)[0]
+                ),
                 config: get_config(page_schema),
               },
             };

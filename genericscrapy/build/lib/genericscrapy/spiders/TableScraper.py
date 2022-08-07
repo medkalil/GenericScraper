@@ -18,8 +18,10 @@ class QuotesSpider(scrapy.Spider):
 
     def start_requests(self):
         for url in self.start_urls:
-            yield scrapy.Request(url=url, callback=self.parse,dont_filter = True)
-
+            try:
+                yield scrapy.Request(url=url, callback=self.parse,dont_filter = True)
+            except:
+                continue
     @inline_requests
     def parse(self, response):
         print("isis:",response.request.url)

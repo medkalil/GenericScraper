@@ -15,7 +15,7 @@ class Scraper(scrapy.Spider):
     #mandatory=None
 
     
-    def __init__(self , collection_name , start_urls_list, config=None, card_css_selector="" , *args, **kwargs):
+    def __init__(self , collection_name , start_urls_list, config=None, card_css_selector="" , mot_cle="" ,*args, **kwargs):
         self.config = json.loads(json.dumps(config))
         """ mandatory = ast.literal_eval(self.config)
         self.mandatory_fields = list(mandatory.keys()) """
@@ -26,15 +26,18 @@ class Scraper(scrapy.Spider):
         self.start_urls = self.start_urls_list
         self.card_css_selector = card_css_selector
         self.collection_name = collection_name
+        self.mot_cle = mot_cle
 
  
     def start_requests(self):
         print("ahhay:",self.start_urls)
         for url in self.start_urls:
-            yield SplashRequest(url=url , callback=self.parse, dont_filter = True )
-            #yield scrapy.Request(url=url , callback=self.parse ,dont_filter = True, meta={"pyppeteer"})
-            #yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
-    
+            try:
+                yield SplashRequest(url=url , callback=self.parse, dont_filter = True )
+                #yield scrapy.Request(url=url , callback=self.parse ,dont_filter = True, meta={"pyppeteer"})
+                #yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
+            except:
+                continue
     @inline_requests    
     def parse(self, response):
         for it in response.css(self.card_css_selector):    
@@ -53,10 +56,12 @@ class Scraper(scrapy.Spider):
                     res = self.get_absolute_url(response, res)
                 item[key] = ' '.join(elem for elem in res).strip()
             # check if the item containing mot-cle    
-            #if  self.search_for_mot_cle(item,"Nintendo"):  
-            #    yield dict(item)
-            yield dict(item)
 
+            if self.check_mot_cle_in_item(item,self.mot_cle): 
+                yield dict(item)
+            #yield dict(item)
+
+        
             # ensure that all mandatory fields are present, else discard this scrape
             """ mandatory_fileds_present = True
             for key in self.mandatory_fields:
@@ -76,12 +81,12 @@ class Scraper(scrapy.Spider):
         return final_url
 
     @staticmethod            
-    def search_for_mot_cle(values, searchFor):
-        for k in values:
-            for v in values[k]:
-                if searchFor in v:
-                    return k
-        return None
+    def check_mot_cle_in_item(item,mor_cle):
+        for x in item.values():
+            if mor_cle in x:
+                return True
+        return False
+
 
 
 # working : scrapy crawl scraper -a start_urls_list="https://www.j360.info/appels-d-offres" -a config="{'title':'a.stretched-link.text-dark::text'}" -a card_css_selector="div.card.rounded-1.results-item.mb-3" -a collection_name="https://www.j360.info"
