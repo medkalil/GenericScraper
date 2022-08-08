@@ -395,7 +395,7 @@ async def run_linkextractor():
      auto_offset_reset='earliest',
      enable_auto_commit=True,
      group_id='my-group',
-     #consumer_timeout_ms=180000,
+     #consumer_timeout_ms=20000,
      value_deserializer=lambda x: loads(x.decode('utf-8')))
     
      
@@ -414,9 +414,10 @@ async def run_linkextractor():
       print("the msg is :",message)
 
       #closing consumer after the UrlExtractor finishes  
-      """ if get_scraper_status(link_extrator_process_id) == "finished":
-        print("4ariba ends")
-        consumer.close() """
+      if get_scraper_status(link_extrator_process_id) == "finished":
+          print("4ariba ends")
+          consumer.close()
+          break
 
       #1/Schema detection
       if (len(url_list) == 10 and root not in collection_list):
@@ -440,18 +441,20 @@ async def run_linkextractor():
           db.create_collection(root)
           
       #2/Scraping
-      elif (len(ulr_for_scraping) >= 10 and root in collection_list):
+      elif (len(ulr_for_scraping) == 20 and root in collection_list):
         print("*************************** root is IN already ***************************************")
-        if len(ulr_for_scraping) >= 10:
-          urls = ulr_for_scraping[:10]
-          ulr_for_scraping = ulr_for_scraping[10:]
+        if len(ulr_for_scraping) == 20:
+          urls = ulr_for_scraping[:20]
+          ulr_for_scraping = ulr_for_scraping[20:]
           print("the len of urls is:",len(urls))
           if page_type == "table":
             print("runnign TABLE CRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
+            print("nomBER OF URLS:",len(urls))
             scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match="Câblage", collection_name=root)
           elif isinstance(page_type,dict):
-            print("runnign CARD CRAPER")
+            print("runnign CARD SCRAPER")
+            urls = "".join([str(elem)+"," for elem in urls])
             #scrapyd.schedule(PROJECT_NAME, 'scraper', config="{'title':'a.stretched-link.text-dark::text'}", start_urls_list=urls, card_css_selector="div.card.rounded-1.results-item.mb-3",collection_name=root,mot_cle=list_mot_cle[0])
             scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
 

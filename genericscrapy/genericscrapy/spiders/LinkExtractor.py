@@ -29,9 +29,11 @@ class UrlExtractor(Spider):
         UrlExtractor.start_urls.append(root)
         #UrlExtractor.allowed_domains = [self.options.get('allow_domains')]
         UrlExtractor.allowed_domains = self.get_domain_from_url(self.source)
+        self.allowed_domains = self.get_domain_from_url(self.source)
         self.clean_options()
         self.le = LinkExtractor(allow=self.options.get('allow'), deny=self.options.get('deny'),
-                                allow_domains=self.options.get('allow_domains'),
+                                #allow_domains=self.options.get('allow_domains'),
+                                allow_domains=self.allowed_domains,
                                 deny_domains=self.options.get('deny_domains'),
                                 restrict_xpaths=self.options.get('restrict_xpaths'),
                                 canonicalize=False,
@@ -41,7 +43,14 @@ class UrlExtractor(Spider):
         super(UrlExtractor, self).__init__(*args, **kwargs)
 
     def start_requests(self, *args, **kwargs):
-        yield Request('%s' % self.source, callback=self.get_links)
+        headers = {
+        "content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "DNT": "1",
+        "Origin": "https://www.premierleague.com",
+        "Referer": "https://www.premierleague.com/players",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
+        }
+        yield Request('%s' % self.source, callback=self.get_links, headers=headers)
     
     @inline_requests
     def get_links(self,response):
@@ -108,3 +117,6 @@ class UrlExtractor(Spider):
     def get_domain_from_url(self,url):
         domain = urlparse(url).netloc
         return domain
+
+
+#scrapy crawl url-extractor -a root=https://www.appeloffres.com/ -a allow_domains="appeloffres.com" -a depth=0 -o out.json

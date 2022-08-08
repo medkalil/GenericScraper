@@ -23,6 +23,8 @@ NEWSPIDER_MODULE = 'genericscrapy.spiders'
 #added for testing
 #DOWNLOAD_TIMEOUT=3600
 
+COOKIES_ENABLED = False
+
 # splash setup. source : https://github.com/scrapy-plugins/scrapy-splash
 SPLASH_URL = 'http://localhost:8050'
 DOWNLOADER_MIDDLEWARES = {
@@ -72,7 +74,8 @@ MONGO_DATABASE =  'mydb'
 #USER_AGENT = 'genericscrapy (+http://www.yourdomain.com)'
 #USER_AGENT='my-cool-project (http://example.com)'
 #USER_AGENT = get_random_agent()
-USER_AGENT= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+#       USER_AGENT= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 

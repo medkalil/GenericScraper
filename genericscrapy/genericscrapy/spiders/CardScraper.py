@@ -40,7 +40,7 @@ class Scraper(scrapy.Spider):
                 continue
     @inline_requests    
     def parse(self, response):
-        for it in response.css(self.card_css_selector):    
+        for it in response.css(self.card_css_selector):
             print("it is here",it)
             item = dict(url=response.url)
             # iterate over all keys in config and extract value for each of thems
@@ -83,7 +83,7 @@ class Scraper(scrapy.Spider):
     @staticmethod            
     def check_mot_cle_in_item(item,mor_cle):
         for x in item.values():
-            if mor_cle in x:
+            if mor_cle in x.lower():
                 return True
         return False
 

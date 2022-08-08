@@ -34,13 +34,13 @@ app.post("/schema_detect", async (req, res, next) => {
   var listofwebsite = req.body.url_list;
   var list_mot_cle = req.body.list_mot_cle;
 
-  //const mot_cle = "conception";
+  //const mot_cle = "supply";
   const mot_cle = list_mot_cle[0];
-  console.log("here is 1st mot cle passed from flask to node", mot_cle);
+  //console.log("here is 1st mot cle passed from flask to node", mot_cle);
 
   /* const listofwebsite = [
     "https://www.j360.info/appels-d-offres/europe/france/bourgogne-franche-comte/nievre/?cat=it-telecoms",
-    "https://www.j360.info/appels-d-offres/europe/france/bourgogne-franche-comte/nievre/?cat=it-telecoms",
+    "https://www.lespagesjaunesafrique.com/societes/afrique-du-sud/agricole-materiels-produits",
     "https://www.kooora.fr/",
     "https://www.e-marchespublics.com/appel-offre",
   ]; */
@@ -204,6 +204,9 @@ app.post("/schema_detect", async (req, res, next) => {
             }
           }
           if (new_words.length == 1) {
+            console.log(
+              "not a data page/ page with 1 item => can't detect page schema"
+            );
             return "not a data page/ page with 1 item => can't detect page schema ";
           } else {
             var dict = {};
