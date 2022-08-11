@@ -33,7 +33,7 @@ class Scraper(scrapy.Spider):
         print("ahhay:",self.start_urls)
         for url in self.start_urls:
             try:
-                yield SplashRequest(url=url , callback=self.parse, dont_filter = True )
+                yield SplashRequest(url=url , callback=self.parse, dont_filter = True, args={'timeout': 3000} )
                 #yield scrapy.Request(url=url , callback=self.parse ,dont_filter = True, meta={"pyppeteer"})
                 #yield PyppeteerRequest(url=url , callback=self.parse,dont_filter = True)        
             except:

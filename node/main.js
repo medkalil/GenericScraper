@@ -241,8 +241,9 @@ app.post("/schema_detect", async (req, res, next) => {
               },
             };
           } else {
-            type_page = { result: "page with 1 item" };
+            //type_page = { result: "page with 1 item" };
             console.log("page with 1 item");
+            return;
           }
         }
 

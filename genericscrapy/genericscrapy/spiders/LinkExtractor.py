@@ -18,12 +18,13 @@ class UrlExtractor(Spider):
     custom_settings = {'ITEM_PIPELINES': {'genericscrapy.pipelines.LinkExtratorPipeline':1}}
     start_urls = []
 
-    def __init__(self, root=None,list_mot_cle="", depth=0, *args, **kwargs):
+    def __init__(self, root=None,list_mot_cle="", depth=0, partition = None, *args, **kwargs):
         self.logger.info("[LE] Source: %s Depth: %s Kwargs: %s", root, depth, kwargs)
         self.source = root
         self.options = kwargs
         self.depth = depth
         self.listx = []
+        self.partition = partition
         #self.list_mot_cle = ["zarzis","HARDWARE","tunisie","SUPPLY"]
         self.list_mot_cle = list_mot_cle.split(",")
         UrlExtractor.start_urls.append(root)

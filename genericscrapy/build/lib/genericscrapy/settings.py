@@ -17,7 +17,16 @@ NEWSPIDER_MODULE = 'genericscrapy.spiders'
 #CLOSESPIDER_PAGECOUNT = 1000
 
 #The amount of time (in secs) that the downloader should wait before downloading consecutive pages from the same website. This can be used to throttle the crawling speed to avoid hitting servers too hard. Decimal numbers are supported
-#DOWNLOAD_DELAY=10
+#DOWNLOAD_DELAY=0.1
+COOKIES_ENABLED = False
+AUTOTHROTTLE_ENABLED = True
+#only info in log to reduce CPU usage
+# disable it for debugging
+LOG_LEVEL = 'INFO'
+
+CONCURRENT_REQUESTS = 10
+#CONCURRENT_REQUESTS_PER_DOMAIN = 10
+
 
 #time-out after 1H
 #added for testing
@@ -72,7 +81,8 @@ MONGO_DATABASE =  'mydb'
 #USER_AGENT = 'genericscrapy (+http://www.yourdomain.com)'
 #USER_AGENT='my-cool-project (http://example.com)'
 #USER_AGENT = get_random_agent()
-USER_AGENT= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+#       USER_AGENT= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 

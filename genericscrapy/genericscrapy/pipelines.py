@@ -48,12 +48,13 @@ class LinkExtratorPipeline:
 
         mongo_collection = spider.source
         print("this mongo_collection",mongo_collection)
-
+        partition = int(spider.partition)
+        print("the partition is:",partition)
         print("here is LinkExtratorPipeline")
         print("item:",item)
         item = dict(item)
         item['spider'] = spider.name
-        self.producer.send(self.topic, item)
+        self.producer.send(self.topic, item,partition=partition)
         #sleep(2)
         #self.producer.flush()
     
@@ -106,7 +107,8 @@ class CardScraperPipeline:
         card_css_selector = spider.card_css_selector
         print("spider name here",spider.name)
         # add configuration
-        configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"card_scraper","config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
+        #configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"card_scraper","config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
+        configuration = {"configuration":{"type":"card_scraper","config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
         if configuration not in list(self.db[collection_name].find(configuration,{"_id":0})) :
             self.db[collection_name].insert_one(configuration)
             print("configuration saved")

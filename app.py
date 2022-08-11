@@ -3,6 +3,7 @@ from fileinput import close
 #from crypt import methods
 from logging import root
 from os import urandom
+from pickletools import int4
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask import request
@@ -34,6 +35,8 @@ import re
 import numpy as np
 from urllib.parse import urlparse
 from kafka import TopicPartition
+import gc
+
 
 
 app = Flask(__name__)
@@ -379,29 +382,34 @@ def flask_to_node():
 async def run_linkextractor():
   url_list = []
   ulr_for_scraping = []
-  page_type = ""
+  #page_type = ""
+  page_type = "table"
 
   root=request.args.get('root')
   depth=int(request.args.get('depth'))
   allow_domains = request.args.get('allow_domains')
   list_mot_cle = request.args.get('list_mot_cle')
+  partition = int(request.args.get('partition'))
 
-#1 run LinkExtractor
-  link_extrator_process_id = scrapyd.schedule(PROJECT_NAME, 'url-extractor' ,allowed_domains = get_domain_from_url(root) ,root = root ,depth=depth,list_mot_cle=list_mot_cle )
+  #1 run LinkExtractor
+  link_extrator_process_id = scrapyd.schedule(PROJECT_NAME, 'url-extractor' ,allowed_domains = get_domain_from_url(root) ,root = root ,depth=depth,list_mot_cle=list_mot_cle, partition=partition )
   #Message Queue
   consumer = KafkaConsumer(
-    "numtest",
+    #"numtest",
      bootstrap_servers=['localhost:9092'],
-     auto_offset_reset='earliest',
+     #earliest->latest
+     auto_offset_reset='latest',
      enable_auto_commit=True,
-     group_id='my-group',
-     #consumer_timeout_ms=20000,
+     #group_id='my-group',
+     # 2 min for timing out (1s=1000)
+     consumer_timeout_ms=180000,
      value_deserializer=lambda x: loads(x.decode('utf-8')))
+ 
+  consumer.assign([TopicPartition('numtest', partition)])
     
-     
+
   list_mot_cle = list_mot_cle.split(",")
-  
-  
+
   #reading from Queue  
   print("before loop")
   for message in consumer:
@@ -414,11 +422,11 @@ async def run_linkextractor():
       print("the msg is :",message)
 
       #closing consumer after the UrlExtractor finishes  
-      if get_scraper_status(link_extrator_process_id) == "finished":
+      """ if get_scraper_status(link_extrator_process_id) == "finished":
           print("4ariba ends")
           consumer.close()
-          break
-
+          break """
+     
       #1/Schema detection
       if (len(url_list) == 10 and root not in collection_list):
         #list_mot_cle = list_mot_cle.split(",")
@@ -441,17 +449,17 @@ async def run_linkextractor():
           db.create_collection(root)
           
       #2/Scraping
-      elif (len(ulr_for_scraping) == 20 and root in collection_list):
+      elif (len(ulr_for_scraping) == 10 and root in collection_list):
         print("*************************** root is IN already ***************************************")
-        if len(ulr_for_scraping) == 20:
-          urls = ulr_for_scraping[:20]
-          ulr_for_scraping = ulr_for_scraping[20:]
+        if len(ulr_for_scraping) == 10:
+          urls = ulr_for_scraping[:10]
+          ulr_for_scraping = ulr_for_scraping[10:]
           print("the len of urls is:",len(urls))
           if page_type == "table":
             print("runnign TABLE CRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
             print("nomBER OF URLS:",len(urls))
-            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match="Câblage", collection_name=root)
+            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle[0], collection_name=root)
           elif isinstance(page_type,dict):
             print("runnign CARD SCRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
@@ -459,6 +467,7 @@ async def run_linkextractor():
             scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
 
         url_list = []
+        #gc.collect()
         #run scraper for every x url
         # in db: root -> type(table/card),mot_cle,...
         
@@ -469,13 +478,14 @@ async def run_linkextractor():
 @app.route('/just_consume', methods=['POST','GET'])
 async def just_consume():
   consumer = KafkaConsumer(
-    "numtest",
+     #"numtest",
      bootstrap_servers=['localhost:9092'],
      auto_offset_reset='earliest',
      enable_auto_commit=True,
-     group_id='my-group',
+     #group_id='my-group',
      consumer_timeout_ms=180000,
      value_deserializer=lambda x: loads(x.decode('utf-8')))
+  consumer.assign([TopicPartition('numtest', 0)])
   
   for message in consumer:
       message = message.value['link']

@@ -54,7 +54,7 @@ class QuotesSpider(scrapy.Spider):
     @staticmethod            
     def check_mot_cle_in_item(item,mor_cle):
         for x in item.values():
-            if mor_cle in x:
+            if mor_cle in x.lower():
                 return True
         return False
 
