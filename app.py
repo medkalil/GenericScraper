@@ -36,6 +36,7 @@ import numpy as np
 from urllib.parse import urlparse
 from kafka import TopicPartition
 import gc
+from flask import session
 
 
 
@@ -382,8 +383,8 @@ def flask_to_node():
 async def run_linkextractor():
   url_list = []
   ulr_for_scraping = []
-  #page_type = ""
-  page_type = "table"
+  page_type = ""
+  #page_type = "table"
 
   root=request.args.get('root')
   depth=int(request.args.get('depth'))
@@ -419,7 +420,7 @@ async def run_linkextractor():
       url_list.append(message)
       ulr_for_scraping.append(message)
       
-      print("the msg is :",message)
+      print("the msg from "+ str(partition) +" is :",message)
 
       #closing consumer after the UrlExtractor finishes  
       """ if get_scraper_status(link_extrator_process_id) == "finished":
@@ -449,9 +450,9 @@ async def run_linkextractor():
           db.create_collection(root)
           
       #2/Scraping
-      elif (len(ulr_for_scraping) == 10 and root in collection_list):
+      elif (len(ulr_for_scraping) >= 10 and root in collection_list):
         print("*************************** root is IN already ***************************************")
-        if len(ulr_for_scraping) == 10:
+        if len(ulr_for_scraping) >= 10:
           urls = ulr_for_scraping[:10]
           ulr_for_scraping = ulr_for_scraping[10:]
           print("the len of urls is:",len(urls))
@@ -464,7 +465,8 @@ async def run_linkextractor():
             print("runnign CARD SCRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
             #scrapyd.schedule(PROJECT_NAME, 'scraper', config="{'title':'a.stretched-link.text-dark::text'}", start_urls_list=urls, card_css_selector="div.card.rounded-1.results-item.mb-3",collection_name=root,mot_cle=list_mot_cle[0])
-            scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+            #scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+            scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
 
         url_list = []
         #gc.collect()
@@ -473,6 +475,73 @@ async def run_linkextractor():
         
         #start scraping
 
+  return "xx"
+
+@app.route('/run_scraper_for_root_exist', methods=['POST','GET'])
+async def run_scraper_for_root_exist():
+  #init
+  ulr_for_scraping = []
+  page_type = ""
+  #get configuration dict from DB
+  root=request.args.get('root')
+  depth=int(request.args.get('depth'))
+  allow_domains = request.args.get('allow_domains')
+  list_mot_cle = request.args.get('list_mot_cle')
+  partition = int(request.args.get('partition'))
+
+  #if configuration not in list(self.db[collection_name].find(configuration,{"_id":0})) :
+  configuration = list(db.get_collection(str(root)).find({"configuration":{"$type" : "object"}},{"_id":0}))
+  configuration = configuration[0]["configuration"]
+  print("configuration:",configuration)
+  if configuration["type"] == "table_scraper":
+    page_type = "table"
+  elif configuration["type"] == "card_scraper":
+    page_type = configuration
+  
+  #consumer 
+  link_extrator_process_id = scrapyd.schedule(PROJECT_NAME, 'url-extractor' ,allowed_domains = get_domain_from_url(root) ,root = root ,depth=depth,list_mot_cle=list_mot_cle, partition=partition )
+  #Message Queue
+  consumer = KafkaConsumer(
+    #"numtest",
+     bootstrap_servers=['localhost:9092'],
+     #earliest->latest
+     auto_offset_reset='latest',
+     enable_auto_commit=True,
+     #group_id='my-group',
+     # 2 min for timing out (1s=1000)
+     consumer_timeout_ms=180000,
+     value_deserializer=lambda x: loads(x.decode('utf-8')))
+  consumer.assign([TopicPartition('numtest', partition)])
+    
+  list_mot_cle = list_mot_cle.split(",")
+  #reading from Queue  
+  print("before loop")
+  for message in consumer:
+      collection_list = db.list_collection_names()
+      print("inside the for")
+      message = message.value['link']
+      ulr_for_scraping.append(message)
+      
+      print("the msg from "+ str(partition) +" is :",message)
+      #scraping
+      if (len(ulr_for_scraping) >= 10 and root in collection_list):
+        print("*************************** root is IN already ***************************************")
+        if len(ulr_for_scraping) >= 10:
+          urls = ulr_for_scraping[:10]
+          ulr_for_scraping = ulr_for_scraping[10:]
+          print("the len of urls is:",len(urls))
+          if page_type == "table":
+            print("runnign TABLE CRAPER")
+            urls = "".join([str(elem)+"," for elem in urls])
+            print("nomBER OF URLS:",len(urls))
+            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle[0], collection_name=root)
+          elif isinstance(page_type,dict):
+            print("runnign CARD SCRAPER")
+            urls = "".join([str(elem)+"," for elem in urls])
+            scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+            #scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
+
+        url_list = []
   return "xx"
 
 @app.route('/just_consume', methods=['POST','GET'])
@@ -491,6 +560,20 @@ async def just_consume():
       message = message.value['link']
       print("message:",message)
   return "xx"
+
+@app.route('/just_cmng', methods=['POST','GET'])
+async def just_cmng():
+  page_type = ""
+  root=request.args.get('root')
+  configuration = list(db.get_collection(str(root)).find({"configuration":{"$type" : "object"}},{"_id":0}))
+  configuration = configuration[0]["configuration"]
+  print("configuration:",configuration)
+  if configuration["type"] == "table_scraper":
+    page_type = "table"
+  elif configuration["type"] == "card_scraper":
+    page_type = configuration
+  print("from g", page_type["card_css_selector"])
+  return page_type
 #####################################END: Routes for Production #################################################
 
 
@@ -524,4 +607,7 @@ async def call_shema_detect(api,data):
 
 
 if __name__ == "__main__":
-  app.run(debug=True , threaded=True)
+  try:
+    app.run(debug=True , threaded=True)
+  finally:
+    session.clear()

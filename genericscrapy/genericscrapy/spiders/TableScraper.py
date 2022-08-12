@@ -1,3 +1,4 @@
+from base64 import decode
 import scrapy
 import pandas as pd
 import json

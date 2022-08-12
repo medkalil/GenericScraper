@@ -175,7 +175,8 @@ class TableScraperPipeline:
         start_urls_list = spider.start_urls_list
         table_match = spider.table_match
         # add configuration
-        configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"table_scraper","table_match":table_match,"collection_name":collection_name}}
+        #configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"table_scraper","table_match":table_match,"collection_name":collection_name}}
+        configuration = {"configuration":{"type":"table_scraper","table_match":table_match,"collection_name":collection_name}}
         if configuration not in list(self.db[collection_name].find(configuration,{"_id":0})) :
             self.db[collection_name].insert_one(configuration)
             print("configuration saved")
