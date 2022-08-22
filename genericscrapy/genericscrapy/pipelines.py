@@ -13,6 +13,7 @@ from json import dumps
 from kafka import KafkaProducer
 import re
 import joblib
+import copy
 
 
 def contains_url(s):
@@ -22,15 +23,16 @@ def contains_url(s):
 # item must not containing list/dict -> just key:value
 # wel give it item[1] to bypass item[0]:configuration
 def find_title_filed(item):
+    copy_item = copy.deepcopy(item)
     #bypass url links
-    for res in list(item):
+    for res in list(copy_item):
         print(res)
-        if contains_url(item[res]):
-            print("item del",item[res])
-            del item[res]
+        if contains_url(copy_item[res]):
+            print("copy_item del",copy_item[res])
+            del copy_item[res]
     #len(k[0]) : 0 -> lengest key
     #len(k[1]) : 1 -> lengest value
-    return max(item.items(), key = lambda k :len(k[1]))[0]
+    return max(copy_item.items(), key = lambda k :len(k[1]))[0]
 
 class LinkExtratorPipeline:
     def __init__(self,producer,topic):
@@ -41,11 +43,14 @@ class LinkExtratorPipeline:
         pass
 
     def close_spider(self, spider):
+        #sending mark to the consumer to close the queue
+        partition = int(spider.partition)
+        self.producer.send(self.topic,"end_mark",partition=partition) 
         self.producer.close()
+        print("################### from close spider #############""")
         pass
 
     def process_item(self, item, spider):
-
         mongo_collection = spider.source
         print("this mongo_collection",mongo_collection)
         partition = int(spider.partition)

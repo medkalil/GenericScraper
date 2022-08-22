@@ -60,9 +60,10 @@ class QuotesSpider(scrapy.Spider):
         return False
 
 
+#scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom" -a collection_name="titi"
+
 # scrapy crawl table -a page="https://www.appeloffres.com/appels-offres/telecom"
 # new cmd: scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite"
 # scrapy crawl table -a table_match="Description sommaire de l'appel d'offres" -a start_urls_list="https://www.appeloffres.com/appels-offres/telecom,https://www.appeloffres.com/appels-offres/electricite" -a collection_name="table_collection"
-
 
 

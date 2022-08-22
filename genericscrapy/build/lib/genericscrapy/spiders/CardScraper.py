@@ -43,6 +43,7 @@ class Scraper(scrapy.Spider):
         for it in response.css(self.card_css_selector):
             print("it is here",it)
             item = dict(url=response.url)
+            print("the url is:",response.url)
             # iterate over all keys in config and extract value for each of thems
             #for it in response.css("_octopus-search-result-card_style_apbSearchResultItem__2-mx4"):
             for key in eval(self.config):

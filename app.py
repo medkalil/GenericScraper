@@ -465,15 +465,10 @@ async def run_linkextractor():
             print("runnign CARD SCRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
             #scrapyd.schedule(PROJECT_NAME, 'scraper', config="{'title':'a.stretched-link.text-dark::text'}", start_urls_list=urls, card_css_selector="div.card.rounded-1.results-item.mb-3",collection_name=root,mot_cle=list_mot_cle[0])
-            #scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
-            scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
+            scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+            #scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
 
         url_list = []
-        #gc.collect()
-        #run scraper for every x url
-        # in db: root -> type(table/card),mot_cle,...
-        
-        #start scraping
 
   return "xx"
 
@@ -481,7 +476,9 @@ async def run_linkextractor():
 async def run_scraper_for_root_exist():
   #init
   ulr_for_scraping = []
+  urls = []
   page_type = ""
+  consumer_closing = False
   #get configuration dict from DB
   root=request.args.get('root')
   depth=int(request.args.get('depth'))
@@ -517,31 +514,40 @@ async def run_scraper_for_root_exist():
   #reading from Queue  
   print("before loop")
   for message in consumer:
+      #checking for closing spider 
+      if message.value == "end_mark":
+        consumer_closing = True
+        consumer.close()
+        print("before closing") 
+      
+      print("after closing")
       collection_list = db.list_collection_names()
       print("inside the for")
       message = message.value['link']
       ulr_for_scraping.append(message)
-      
       print("the msg from "+ str(partition) +" is :",message)
+
       #scraping
-      if (len(ulr_for_scraping) >= 10 and root in collection_list):
-        print("*************************** root is IN already ***************************************")
-        if len(ulr_for_scraping) >= 10:
+      if root in collection_list and len(ulr_for_scraping) >= 10:
+        if (consumer_closing == False and len(ulr_for_scraping) >= 10):
           urls = ulr_for_scraping[:10]
           ulr_for_scraping = ulr_for_scraping[10:]
-          print("the len of urls is:",len(urls))
-          if page_type == "table":
-            print("runnign TABLE CRAPER")
-            urls = "".join([str(elem)+"," for elem in urls])
-            print("nomBER OF URLS:",len(urls))
-            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle[0], collection_name=root)
-          elif isinstance(page_type,dict):
-            print("runnign CARD SCRAPER")
-            urls = "".join([str(elem)+"," for elem in urls])
-            scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
-            #scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
+        elif consumer_closing == True:
+          urls = ulr_for_scraping
 
-        url_list = []
+        if page_type == "table":
+          print("*************************** root is IN already & table running***************************************")
+          print("runnign TABLE CRAPER")
+          urls = "".join([str(elem)+"," for elem in urls])
+          print("nomBER OF URLS:",len(urls))
+          scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle[0], collection_name=root)
+        elif isinstance(page_type,dict):
+          print("runnign CARD SCRAPER")
+          urls = "".join([str(elem)+"," for elem in urls])
+          scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+          #scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
+
+        ulr_for_scraping = []
   return "xx"
 
 @app.route('/just_consume', methods=['POST','GET'])
@@ -561,19 +567,37 @@ async def just_consume():
       print("message:",message)
   return "xx"
 
-@app.route('/just_cmng', methods=['POST','GET'])
-async def just_cmng():
-  page_type = ""
-  root=request.args.get('root')
-  configuration = list(db.get_collection(str(root)).find({"configuration":{"$type" : "object"}},{"_id":0}))
-  configuration = configuration[0]["configuration"]
-  print("configuration:",configuration)
-  if configuration["type"] == "table_scraper":
-    page_type = "table"
-  elif configuration["type"] == "card_scraper":
-    page_type = configuration
-  print("from g", page_type["card_css_selector"])
-  return page_type
+@app.route('/get_list_jobs', methods=['POST','GET'])
+async def get_list_jobs():
+  #scrapyd.list_jobs(PROJECT_NAME)
+  return scrapyd.list_jobs(PROJECT_NAME)
+
+@app.route('/cancel_job', methods=['POST','GET'])
+async def cancel_job():
+  id = request.args.get("id")
+  # Returns the "previous state" of the job before it was cancelled: 'running' or 'pending'or 'running'
+  return scrapyd.cancel(PROJECT_NAME, id)
+
+@app.route('/cancel_all_job', methods=['POST','GET'])
+async def cancel_all_job():
+  jobs = scrapyd.list_jobs(PROJECT_NAME)
+  pending = jobs["pending"]
+  running = jobs["running"]
+  finished = jobs["finished"]
+
+  if len(pending) != 0  :
+    for job in pending:
+      scrapyd.cancel(PROJECT_NAME, job["id"])
+
+  if len(running) != 0  :
+    for job in running:
+      scrapyd.cancel(PROJECT_NAME, job["id"])
+
+  if len(finished) != 0  :
+    for job in finished:
+      scrapyd.cancel(PROJECT_NAME, job["id"])
+
+  return "all job canceled"
 #####################################END: Routes for Production #################################################
 
 
