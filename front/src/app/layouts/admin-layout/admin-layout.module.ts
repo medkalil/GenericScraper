@@ -23,6 +23,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { CreateAlertComponent } from "app/create-alert/create-alert.component";
 import { FeedComponent } from "app/feed/feed.component";
+import { HttpClientModule } from "@angular/common/http";
+import { DataTableComponent } from "app/data-table/data-table.component";
 
 @NgModule({
   imports: [
@@ -36,6 +38,7 @@ import { FeedComponent } from "app/feed/feed.component";
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    HttpClientModule,
   ],
   declarations: [
     CreateAlertComponent,
@@ -48,6 +51,7 @@ import { FeedComponent } from "app/feed/feed.component";
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    DataTableComponent,
   ],
   providers: [],
   exports: [FeedComponent],

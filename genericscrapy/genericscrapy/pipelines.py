@@ -110,10 +110,11 @@ class CardScraperPipeline:
         start_urls_list = spider.start_urls_list
         config = spider.config
         card_css_selector = spider.card_css_selector
+        mot_cle = spider.mot_cle
         print("spider name here",spider.name)
         # add configuration
         #configuration = {"configuration":{"start_urls_list":start_urls_list,"type":"card_scraper","config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
-        configuration = {"configuration":{"type":"card_scraper","config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
+        configuration = {"configuration":{"type":"card_scraper", "mot_cle":mot_cle, "config":config,"collection_name":collection_name,"card_css_selector":card_css_selector}}
         if configuration not in list(self.db[collection_name].find(configuration,{"_id":0})) :
             self.db[collection_name].insert_one(configuration)
             print("configuration saved")

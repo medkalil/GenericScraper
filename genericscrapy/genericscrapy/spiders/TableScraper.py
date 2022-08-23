@@ -27,7 +27,8 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         print("isis:",response.request.url)
         #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
-        df = pd.read_html(response.request.url,match=self.table_match)
+        #df = pd.read_html(response.request.url,match=self.table_match)
+        df = pd.read_html(response.url,match=self.table_match)
         df = df[0]
         df = df[df.columns.drop(list(df.filter(regex='Unnamed')))]
         result = df.to_json(orient="records")
@@ -43,6 +44,7 @@ class QuotesSpider(scrapy.Spider):
             #res = parsed[x].update( {'url' : self.page} )
             # return only the item that have mot_cle 
             if self.check_mot_cle_in_item(parsed[x],self.table_match): 
+                parsed[x]["url"] = response.url
                 yield parsed[x]
         
         #parsed = json.dumps(parsed,ensure_ascii=False)  

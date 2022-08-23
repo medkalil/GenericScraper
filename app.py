@@ -37,11 +37,13 @@ from urllib.parse import urlparse
 from kafka import TopicPartition
 import gc
 from flask import session
-
-
+from flask import jsonify
+from flask_cors import CORS
+import bson.json_util 
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
+CORS(app)
 
 api = Api(app)
 scrapyd = ScrapydAPI('http://localhost:6800')
@@ -598,6 +600,21 @@ async def cancel_all_job():
       scrapyd.cancel(PROJECT_NAME, job["id"])
 
   return "all job canceled"
+
+@app.route('/get_root_list', methods=['POST','GET'])
+async def get_root_list():
+  return  jsonify( db.list_collection_names())
+ 
+# without: id,configuration 
+@app.route('/get_root_data', methods=['POST','GET'])
+async def get_root_data():
+  root = request.args.get('root')
+  data = list(db[root].find({},{"_id":0,"configuration":0}).limit(5))
+  print("data:",data)
+  # [1:] : get rid of the configuration obj
+  return jsonify(json.loads(bson.json_util.dumps(data[1:])))
+
+
 #####################################END: Routes for Production #################################################
 
 
