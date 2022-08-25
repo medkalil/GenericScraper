@@ -25,10 +25,10 @@ export class QueryDbService {
     );
   }
 
-  filter_resulat_by_mot_cle(root, mot_cle, item): Observable<any[]> {
+  filter_resulat_by_mot_cle(root, mot_cle): Observable<any[]> {
     //http://127.0.0.1:5000/filter_resulat_by_mot_cle?root=https://www.appeloffres.com&mot_cle=câbles&item={"sudo" : "ca" , "url" : "https://www.google.com"}
     return this.http.get<any>(
-      `http://127.0.0.1:5000/filter_resulat_by_mot_cle?root=${root}&mot_cle=${mot_cle}&item=${item} `
+      `http://127.0.0.1:5000/filter_resulat_by_mot_cle?root=${root}&mot_cle=${mot_cle} `
     );
   }
 }

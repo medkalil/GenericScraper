@@ -631,22 +631,43 @@ async def get_mot_cles():
 async def filter_resulat_by_mot_cle():
   root = request.args.get('root')
   mot_cle = request.args.get('mot_cle')
-  item = str(request.args.get('item'))
-  
-  print("type is",type(item))
-  item = json.loads(item)
-  print("th type is",type(item))
+  #item = str(request.args.get('item'))
+  data = []
 
-  title =  find_title_filed(item)
-  print("titte",title)
+  print("item is",root)
+  print("item is",mot_cle)
+  #print("item is",item)
+
+  #print("type is",type(item))
+  #item = json.loads(item)
+  #print("th type is",type(item))
+
+  #title =  find_title_filed(item)
+  #print("titte",title)
   #data = list(db[root].find({title:{"$regex":mot_cle,"$options":"i"}},{"_id":0}))
-  data = list(db[root].find({"Description sommaire de l'appel d'offres":{"$regex":mot_cle,"$options":"i"}},{"_id":0,"configuration":0}))
-  #print("the data",data)
+  #data = list(db[root].find({title:{"$regex":mot_cle,"$options":"i"}},{"_id":0,"configuration":0}))
+  
+  temp = list(db[root].find({},{"_id":0,"configuration":0}))
+
+  for it in temp:
+    if check_mot_cle_in_item(it,mot_cle):
+      data.append(it)
+  
+  print("the data is",data)
+  print("data end",data[:2])
   return jsonify(json.loads(bson.json_util.dumps(data)))
+
+
+
 
 
 #####################################END: Routes for Production #################################################
 
+def check_mot_cle_in_item(item,mor_cle):
+    for x in item.values():
+      if mor_cle in x.lower():
+        return True
+    return False
 
 def contains_url(s):
     return re.search("(?P<url>https?://[^\s]+)|www", s)

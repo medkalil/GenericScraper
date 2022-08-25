@@ -90,13 +90,21 @@
           </div>
         </div>
 
-        <select class="select" multiple>
-          <option *ngFor="let it of mot_cles" value="1">
-            <span *ngIf="it['table_match']; else cardScraper">
+        <select
+          (click)="selecting_mot_cle()"
+          id="select_mot_cle"
+          class="select"
+          multiple
+        >
+          <option *ngFor="let it of mot_cles">
+            <span
+              *ngIf="it['table_match']; else cardScraper"
+              value="{{ it['table_match'] }}"
+            >
               {{ it["table_match"] }}
             </span>
             <ng-template #cardScraper>
-              <span> {{ it["mot_cle"] }} </span>
+              <span value="{{ it['mot_cle'] }}"> {{ it["mot_cle"] }} </span>
             </ng-template>
           </option>
         </select>
@@ -138,10 +146,10 @@
           </div>
         </div>
       </div>
-      <h4>
+      <!-- <h4>
         keys :
         <p>{{ keys }}</p>
-      </h4>
+      </h4> -->
       <!-- <h4>this is data :{{ data[0] }}</h4> -->
     </div>
   </div>

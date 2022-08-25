@@ -11,13 +11,14 @@ export const ROUTES: RouteInfo[] = [
   { path: "/create-alert", title: "Create-alert", icon: "add_box", class: "" },
   { path: "/feed", title: "Feed", icon: "assistant", class: "" },
   { path: "/dashboard", title: "Dashboard", icon: "dashboard", class: "" },
-  { path: "/user-profile", title: "User Profile", icon: "person", class: "" },
   {
     path: "/table-list",
     title: "Table List",
     icon: "content_paste",
     class: "",
   },
+  { path: "/user-profile", title: "User Profile", icon: "person", class: "" },
+
   {
     path: "/typography",
     title: "Typography",
