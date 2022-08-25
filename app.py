@@ -4,6 +4,7 @@ from fileinput import close
 from logging import root
 from os import urandom
 from pickletools import int4
+from turtle import title
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from flask import request
@@ -40,6 +41,8 @@ from flask import session
 from flask import jsonify
 from flask_cors import CORS
 import bson.json_util 
+import copy
+import ast
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
@@ -614,6 +617,33 @@ async def get_root_data():
   # [1:] : get rid of the configuration obj
   return jsonify(json.loads(bson.json_util.dumps(data[1:])))
 
+@app.route('/get_mot_cles', methods=['POST','GET'])
+async def get_mot_cles():
+  root = request.args.get('root')
+  data = list(db[root].find({"configuration":{"$exists":True}},{"_id":0}))
+  print("data:",data)
+  for i in range(len(data)):
+    data[i] = data[i]['configuration']
+  print("new data:",data)
+  return jsonify(json.loads(bson.json_util.dumps(data)))
+
+@app.route('/filter_resulat_by_mot_cle', methods=['POST','GET'])
+async def filter_resulat_by_mot_cle():
+  root = request.args.get('root')
+  mot_cle = request.args.get('mot_cle')
+  item = str(request.args.get('item'))
+  
+  print("type is",type(item))
+  item = json.loads(item)
+  print("th type is",type(item))
+
+  title =  find_title_filed(item)
+  print("titte",title)
+  #data = list(db[root].find({title:{"$regex":mot_cle,"$options":"i"}},{"_id":0}))
+  data = list(db[root].find({"Description sommaire de l'appel d'offres":{"$regex":mot_cle,"$options":"i"}},{"_id":0,"configuration":0}))
+  #print("the data",data)
+  return jsonify(json.loads(bson.json_util.dumps(data)))
+
 
 #####################################END: Routes for Production #################################################
 
@@ -625,14 +655,16 @@ def contains_url(s):
 # item must not containing list/dict -> just key:value
 # wel give it item[1] to bypass item[0]:configuration
 def find_title_filed(item):
+    copy_item = copy.deepcopy(item)
     #bypass url links
-    for res in list(item):
+    print("from find_title",copy_item)
+    for res in list(copy_item):
         if contains_url(item[res]):
-            print("item del",item[res])
-            del item[res]
+            print("copy_item del",copy_item[res])
+            del copy_item[res]
     #len(k[0]) : 0 -> lengest key
     #len(k[1]) : 1 -> lengest value
-    return max(item.items(), key = lambda k :len(k[1]))[0]
+    return max(copy_item.items(), key = lambda k :len(k[1]))[0]
 
 
 def get_domain_from_url(url):
