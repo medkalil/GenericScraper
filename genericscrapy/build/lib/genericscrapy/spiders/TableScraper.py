@@ -14,8 +14,10 @@ class QuotesSpider(scrapy.Spider):
         super(QuotesSpider, self).__init__(*args, **kwargs)
         self.start_urls_list = start_urls_list.split(',')
         self.start_urls = self.start_urls_list
-        self.table_match = table_match
+        #self.table_match = table_match
         self.collection_name = collection_name
+
+        self.table_match = table_match.split(",")
 
     def start_requests(self):
         for url in self.start_urls:
@@ -25,29 +27,30 @@ class QuotesSpider(scrapy.Spider):
                 continue
     @inline_requests
     def parse(self, response):
-        print("isis:",response.request.url)
-        #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
-        #df = pd.read_html(response.request.url,match=self.table_match)
-        df = pd.read_html(response.url,match=self.table_match)
-        df = df[0]
-        df = df[df.columns.drop(list(df.filter(regex='Unnamed')))]
-        result = df.to_json(orient="records")
-        parsed = json.loads(result)
-        #parsed = json.dumps(parsed,ensure_ascii=False)
-        #get the fields names
-        for x in df:
-            print(x)
-            print(df[x])
+        for mot_cle in self.table_match:
+            print("isis:",response.request.url)
+            #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
+            #df = pd.read_html(response.request.url,match=self.table_match)
+            df = pd.read_html(response.url,match=mot_cle)
+            df = df[0]
+            df = df[df.columns.drop(list(df.filter(regex='Unnamed')))]
+            result = df.to_json(orient="records")
+            parsed = json.loads(result)
+            #parsed = json.dumps(parsed,ensure_ascii=False)
+            #get the fields names
+            for x in df:
+                print(x)
+                print(df[x])
 
-        for x in range(len(parsed)):
-            print(type(parsed[x]))
-            #res = parsed[x].update( {'url' : self.page} )
-            # return only the item that have mot_cle 
-            if self.check_mot_cle_in_item(parsed[x],self.table_match): 
-                parsed[x]["url"] = response.url
-                yield parsed[x]
-        
-        #parsed = json.dumps(parsed,ensure_ascii=False)  
+            for x in range(len(parsed)):
+                print(type(parsed[x]))
+                #res = parsed[x].update( {'url' : self.page} )
+                # return only the item that have mot_cle 
+                if self.check_mot_cle_in_item(parsed[x],mot_cle): 
+                    parsed[x]["url"] = response.url
+                    yield parsed[x]
+            
+            #parsed = json.dumps(parsed,ensure_ascii=False)  
 
     
         #   get the list of the columns names

@@ -636,12 +636,16 @@ async def filter_resulat_by_mot_cle():
   mot_cle = request.args.get('mot_cle')
   data = []
   
+  mot_cle = mot_cle.split(',')
+
+  print("the mot cle SI",mot_cle)
   #print("item is",root)
   #print("item is",mot_cle)
   temp = list(db[root].find({},{"_id":0,"configuration":0}))
   for it in temp:
-    if check_mot_cle_in_item(it,mot_cle):
-      data.append(it)
+    for mot in mot_cle:
+      if check_mot_cle_in_item(it,mot):
+        data.append(it)
   print("the data is",data)
   print("data end",data[:2])
   return jsonify(json.loads(bson.json_util.dumps(data)))
