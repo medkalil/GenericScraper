@@ -465,12 +465,15 @@ async def run_linkextractor():
             print("runnign TABLE CRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
             print("nomBER OF URLS:",len(urls))
-            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle[0], collection_name=root)
+            #was :table_match=list_mot_cle[0] -> table_match=list_mot_cle (bc scraper now can take more than 1 mot cle)  
+            # RQ : for card Scraper too
+            scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle, collection_name=root)
           elif isinstance(page_type,dict):
             print("runnign CARD SCRAPER")
             urls = "".join([str(elem)+"," for elem in urls])
             #scrapyd.schedule(PROJECT_NAME, 'scraper', config="{'title':'a.stretched-link.text-dark::text'}", start_urls_list=urls, card_css_selector="div.card.rounded-1.results-item.mb-3",collection_name=root,mot_cle=list_mot_cle[0])
-            scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+            #was : mot_cle=list_mot_cle[0] -> mot_cle=list_mot_cle (bc scraper now can take more than 1 mot cle)
+            scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle)
             #scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
 
         url_list = []
@@ -545,11 +548,11 @@ async def run_scraper_for_root_exist():
           print("runnign TABLE CRAPER")
           urls = "".join([str(elem)+"," for elem in urls])
           print("nomBER OF URLS:",len(urls))
-          scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle[0], collection_name=root)
+          scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=urls , table_match=list_mot_cle, collection_name=root)
         elif isinstance(page_type,dict):
           print("runnign CARD SCRAPER")
           urls = "".join([str(elem)+"," for elem in urls])
-          scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle[0])
+          scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=list_mot_cle)
           #scrapyd.schedule(PROJECT_NAME, 'scraper', config = "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}", start_urls_list=urls, card_css_selector="DIV.card.rounded-1.results-item.mb-3", collection_name=root, mot_cle=list_mot_cle[0])
 
         ulr_for_scraping = []
@@ -631,35 +634,29 @@ async def get_mot_cles():
 async def filter_resulat_by_mot_cle():
   root = request.args.get('root')
   mot_cle = request.args.get('mot_cle')
-  #item = str(request.args.get('item'))
   data = []
-
-  print("item is",root)
-  print("item is",mot_cle)
-  #print("item is",item)
-
-  #print("type is",type(item))
-  #item = json.loads(item)
-  #print("th type is",type(item))
-
-  #title =  find_title_filed(item)
-  #print("titte",title)
-  #data = list(db[root].find({title:{"$regex":mot_cle,"$options":"i"}},{"_id":0}))
-  #data = list(db[root].find({title:{"$regex":mot_cle,"$options":"i"}},{"_id":0,"configuration":0}))
   
+  #print("item is",root)
+  #print("item is",mot_cle)
   temp = list(db[root].find({},{"_id":0,"configuration":0}))
-
   for it in temp:
     if check_mot_cle_in_item(it,mot_cle):
       data.append(it)
-  
   print("the data is",data)
   print("data end",data[:2])
   return jsonify(json.loads(bson.json_util.dumps(data)))
 
 
+@app.route('/delete_collection', methods=['POST','GET'])
+async def delete_collection():
+  root = request.args.get('root')
+  
+  db[root].drop()
 
+  return jsonify("deleted")
 
+  """ db[root].drop()
+  return "collection dropped" """
 
 #####################################END: Routes for Production #################################################
 

@@ -15,7 +15,7 @@ export class TableListComponent implements OnInit {
   constructor(private queryDbService: QueryDbService) {}
 
   ngOnInit() {
-    this.pollingData = interval(5000)
+    this.pollingData = interval(10000)
       .pipe(
         startWith(0),
         switchMap(() => this.queryDbService.get_root_list())

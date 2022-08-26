@@ -1,9 +1,9 @@
 <div class="">
   <div class="d-flex flex-row">
-    <div class="main-content w-50 m-0 p-0">
+    <div class="main-content w-30 m-0 p-0">
       <div class="container-fluid pl-1">
         <div>
-          <div class="col-md-8 m-0 p-0">
+          <div class="col-md-8 m-0 p-0 mw-100">
             <div class="card overflow-auto pt-5">
               <div class="card-header card-header-danger">
                 <h4 class="card-title">Feed</h4>
@@ -79,13 +79,12 @@
         </div>
       </div>
     </div>
-    <div class="mt-5">
-      <div class="d-flex flex-column w-50">
-        <div class="card text-white bg-danger mb-3" style="max-width: 18rem">
+    <div class="w-100 overflow-auto">
+      <div class="d-flex flex-column" style="width: 80%">
+        <div class="card text-white bg-danger mb-3">
           <div class="card-header">
             <h3>
               <strong>{{ currentRoot }} </strong>
-              <button (click)="getFilter()">btn</button>
             </h3>
           </div>
         </div>
@@ -109,43 +108,62 @@
           </option>
         </select>
       </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header card-header-danger">
-                <h4 class="card-title">{{ currentRoot }}</h4>
-                <p class="card-category">Here is a subtitle for this table</p>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class="text-primary">
-                      <th *ngFor="let key of keys">
-                        {{ key }}
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let item of data">
-                        <ng-container *ngFor="let key of keys">
-                          <td>{{ item[key] }}</td>
-                        </ng-container>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td class="text-primary">$23,789</td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+      <!--  <app-data-table
+        *ngIf="currentRoot; else noCurrentRoot"
+        [rootProperty]="currentRoot"
+        [feedData]="data"
+      ></app-data-table>
+      <ng-template #noCurrentRoot> noCurrentRoot </ng-template> -->
+      <div
+        *ngIf="isWaiting; else notWaiting"
+        [hidden]="!isWaiting"
+        class="text-center position-relative"
+        style="top: 15%"
+      >
+        <div class="spinner-border" role="status"></div>
+        <h4>Loading...please waite</h4>
+      </div>
+      <ng-template #notWaiting>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-danger">
+                  <h4 class="card-title">{{ currentRoot }}</h4>
+                  <p class="card-category">Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class="text-primary">
+                        <th *ngFor="let key of keys">
+                          {{ key }}
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of data">
+                          <ng-container *ngFor="let key of keys">
+                            <td>{{ item[key] }}</td>
+                          </ng-container>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Minerva Hooper</td>
+                          <td>Curaçao</td>
+                          <td>Sinaai-Waas</td>
+                          <td class="text-primary">$23,789</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </ng-template>
+
       <!-- <h4>
         keys :
         <p>{{ keys }}</p>

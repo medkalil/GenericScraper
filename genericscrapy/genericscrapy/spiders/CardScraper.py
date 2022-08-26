@@ -26,7 +26,8 @@ class Scraper(scrapy.Spider):
         self.start_urls = self.start_urls_list
         self.card_css_selector = card_css_selector
         self.collection_name = collection_name
-        self.mot_cle = mot_cle
+        #self.mot_cle = mot_cle
+        self.mot_cle = mot_cle.split(",")
 
  
     def start_requests(self):
@@ -58,8 +59,9 @@ class Scraper(scrapy.Spider):
                 item[key] = ' '.join(elem for elem in res).strip()
             # check if the item containing mot-cle    
 
-            if self.check_mot_cle_in_item(item,self.mot_cle): 
-                yield dict(item)
+            for mot in self.mot_cle:
+                if self.check_mot_cle_in_item(item,mot): 
+                    yield dict(item)
             #yield dict(item)
 
         

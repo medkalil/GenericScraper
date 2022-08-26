@@ -31,4 +31,10 @@ export class QueryDbService {
       `http://127.0.0.1:5000/filter_resulat_by_mot_cle?root=${root}&mot_cle=${mot_cle} `
     );
   }
+
+  delete_collection(root): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/delete_collection?root=${root}`
+    );
+  }
 }

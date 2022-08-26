@@ -15,6 +15,7 @@ export class FeedComponent implements OnInit {
   keys: any[];
   mot_cles: any[];
   selected_mot_cle: string;
+  isWaiting = false;
 
   constructor(private queryDbService: QueryDbService) {}
 
@@ -27,12 +28,14 @@ export class FeedComponent implements OnInit {
   getCurrentRoot(c) {
     this.currentRoot = c;
     console.log("currentRoot is here", this.currentRoot);
-    //data
+    this.isWaiting = true;
+
     this.queryDbService.get_root_data(this.currentRoot).subscribe((res) => {
       this.data = res;
       this.keys = Object.keys(res[0]);
       console.log("curre", this.data);
       console.log("keys", this.keys);
+      this.isWaiting = false;
     });
     this.queryDbService.get_mot_cles(this.currentRoot).subscribe((res) => {
       this.mot_cles = res;
@@ -40,32 +43,19 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  getFilter() {
-    console.log("1st row", this.data[0]);
-    console.log("1st type", typeof this.data[0]);
-    console.log("this.mot_cles[0],", this.mot_cles[0]["mot_cle"]);
-
-    this.queryDbService
-      .filter_resulat_by_mot_cle(
-        this.currentRoot,
-        "fourniture"
-        // JSON.stringify(this.data[0])
-      )
-      .subscribe((res) => {
-        this.data = res;
-      });
-  }
-
   selecting_mot_cle() {
     let value = (<HTMLSelectElement>document.getElementById("select_mot_cle"))
       .value;
     console.log("value is:", value);
-
+    this.isWaiting = true;
+    console.log("is wiautinh", this.isWaiting);
     this.queryDbService
       .filter_resulat_by_mot_cle(this.currentRoot, value)
       .subscribe((res) => {
         this.data = res;
+        this.isWaiting = false;
       });
+
     console.log("data CHANGES");
   }
 }

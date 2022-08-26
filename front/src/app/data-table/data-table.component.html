@@ -57,11 +57,6 @@
     </div>
   </div>
 </div>
-<!-- <h4>
-  keys :
-  <p>{{ keys }}</p>
-</h4> -->
-<!-- <h4>this is data :{{ data[0] }}</h4> -->
 
 <!-- Modal -->
 <div
@@ -94,7 +89,14 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-danger">Save changes</button>
+        <button
+          (click)="deleteProject()"
+          type="button"
+          class="btn btn-danger"
+          data-dismiss="modal"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>
