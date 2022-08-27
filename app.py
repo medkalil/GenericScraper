@@ -43,6 +43,7 @@ from flask_cors import CORS
 import bson.json_util 
 import copy
 import ast
+from typing import Iterable 
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
@@ -623,24 +624,29 @@ async def get_root_data():
 @app.route('/get_mot_cles', methods=['POST','GET'])
 async def get_mot_cles():
   root = request.args.get('root')
+  res_list = []
+
   data = list(db[root].find({"configuration":{"$exists":True}},{"_id":0}))
   print("data:",data)
   for i in range(len(data)):
     data[i] = data[i]['configuration']
-  print("new data:",data)
-  return jsonify(json.loads(bson.json_util.dumps(data)))
+    if data[i]['type']=="card_scraper":
+      res_list.append(data[i]['mot_cle'])
+    else:
+      res_list.append(data[i]['table_match'])
+  res_list = get_url_string_from_list(res_list)
+  print("res_list is",res_list)
+  return jsonify(res_list)
 
 @app.route('/filter_resulat_by_mot_cle', methods=['POST','GET'])
 async def filter_resulat_by_mot_cle():
   root = request.args.get('root')
   mot_cle = request.args.get('mot_cle')
   data = []
-  
   mot_cle = mot_cle.split(',')
 
   print("the mot cle SI",mot_cle)
-  #print("item is",root)
-  #print("item is",mot_cle)
+
   temp = list(db[root].find({},{"_id":0,"configuration":0}))
   for it in temp:
     for mot in mot_cle:
@@ -659,10 +665,23 @@ async def delete_collection():
 
   return jsonify("deleted")
 
-  """ db[root].drop()
-  return "collection dropped" """
+
 
 #####################################END: Routes for Production #################################################
+
+def get_url_string_from_list(li):
+  # [['travaux', 'amenagement'], ['materiel', 'amenagement']] -> ['travaux', 'amenagement', 'materiel', 'amenagement']
+  return list(flatten(li))
+
+def flatten(items):
+    """Yield items from any nested iterable; see Reference."""
+    for x in items:
+        if isinstance(x, Iterable) and not isinstance(x, (str, bytes)):
+            for sub_x in flatten(x):
+                yield sub_x
+        else:
+            yield x
+
 
 def check_mot_cle_in_item(item,mor_cle):
     for x in item.values():

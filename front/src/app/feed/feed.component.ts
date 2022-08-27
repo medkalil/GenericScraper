@@ -54,6 +54,7 @@ export class FeedComponent implements OnInit {
       .subscribe((res) => {
         this.data = res;
         this.isWaiting = false;
+        console.log("data CHANGES", this.data);
       });
 
     console.log("data CHANGES");

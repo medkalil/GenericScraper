@@ -96,15 +96,9 @@
           multiple
         >
           <option *ngFor="let it of mot_cles">
-            <span
-              *ngIf="it['table_match']; else cardScraper"
-              value="{{ it['table_match'] }}"
-            >
-              {{ it["table_match"] }}
+            <span value="{{ it }}">
+              {{ it }}
             </span>
-            <ng-template #cardScraper>
-              <span value="{{ it['mot_cle'] }}"> {{ it["mot_cle"] }} </span>
-            </ng-template>
           </option>
         </select>
       </div>
