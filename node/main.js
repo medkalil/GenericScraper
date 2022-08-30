@@ -34,15 +34,15 @@ app.post("/schema_detect", async (req, res, next) => {
   var listofwebsite = req.body.url_list;
   var list_mot_cle = req.body.list_mot_cle;
 
-  //const mot_cle = "supply";
+  //const mot_cle = ["entretien", "supply"];
+  //const mot_cle = "entretien";
   const mot_cle = list_mot_cle[0];
   //console.log("here is 1st mot cle passed from flask to node", mot_cle);
 
   /* const listofwebsite = [
-    "https://www.j360.info/appels-d-offres/europe/france/bourgogne-franche-comte/nievre/?cat=it-telecoms",
-    "https://www.lespagesjaunesafrique.com/societes/afrique-du-sud/agricole-materiels-produits",
-    "https://www.kooora.fr/",
     "https://www.e-marchespublics.com/appel-offre",
+    "https://www.j360.info/appels-d-offres/europe/france/bourgogne-franche-comte/nievre/?cat=it-telecoms",
+    "https://www.kooora.fr/",
   ]; */
   /* var website = req.body.site;
   console.log("this is it :", website); */
@@ -66,7 +66,6 @@ app.post("/schema_detect", async (req, res, next) => {
     try {
       await page.goto(website, { waitUntil: "domcontentloaded", timeout: 0 });
       //const html = await page.content();
-
       const result = await page.evaluate(async (mytext) => {
         var getVisibleText = (element) => {
           /* window.getSelection().removeAllRanges();
@@ -219,6 +218,7 @@ app.post("/schema_detect", async (req, res, next) => {
           }
         };
         //============================================function usage===========================================//
+
         let type_page = null;
         let text_className = await findNodeByContent(
           mytext,
@@ -255,6 +255,7 @@ app.post("/schema_detect", async (req, res, next) => {
       return res.status(200).send(result);
     } catch (e) {
       //to iterate through the hole list urls (10 url)
+      //console.log("e", e);
       if (i < listofwebsite.length - 1) {
         console.log(`pas de schema encore ${listofwebsite[i]}`);
         continue;

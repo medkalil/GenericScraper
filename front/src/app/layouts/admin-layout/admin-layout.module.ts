@@ -25,6 +25,9 @@ import { CreateAlertComponent } from "app/create-alert/create-alert.component";
 import { FeedComponent } from "app/feed/feed.component";
 import { HttpClientModule } from "@angular/common/http";
 import { DataTableComponent } from "app/data-table/data-table.component";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatIconModule } from "@angular/material/icon";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 @NgModule({
   imports: [
@@ -39,6 +42,9 @@ import { DataTableComponent } from "app/data-table/data-table.component";
     MatSelectModule,
     MatTooltipModule,
     HttpClientModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
   ],
   declarations: [
     CreateAlertComponent,

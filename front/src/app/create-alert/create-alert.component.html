@@ -1,21 +1,98 @@
-<p>create-alert works!</p>
-<form>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Example label</label>
-    <input
-      type="text "
-      class="form-control bg-white"
-      id="formGroupExampleInput"
-      placeholder="Example input"
-    />
-  </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput2">Another label</label>
-    <input
-      type="text"
-      class="form-control bg-white"
-      id="formGroupExampleInput2"
-      placeholder="Another input"
-    />
-  </div>
+<div class="d-flex flex-column m-5">
+  <p>create-alert works!</p>
+
+  <form>
+    <form [formGroup]="myForm" class="form-container">
+      <ng-container formArrayName="urls">
+        <label for="formGroupExampleInput"
+          >Entre la/les Url ou vous aller faire le recherche (max 2 url)</label
+        >
+        <ng-container
+          *ngFor="let _ of urls.controls; let idx = index"
+          [formGroupName]="idx"
+        >
+          <div class="form-inline mb-1">
+            <input
+              class="form-control bg-white"
+              style="width: 80%"
+              formControlName="url"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                {{ item }}
+              </mat-option>
+            </mat-autocomplete>
+
+            <button
+              class="btn btn-danger btn-sm ml-1"
+              [disabled]="isDisabledRemove"
+              (click)="removeUrl(idx)"
+            >
+              x
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <button
+        class="bn btn-primary"
+        [disabled]="isDisabledAdd"
+        (click)="addUrl()"
+      >
+        Add new
+      </button>
+    </form>
+
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Mots-clés de l'Alerte</label>
+
+      <mat-form-field
+        class="example-chip-list bg-white"
+        style="width: 100%"
+        appearance="fill"
+      >
+        <mat-label>Mot('s) Cles</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let str of motCleList" (removed)="remove(str)">
+            {{ str }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Autre Mot Cle..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+
+    <button class="w-100 btn-danger" (click)="onRecherhe()">Recherche</button>
+  </form>
+</div>
+<!-- ---------------------------------------zrdzed---------------------------- -->
+<!-- <form [formGroup]="myForm" class="form-container">
+  <ng-container formArrayName="urls">
+    <ng-container
+      *ngFor="let _ of urls.controls; let idx = index"
+      [formGroupName]="idx"
+    >
+      <div class="form-inline mb-1">
+        <input class="form-control" formControlName="url" />
+
+        <button class="btn btn-primary btn-sm ml-1" (click)="removeColor(idx)">
+          x
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <button class="bn btn-primary" (click)="addColor()">Add new</button>
 </form>
+
+<pre>
+  {{ myForm.value | json }}
+</pre>
+ -->

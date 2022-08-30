@@ -28,28 +28,30 @@ class QuotesSpider(scrapy.Spider):
     @inline_requests
     def parse(self, response):
         for mot_cle in self.table_match:
-            print("isis:",response.request.url)
-            #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
-            #df = pd.read_html(response.request.url,match=self.table_match)
-            df = pd.read_html(response.url,match=mot_cle)
-            df = df[0]
-            df = df[df.columns.drop(list(df.filter(regex='Unnamed')))]
-            result = df.to_json(orient="records")
-            parsed = json.loads(result)
-            #parsed = json.dumps(parsed,ensure_ascii=False)
-            #get the fields names
-            for x in df:
-                print(x)
-                print(df[x])
+            try:
+                print("isis:",response.request.url)
+                #df = pd.read_html(response.request.url,match="Description sommaire de l'appel d'offres")
+                #df = pd.read_html(response.request.url,match=self.table_match)
+                df = pd.read_html(response.url,match=mot_cle)
+                df = df[0]
+                df = df[df.columns.drop(list(df.filter(regex='Unnamed')))]
+                result = df.to_json(orient="records")
+                parsed = json.loads(result)
+                #parsed = json.dumps(parsed,ensure_ascii=False)
+                #get the fields names
+                for x in df:
+                    print(x)
+                    print(df[x])
 
-            for x in range(len(parsed)):
-                print(type(parsed[x]))
-                #res = parsed[x].update( {'url' : self.page} )
-                # return only the item that have mot_cle 
-                if self.check_mot_cle_in_item(parsed[x],mot_cle): 
-                    parsed[x]["url"] = response.url
-                    yield parsed[x]
-            
+                for x in range(len(parsed)):
+                    print(type(parsed[x]))
+                    #res = parsed[x].update( {'url' : self.page} )
+                    # return only the item that have mot_cle 
+                    if self.check_mot_cle_in_item(parsed[x],mot_cle): 
+                        parsed[x]["url"] = response.url
+                        yield parsed[x]
+            except:
+                continue
             #parsed = json.dumps(parsed,ensure_ascii=False)  
 
     

@@ -123,9 +123,16 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div class="card-header card-header-danger">
-                  <h4 class="card-title">{{ currentRoot }}</h4>
-                  <p class="card-category">Here is a subtitle for this table</p>
+                <div
+                  class="card-header card-header-danger d-flex justify-content-between"
+                >
+                  <div>
+                    <h4 class="card-title">{{ currentRoot }}</h4>
+                    <p class="card-category">
+                      Here is a subtitle for this table
+                    </p>
+                  </div>
+                  <strong>{{ dataSelectedLeght }} Items</strong>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -134,19 +141,22 @@
                         <th *ngFor="let key of keys">
                           {{ key }}
                         </th>
+                        <th>Link</th>
                       </thead>
                       <tbody>
                         <tr *ngFor="let item of data">
                           <ng-container *ngFor="let key of keys">
                             <td>{{ item[key] }}</td>
                           </ng-container>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Minerva Hooper</td>
-                          <td>Curaçao</td>
-                          <td>Sinaai-Waas</td>
-                          <td class="text-primary">$23,789</td>
+                          <td>
+                            <button
+                              [disabled]="noUrlBtn"
+                              class="btn btn-danger m-1 p-1 text-capitalize"
+                              (click)="clickMe(item)"
+                            >
+                              Voir plus de détail
+                            </button>
+                          </td>
                         </tr>
                       </tbody>
                     </table>

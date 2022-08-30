@@ -390,7 +390,6 @@ async def run_linkextractor():
   url_list = []
   ulr_for_scraping = []
   page_type = ""
-  #page_type = "table"
 
   root=request.args.get('root')
   depth=int(request.args.get('depth'))
@@ -415,7 +414,7 @@ async def run_linkextractor():
   consumer.assign([TopicPartition('numtest', partition)])
     
 
-  list_mot_cle = list_mot_cle.split(",")
+  #list_mot_cle = list_mot_cle.split(",")
 
   #reading from Queue  
   print("before loop")
@@ -436,8 +435,7 @@ async def run_linkextractor():
      
       #1/Schema detection
       if (len(url_list) == 10 and root not in collection_list):
-        #list_mot_cle = list_mot_cle.split(",")
-        data = {"url_list":url_list,"list_mot_cle":list_mot_cle}
+        data = {"url_list":url_list,"list_mot_cle":list_mot_cle.split(",")}
         headers = requests.utils.default_headers()
         #headers.update({'User-Agent': 'My User Agent 1.0',})
         #res = await requests.post('http://localhost:3000/schema_detect',headers={"User-Agent" :"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"},json=data) 
@@ -519,7 +517,10 @@ async def run_scraper_for_root_exist():
      value_deserializer=lambda x: loads(x.decode('utf-8')))
   consumer.assign([TopicPartition('numtest', partition)])
     
-  list_mot_cle = list_mot_cle.split(",")
+  #list_mot_cle = list_mot_cle.split(",")
+  print("list_mot_cle:",list_mot_cle)
+  print("list_mot_cle type:",type(list_mot_cle))
+  
   #reading from Queue  
   print("before loop")
   for message in consumer:

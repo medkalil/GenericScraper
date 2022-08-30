@@ -60,8 +60,11 @@ class Scraper(scrapy.Spider):
             # check if the item containing mot-cle    
 
             for mot in self.mot_cle:
-                if self.check_mot_cle_in_item(item,mot): 
-                    yield dict(item)
+                try:
+                    if self.check_mot_cle_in_item(item,mot): 
+                        yield dict(item)
+                except:
+                    continue
             #yield dict(item)
 
         
