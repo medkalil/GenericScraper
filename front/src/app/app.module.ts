@@ -27,6 +27,7 @@ import {
   PathLocationStrategy,
 } from "@angular/common";
 import { AdminLayoutModule } from "./layouts/admin-layout/admin-layout.module";
+import { DeleteDialogComponent } from "./delete-dialog/delete-dialog.component";
 
 @NgModule({
   imports: [
@@ -41,7 +42,7 @@ import { AdminLayoutModule } from "./layouts/admin-layout/admin-layout.module";
       apiKey: "YOUR_GOOGLE_MAPS_API_KEY",
     }),
   ],
-  declarations: [AppComponent, AdminLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, DeleteDialogComponent],
   //PathLocationStrategy : to get rid of the # in the link : /#/path  -> /path
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],

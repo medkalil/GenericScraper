@@ -10,10 +10,9 @@
             <p class="card-category">Here is a subtitle for this table</p>
           </div>
           <i
+            (click)="openDeleteDialog()"
             type="button"
             class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModalCenter"
             role="button"
             class="fa fa-trash-o"
             style="font-size: 24px"
@@ -32,7 +31,12 @@
               </thead> -->
               <thead class="text-primary">
                 <th *ngFor="let key of keys">
-                  {{ key }}
+                  <input
+                    type="text"
+                    class="text-primary shadow-none"
+                    value="{{ key }}"
+                    style="border: none"
+                  />
                 </th>
               </thead>
               <!-- for data : *ngFor in tr and values in td -->
@@ -41,62 +45,25 @@
                   <ng-container *ngFor="let key of keys">
                     <td>{{ item[key] }}</td>
                   </ng-container>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Minerva Hooper</td>
-                  <td>Curaçao</td>
-                  <td>Sinaai-Waas</td>
-                  <td class="text-primary">$23,789</td>
+                  <td>
+                    <button
+                      [disabled]="noUrlBtn"
+                      class="btn btn-primary m-1 p-1 text-capitalize"
+                      (click)="navigateTo(item)"
+                    >
+                      Voir plus de détail
+                    </button>
+                  </td>
+                  <td>
+                    <button (click)="deleteItem(item)" class="btn btn-danger">
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModalCenter"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">
-          <strong>Deleting Alet</strong>
-        </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6>Are you sure you whant to delete this project</h6>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button
-          (click)="deleteProject()"
-          type="button"
-          class="btn btn-danger"
-          data-dismiss="modal"
-        >
-          Save changes
-        </button>
       </div>
     </div>
   </div>

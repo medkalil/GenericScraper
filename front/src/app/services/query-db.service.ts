@@ -55,4 +55,10 @@ export class QueryDbService {
       `http://127.0.0.1:5000/run_linkextractor?root=${root}&depth=4&list_mot_cle=${list_mot_cle}&partition=${partition} `
     );
   }
+
+  delete_item(root, item) {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/delete_item?root=${root}&item=${item}`
+    );
+  }
 }

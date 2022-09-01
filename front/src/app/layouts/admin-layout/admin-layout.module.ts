@@ -28,6 +28,7 @@ import { DataTableComponent } from "app/data-table/data-table.component";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatIconModule } from "@angular/material/icon";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
+    MatDialogModule,
   ],
   declarations: [
     CreateAlertComponent,

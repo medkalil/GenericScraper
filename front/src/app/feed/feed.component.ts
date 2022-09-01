@@ -25,6 +25,8 @@ export class FeedComponent implements OnInit {
     this.queryDbService.get_root_list().subscribe((res) => {
       this.rootList = res;
     });
+
+    this.currentRoot = this.rootList[0];
   }
 
   getCurrentRoot(c) {

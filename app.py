@@ -44,6 +44,7 @@ import bson.json_util
 import copy
 import ast
 from typing import Iterable 
+import json5
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
@@ -661,12 +662,45 @@ async def filter_resulat_by_mot_cle():
 @app.route('/delete_collection', methods=['POST','GET'])
 async def delete_collection():
   root = request.args.get('root')
-  
   db[root].drop()
-
   return jsonify("deleted")
 
+@app.route('/update_champ', methods=['POST','GET'])
+async def update_champ():
+  root = request.args.get('root')
+  oldKey =  request.args.get('oldKey')
+  newKey =  request.args.get('newKey')
 
+  data = list(db[root].find({"configuration":{"$exists":True}},{"_id":0}))
+  data = data[0]['configuration']
+
+  if "config" in data.keys():
+    print("in config")
+    data = data["config"]
+    #data = data.replace(oldKey,newKey)
+    db[root].update_one()
+    
+  #if table or change the hall item key for all the data in that root 
+  db[root].update_many( {}, { "$rename": { oldKey: newKey } } )
+
+  return jsonify(data)
+
+@app.route('/delete_champ', methods=['POST','GET'])
+async def delete_champ():
+  return "deleted"
+
+@app.route('/delete_item', methods=['POST','GET'])
+async def delete_item():
+  root = request.args.get('root')
+  item = json.loads(request.args.get("item"))
+
+  print("item:",item)
+  print("item type:",type(item))
+  selectedItem = list(db[root].find(item,{"_id":0}))
+  print("selectedItem:",selectedItem)
+  if selectedItem:
+    db[root].delete_one(selectedItem[0])
+  return jsonify(selectedItem)
 
 #####################################END: Routes for Production #################################################
 

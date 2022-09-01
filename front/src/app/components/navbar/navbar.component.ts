@@ -5,7 +5,8 @@ import {
   LocationStrategy,
   PathLocationStrategy,
 } from "@angular/common";
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-navbar",
@@ -18,6 +19,11 @@ export class NavbarComponent implements OnInit {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
+  isSearch = true;
+
+  searchForm = new FormGroup({
+    searchValue: new FormControl(""),
+  });
 
   constructor(
     location: Location,
@@ -26,6 +32,14 @@ export class NavbarComponent implements OnInit {
   ) {
     this.location = location;
     this.sidebarVisible = false;
+    router.events.subscribe((event: NavigationEnd) => {
+      -console.log("THE VAL IS", event.url);
+      if (["/feed", "/table-list"].includes(event.url)) {
+        this.isSearch = false;
+      } else {
+        this.isSearch = true;
+      }
+    });
   }
 
   ngOnInit() {
@@ -134,5 +148,9 @@ export class NavbarComponent implements OnInit {
       }
     }
     return "Dashboard";
+  }
+
+  search() {
+    console.log("the value", this.searchForm.value);
   }
 }

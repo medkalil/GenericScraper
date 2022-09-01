@@ -139,7 +139,13 @@
                     <table class="table">
                       <thead class="text-primary">
                         <th *ngFor="let key of keys">
-                          {{ key }}
+                          <input
+                            type="text"
+                            class="text-primary shadow-none"
+                            value="{{ key }}"
+                            style="border: none"
+                            readonly
+                          />
                         </th>
                         <th>Link</th>
                       </thead>
