@@ -10,6 +10,7 @@ import { UpgradeComponent } from "../../upgrade/upgrade.component";
 import { CreateAlertComponent } from "app/create-alert/create-alert.component";
 import { FeedComponent } from "app/feed/feed.component";
 import { JobsComponent } from "app/jobs/jobs.component";
+import { OpportuniteComponent } from "app/opportunite/opportunite.component";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -66,5 +67,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "icons", component: IconsComponent },
 
   { path: "notifications", component: NotificationsComponent },
+  { path: "opportunites", component: OpportuniteComponent },
   { path: "upgrade", component: UpgradeComponent },
 ];

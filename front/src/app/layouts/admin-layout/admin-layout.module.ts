@@ -28,6 +28,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatIconModule } from "@angular/material/icon";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatDialogModule } from "@angular/material/dialog";
+import { OpportuniteComponent } from "../../opportunite/opportunite.component";
 
 @NgModule({
   imports: [
@@ -58,8 +59,9 @@ import { MatDialogModule } from "@angular/material/dialog";
     NotificationsComponent,
     UpgradeComponent,
     DataTableComponent,
+    OpportuniteComponent,
   ],
   providers: [],
-  exports: [FeedComponent, MatFormFieldModule],
+  exports: [FeedComponent, MatFormFieldModule, OpportuniteComponent],
 })
 export class AdminLayoutModule {}

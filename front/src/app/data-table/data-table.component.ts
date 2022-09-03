@@ -15,7 +15,6 @@ import { startWith, switchMap } from "rxjs/operators";
 })
 export class DataTableComponent implements OnInit {
   @Input() rootProperty: any;
-  @Input() mot_search: any;
 
   data: any;
   keys: any[];
@@ -31,12 +30,13 @@ export class DataTableComponent implements OnInit {
     private router: Router
   ) {
     router.events.subscribe((event: NavigationEnd) => {
-      var currRoot = this.router.url.toString();
-      if (currRoot.includes("/table-list?q=")) {
+      var currRoot = decodeURIComponent(this.router.url.toString());
+      if (currRoot.includes("/opportunites?q=")) {
         this.search_mot_param = currRoot
-          .replace("/table-list?q=", "")
+          .replace("/opportunites?q=", "")
           .trim()
           .toLowerCase();
+        this.search_mot_param = decodeURIComponent(this.search_mot_param);
         console.log(" From rootProperty", this.rootProperty);
         console.log("res From Data Table", this.search_mot_param);
         this.formSearch.controls.search_mot.setValue(this.search_mot_param);
@@ -128,6 +128,11 @@ export class DataTableComponent implements OnInit {
       .subscribe((res) => {
         console.log("its OK");
       });
+  }
+
+  AddItem(item) {
+    console.log("the added item", item);
+    this.queryDbService.setData(item);
   }
 
   /* ngOnDestroy() {

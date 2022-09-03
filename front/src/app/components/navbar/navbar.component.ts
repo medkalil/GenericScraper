@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
   isSearch = true;
+  nomberOfNotification: any;
 
   searchForm = new FormGroup({
     searchValue: new FormControl(""),
@@ -39,7 +40,7 @@ export class NavbarComponent implements OnInit {
     router.events.subscribe((event: NavigationEnd) => {
       console.log("current route: ", this.router.url.toString());
       var currRoot = this.router.url.toString();
-      if (currRoot.includes("table-list")) {
+      if (currRoot.includes("opportunites")) {
         this.isSearch = false;
       } else {
         this.isSearch = true;
@@ -58,6 +59,10 @@ export class NavbarComponent implements OnInit {
         $layer.remove();
         this.mobile_menu_visible = 0;
       }
+
+      this.queryDbService.currentData.subscribe((res) => {
+        this.nomberOfNotification = res.length;
+      });
     });
 
     /* this.searchForm.controls.searchValue.valueChanges.subscribe((res) => {
@@ -152,8 +157,8 @@ export class NavbarComponent implements OnInit {
     }
 
     var currRoot = this.router.url.toString();
-    if (currRoot.includes("table-list")) {
-      return "table-list";
+    if (currRoot.includes("opportunites")) {
+      return "opportunites";
     }
 
     for (var item = 0; item < this.listTitles.length; item++) {
@@ -168,7 +173,7 @@ export class NavbarComponent implements OnInit {
     if (this.searchForm.value["searchValue"]) {
       //this.queryDbService.setSearchMot(this.searchForm.value["searchValue"]);
       console.log("RUNNUMBER");
-      this.router.navigate(["/table-list"], {
+      this.router.navigate(["/opportunites"], {
         queryParams: {
           q: this.searchForm.value["searchValue"],
         },

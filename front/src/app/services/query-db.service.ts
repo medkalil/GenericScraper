@@ -1,14 +1,19 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class QueryDbService {
-  searchMot: any;
+  private data = new BehaviorSubject<Array<any>>([]);
+  currentData = this.data.asObservable();
 
   constructor(private http: HttpClient) {}
+
+  setData(data) {
+    this.data.next(this.data.value.concat(data));
+  }
 
   get_root_list(): Observable<any[]> {
     return this.http.get<any>("http://127.0.0.1:5000/get_root_list");
@@ -58,12 +63,6 @@ export class QueryDbService {
       `http://127.0.0.1:5000/delete_item?root=${root}&item=${item}`
     );
   }
-
-  /* //here and in navbarCompenent.ts
-  setSearchMot(mot): any {
-    this.searchMot = mot;
-    console.log("from service", this.searchMot);
-  } */
 
   get_search_data(root, mot) {
     return this.http.get<any>(
