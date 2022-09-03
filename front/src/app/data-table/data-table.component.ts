@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { DeleteDialogComponent } from "app/delete-dialog/delete-dialog.component";
 import { NotificationsComponent } from "app/notifications/notifications.component";
 import { QueryDbService } from "app/services/query-db.service";
+import { interval } from "rxjs";
+import { startWith, switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-data-table",
@@ -11,24 +15,72 @@ import { QueryDbService } from "app/services/query-db.service";
 })
 export class DataTableComponent implements OnInit {
   @Input() rootProperty: any;
+  @Input() mot_search: any;
 
   data: any;
   keys: any[];
   noUrlBtn = true;
+  pollingData: any;
+  search_mot_param: any;
+  isWaiting = true;
 
   constructor(
     private queryDbService: QueryDbService,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    router.events.subscribe((event: NavigationEnd) => {
+      var currRoot = this.router.url.toString();
+      if (currRoot.includes("/table-list?q=")) {
+        this.search_mot_param = currRoot
+          .replace("/table-list?q=", "")
+          .trim()
+          .toLowerCase();
+        console.log(" From rootProperty", this.rootProperty);
+        console.log("res From Data Table", this.search_mot_param);
+        this.formSearch.controls.search_mot.setValue(this.search_mot_param);
+      }
+    });
+  }
+
+  formSearch = new FormGroup({
+    search_mot: new FormControl(""),
+  });
 
   ngOnInit(): void {
     this.queryDbService.get_root_data(this.rootProperty).subscribe((res) => {
       this.data = res;
       this.keys = Object.keys(res[0]);
+      this.isWaiting = false;
       this.itemHaveUrl(this.data);
     });
-
     console.log("rootProperty :", this.rootProperty);
+    console.log("data :", this.data);
+
+    this.formSearch.get("search_mot").valueChanges.subscribe((res) => {
+      console.log("the VV", res.toLowerCase());
+      console.log("the VM", this.search_mot_param);
+      //this.search_mot_param = res;
+      this.queryDbService
+        .get_search_data(this.rootProperty, res.toLowerCase())
+        .subscribe((res) => {
+          this.data = res;
+        });
+    });
+
+    /* this.search_mot_param = this.route.snapshot.queryParams.q;
+    console.log("the search_mot_param is INIT", this.search_mot_param); */
+
+    /* this.pollingData = interval(10000)
+      .pipe(
+        startWith(0),
+        switchMap(() => this.queryDbService.get_search_data(this.rootProperty))
+      )
+      .subscribe((res) => {
+        console.log(`ths res of ${this.rootProperty} is`, res);
+        this.data = res;
+      }); */
   }
 
   onClick() {
@@ -77,4 +129,8 @@ export class DataTableComponent implements OnInit {
         console.log("its OK");
       });
   }
+
+  /* ngOnDestroy() {
+    this.pollingData.unsubscribe();
+  } */
 }

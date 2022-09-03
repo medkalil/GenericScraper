@@ -5,8 +5,10 @@ import {
   LocationStrategy,
   PathLocationStrategy,
 } from "@angular/common";
-import { NavigationEnd, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { FormControl, FormGroup } from "@angular/forms";
+import { QueryDbService } from "app/services/query-db.service";
+import { HttpParams } from "@angular/common/http";
 
 @Component({
   selector: "app-navbar",
@@ -28,13 +30,16 @@ export class NavbarComponent implements OnInit {
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private queryDbService: QueryDbService
   ) {
     this.location = location;
     this.sidebarVisible = false;
     router.events.subscribe((event: NavigationEnd) => {
-      -console.log("THE VAL IS", event.url);
-      if (["/feed", "/table-list"].includes(event.url)) {
+      console.log("current route: ", this.router.url.toString());
+      var currRoot = this.router.url.toString();
+      if (currRoot.includes("table-list")) {
         this.isSearch = false;
       } else {
         this.isSearch = true;
@@ -54,6 +59,10 @@ export class NavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
+
+    /* this.searchForm.controls.searchValue.valueChanges.subscribe((res) => {
+      console.log("the VV", res);
+    }); */
   }
 
   onDashboard() {
@@ -142,6 +151,11 @@ export class NavbarComponent implements OnInit {
       titlee = titlee.slice(1);
     }
 
+    var currRoot = this.router.url.toString();
+    if (currRoot.includes("table-list")) {
+      return "table-list";
+    }
+
     for (var item = 0; item < this.listTitles.length; item++) {
       if (this.listTitles[item].path === titlee) {
         return this.listTitles[item].title;
@@ -151,6 +165,16 @@ export class NavbarComponent implements OnInit {
   }
 
   search() {
-    console.log("the value", this.searchForm.value);
+    if (this.searchForm.value["searchValue"]) {
+      //this.queryDbService.setSearchMot(this.searchForm.value["searchValue"]);
+      console.log("RUNNUMBER");
+      this.router.navigate(["/table-list"], {
+        queryParams: {
+          q: this.searchForm.value["searchValue"],
+        },
+        queryParamsHandling: "merge",
+      });
+      this.searchForm.reset();
+    }
   }
 }

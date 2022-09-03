@@ -14,7 +14,6 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { TableListComponent } from "./table-list/table-list.component";
 import { TypographyComponent } from "./typography/typography.component";
 import { IconsComponent } from "./icons/icons.component";
-import { MapsComponent } from "./maps/maps.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
 import { UpgradeComponent } from "./upgrade/upgrade.component";
 import { AgmCoreModule } from "@agm/core";
@@ -28,6 +27,7 @@ import {
 } from "@angular/common";
 import { AdminLayoutModule } from "./layouts/admin-layout/admin-layout.module";
 import { DeleteDialogComponent } from "./delete-dialog/delete-dialog.component";
+import { JobsComponent } from "./jobs/jobs.component";
 
 @NgModule({
   imports: [
@@ -42,7 +42,12 @@ import { DeleteDialogComponent } from "./delete-dialog/delete-dialog.component";
       apiKey: "YOUR_GOOGLE_MAPS_API_KEY",
     }),
   ],
-  declarations: [AppComponent, AdminLayoutComponent, DeleteDialogComponent],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    DeleteDialogComponent,
+    JobsComponent,
+  ],
   //PathLocationStrategy : to get rid of the # in the link : /#/path  -> /path
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],

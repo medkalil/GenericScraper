@@ -6,11 +6,8 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class QueryDbService {
-  httpOptions = {
-    headers: new HttpHeaders({
-      "Content-type": "application/json",
-    }),
-  };
+  searchMot: any;
+
   constructor(private http: HttpClient) {}
 
   get_root_list(): Observable<any[]> {
@@ -60,5 +57,21 @@ export class QueryDbService {
     return this.http.get<any>(
       `http://127.0.0.1:5000/delete_item?root=${root}&item=${item}`
     );
+  }
+
+  /* //here and in navbarCompenent.ts
+  setSearchMot(mot): any {
+    this.searchMot = mot;
+    console.log("from service", this.searchMot);
+  } */
+
+  get_search_data(root, mot) {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/get_search_data?root=${root}&search_mot=${mot}`
+    );
+  }
+
+  get_list_jobs() {
+    return this.http.get<any>("http://127.0.0.1:5000/get_list_jobs");
   }
 }

@@ -581,7 +581,9 @@ async def just_consume():
 @app.route('/get_list_jobs', methods=['POST','GET'])
 async def get_list_jobs():
   #scrapyd.list_jobs(PROJECT_NAME)
-  return scrapyd.list_jobs(PROJECT_NAME)
+  res = scrapyd.list_jobs(PROJECT_NAME)
+  res.pop("node_name")
+  return res
 
 @app.route('/cancel_job', methods=['POST','GET'])
 async def cancel_job():
@@ -701,6 +703,25 @@ async def delete_item():
   if selectedItem:
     db[root].delete_one(selectedItem[0])
   return jsonify(selectedItem)
+
+
+@app.route('/get_search_data', methods=['POST','GET'])
+async def get_search_data():
+  root = request.args.get("root")
+  search_mot = request.args.get("search_mot")
+  data =[]
+  #db.stores.find( { $text: { $search: "java coffee shop" } } )
+  temp = list(db[root].find({},{"_id":0,"configuration":0}))
+  for it in temp:
+    for mot in search_mot.split(','):
+      if check_mot_cle_in_item(it,mot):
+        data.append(it)
+  print("the mot search",search_mot)
+  print("the data is",data)
+  print("data end",data[:2])
+  
+  return jsonify(data[:10])
+
 
 #####################################END: Routes for Production #################################################
 

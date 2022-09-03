@@ -1,0 +1,137 @@
+<p>jobs works!</p>
+<h2>Pending</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between"
+        >
+          <div>
+            <h4 class="card-title">Pending</h4>
+            <p class="card-category">Here is a subtitle for this table</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary" *ngIf="pending?.length > 0">
+                <th>id</th>
+                <th>project</th>
+                <th>spider</th>
+                <th>start_time</th>
+                <th>end_time</th>
+              </thead>
+              <!-- for data : *ngFor in tr and values in td -->
+              <tbody *ngIf="pending?.length > 0; else noPending">
+                <tr *ngFor="let item of pending">
+                  <ng-container>
+                    <td>{{ item["id"] }}</td>
+                    <td>{{ item["project"] }}</td>
+                    <td>{{ item["spider"] }}</td>
+                    <td>{{ item["start_time"] }}</td>
+                    <td>{{ item["end_time"] }}</td>
+                  </ng-container>
+                </tr>
+              </tbody>
+              <ng-template #noPending>
+                <h4>No Pending Scraper</h4>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Running</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between"
+        >
+          <div>
+            <h4 class="card-title">Running</h4>
+            <p class="card-category">Here is a subtitle for this table</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary" *ngIf="running?.length > 0">
+                <th>id</th>
+                <th>project</th>
+                <th>spider</th>
+                <th>start_time</th>
+                <th>end_time</th>
+              </thead>
+              <!-- for data : *ngFor in tr and values in td -->
+              <tbody *ngIf="running?.length > 0; else noRunning">
+                <tr *ngFor="let item of running">
+                  <ng-container>
+                    <td>{{ item["id"] }}</td>
+                    <td>{{ item["project"] }}</td>
+                    <td>{{ item["spider"] }}</td>
+                    <td>{{ item["start_time"] }}</td>
+                    <td>{{ item["end_time"] }}</td>
+                  </ng-container>
+                </tr>
+              </tbody>
+              <ng-template #noRunning>
+                <h4>No Running Scraper</h4>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h2>Finished</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div
+          class="card-header card-header-danger d-flex justify-content-between"
+        >
+          <div>
+            <h4 class="card-title">Finished</h4>
+            <p class="card-category">Here is a subtitle for this table</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary" *ngIf="finished?.length > 0">
+                <th>id</th>
+                <th>project</th>
+                <th>spider</th>
+                <th>start_time</th>
+                <th>end_time</th>
+              </thead>
+              <!-- for data : *ngFor in tr and values in td -->
+              <tbody *ngIf="finished?.length > 0; else noFinished">
+                <tr *ngFor="let item of finished">
+                  <ng-container>
+                    <td>{{ item["id"] }}</td>
+                    <td>{{ item["project"] }}</td>
+                    <td>{{ item["spider"] }}</td>
+                    <td>{{ item["start_time"] }}</td>
+                    <td>{{ item["end_time"] }}</td>
+                  </ng-container>
+                </tr>
+              </tbody>
+              <ng-template #noFinished>
+                <h4>No Finished Scraper</h4>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
