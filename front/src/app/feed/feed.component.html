@@ -92,7 +92,7 @@
         <select
           (click)="selecting_mot_cle()"
           id="select_mot_cle"
-          class="select"
+          class="selectpicker"
           multiple
         >
           <option *ngFor="let it of mot_cles">
@@ -118,6 +118,7 @@
         <div class="spinner-border" role="status"></div>
         <h4>Loading...please waite</h4>
       </div>
+
       <ng-template #notWaiting>
         <div class="container-fluid">
           <div class="row">

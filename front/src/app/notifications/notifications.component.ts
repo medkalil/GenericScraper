@@ -1,16 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { QueryDbService } from "app/services/query-db.service";
+import { Subscription } from "rxjs";
 declare var $: any;
 @Component({
   selector: "app-notifications",
   templateUrl: "./notifications.component.html",
   styleUrls: ["./notifications.component.css"],
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationsComponent implements OnInit, OnDestroy {
   opportuniteList: any[];
   //keys: any[];
   listOfListOfKeys: any[];
   noUrlBtn = true;
+  sub: Subscription;
 
   constructor(private queryDbService: QueryDbService) {}
   showNotification(from, align) {
@@ -46,14 +48,14 @@ export class NotificationsComponent implements OnInit {
     );
   }
   ngOnInit() {
-    this.queryDbService.currentData.subscribe((data) => {
+    this.sub = this.queryDbService.currentData.subscribe((data) => {
       console.log("the data is", data);
       this.opportuniteList = data;
       //this.keys = Object.keys(data[0]);
       //console.log("the keys is", this.keys);
       this.listOfListOfKeys = this.getKeys(data);
       console.log("the listOfListOfKeys is", this.listOfListOfKeys);
-      this.itemHaveUrl(data);
+      this.itemHaveUrl(this.opportuniteList);
     });
   }
 
@@ -62,7 +64,6 @@ export class NotificationsComponent implements OnInit {
     for (let i = 0; i < listItems.length; i++) {
       res.push(Object.keys(listItems[i]));
     }
-    console.log("the getKeys", res);
     return res;
   }
 
@@ -82,5 +83,9 @@ export class NotificationsComponent implements OnInit {
         this.noUrlBtn = true;
       }
     }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

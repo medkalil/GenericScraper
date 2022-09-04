@@ -17,11 +17,14 @@
             </form> -->
           </div>
         </div>
-        <div *ngFor="let item of opportuniteList" class="card-body">
-          <div *ngFor="let keys of listOfListOfKeys" class="table-responsive">
+        <div
+          *ngFor="let item of opportuniteList; let idx = index"
+          class="card-body"
+        >
+          <div class="table-responsive">
             <table class="table">
               <thead class="text-primary" *ngIf="opportuniteList?.length > 0">
-                <th *ngFor="let key of keys">
+                <th *ngFor="let key of listOfListOfKeys[idx]">
                   <input
                     type="text"
                     class="text-primary shadow-none"
@@ -33,7 +36,7 @@
               <!-- for data : *ngFor in tr and values in td -->
               <tbody *ngIf="opportuniteList?.length > 0; else noData">
                 <tr>
-                  <ng-container *ngFor="let key of keys">
+                  <ng-container *ngFor="let key of listOfListOfKeys[idx]">
                     <td>{{ item[key] }}</td>
                   </ng-container>
                   <td>
