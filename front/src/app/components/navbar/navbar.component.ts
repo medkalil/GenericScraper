@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
   isSearch = true;
-  nomberOfNotification: any;
+  nomberOfNotification: any = 0;
 
   searchForm = new FormGroup({
     searchValue: new FormControl(""),
@@ -59,16 +59,18 @@ export class NavbarComponent implements OnInit {
         $layer.remove();
         this.mobile_menu_visible = 0;
       }
+    });
 
-      this.queryDbService.currentData.subscribe((res) => {
-        this.nomberOfNotification = res.length;
-      });
+    this.queryDbService.currentData.subscribe((res) => {
+      this.nomberOfNotification = res.length;
     });
 
     /* this.searchForm.controls.searchValue.valueChanges.subscribe((res) => {
       console.log("the VV", res);
     }); */
   }
+
+  ngAfterViewInit() {}
 
   onDashboard() {
     this.router.navigateByUrl("/dashboard");
@@ -172,7 +174,6 @@ export class NavbarComponent implements OnInit {
   search() {
     if (this.searchForm.value["searchValue"]) {
       //this.queryDbService.setSearchMot(this.searchForm.value["searchValue"]);
-      console.log("RUNNUMBER");
       this.router.navigate(["/opportunites"], {
         queryParams: {
           q: this.searchForm.value["searchValue"],

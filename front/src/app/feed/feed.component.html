@@ -22,27 +22,29 @@
                 </a> -->
                   <hr />
                   <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link active" aria-current="page">
-                        <svg class="bi pe-none me-2" width="16" height="16">
-                          <use xlink:href="#home" />
-                        </svg>
-                        Home
-                      </a>
-                    </li>
                     <li
-                      *ngFor="let c of rootList"
+                      *ngFor="let c of rootList; let i = index"
                       data-color="danger"
                       data-background-color="white"
+                      (click)="select(i)"
+                      [ngClass]="{
+                        'nav-link active': selectedIndex == i,
+                        'text-white': selectedIndex == i
+                      }"
                     >
                       <a
-                        class="nav-link link-dark text-secondary"
+                        class="nav-link link-dark"
+                        [ngClass]="
+                          selectedIndex == i
+                            ? 'text-white font-weight-bold'
+                            : 'text-secondary'
+                        "
                         style="cursor: pointer"
                         (click)="getCurrentRoot(c)"
                       >
                         {{ c }}
                       </a>
-                      <hr />
+                      <hr class="m-0 p-0" />
                     </li>
                   </ul>
                   <hr />

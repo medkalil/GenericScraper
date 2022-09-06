@@ -41,7 +41,7 @@
               </thead>
               <!-- for data : *ngFor in tr and values in td -->
               <tbody *ngIf="data?.length > 0; else noData">
-                <tr *ngFor="let item of data">
+                <tr *ngFor="let item of data; let idx = index">
                   <ng-container *ngFor="let key of keys">
                     <td>{{ item[key] }}</td>
                   </ng-container>
@@ -64,15 +64,15 @@
                     </button>
                   </td>
                   <td>
-                    <button (click)="deleteItem(item)" class="btn btn-danger">
+                    <button
+                      (click)="deleteItem(item, idx)"
+                      class="btn btn-danger"
+                    >
                       Delete
                     </button>
                   </td>
                 </tr>
               </tbody>
-              <ng-template #noData>
-                <h4>NoData</h4>
-              </ng-template>
               <div
                 [hidden]="!isWaiting"
                 class="text-center position-relative"
@@ -81,6 +81,9 @@
                 <div class="spinner-border" role="status"></div>
                 <h4>Loading...please waite</h4>
               </div>
+              <ng-template #noData>
+                <h4 [hidden]="isWaiting">NoData</h4>
+              </ng-template>
             </table>
           </div>
         </div>

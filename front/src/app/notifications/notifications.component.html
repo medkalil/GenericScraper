@@ -17,43 +17,52 @@
             </form> -->
           </div>
         </div>
-        <div
-          *ngFor="let item of opportuniteList; let idx = index"
-          class="card-body"
-        >
-          <div class="table-responsive">
-            <table class="table">
-              <thead class="text-primary" *ngIf="opportuniteList?.length > 0">
-                <th *ngFor="let key of listOfListOfKeys[idx]">
-                  <input
-                    type="text"
-                    class="text-primary shadow-none"
-                    value="{{ key }}"
-                    style="border: none"
-                  />
-                </th>
-              </thead>
-              <!-- for data : *ngFor in tr and values in td -->
-              <tbody *ngIf="opportuniteList?.length > 0; else noData">
-                <tr>
-                  <ng-container *ngFor="let key of listOfListOfKeys[idx]">
-                    <td>{{ item[key] }}</td>
-                  </ng-container>
-                  <td>
-                    <button
-                      [disabled]="noUrlBtn"
-                      class="btn btn-primary m-1 p-1 text-capitalize"
-                      (click)="navigateTo(item)"
-                    >
-                      Voir plus de détail
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-              <ng-template #noData>
-                <h4>NoData</h4>
-              </ng-template>
-              <!-- <div
+        <ng-conainer *ngIf="opportuniteList?.length > 0; dataDosentExist">
+          <div
+            *ngFor="let item of opportuniteList; let idx = index"
+            class="card-body"
+          >
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary" *ngIf="opportuniteList?.length > 0">
+                  <th *ngFor="let key of listOfListOfKeys[idx]">
+                    <input
+                      type="text"
+                      class="text-primary shadow-none"
+                      value="{{ key }}"
+                      style="border: none"
+                    />
+                  </th>
+                </thead>
+                <!-- for data : *ngFor in tr and values in td -->
+                <tbody *ngIf="opportuniteList?.length > 0; else noData">
+                  <tr>
+                    <ng-container *ngFor="let key of listOfListOfKeys[idx]">
+                      <td>{{ item[key] }}</td>
+                    </ng-container>
+                    <td>
+                      <button
+                        [disabled]="noUrlBtn"
+                        class="btn btn-primary m-1 p-1 text-capitalize"
+                        (click)="navigateTo(item)"
+                      >
+                        Voir plus de détail
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        (click)="removeItem(item, idx)"
+                        class="btn btn-danger"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <ng-template #noData>
+                  <h4>NoData</h4>
+                </ng-template>
+                <!-- <div
                 [hidden]="!isWaiting"
                 class="text-center position-relative"
                 style="width: 100vh"
@@ -61,9 +70,11 @@
                 <div class="spinner-border" role="status"></div>
                 <h4>Loading...please waite</h4>
               </div> -->
-            </table>
+              </table>
+            </div>
           </div>
-        </div>
+        </ng-conainer>
+        <ng-template #DataDosentExist> No data </ng-template>
       </div>
     </div>
   </div>

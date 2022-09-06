@@ -18,6 +18,7 @@ export class FeedComponent implements OnInit {
   isWaiting = false;
   noUrlBtn = true;
   dataSelectedLeght = 0;
+  selectedIndex: number;
 
   constructor(private queryDbService: QueryDbService) {}
 
@@ -27,6 +28,10 @@ export class FeedComponent implements OnInit {
     });
 
     this.currentRoot = this.rootList[0];
+  }
+
+  select(index: number) {
+    this.selectedIndex = index;
   }
 
   getCurrentRoot(c) {

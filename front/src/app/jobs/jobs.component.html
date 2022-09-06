@@ -36,6 +36,9 @@
               </tbody>
               <ng-template #noPending>
                 <h4>No Pending Scraper</h4>
+                <div *ngIf="errMsg" class="alert alert-danger">
+                  <strong>Error :</strong>{{ errMsg }}
+                </div>
               </ng-template>
             </table>
           </div>
@@ -82,6 +85,9 @@
               </tbody>
               <ng-template #noRunning>
                 <h4>No Running Scraper</h4>
+                <div *ngIf="errMsg" class="alert alert-danger">
+                  <strong>Error :</strong>{{ errMsg }}
+                </div>
               </ng-template>
             </table>
           </div>
@@ -127,6 +133,9 @@
               </tbody>
               <ng-template #noFinished>
                 <h4>No Finished Scraper</h4>
+                <div *ngIf="errMsg" class="alert alert-danger">
+                  <strong>Error :</strong>{{ errMsg }}
+                </div>
               </ng-template>
             </table>
           </div>

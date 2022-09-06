@@ -16,12 +16,14 @@ import { startWith, switchMap } from "rxjs/operators";
 export class DataTableComponent implements OnInit {
   @Input() rootProperty: any;
 
-  data: any;
+  data: any[];
   keys: any[];
   noUrlBtn = true;
   pollingData: any;
   search_mot_param: any;
   isWaiting = true;
+  listDataNotification: any[];
+  myRouterObserver = null;
 
   constructor(
     private queryDbService: QueryDbService,
@@ -29,19 +31,22 @@ export class DataTableComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    router.events.subscribe((event: NavigationEnd) => {
-      var currRoot = decodeURIComponent(this.router.url.toString());
-      if (currRoot.includes("/opportunites?q=")) {
-        this.search_mot_param = currRoot
-          .replace("/opportunites?q=", "")
-          .trim()
-          .toLowerCase();
-        this.search_mot_param = decodeURIComponent(this.search_mot_param);
-        console.log(" From rootProperty", this.rootProperty);
-        console.log("res From Data Table", this.search_mot_param);
-        this.formSearch.controls.search_mot.setValue(this.search_mot_param);
-      }
-    });
+    this.myRouterObserver = router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        var currRoot = decodeURIComponent(this.router.url.toString());
+        console.log("1 NUMBER");
+        if (currRoot.includes("/opportunites?q=")) {
+          this.search_mot_param = currRoot
+            .replace("/opportunites?q=", "")
+            .trim()
+            .toLowerCase();
+          this.search_mot_param = decodeURIComponent(this.search_mot_param);
+          console.log(" From rootProperty", this.rootProperty);
+          console.log("res From Data Table", this.search_mot_param);
+          this.formSearch.controls.search_mot.setValue(this.search_mot_param);
+        }
+      });
   }
 
   formSearch = new FormGroup({
@@ -61,26 +66,21 @@ export class DataTableComponent implements OnInit {
     this.formSearch.get("search_mot").valueChanges.subscribe((res) => {
       console.log("the VV", res.toLowerCase());
       console.log("the VM", this.search_mot_param);
-      //this.search_mot_param = res;
+
+      /* if (this.search_mot_param == res) {
+        this.myRouterObserver.unsubscribe();
+      } */
       this.queryDbService
         .get_search_data(this.rootProperty, res.toLowerCase())
         .subscribe((res) => {
           this.data = res;
         });
+      this.search_mot_param = "";
     });
 
-    /* this.search_mot_param = this.route.snapshot.queryParams.q;
-    console.log("the search_mot_param is INIT", this.search_mot_param); */
-
-    /* this.pollingData = interval(10000)
-      .pipe(
-        startWith(0),
-        switchMap(() => this.queryDbService.get_search_data(this.rootProperty))
-      )
-      .subscribe((res) => {
-        console.log(`ths res of ${this.rootProperty} is`, res);
-        this.data = res;
-      }); */
+    this.queryDbService.currentData.subscribe((res) => {
+      this.listDataNotification = res;
+    });
   }
 
   onClick() {
@@ -121,21 +121,33 @@ export class DataTableComponent implements OnInit {
     }
   }
 
-  deleteItem(item) {
+  deleteItem(item, idx) {
     console.log("item:", item);
     this.queryDbService
       .delete_item(this.rootProperty, JSON.stringify(item))
       .subscribe((res) => {
+        this.data.splice(idx, 1);
         console.log("its OK");
       });
   }
 
   AddItem(item) {
-    console.log("the added item", item);
+    console.log("from data table");
     this.queryDbService.setData(item);
+    //console.log("the added item", item);
+    /* this.queryDbService.currentData.subscribe((res) => {
+      console.log("list 1 ", res);
+      console.log("list 2 ", this.listDataNotification);
+      if (!res.includes(item) || !this.listDataNotification.includes(item)) {
+        console.log("IS IN");
+        this.queryDbService.setData(item);
+      } else {
+        console.log("item existe");
+      }
+    }); */
   }
 
-  /* ngOnDestroy() {
-    this.pollingData.unsubscribe();
-  } */
+  ngOnDestroy() {
+    this.myRouterObserver.unsubscribe();
+  }
 }

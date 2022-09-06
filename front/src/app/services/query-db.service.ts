@@ -1,19 +1,49 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { ProcessHttpmsgService } from "./process-httpmsg.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class QueryDbService {
-  private data = new BehaviorSubject<Array<any>>([]);
+  private data = new BehaviorSubject<any[]>([]);
   currentData = this.data.asObservable();
+  private items: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private processHttpmsgService: ProcessHttpmsgService
+  ) {}
 
-  setData(data) {
+  setData(data: any) {
+    this.items.push(data);
     this.data.next(this.data.value.concat(data));
   }
+
+  remove(it) {
+    let roomArr: any[] = [...this.data.getValue()];
+
+    roomArr.forEach((item, index) => {
+      if (item === it) {
+        roomArr.splice(index, 1);
+      }
+    });
+
+    this.data.next(roomArr);
+  }
+
+  /* removeData(data): Observable<any> {
+    const roomArr: any[] = this.data.getValue();
+    roomArr.forEach((item, index) => {
+      if (item === data) {
+        roomArr.splice(index, 1);
+      }
+    });
+    this.data.next(roomArr);
+    return roomArr;
+  } */
 
   get_root_list(): Observable<any[]> {
     return this.http.get<any>("http://127.0.0.1:5000/get_root_list");
@@ -71,6 +101,8 @@ export class QueryDbService {
   }
 
   get_list_jobs() {
-    return this.http.get<any>("http://127.0.0.1:5000/get_list_jobs");
+    return this.http
+      .get<any>("http://127.0.0.1:5000/get_list_jobs")
+      .pipe(catchError(this.processHttpmsgService.handleError));
   }
 }

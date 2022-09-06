@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { QueryDbService } from "app/services/query-db.service";
-import { Subscription } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 declare var $: any;
 @Component({
   selector: "app-notifications",
@@ -83,6 +83,12 @@ export class NotificationsComponent implements OnInit, OnDestroy {
         this.noUrlBtn = true;
       }
     }
+  }
+
+  removeItem(item, idx) {
+    console.log("item To Delete:", item);
+    this.queryDbService.remove(item);
+    this.opportuniteList = this.opportuniteList.filter((it) => it != item);
   }
 
   ngOnDestroy() {
