@@ -117,7 +117,10 @@ app.post("/schema_detect", async (req, res, next) => {
             }
           }
           //console.log(nodeList.textContent);
-          return nodeList;
+          if (nodeList) {
+            return nodeList;
+          }
+          return text;
         };
 
         //function for get config declaration

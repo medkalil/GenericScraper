@@ -12,6 +12,7 @@ import re
 from urllib.parse import urlparse
 #from requests import Session
 #import grequests
+from scrapy_splash import SplashRequest
 
 class UrlExtractor(Spider):
     name = 'url-extractor'
@@ -46,9 +47,7 @@ class UrlExtractor(Spider):
     def start_requests(self, *args, **kwargs):
         headers = {
         "content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "DNT": "1",
-        "Origin": "https://www.premierleague.com",
-        "Referer": "https://www.premierleague.com/players",
+        #"Referer": "https://www.premierleague.com/players",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36"
         }
         yield Request('%s' % self.source, callback=self.get_links, headers=headers)
@@ -91,6 +90,7 @@ class UrlExtractor(Spider):
     def get_all_links(self, response):
         links = self.le.extract_links(response)
         #links = get_valid_links(links,self.source)
+        print("inside get_all_links")
         str_links = []
         for link in links:
             if link.url not in self.listx:

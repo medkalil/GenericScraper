@@ -69,30 +69,21 @@
       </mat-form-field>
     </div>
 
-    <button class="w-100 btn-danger" (click)="onRecherhe()">Recherche</button>
+    <button
+      [disabled]="isMaxRecherhe"
+      class="w-100 btn-danger"
+      (click)="onRecherhe()"
+    >
+      Recherche
+    </button>
+
+    <div [hidden]="!isMaxRecherhe" class="alert alert-danger mt-3" role="alert">
+      Max Number Of Scraper (2) Running!
+    </div>
+
+    <div [hidden]="!isScraping" class="text-center position-relative mt-5">
+      <div class="spinner-border" role="status"></div>
+      <h4>La Recherche est encour</h4>
+    </div>
   </form>
 </div>
-<!-- ---------------------------------------zrdzed---------------------------- -->
-<!-- <form [formGroup]="myForm" class="form-container">
-  <ng-container formArrayName="urls">
-    <ng-container
-      *ngFor="let _ of urls.controls; let idx = index"
-      [formGroupName]="idx"
-    >
-      <div class="form-inline mb-1">
-        <input class="form-control" formControlName="url" />
-
-        <button class="btn btn-primary btn-sm ml-1" (click)="removeColor(idx)">
-          x
-        </button>
-      </div>
-    </ng-container>
-  </ng-container>
-
-  <button class="bn btn-primary" (click)="addColor()">Add new</button>
-</form>
-
-<pre>
-  {{ myForm.value | json }}
-</pre>
- -->

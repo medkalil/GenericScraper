@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "6308e547fee4c95650a78c60"
+  },
+  "configuration": {
+    "type": "card_scraper",
+    "mot_cle": [
+      "travaux",
+      "amenagement"
+    ],
+    "config": "{'title':'a.stretched-link.text-dark::text'}",
+    "collection_name": "aa",
+    "card_css_selector": "div.card.rounded-1.results-item.mb-3"
+  }
+},{
+  "_id": {
+    "$oid": "6308e54afee4c95650a78c62"
+  },
+  "classified_as": "Santé",
+  "url": "https://www.j360.info/appels-d-offres",
+  "Title": "amenagement drain rue aboulgacem chebi ghannouch"
+},{
+  "_id": {
+    "$oid": "6308e54bfee4c95650a78c64"
+  },
+  "classified_as": "BTP Bâtiment",
+  "url": "https://www.j360.info/appels-d-offres",
+  "Title": "Travaux d’aménagement et d’expansion d’une cuisine a la caserne de bortal hayder"
+},{
+  "_id": {
+    "$oid": "6308e54cfee4c95650a78c65"
+  },
+  "classified_as": "BTP Bâtiment",
+  "url": "https://www.j360.info/appels-d-offres",
+  "Title": "Travaux de construction des bâtiments à Bardo"
+},{
+  "_id": {
+    "$oid": "6308e54cfee4c95650a78c66"
+  },
+  "classified_as": "BTP Bâtiment",
+  "url": "https://www.j360.info/appels-d-offres",
+  "Title": "travaux de construction des bâtiments à Bizerte"
+},{
+  "_id": {
+    "$oid": "6308e54dfee4c95650a78c67"
+  },
+  "classified_as": "BTP Bâtiment",
+  "url": "https://www.j360.info/appels-d-offres",
+  "Title": "travaux de construction d’une sale des fêtes a kairouan"
+},{
+  "_id": {
+    "$oid": "6308ee4e1bc639765fe77af8"
+  },
+  "configuration": {
+    "type": "card_scraper",
+    "mot_cle": [
+      "materiel",
+      "amenagement"
+    ],
+    "config": "{'title':'a.stretched-link.text-dark::text'}",
+    "collection_name": "aa",
+    "card_css_selector": "div.card.rounded-1.results-item.mb-3"
+  }
+}]

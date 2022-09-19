@@ -34,17 +34,6 @@ export class QueryDbService {
     this.data.next(roomArr);
   }
 
-  /* removeData(data): Observable<any> {
-    const roomArr: any[] = this.data.getValue();
-    roomArr.forEach((item, index) => {
-      if (item === data) {
-        roomArr.splice(index, 1);
-      }
-    });
-    this.data.next(roomArr);
-    return roomArr;
-  } */
-
   get_root_list(): Observable<any[]> {
     return this.http.get<any>("http://127.0.0.1:5000/get_root_list");
   }

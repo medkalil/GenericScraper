@@ -28,6 +28,9 @@ export class CreateAlertComponent implements OnInit {
   options = ["Sam", "Varun", "Jasmine"];
   filteredOptions: any[];
   existingRoots: any[];
+  isMaxRecherhe: boolean = false;
+  urlExtractorCount: number = 0;
+  isScraping: any;
 
   constructor(
     private fb: FormBuilder,
@@ -116,7 +119,14 @@ export class CreateAlertComponent implements OnInit {
     var roots = this.myForm.value["urls"].map((ele) => ele["url"]);
     var mot_cle = this.motCleList;
 
-    this.scrape(roots, mot_cle);
+    if (this.ismaxScraperRunning()) {
+      console.log("maximum number of urls running");
+      this.isMaxRecherhe = true;
+    } else {
+      console.log("you can run a recherche");
+      this.scrape(roots, mot_cle);
+      this.isScraping = true;
+    }
   }
 
   scrape(roots, mot_cle_list) {
@@ -133,5 +143,30 @@ export class CreateAlertComponent implements OnInit {
           .subscribe((res) => console.log("scrapers are running ..."));
       }
     }
+  }
+
+  ismaxScraperRunning() {
+    this.queryDbService.get_list_jobs().subscribe((res) => {
+      console.log("inside ismaxScraperRunning", res);
+      for (var val of res["pending"]) {
+        if (val["spider"] == "url-extractor") {
+          console.log("inside pending");
+          this.urlExtractorCount++;
+        }
+      }
+      for (var val of res["running"]) {
+        if (val["spider"] == "url-extractor") {
+          this.urlExtractorCount++;
+          console.log("inside running");
+        }
+      }
+    });
+    console.log("THE this.urlExtractorCount", this.urlExtractorCount);
+    if (this.urlExtractorCount > 1) {
+      this.isMaxRecherhe = true;
+      console.log("returning true");
+      return true;
+    }
+    return false;
   }
 }

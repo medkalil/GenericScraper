@@ -1,0 +1,1470 @@
+[{
+  "_id": {
+    "$oid": "62f668b3c39eb32b9d921608"
+  },
+  "configuration": {
+    "mot_cle": "supply",
+    "type": "card_scraper",
+    "config": "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}",
+    "collection_name": "https://www.j360.info",
+    "card_css_selector": "DIV.card.rounded-1.results-item.mb-3"
+  }
+},{
+  "_id": {
+    "$oid": "62f668c0c39eb32b9d92160b"
+  },
+  "item0": "Supply of VHF radio Repeaters, Base radios, mobile radios, portable radios and their accessories under Framework Contract for Mara, Simiyu, Kagera, Mwanza, Geita Songwe,Njombe, Mbeya, Iringa, Songea, Rukwa, Lindi, Mtwara, …",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f668c153bd5e9412a2bd97"
+  },
+  "item0": "Supply of Radio Mast for Tanesco Substation and offices for KIA, Karatu, Mzakwe, Kiteto, Kigoma, Urambo, Bariadi, Nyamongo, Nkasi, Sumbawanga, Newala, Mtwara, Kibaha, Ilala, Mikumi and Iyovi in Tanesco Substation …",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f668c253bd5e9412a2bd98"
+  },
+  "item0": "Supply and Commissioning Of ICT Equipment (Laptops, Projectors, Printers and APC Smart Ups)",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "5 days, 21 hours",
+  "item5": "08/18/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f668c353bd5e9412a2bd99"
+  },
+  "item0": "Supply and Printing of Promotion Material",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "3 days, 17 hours",
+  "item5": "08/16/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f668c76ca6c8e12f1149d8"
+  },
+  "item0": "Supply of 6,250,000 Acre packs of Cotton Pest Control Insecticides",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "09/01/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f668fca02d06610e671664"
+  },
+  "item0": "Supply of complete package SCADA-HMI software for upgrade of Substation Monitoring and Control System at Kiyungi, Mwanza, Makumbusho and Lusu Grid Substations",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/25/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66907a02d06610e671665"
+  },
+  "item0": "Supply, Installation and Commissioning of Various ICT Equipment",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6690aa02d06610e671666"
+  },
+  "item0": "Supply, Installation and Commissioning of f HADC2: Private Cloud Solution",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/05/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6690ca02d06610e671667"
+  },
+  "item0": "Supply of Agricultural Scientific Tools",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "3 days, 17 hours",
+  "item5": "08/16/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6690fa02d06610e671668"
+  },
+  "item0": "IFB - Tanzania - Supply of Desktop Computers and Printers to a Business Continuity Centre (BCP) for Bank of the Republic of Burundi (BRB)",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "01/27/2028",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "62f66911a02d06610e671669"
+  },
+  "item0": "Supply, Installation , testing and Commissioning of ICT Equipment for a Computer Labaratory at Bandari Collage, Dar es Salaam (Network System, Power System ,Computers and Furniture)",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "5 days, 21 hours",
+  "item5": "08/18/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66912337deb50c816d105"
+  },
+  "item0": "Supply of Spares Capacitive Voltage Transfomers (CVTs) for 220kV, 132kV, 66kV and 33kV and Current Transfomers (CT) for 132kV, 66kV and 33kV for Grid Substations",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/31/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66914337deb50c816d106"
+  },
+  "item0": "READVERTISEMENT-SUPPLY OF DIGITAL WEIGHING SCALE",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/26/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f669166ca6c8e12f1149d9"
+  },
+  "item0": "SUPPLY OF WATER PIPES FITTINGS",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66917337deb50c816d107"
+  },
+  "item0": "Supply of Outdooors Circuit Breakers LOT 1(Supply of outdooors circuit breaker for Nyakato, Musoma, Djululigwa,Masasi , Tukuyu,Ludewa, Mafinga, Ibadakuli and lugarawa ) and LOT 2 (Supply of 220kV, 132kV, 66kV …",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "08/27/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f669186ca6c8e12f1149da"
+  },
+  "item0": "Supply of pipes for Bukara Bujora Kizugwangoma water network extension",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66918587436106c344590"
+  },
+  "item0": "Supply of Motor vehicles for ZESTA Project",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/23/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66919337deb50c816d108"
+  },
+  "item0": "SUPPLY OF WATER CHEMICALS",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66919587436106c344591"
+  },
+  "item0": "Supply, installation, testing and commissioning of laboratory equipment for Tanzania Bureau of Standards",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "3 days, 17 hours",
+  "item5": "08/16/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66919a02d06610e67166a"
+  },
+  "item0": "Supply and installation of 3x33kV Switchgear complete for revival of reactors and installation of auxilliary transformer at Ubungo 220/132kV Substation",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f6691a337deb50c816d109"
+  },
+  "item0": "Supply of 2*15MVARS Capacitor bank cells for improvement of voltage at Dar es Salaam",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "62f6691b6ca6c8e12f1149db"
+  },
+  "item0": "SUPPLY OF WATER PIPES",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6691b337deb50c816d10a"
+  },
+  "item0": "Supply of Water Treatment Chemicals",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 17 hours",
+  "item5": "08/15/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6691c337deb50c816d10b"
+  },
+  "item0": "Supply, Installation, testing and commissioning of Fire detection system at Grid Substations in Dar es salaam and Pwani (Ubungo 220/132kV, Ubungo 132/33kV Kipawa, Majani Mapana, Gongolamboto, Mbagala, Kigamboni, Makumbusho, Dodoma, …",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f6691c6ca6c8e12f1149dc"
+  },
+  "item0": "Supply of Material for customer connection and network coverage under framework Agreement",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "08/25/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f6691d6ca6c8e12f1149dd"
+  },
+  "item0": "Supply of water Pipes and Fittings",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 17 hours",
+  "item5": "08/15/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6691da02d06610e67166b"
+  },
+  "item0": "FOR SUPPLY, INSTALLATION AND COMMISSIONING OF ADDITIONAL TRANSFORMERS COMPLETE WITH SWITCHGEAR FOR KANGE, SAHARE, KIYUNGI, MBULU, MZINGA AND LUSU SUBSTATIONS UNDER SIX (6) LOTS",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "08/26/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f669216ca6c8e12f1149de"
+  },
+  "item0": "Supply of Building Materials, Lot 2: Masonry for Mtwara Port Under Framework Contract.",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/25/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f669486ca6c8e12f1149df"
+  },
+  "item0": "Supply, Installation, Commissioning of Rehabilitation and Upgrading of Silo Facility at Dar Es Salaam Port",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "6 days, 21 hours",
+  "item5": "08/19/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "62f669496ca6c8e12f1149e0"
+  },
+  "item0": "Supply of Spare Parts for Nissan, Ford, Wheel Loader and Fork Lift",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "4 days",
+  "item5": "08/16/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f6696f6ca6c8e12f1149e1"
+  },
+  "item0": "Provision of Drilling Services and Supply of Consumables for Three (3) Slim Wells at Ngozi Geothermal Drilling Program in Mbeya Region",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/29/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "62f66981a02d06610e67166c"
+  },
+  "item0": "SUPPLY OF UNIFORMS AND LINEN",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/29/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f669a8a02d06610e67166d"
+  },
+  "item0": "Supply of Office Sundries, Kitchen Equipment and Appliances",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a4a337deb50c816d10c"
+  },
+  "item0": "Supply of toughened glass disc insulator strings",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a4b337deb50c816d10d"
+  },
+  "item0": "Supply of 33kV Disconnector switches for Mwakibete,Tukuyu, Ludewa, Mafinga and lugarawa substation",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66a4d337deb50c816d10e"
+  },
+  "item0": "Supply of Optical Fiber Network LOT 1 (Supply of Optical Fiber Cable (short span) and Accessorries and Spares for Optical Fibre network from Rombo District office to Makuyuni Substation (45km) …",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66a4d587436106c344592"
+  },
+  "item0": "Supply of Laboratory Reagents, Glassware and Consumables",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a4e337deb50c816d10f"
+  },
+  "item0": "Supply, Installation and Commissioning of Generators",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/26/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a4f337deb50c816d110"
+  },
+  "item0": "SUPPLY OF SOLID WASTE MANAGEMENT EQUIPMENTS FOR ZANZIBAR MANICIPALITIES",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/25/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a50587436106c344593"
+  },
+  "item0": "Supply of Laboratory Glassware and Apparatus under Framework Agreement",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "6 days, 17 hours",
+  "item5": "08/19/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a51337deb50c816d111"
+  },
+  "item0": "Supply, Install, Test and Commission of Power System Equipment at Dodoma Airport",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "6 days, 18 hours",
+  "item5": "08/19/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66a52587436106c344594"
+  },
+  "item0": "Supply of Specialized ICTEquipment for DTER",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "2 days, 17 hours",
+  "item5": "08/15/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a52337deb50c816d112"
+  },
+  "item0": "Supply of Remote Terminal Units (RTUs) for SCADA maintenance at Mwanza, Makumbusho and Ubungo III Substations",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "6 days, 17 hours",
+  "item5": "08/19/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "62f66a526423e9027b8956cf"
+  },
+  "item0": "Supply of Dry Food Items",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "08/24/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a52337deb50c816d113"
+  },
+  "item0": "Supply of energized and polluted insulators mobile washer - truck mounted",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "6 days, 17 hours",
+  "item5": "08/19/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a54587436106c344595"
+  },
+  "item0": "Supply of building material for clean room and sterilization Machine's room at IDOFI",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/31/2022",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "62f66a56587436106c344596"
+  },
+  "item0": "Supply of Teaching Materials and Gears at DIT Main Campus, Mwanza Campus and Songwe Campus for Semester I and II for Academic year 2022/2023",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "5 days, 21 hours",
+  "item5": "08/18/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a58587436106c344597"
+  },
+  "item0": "Supply of Land cruiser Hard Top and Cesspit Emptier Truck(Exhauster Track) of Tank Volume 10,000 litres with built - in suction pump",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 23 hours",
+  "item5": "08/15/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a59587436106c344598"
+  },
+  "item0": "Supply of Raw materials for face masks",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "4 days, 21 hours",
+  "item5": "08/17/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a5c2376594cff3d48b2"
+  },
+  "item0": "Printing and supply of Annual Report 2021 22",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "3 days, 7 hours",
+  "item5": "08/16/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a5d2376594cff3d48b3"
+  },
+  "item0": "Supply of Teflon Packing .",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "4 days, 7 hours",
+  "item5": "08/17/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a5f2376594cff3d48b4"
+  },
+  "item0": "Supply of SISIC Beams",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a602376594cff3d48b5"
+  },
+  "item0": "Supply of Uniform",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/22/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a602376594cff3d48b6"
+  },
+  "item0": "SUPPLYING OF TEXT BOOKS",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "5 days, 7 hours",
+  "item5": "08/18/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a612376594cff3d48b7"
+  },
+  "item0": "Supply of Projector and Screens to KREIS residential schools / Colleges of Belagavi District2022-08-11",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/10/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "62f66a612376594cff3d48b8"
+  },
+  "item0": "supply of Cloxacillin Sodium IP(Compacted)",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   India",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/20/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a98587436106c344599"
+  },
+  "item0": "Supply of Medical Supplies (other than Medicine, Diagnostics, Medical supplies)",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "12/31/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66a99587436106c34459a"
+  },
+  "item0": "Supply of Orthopaedic and Dental Supplies",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "12/31/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "62f66aa3337deb50c816d114"
+  },
+  "item0": "Supply, Installation, Testing and Commissioning of 150kW Solar PV Plant at Tunduma OSBP",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "08/30/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "6309de9975112bb8483ff4f3"
+  },
+  "configuration": {
+    "type": "card_scraper",
+    "mot_cle": [
+      "amenagement",
+      "travaux"
+    ],
+    "config": "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}",
+    "collection_name": "https://www.j360.info",
+    "card_css_selector": "div.card.rounded-1.results-item.mb-3"
+  }
+},{
+  "_id": {
+    "$oid": "6309dee775112bb8483ff4f4"
+  },
+  "item0": "AMENAGEMENT ET REHABILITATION D’UNE ROUTE A SIDI BADER TABARKA",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tunisia",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "10/10/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "6309dee875112bb8483ff4f5"
+  },
+  "item0": "AO 25/2022: Travaux de Réhabilitation du quartier Jhina à Sidi Omar Bouhajla Gouvernorat de KAIROUAN - PSRQPRDR",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tunisia",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/28/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "6309dee975112bb8483ff4f6"
+  },
+  "item0": "amenagement drain rue aboulgacem chebi ghannouch",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tunisia",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/26/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "6309deeb75112bb8483ff4f7"
+  },
+  "item0": "Travaux d’aménagement et d’expansion d’une cuisine a la caserne de bortal hayder",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tunisia",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/27/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "6309def175112bb8483ff4f8"
+  },
+  "item0": "Travaux de construction des bâtiments à Bardo",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tunisia",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/27/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0a50a7c1a53056682499"
+  },
+  "configuration": {
+    "type": "card_scraper",
+    "mot_cle": [
+      "amenagement",
+      "information"
+    ],
+    "config": "{'item0': 'A.stretched-link.text-dark *::text', 'item1': 'DIV.item-detail-label *::text', 'item2': 'DIV.d-flex.align-items-center *::text', 'item3': 'DIV.item-detail-label *::text', 'item4': 'DIV.text-danger *::text', 'item5': 'DIV.item-detail-subvalue.deadline *::text'}",
+    "collection_name": "https://www.j360.info",
+    "card_css_selector": "DIV.card.rounded-1.results-item.mb-3"
+  }
+},{
+  "_id": {
+    "$oid": "630f0a93a7c1a5305668249a"
+  },
+  "item0": "Health System Strengthening Project",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0a93b59943f6b10aaa2d"
+  },
+  "item0": "travaux - CDFIP de Tours - remplacement de chaudières phase 2",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "11/30/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0aae756daddde72b2a7e"
+  },
+  "item0": "CONCESSION D'AMENAGEMENT - PROJET DE QUARTIER RESIDENTIEL",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "10/07/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0af4d8efa5beaf9b47d9"
+  },
+  "item0": "Health System Strengthening Project",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0af5d8efa5beaf9b47da"
+  },
+  "item0": "Maitrise d’œuvre pour la conception et le suivi des travaux de sécurisation et d’information du public sur le sentier botanique du Mont Puke à Futuna.",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0af5d8efa5beaf9b47db"
+  },
+  "item0": "Enhancing Climate Information and Knowledge Services for Resilience Programme",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location Remaining time",
+  "item4": "1 day, 14 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0afd3e425382cedb0945"
+  },
+  "item0": "Maitrise d’œuvre pour la conception et le suivi des travaux de sécurisation et d’information du public sur le sentier botanique du Mont Puke à Futuna.",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0bac093c8ab505b78031"
+  },
+  "item0": "Enhancing Climate Information and Knowledge Services for Resilience Programme",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location Remaining time",
+  "item4": "1 day, 14 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0baf093c8ab505b78032"
+  },
+  "item0": "Enhancing Climate Information and Knowledge Services for Resilience Programme",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Tuvalu",
+  "item3": "Location Remaining time",
+  "item4": "1 day, 14 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0bf781871a732eb5c064"
+  },
+  "item0": "AGPM - Multinational - Projet d’aménagement de corridors et de facilitation du commerce – Phase II (PACFC II)",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0bf781871a732eb5c065"
+  },
+  "item0": "Design-Build Renovate Maritime Operations Center, Antisiranana Naval Base, Madagascar.",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c003e7f786121925c25"
+  },
+  "item0": "PPM - Madagascar - Programme entrepreneuriat des jeunes dans l'agriculture et l'agro-industrie - PEJAA",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c003e7f786121925c26"
+  },
+  "item0": "Connectivity for Rural Livelihood Improvement Project",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c013e7f786121925c27"
+  },
+  "item0": "Madagascar Road Sector Sustainability Project",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c053e7f786121925c28"
+  },
+  "item0": "PPM - Madagascar - Projet de renforcement et d’interconnexion des réseaux de transport d’énergie électrique à Madagascar - PRIRTEM",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Electricité"
+},{
+  "_id": {
+    "$oid": "630f0c1dbded980dc35223b1"
+  },
+  "item0": "PPM - Madagascar - Programme entrepreneuriat des jeunes dans l'agriculture et l'agro-industrie - PEJAA",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c1ebded980dc35223b2"
+  },
+  "item0": "PPM - Madagascar - Programme Entrepreneuriat des Jeunes dans l'Agriculture et l'Agro Industrie (PEJAA)",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c28d94028b3a2492d33"
+  },
+  "item0": "044/IC/PF3/2022 RECRUTEMENT D’UN (01) CONSULTANT NATIONAL POUR L’APPUI DE LA REGION ANDROY DANS LA MISE EN ŒUVRE DU PROCESSUS D’ELABORATION DE SCHEMA REGIONAL D’AMENAGEMENT DE TERRITOIRE (SRAT)",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location Remaining time",
+  "item4": "5 days, 14 hours",
+  "item5": "09/06/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c35d94028b3a2492d34"
+  },
+  "item0": "PPM - Madagascar - Programme entrepreneuriat des jeunes dans l'agriculture et l'agro-industrie - PEJAA",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Madagascar",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c43087495949cff2dcb"
+  },
+  "item0": "TRAVAUX DES AMENAGEMENTS PUBLICS POUR LA ZONE SCOLAIRE DE KAWENI",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 2 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c46087495949cff2dcc"
+  },
+  "item0": "TRAVAUX DES AMENAGEMENTS PUBLICS POUR LA ZONE SCOLAIRE DE KAWENI",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 2 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c46087495949cff2dcd"
+  },
+  "item0": "MARCHE DE TRAVAUX DE REAMENAGEMENT DES LOCAUX DE LA DIRECTION REGIONALE DE POLE EMPLOI GUADELOUPE ET ILES DU NORD SITUES PARC D’ACTIVITES ANTILLOPOLE 97139 LES ABYMES",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c49087495949cff2dce"
+  },
+  "item0": "Prestations de maintenance de sécurité incendie",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "11/01/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c4a087495949cff2dcf"
+  },
+  "item0": "TRAVAUX DES AMENAGEMENTS PUBLICS POUR LA ZONE SCOLAIRE DE KAWENI",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 2 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c4a087495949cff2dd0"
+  },
+  "item0": "MARCHE DE TRAVAUX DE REAMENAGEMENT DES LOCAUX DE LA DIRECTION REGIONALE DE POLE EMPLOI GUADELOUPE ET ILES DU NORD SITUES PARC D’ACTIVITES ANTILLOPOLE 97139 LES ABYMES",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c50087495949cff2dd1"
+  },
+  "item0": "ANUNCIO GENERAL DE ADQUISICIONES",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Honduras",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c51087495949cff2dd2"
+  },
+  "item0": "\"BUILDING CLIMATE RESILIENCE\" ACTIVITY",
+  "item1": "Location",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   Honduras",
+  "item3": "Location",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c5bd27ed1f227aa02e9"
+  },
+  "item0": "MARCHE DE TRAVAUX DE REAMENAGEMENT DES LOCAUX DE LA DIRECTION REGIONALE DE POLE EMPLOI GUADELOUPE ET ILES DU NORD SITUES PARC D’ACTIVITES ANTILLOPOLE 97139 LES ABYMES",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c5c0a6e823da468a33c"
+  },
+  "item0": "2022_AOOPI_MATINIK_PLI_BELII",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/12/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c5d0a6e823da468a33d"
+  },
+  "item0": "ASSISTANCE A MAITRISE D'OUVRAGE DE PROGRAMMATION D'AMENAGEMENT D'INFRASTRUCTURES ROUTIERES ET D'ESPACES PUBLICS DU SECTEUR DE L'HOTEL DE VILLE - CENTRE ADMINISTRATIF - BERGES DE LA RIVIERE D'ABORD",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "1 day, 5 hours",
+  "item5": "09/01/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c5ed27ed1f227aa02ea"
+  },
+  "item0": "TRAVAUX DES AMENAGEMENTS PUBLICS POUR LA ZONE SCOLAIRE DE KAWENI",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 2 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c5ed27ed1f227aa02eb"
+  },
+  "item0": "Travaux de réhabilitation des salles de classe du collège de Chiconi",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/15/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c61d27ed1f227aa02ec"
+  },
+  "item0": "Mission de maîtrise d'oeuvre relative à la construction de 11 satellites de restauration dans les établissements du second degré",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/09/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c610a6e823da468a33e"
+  },
+  "item0": "Marche de prestations intellectuelles De maitrise d'OEuvre Pour la realisation des reseaux (eu / ev / ep / aep / bt) , l'amenagement des parkings et l'accebilite du site de …",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/30/2022",
+  "classified_as": "Informatique matériels et logiciels"
+},{
+  "_id": {
+    "$oid": "630f0c62d27ed1f227aa02ed"
+  },
+  "item0": "2022_AOOPI_MATINIK_PLI_BELII",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/12/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c63d27ed1f227aa02ee"
+  },
+  "item0": "SCHEMA D'AMENAGEMENT COMMUNAL DE LA COMMUNE DE KANI KELI",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/23/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c63d27ed1f227aa02ef"
+  },
+  "item0": "MAITRISE D'OEUVRE POUR L'AMENAGEMENT DE RHI BOUBOUNI, VILLE DE MAMOUDZOU",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/30/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c640a6e823da468a33f"
+  },
+  "item0": "[RELANCE SUITE A PROCEDURE SANS SUITE] - ACCORD-CADRE TRAVAUX D'AMENAGEMENT, D'AMELIORATION ET DE CONSTRUCTION DES BATIMENTS DU PATRIMOINE DE LA COLLECTIVITE DE SAINT-MARTIN",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "5 days, 2 hours",
+  "item5": "09/05/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c64d27ed1f227aa02f0"
+  },
+  "item0": "MISSION DE MAITRISE D'OEUVRE AMENAGEMENT DU STADE DU LARIVOT",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/23/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c65d27ed1f227aa02f1"
+  },
+  "item0": "MARCHE DE TRAVAUX DE REAMENAGEMENT DES LOCAUX DE LA DIRECTION REGIONALE DE POLE EMPLOI GUADELOUPE ET ILES DU NORD SITUES PARC D’ACTIVITES ANTILLOPOLE 97139 LES ABYMES",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c66d27ed1f227aa02f2"
+  },
+  "item0": "Mission de coordonnateur de sécurité et de protection de la santé (CSPS) relative au projet de construction du lycée du Nord à M’Tsangamouji",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/15/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c67d27ed1f227aa02f3"
+  },
+  "item0": "Mission de Contrôle Technique relative aux travaux de construction du Lycée du Nord à M’Tsangamouji",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/16/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c67d27ed1f227aa02f4"
+  },
+  "item0": "Mission de maîtrise d'oeuvre relative à la construction de 11 satellites de restauration dans les établissements du second degré",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/09/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c68d27ed1f227aa02f5"
+  },
+  "item0": "Maitrise d’œuvre pour la conception et le suivi des travaux de sécurisation et d’information du public sur le sentier botanique du Mont Puke à Futuna.",
+  "item1": "Location Remaining time",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/19/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c7f42ab344437b6705f"
+  },
+  "item0": "Services spécialisés de transport routier de passagers",
+  "item1": "Location Lots Amount total",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Lots Amount total",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c7f42ab344437b67060"
+  },
+  "item0": "TRANSPORT D'ELEVES DANS LE CADRE DE LA PRATIQUE D'ACTIVITES DES ACCUEILS DE LOISIRS EXTRASCOLAIRES et PERISCOLAIRES DE LA CAISSE DES ECOLES DU LAMENTIN",
+  "item1": "Location Lots Amount total",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Lots Amount total",
+  "item4": "",
+  "item5": "",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c83e81d51bb00bf40a2"
+  },
+  "item0": "PRESTATIONS DE CONSEIL ET D’ACCOMPAGNEMENT EN TELECOMMUNICATION ET SYSTEMES D’INFORMATION",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/08/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c8542ab344437b67061"
+  },
+  "item0": "Collecte et distribution de courrier et de colis du Rectorat de Mayotte",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "11/01/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0ca0cbf21f331674ab6c"
+  },
+  "item0": "Mission de maîtrise d'oeuvre relative à la construction de 11 satellites de restauration dans les établissements du second degré",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/09/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0ca4bc03a80f6de91e24"
+  },
+  "item0": "Gardiennage et sécurité des bâtiments administratifs",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "10/31/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0ca973f20ba7a2ed4972"
+  },
+  "item0": "Acquisition de simulateurs de conduite d'engins de chantier et de manutention, de véhicules du groupe lourd et de véhicule léger.",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "6 days, 14 hours",
+  "item5": "09/07/2022",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0caacbf21f331674ab6d"
+  },
+  "item0": "Mission de maîtrise d'oeuvre relative à la construction de 11 satellites de restauration dans les établissements du second degré",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/09/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0cabcbf21f331674ab6e"
+  },
+  "item0": "AVIS DE PREINFORMATION SUIVANT ARTICLES L-2131-1 ET R-2131-1 DU CODE DE LA COMMANDE PUBLIQUE APPEL A CANDIDATURE POUR LA REALISATION DES TRAVAUX EN ZONES SENSIBLES POUR LE CHU DE LA …",
+  "item1": "Location Remaining time Amount total",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Amount total",
+  "item4": "",
+  "item5": "08/24/2023",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cabcbf21f331674ab6f"
+  },
+  "item0": "Fourniture de téléphonie mobile",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "02/21/2023",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cb2bc03a80f6de91e25"
+  },
+  "item0": "TRAVAUX DES AMENAGEMENTS PUBLICS POUR LA ZONE SCOLAIRE DE KAWENI",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "2 days, 2 hours",
+  "item5": "09/02/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cb3bc03a80f6de91e26"
+  },
+  "item0": "TRAVAUX DE REFECTION ET DE REAMENAGEMENT DU CIS DE ST LAURENT DU MARONI",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "09/14/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cb3cbf21f331674ab70"
+  },
+  "item0": "PRESTATIONS DE CONSEIL ET D’ACCOMPAGNEMENT EN TELECOMMUNICATION ET SYSTEMES D’INFORMATION",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/08/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0cb4bc03a80f6de91e27"
+  },
+  "item0": "TRAVAUX DE REFECTION ET DE REAMENAGEMENT DU CIS D'IRACOUBO",
+  "item1": "Location Remaining time Lots",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots",
+  "item4": "",
+  "item5": "09/14/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cb4508b8f8367b7a082"
+  },
+  "item0": "Marché de travaux pour la reconstruction du Barrage de la Vigie à Saint-Pierre et Miquelon",
+  "item1": "Location Lots Amount total",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Lots Amount total",
+  "item4": "",
+  "item5": "",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0cb5cbf21f331674ab71"
+  },
+  "item0": "European Defence Fund (EDF) - Cyber and information warfare toolbox",
+  "item1": "Location Remaining time",
+  "item2": "Call for projects\n      \n     \n   \n                   \n                   Belgium",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "11/24/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "630f0cb6bc03a80f6de91e28"
+  },
+  "item0": "Achat de matériels informatiques",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "07/03/2023",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cb7bc03a80f6de91e29"
+  },
+  "item0": "PRESTATIONS DE CONSEIL ET D’ACCOMPAGNEMENT EN TELECOMMUNICATION ET SYSTEMES D’INFORMATION",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "",
+  "item5": "09/08/2022",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0cc0fb46596c3f345db9"
+  },
+  "item0": "Achat en ligne de titres de transport ferroviaires pour les agents des SD et SCN des ministères de la Transition écologique et de la transition énergétique",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "09/08/2022",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0cc3cbf21f331674ab72"
+  },
+  "item0": "European Defence Fund (EDF) - Cyber and information warfare toolbox",
+  "item1": "Location Remaining time",
+  "item2": "Call for projects\n      \n     \n   \n                   \n                   Belgium",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "11/24/2022",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "630f0cc6bc03a80f6de91e2a"
+  },
+  "item0": "Gardiennage et sécurité des bâtiments administratifs",
+  "item1": "Location Remaining time",
+  "item2": "Prior information notice\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time",
+  "item4": "",
+  "item5": "10/31/2022",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0cc7bc03a80f6de91e2b"
+  },
+  "item0": "[RELANCE SUITE A PROCEDURE SANS SUITE] - ACCORD-CADRE TRAVAUX D'AMENAGEMENT, D'AMELIORATION ET DE CONSTRUCTION DES BATIMENTS DU PATRIMOINE DE LA COLLECTIVITE DE SAINT-MARTIN",
+  "item1": "Location Remaining time Lots Amount total",
+  "item2": "Ongoing tenders\n      \n     \n   \n                   \n                   France",
+  "item3": "Location Remaining time Lots Amount total",
+  "item4": "5 days, 2 hours",
+  "item5": "09/05/2022",
+  "classified_as": "BTP Bâtiment"
+}]

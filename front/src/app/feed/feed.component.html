@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-    <div class="w-100 overflow-auto">
+    <div [hidden]="!currentRoot" class="w-100 overflow-auto">
       <div class="d-flex flex-column" style="width: 80%">
         <div class="card text-white bg-danger mb-3">
           <div class="card-header">
@@ -160,7 +160,7 @@
                           <td>
                             <button
                               [disabled]="noUrlBtn"
-                              class="btn btn-danger m-1 p-1 text-capitalize"
+                              class="btn btn-primary m-1 p-1 text-capitalize"
                               (click)="clickMe(item)"
                             >
                               Voir plus de détail

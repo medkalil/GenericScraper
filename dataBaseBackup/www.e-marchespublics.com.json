@@ -1,0 +1,1216 @@
+[{
+  "_id": {
+    "$oid": "630f0b05bfefc23d34fd2848"
+  },
+  "configuration": {
+    "type": "card_scraper",
+    "mot_cle": [
+      "amenagement",
+      "information"
+    ],
+    "config": "{'item0': 'DIV.texttruncate.noselect *::text', 'item1': 'DIV.box-body-top *::text', 'item2': 'DIV.col1 *::text', 'item3': 'DIV.col1 *::text', 'item4': 'DIV.col1 *::text', 'item5': 'DIV.col3.text-right *::text', 'item6': 'SPAN.pink *::text', 'item7': 'A.notice-a *::text', 'item8': 'A.notice-a *::text', 'item9': 'A.notice-a *::text', 'item10': 'A.notice-a *::text', 'item11': 'A.notice-a *::text'}",
+    "collection_name": "https://www.e-marchespublics.com",
+    "card_css_selector": "DIV.box"
+  }
+},{
+  "_id": {
+    "$oid": "630f0b25bfefc23d34fd2851"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/formation-edition",
+  "item0": "Marché relatif à l'élaboration d'un système d'information pour les juridictions de l'ordre des masseurs-kinésithérapeutes",
+  "item1": "CNOMK",
+  "item2": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/09/2022 à 16h00",
+  "item6": "19/09/2022 à 16h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b2fbfefc23d34fd2853"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Realisation et installation de bancs reversibles pour l'eglise de st firmin",
+  "item1": "Ville d'Amilly",
+  "item2": "45209 AMILLY\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "45209 AMILLY\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "45209 AMILLY\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            23/09/2022 à 23h00",
+  "item6": "23/09/2022 à 23h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b2fbfefc23d34fd2854"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Dijon metropole - fourniture, installation et maintenance de bancs en bois sur le territoire de dijon métropole",
+  "item1": "DIJON METROPOLE",
+  "item2": "21075 Dijon\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "21075 Dijon\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "21075 Dijon\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            12/09/2022 à 12h00",
+  "item6": "12/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b30bfefc23d34fd2855"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Acquisition dun banc danalyse structurale de couches minces épitaxiées, par diffusion des rayons x pour linstitut foton à linsa rennes",
+  "item1": "Institut National Sciences Appliquées",
+  "item2": "35708 Rennes\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "35708 Rennes\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "35708 Rennes\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            08/09/2022 à 16h00",
+  "item6": "08/09/2022 à 16h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b30bfefc23d34fd2856"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Banc d'essais de deviation angulaire pour canalisation pour le cstb",
+  "item1": "C.S.T.B.",
+  "item2": "77421 Marne-la-Vallée Cedex 2\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "77421 Marne-la-Vallée Cedex 2\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "77421 Marne-la-Vallée Cedex 2\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            14/09/2022 à 12h00",
+  "item6": "14/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b31bfefc23d34fd2857"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Fourniture et pose de deux bancs pédagogiques en énergétique",
+  "item1": "Université Paul Sabatier",
+  "item2": "31062 TOULOUSE\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "31062 TOULOUSE\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "31062 TOULOUSE\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/07/2022 à 12h00",
+  "item6": "19/07/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b32bfefc23d34fd2858"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Fourniture de bancs de cyclages de batteries",
+  "item1": "CEA/Grenoble",
+  "item2": "38054 GRENOBLE CEDEX 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "38054 GRENOBLE CEDEX 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "38054 GRENOBLE CEDEX 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            26/09/2022 à 16h00",
+  "item6": "26/09/2022 à 16h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b33bfefc23d34fd285a"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Fourniture d'un banc de test batterie 500kw 1500v",
+  "item1": "CEA/Grenoble",
+  "item2": "38054 GRENOBLE CEDEX 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "38054 GRENOBLE CEDEX 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "38054 GRENOBLE CEDEX 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            16/09/2022 à 16h00",
+  "item6": "16/09/2022 à 16h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b34bfefc23d34fd285b"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/amenagement-urbain/banc",
+  "item0": "Retrofit banc us - tll",
+  "item1": "SNCF Voyageurs",
+  "item2": "France Lyon\n                     \n                     \n                         Fourniture\n                        - Procédure Négociée",
+  "item3": "France Lyon\n                     \n                     \n                         Fourniture\n                        - Procédure Négociée",
+  "item4": "France Lyon\n                     \n                     \n                         Fourniture\n                        - Procédure Négociée",
+  "item5": "Date limite de candidature :\n                             \n                                            30/09/2022 à 14h00",
+  "item6": "30/09/2022 à 14h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0b3f6078fc2e06147f88"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/telecom",
+  "item0": "Hébergement d'une majeure partie des systèmes d'information de l'agence nationale de la recherche, son infogérance ainsi que la fourniture d'un service de support informatique de proximité",
+  "item1": "Agence Nationale de la Recherche",
+  "item2": "75012 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "75012 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "75012 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            05/09/2022 à 12h05",
+  "item6": "05/09/2022 à 12h05",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b476078fc2e06147f89"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/impression-communication-evenement/publipostage",
+  "item0": "Stockage et routage de documents d'information diffusés par la délégation à l'information et à la communication des ministères sociaux.",
+  "item1": "DICOM",
+  "item2": "75007 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "75007 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "75007 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            23/09/2022 à 12h00",
+  "item6": "23/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b4b6078fc2e06147f8a"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/informatique/infogerance",
+  "item0": "Infogérance du système d'information de la commune de rognac et fourniture de matériel informatique",
+  "item1": "Commune de Rognac",
+  "item2": "13655 ROGNAC\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "13655 ROGNAC\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "13655 ROGNAC\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            29/09/2022 à 16h00",
+  "item6": "29/09/2022 à 16h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b4f6078fc2e06147f8b"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/informatique/digitalisation",
+  "item0": "Marché relatif à l'élaboration d'un système d'information pour les juridictions de l'ordre des masseurs-kinésithérapeutes",
+  "item1": "CNOMK",
+  "item2": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/09/2022 à 16h00",
+  "item6": "19/09/2022 à 16h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b506078fc2e06147f8c"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/informatique/digitalisation",
+  "item0": "Marché relatif à l'élaboration d'un système d'information pour les juridictions de l'ordre des masseurs-kinésithérapeutes",
+  "item1": "CNO des masseurs-kinésithérapeutes",
+  "item2": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "75006 Paris\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/09/2022 à 16h00",
+  "item6": "19/09/2022 à 16h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b6cfd010052c39c107e"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Marché de maîtrise d'oeuvre : missions de base avec diag + exe pour les travaux de  réaménagement  de la station de pleine nature du mas de la barque.",
+  "item1": "SELO AMENAGEMENT 48",
+  "item2": "48000 MENDE\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "48000 MENDE\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "48000 MENDE\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            16/09/2022 à 17h00",
+  "item6": "16/09/2022 à 17h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b6dfd010052c39c107f"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Maitrise d'oeuvre relative au projet de  réaménagement  des espaces publics des abords de l'hôtel de ville de boulogne-billancourt",
+  "item1": "EPT GRAND PARIS SEINE OUEST",
+  "item2": "92190 Meudon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "92190 Meudon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "92190 Meudon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            22/09/2022 à 17h00",
+  "item6": "22/09/2022 à 17h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b6efd010052c39c1080"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Marché de contrôle technique et coordination sécurité et protection de la santé pour la reconstruction du pôle formation uimm centre-val-de-loire à la chapelle-saint-mesmin (45)",
+  "item1": "PROMETA",
+  "item2": "45380 LA CHAPELLE SAINT MESMIN\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "45380 LA CHAPELLE SAINT MESMIN\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "45380 LA CHAPELLE SAINT MESMIN\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            09/09/2022 à 12h00",
+  "item6": "09/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b6efd010052c39c1081"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Marché de service d'assurances dommages-ouvrages et contrat collectif de responsabilité décennale - lycée albert camus à bois-colombes (92)",
+  "item1": "IDF Construction Durable",
+  "item2": "93697 PANTIN CEDEX\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "93697 PANTIN CEDEX\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "93697 PANTIN CEDEX\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            05/10/2022 à 16h00",
+  "item6": "05/10/2022 à 16h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b6ffd010052c39c1082"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Mission de maitrise d'oeuvre (moe) pour l'extension et le  reamenagement  d'un cabinet medical",
+  "item1": "Aéroports de Lyon \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "69125 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "69125 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "69125 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            08/09/2022 à 12h00",
+  "item6": "08/09/2022 à 12h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b70fd010052c39c1083"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Redynamisation du centre-ville - réhabilitation et  réaménagement  de l'ancienne biscuiterie des établissements rousseau analyse / études de faisabilité / études de programmation.",
+  "item1": "Ville de Mormant \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "77720 Mormant\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "77720 Mormant\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "77720 Mormant\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            07/09/2022 à 12h00",
+  "item6": "07/09/2022 à 12h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b71fd010052c39c1084"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Marché public de maîtrise d'oeuvre portant sur le  réaménagement  de l'ancien trésor public et de son logement de fonction - ville de l'union",
+  "item1": "Mairie de L'Union \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31240 L'Union\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "31240 L'Union\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "31240 L'Union\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            08/09/2022 à 12h00",
+  "item6": "08/09/2022 à 12h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b71fd010052c39c1085"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Mairie de saint paul en jarez : projet de  reamenagement  de la piste bmx du complexe sportif des fraries choix de moe",
+  "item1": "Le Tout Lyon",
+  "item2": "69218 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "69218 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "69218 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            09/09/2022 à 12h00",
+  "item6": "09/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0b72fd010052c39c1086"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Mission de maîtrise d'oeuvre pour l'opération de travaux de  réaménagement  partiel au collège \" vallée du calavon \" à cabriÈres d'avignon",
+  "item1": "Département de Vaucluse \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "84909 Avignon Cedex 9\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "84909 Avignon Cedex 9\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "84909 Avignon Cedex 9\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            12/09/2022 à 16h30",
+  "item6": "12/09/2022 à 16h30",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0b73fd010052c39c1087"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/reamenagement",
+  "item0": "Saint-etienne metropole : restructuration des reseaux secs et humides et  reamenagement  de la voirie « les castors » sur la commune de saint-joseph",
+  "item1": "Le Tout Lyon",
+  "item2": "69218 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "69218 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "69218 Lyon\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            05/09/2022 à 12h00",
+  "item6": "05/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "630f0ba81a3896cd2cd29946"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/service/services/depollution",
+  "item0": "Marché d'assistance à maitrise d'ouvrage pour la réalisation de diagnostics environnementaux et la définition de stratégies de  dépollution  des sites et sols pollués",
+  "item1": "ETS PUBLIC D AMENAGEMENT DE ST ETIENNE",
+  "item2": "42100 Saint-Etienne\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "42100 Saint-Etienne\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "42100 Saint-Etienne\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            06/09/2022 à 12h00",
+  "item6": "06/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c0e200678f1c60f24b7"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Entree de bourg lot signalisation",
+  "item1": "MAIRIE DE FORMIGUERES",
+  "item2": "66210 FORMIGUERES\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "66210 FORMIGUERES\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "66210 FORMIGUERES\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            06/09/2022 à 12h00",
+  "item6": "06/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c0f200678f1c60f24b8"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Fourniture de matériels de signalisation routière",
+  "item1": "Mairie d'Obernai \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "67213 Obernai cedex\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "67213 Obernai cedex\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "67213 Obernai cedex\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            08/09/2022 à 12h00",
+  "item6": "08/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c10200678f1c60f24b9"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Travaux de renovation et de securisation d'un parking au 83 rue jules michelet 92700 colombes",
+  "item1": "Colombes Habitat Public",
+  "item2": "92700 COLOMBES\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item3": "92700 COLOMBES\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item4": "92700 COLOMBES\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            26/09/2022 à 12h00",
+  "item6": "26/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c10200678f1c60f24ba"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Travaux d'aménagement de la place de la gare sur la commune de lugagnan",
+  "item1": "COMMUNE DE LUGAGNAN",
+  "item2": "65100 Lugagnan\n                     \n                     \n                         Travaux\n                        - Autre",
+  "item3": "65100 Lugagnan\n                     \n                     \n                         Travaux\n                        - Autre",
+  "item4": "65100 Lugagnan\n                     \n                     \n                         Travaux\n                        - Autre",
+  "item5": "Date limite de candidature :\n                             \n                                            16/09/2022 à 17h00",
+  "item6": "16/09/2022 à 17h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c11200678f1c60f24bb"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Extension du réseau de collecte des eaux usées à nointel- route de la jacquerie op1150noi",
+  "item1": "Cté de Communes du Clermontois",
+  "item2": "60600 Clermont\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "60600 Clermont\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "60600 Clermont\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            14/10/2022 à 12h00",
+  "item6": "14/10/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c12200678f1c60f24bc"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Travaux d'installation des équipements de signalisation directionnelle de la commune de chaponnay",
+  "item1": "Commune de Chaponnay \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "69970 Chaponnay\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "69970 Chaponnay\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "69970 Chaponnay\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            30/09/2022 à 12h00",
+  "item6": "30/09/2022 à 12h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c13200678f1c60f24bd"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Accord cadre pour la fourniture de signalisation routière verticale",
+  "item1": "Mairie de thiers \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "63300 Thiers\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "63300 Thiers\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "63300 Thiers\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            23/09/2022 à 12h00",
+  "item6": "23/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c13200678f1c60f24be"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Travaux de signalisation horizontale 2022-2026",
+  "item1": "Ville de LOURDES \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "65107 LOURDES Cedex\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "65107 LOURDES Cedex\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "65107 LOURDES Cedex\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            23/09/2022 à 11h00",
+  "item6": "23/09/2022 à 11h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c14200678f1c60f24bf"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Travaux de signalisation horizontale sur les routes départementales et sur les propriétés gérées par le département de vaucluse",
+  "item1": "Département de Vaucluse \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "84909 Avignon cedex 9\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item3": "84909 Avignon cedex 9\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item4": "84909 Avignon cedex 9\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            26/09/2022 à 16h30",
+  "item6": "26/09/2022 à 16h30",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c15200678f1c60f24c0"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/signalisation",
+  "item0": "Fourniture de panneaux de signalisation routiere",
+  "item1": "Ville de Carpentras \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "84208 Carpentras cedex\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "84208 Carpentras cedex\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "84208 Carpentras cedex\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/09/2022 à 12h00",
+  "item6": "19/09/2022 à 12h00",
+  "item7": "Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c16200678f1c60f24c1"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Concession de services relative a la mise a disposition, l'installation, l'entretien, l'exploitation et la maintenance de mobilier urbain d'affichage",
+  "item1": "Mairie de Bouzonville",
+  "item2": "57320 BOUZONVILLE\n                     \n                     \n                         Service\n                        - Autre",
+  "item3": "57320 BOUZONVILLE\n                     \n                     \n                         Service\n                        - Autre",
+  "item4": "57320 BOUZONVILLE\n                     \n                     \n                         Service\n                        - Autre",
+  "item5": "Date limite de l'offre :\n                             \n                                            30/09/2022 à 12h00",
+  "item6": "30/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c16200678f1c60f24c2"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Achat de mobiliers pour l'espace bar et coworking de la cité des congrès de nantes",
+  "item1": "La Cité des Congrès de Nantes \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "44000 Nantes\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "44000 Nantes\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "44000 Nantes\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            16/09/2022 à 12h00",
+  "item6": "16/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c17200678f1c60f24c3"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Mission de suivi-animation d'une opération programmée d'amélioration de l'habitat - copropriétés dégradées (opah - cd) portant sur 2 copropriétés à knutange.",
+  "item1": "Com d'Agglomération du Val de FENSCH",
+  "item2": "57705 HAYANGE\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item3": "57705 HAYANGE\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item4": "57705 HAYANGE\n                     \n                     \n                         Service\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            26/09/2022 à 12h00",
+  "item6": "26/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c18200678f1c60f24c4"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "2022-000009 - renouvellement carré actu artemis",
+  "item1": "CITE DE L'ESPACE - SEMECCEL \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31506 TOULOUSE\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "31506 TOULOUSE\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "31506 TOULOUSE\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de candidature :\n                         \n                                            12/09/2022 à 12h00\n                                                                     \n                     \n                      \n                         \n                        Date limite de l'offre :\n                         \n                                            03/10/2022 à 12h00",
+  "item6": "12/09/2022 à 12h00\n                                                                     \n                                            03/10/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c19200678f1c60f24c5"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Etude pré-opérationnelle à l'opération programmée d'amélioration de l'habitat renouvellement urbain (opah-ru) multi-sites sur les communes d'aubusson et de felletin.",
+  "item1": "Cté de Communes Creuse Grand Sud \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "23200 AUBUSSON\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "23200 AUBUSSON\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "23200 AUBUSSON\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            13/09/2022 à 16h00",
+  "item6": "13/09/2022 à 16h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1a200678f1c60f24c6"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Prestations de location d'unités mobiles de production et de stockage d'eau",
+  "item1": "CPCU SA \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "75012 PARIS\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "75012 PARIS\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "75012 PARIS\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            14/09/2022 à 16h00",
+  "item6": "14/09/2022 à 16h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1b200678f1c60f24c7"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Etude diagnostic du système d'assainissement - viennay et pompairain",
+  "item1": "Syndicat des Eaux de la Gâtine \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "79200 Pompaire\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "79200 Pompaire\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "79200 Pompaire\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            23/09/2022 à 12h00",
+  "item6": "23/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1b200678f1c60f24c8"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Requalification urbaine : boulevard chateaubriand et montée du valadas",
+  "item1": "Commune Les Angles (30) \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "30133 LES ANGLES\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "30133 LES ANGLES\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "30133 LES ANGLES\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/09/2022 à 12h00",
+  "item6": "19/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1c200678f1c60f24c9"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Location de mobilier pour l'organisation des concours et examens de la fonction publique territoriale",
+  "item1": "Centre de Gestion FPT Loire-Atlantique",
+  "item2": "44262 Nantes cedex 2\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "44262 Nantes cedex 2\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "44262 Nantes cedex 2\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            09/09/2022 à 12h00",
+  "item6": "09/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1d200678f1c60f24ca"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Aménagement d'un parc multimodal aux gués de veigné",
+  "item1": "Mairie de Veigné",
+  "item2": "37250 VEIGNE\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "37250 VEIGNE\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "37250 VEIGNE\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            09/09/2022 à 12h00",
+  "item6": "09/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1e200678f1c60f24cb"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/mobilier-urbain",
+  "item0": "Mission de maîtrise d'oeuvre urbaine sur le secteur de rivière sens à gourbeyre",
+  "item1": "Agence des 50 Pas Géométriques (971) \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "97110 Pointe-à-Pitre\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "97110 Pointe-à-Pitre\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "97110 Pointe-à-Pitre\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            08/09/2022 à 00h00\n                                                                     (Heure métropole)",
+  "item6": "08/09/2022 à 00h00\n                                                                     (Heure métropole)",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c1e200678f1c60f24cc"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Concession de service de mobiliers urbains publicitaires et non publicitaires",
+  "item1": "Commune d'Ormesson sur Marne",
+  "item2": "94490 Ormesson sur Marne\n                     \n                     \n                         Service\n                        - Autre",
+  "item3": "94490 Ormesson sur Marne\n                     \n                     \n                         Service\n                        - Autre",
+  "item4": "94490 Ormesson sur Marne\n                     \n                     \n                         Service\n                        - Autre",
+  "item5": "Date limite de l'offre :\n                             \n                                            04/10/2022 à 14h00",
+  "item6": "04/10/2022 à 14h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Services"
+},{
+  "_id": {
+    "$oid": "630f0c1f200678f1c60f24cd"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Construction et viabilisation de 51 logements et d'un commerce à marquise",
+  "item1": "HABITAT HAUTS DE FRANCE - ESH \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "62231 coquelles\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item3": "62231 coquelles\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item4": "62231 coquelles\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            20/09/2022 à 16h00",
+  "item6": "20/09/2022 à 16h00",
+  "item7": "Avis\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Informatique matériels et logiciels"
+},{
+  "_id": {
+    "$oid": "630f0c20200678f1c60f24ce"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Marché public de maîtrise d'oeuvre pour l'aménagement participatif des cours des écoles maternelle louise michel et élémentaire de génibois.",
+  "item1": "Commune de Joeuf \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "54240 Joeuf\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item3": "54240 Joeuf\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item4": "54240 Joeuf\n                     \n                     \n                         Service\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            23/09/2022 à 17h00",
+  "item6": "23/09/2022 à 17h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "630f0c21200678f1c60f24cf"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "La fourniture et la pose d'abris à vélos, d'arceaux et de racks pour les sites de pôle emploi bretagne",
+  "item1": "POLE EMPLOI",
+  "item2": "35053 Rennes cedex 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "35053 Rennes cedex 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "35053 Rennes cedex 9\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            07/10/2022 à 12h00",
+  "item6": "07/10/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0c22200678f1c60f24d0"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Fourniture et pose d'abris et supports de stationnements vélos pour les bâtiments du département de la haute-savoie",
+  "item1": "Département de la Haute-Savoie",
+  "item2": "74041 ANNECY\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "74041 ANNECY\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "74041 ANNECY\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            26/09/2022 à 12h00",
+  "item6": "26/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "630f0c23200678f1c60f24d1"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Acquisition de bio-seaux, de sacs kraft et d'abris-bacs pour la collecte des déchets alimentaires en apport volontaire sur le territoire de saint-louis agglomération",
+  "item1": "SAINT-LOUIS Agglomération",
+  "item2": "68305 Saint-Louis\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "68305 Saint-Louis\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "68305 Saint-Louis\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            19/09/2022 à 12h00",
+  "item6": "19/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Agriculture et Agroalimentaire"
+},{
+  "_id": {
+    "$oid": "630f0c24200678f1c60f24d2"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Concession de services - mobilier urbain comprenant la mise à disposition, la pose, la maintenance, l'entretien, le nettoyage et l'exploitation commerciale du mobilier urbain et des abris voyageurs",
+  "item1": "Ville de Montluçon",
+  "item2": "03106 Montlucon\n                     \n                     \n                         Service\n                        - Autre",
+  "item3": "03106 Montlucon\n                     \n                     \n                         Service\n                        - Autre",
+  "item4": "03106 Montlucon\n                     \n                     \n                         Service\n                        - Autre",
+  "item5": "Date limite de l'offre :\n                             \n                                            03/10/2022 à 17h00",
+  "item6": "03/10/2022 à 17h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Immobilier"
+},{
+  "_id": {
+    "$oid": "630f0c25200678f1c60f24d3"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Marché de travaux relatifs à la construction d'abris pour les bacs à sel d'avesnelles, clary, douai et sars poteries pour le département du nord (2 lots)",
+  "item1": "Conseil Départemental du Nord",
+  "item2": "59047 Lille\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item3": "59047 Lille\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item4": "59047 Lille\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            08/09/2022 à 16h30",
+  "item6": "08/09/2022 à 16h30",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "630f0c25200678f1c60f24d4"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/tous/amenagement-urbain/abris",
+  "item0": "Fourniture, entretien et maintenance d'abris bacs et corbeilles porte-sac",
+  "item1": "PARIS LA DEFENSE",
+  "item2": "92931 Paris la defense\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item3": "92931 Paris la defense\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item4": "92931 Paris la defense\n                     \n                     \n                         Fourniture\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            05/09/2022 à 12h00",
+  "item6": "05/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "Fournitures Industrielles"
+},{
+  "_id": {
+    "$oid": "63207e5f709281d9e08b4be8"
+  },
+  "configuration": {
+    "type": "card_scraper",
+    "mot_cle": [
+      "test"
+    ],
+    "config": "{'item0': 'DIV.texttruncate.noselect *::text', 'item1': 'DIV.box-body-top *::text', 'item2': 'DIV.col1 *::text', 'item3': 'DIV.col1 *::text', 'item4': 'DIV.col1 *::text', 'item5': 'DIV.col3.text-right *::text', 'item6': 'SPAN.pink *::text', 'item7': 'A.notice-a *::text', 'item8': 'A.notice-a *::text', 'item9': 'A.notice-a *::text', 'item10': 'A.notice-a *::text', 'item11': 'A.notice-a *::text'}",
+    "collection_name": "https://www.e-marchespublics.com",
+    "card_css_selector": "DIV.box"
+  }
+},{
+  "_id": {
+    "$oid": "63207e6e87140c9b482b3c0e"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/corse/",
+  "item0": "Travaux de réparation sur le réseau d'eaux usées suite aux tests à la fumée",
+  "item1": "Commune de Piana",
+  "item2": "20115 Piana\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "20115 Piana\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "20115 Piana\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            16/09/2022 à 12h00",
+  "item6": "16/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "63207e6e709281d9e08b4be9"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/occitanie/",
+  "item0": "22 030 prestations pour le retrait de chronotachygraphes et installation d'éthylotest sur des bennes à ordures ménagères",
+  "item1": "LE GRAND OUEST TOULOUSAIN \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            11/10/2022 à 11h00",
+  "item6": "11/10/2022 à 11h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "63207e7dbb20306e84942705"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre",
+  "item0": "22 030 prestations pour le retrait de chronotachygraphes et installation d'éthylotest sur des bennes à ordures ménagères",
+  "item1": "LE GRAND OUEST TOULOUSAIN \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            11/10/2022 à 11h00",
+  "item6": "11/10/2022 à 11h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "63207fc910418fb043b425bc"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/notification",
+  "item0": "22 030 prestations pour le retrait de chronotachygraphes et installation d'éthylotest sur des bennes à ordures ménagères",
+  "item1": "LE GRAND OUEST TOULOUSAIN \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            11/10/2022 à 11h00",
+  "item6": "11/10/2022 à 11h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "632080988115def6f469807c"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/finance",
+  "item0": "22 030 prestations pour le retrait de chronotachygraphes et installation d'éthylotest sur des bennes à ordures ménagères",
+  "item1": "LE GRAND OUEST TOULOUSAIN \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            11/10/2022 à 11h00",
+  "item6": "11/10/2022 à 11h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "632084824ab610b24cb268b6"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/travaux/travaux-maritimes/portuaire",
+  "item0": "Remplacement des pompes de la forme de radoub de cherbourg et de leur alimentation électrique",
+  "item1": "Ports de Normandie",
+  "item2": "14280 Saint-contest\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item3": "14280 Saint-contest\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item4": "14280 Saint-contest\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            17/10/2022 à 12h00",
+  "item6": "17/10/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "632084824ab610b24cb268b7"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/travaux/travaux-maritimes/portuaire",
+  "item0": "Mise en valeur des espaces extérieurs du centre d'activités nautiques de ouistreham",
+  "item1": "Ports de Normandie",
+  "item2": "14280 Saint-contest\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item3": "14280 Saint-contest\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item4": "14280 Saint-contest\n                     \n                     \n                         Travaux\n                        - Appel d'Offres Ouvert",
+  "item5": "Date limite de l'offre :\n                             \n                                            26/09/2022 à 12h00",
+  "item6": "26/09/2022 à 12h00",
+  "item7": "Avis",
+  "item8": "Avis",
+  "item9": "Avis",
+  "item10": "Avis",
+  "item11": "Avis",
+  "classified_as": "BTP Bâtiment"
+},{
+  "_id": {
+    "$oid": "6320880832cb18f6596fbd7a"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/travaux/travaux/reparation",
+  "item0": "Travaux de  réparation  sur le réseau d'eaux usées suite aux tests à la fumée",
+  "item1": "Commune de Piana",
+  "item2": "20115 Piana\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item3": "20115 Piana\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item4": "20115 Piana\n                     \n                     \n                         Travaux\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            16/09/2022 à 12h00",
+  "item6": "16/09/2022 à 12h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "63208eefbe1af63d37c450b0"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/machine-equipement-auto/vehicule",
+  "item0": "22 030 prestations pour le retrait de chronotachygraphes et installation d'éthylotest sur des bennes à ordures ménagères",
+  "item1": "LE GRAND OUEST TOULOUSAIN \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "31830 PLAISANCE-DU-TOUCH\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            11/10/2022 à 11h00",
+  "item6": "11/10/2022 à 11h00",
+  "item7": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "Avis\n                             \n                                  \n                                RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "63208fa0d62ef73fa7f37587"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/materiaux/granulat",
+  "item0": "Produits routiers - fourniture de  granulat s",
+  "item1": "Mairie de la Teste de Buch \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "33164 LA TESTE DE BUCH CEDEX\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "33164 LA TESTE DE BUCH CEDEX\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "33164 LA TESTE DE BUCH CEDEX\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            07/10/2022 à 12h00",
+  "item6": "07/10/2022 à 12h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+},{
+  "_id": {
+    "$oid": "63208fa5d62ef73fa7f37588"
+  },
+  "url": "https://www.e-marchespublics.com/appel-offre/activite/fourniture/materiaux/materiaux",
+  "item0": "Produits routiers - fourniture de granulats",
+  "item1": "Mairie de la Teste de Buch \n                 \n                                             \n                             \n                            Accéder au site acheteur",
+  "item2": "33164 LA TESTE DE BUCH CEDEX\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item3": "33164 LA TESTE DE BUCH CEDEX\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item4": "33164 LA TESTE DE BUCH CEDEX\n                     \n                     \n                         Fourniture\n                        - Procédure Adaptée",
+  "item5": "Date limite de l'offre :\n                             \n                                            07/10/2022 à 12h00",
+  "item6": "07/10/2022 à 12h00",
+  "item7": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item8": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item9": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item10": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "item11": "RC\n                             \n                                  \n                                Dossier\n                             \n                                  \n                                Questions\n                             \n                                  \n                                Dépôt",
+  "classified_as": "Études et consulting"
+}]

@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "630cccff1395e14182e5df55"
+  },
+  "configuration": {
+    "type": "table_scraper",
+    "table_match": [
+      "materiel",
+      "téléphonique"
+    ],
+    "collection_name": "abab"
+  }
+},{
+  "_id": {
+    "$oid": "630ccd071395e14182e5df57"
+  },
+  "Nom": "MI",
+  "Date": "28/02/2014",
+  "Type": "Nat./TUN",
+  "Référence": "06/2014 Avis de consultation",
+  "Description sommaire de l'appel d'offres": "Acquisition des appareils de fax et téléphoniques",
+  "Catégorie": "Télécom",
+  "Echéance": "10/03/2014 00:00:00",
+  "url": "https://www.appeloffres.com/appels-offres/telecom?page=22",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "630ccd071395e14182e5df58"
+  },
+  "Nom": "ET",
+  "Date": "20/02/2014",
+  "Type": "Nat./TUN",
+  "Référence": "06/2014 Avis de consultation",
+  "Description sommaire de l'appel d'offres": "Acquisition des équipements téléphoniques",
+  "Catégorie": "Télécom",
+  "Echéance": "03/03/2014 17:30:00",
+  "url": "https://www.appeloffres.com/appels-offres/telecom?page=22",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "630ccd091395e14182e5df59"
+  },
+  "Nom": "EP",
+  "Date": "17/02/2014",
+  "Type": "Inter./DZA",
+  "Référence": "10/2014",
+  "Description sommaire de l'appel d'offres": "Acquisition de câbles téléphoniques d'installation 5/1",
+  "Catégorie": "Télécom",
+  "Echéance": "18/03/2014 00:00:00",
+  "url": "https://www.appeloffres.com/appels-offres/telecom?page=22",
+  "classified_as": "Télécom"
+},{
+  "_id": {
+    "$oid": "630ccd091395e14182e5df5a"
+  },
+  "Nom": "MI",
+  "Date": "06/01/2014",
+  "Type": "Nat./TUN",
+  "Référence": "06/2013/D.G./TRSM.I",
+  "Description sommaire de l'appel d'offres": "Acquisition de câbles téléphoniques",
+  "Catégorie": "Télécom",
+  "Echéance": "07/02/2014 00:00:00",
+  "url": "https://www.appeloffres.com/appels-offres/telecom?page=22",
+  "classified_as": "Télécom"
+}]
