@@ -150,4 +150,5 @@ export class DataTableComponent implements OnInit {
   ngOnDestroy() {
     this.myRouterObserver.unsubscribe();
   }
+  scrolling_right() {}
 }

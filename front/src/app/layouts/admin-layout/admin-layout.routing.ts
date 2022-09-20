@@ -11,6 +11,7 @@ import { CreateAlertComponent } from "app/create-alert/create-alert.component";
 import { FeedComponent } from "app/feed/feed.component";
 import { JobsComponent } from "app/jobs/jobs.component";
 import { OpportuniteComponent } from "app/opportunite/opportunite.component";
+import { SiteDeReferenceComponent } from "app/site-de-reference/site-de-reference.component";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -56,6 +57,7 @@ export const AdminLayoutRoutes: Routes = [
   //     }]
   // }
   { path: "create-alert", component: CreateAlertComponent },
+  { path: "Sites-de-References", component: SiteDeReferenceComponent },
   { path: "feed", component: FeedComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },

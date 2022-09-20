@@ -137,8 +137,18 @@
                   </div>
                   <strong>{{ dataSelectedLeght }} Items</strong>
                 </div>
-                <div class="card-body">
-                  <div class="table-responsive">
+                <div class="card-body d-flex flex-row">
+                  <div
+                    (click)="scrolling_left()"
+                    style="z-index: 1"
+                    class="mr-3"
+                    role="button"
+                  >
+                    <mat-icon style="position: fixed; font-size: 50px"
+                      >keyboard_arrow_left</mat-icon
+                    >
+                  </div>
+                  <div class="table-responsive scol-container">
                     <table class="table">
                       <thead class="text-primary">
                         <th *ngFor="let key of keys">
@@ -170,6 +180,16 @@
                       </tbody>
                     </table>
                   </div>
+                  <div
+                    class="pr-3"
+                    style="z-index: 1"
+                    (click)="scrolling_right()"
+                    role="button"
+                  >
+                    <mat-icon style="position: fixed; font-size: 50px"
+                      >keyboard_arrow_right</mat-icon
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -185,3 +205,11 @@
     </div>
   </div>
 </div>
+
+<!-- <script>
+  function scrolling_right() {
+    var right = document.querySelector(".scol-container");
+    right.scrollBy(-350, 0);
+    console.log("is right");
+  }
+</script> -->

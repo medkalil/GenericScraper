@@ -27,7 +27,16 @@
           ></i>
         </div>
         <div class="card-body">
-          <div class="table-responsive">
+          <div class="table-responsive d-flex flex-row">
+            <div
+              class="pr-3"
+              style="z-index: 10"
+              (click)="scrolling_right()"
+              role="button"
+            >
+              top
+              <mat-icon style="font-size: 50px">keyboard_arrow_left</mat-icon>
+            </div>
             <table class="table">
               <thead class="text-primary" *ngIf="data?.length > 0">
                 <th *ngFor="let key of keys">
@@ -85,6 +94,15 @@
                 <h4 [hidden]="isWaiting">NoData</h4>
               </ng-template>
             </table>
+            <div
+              class="pr-3"
+              style="z-index: 1"
+              (click)="scrolling_right()"
+              role="button"
+            >
+              bot
+              <mat-icon style="font-size: 50px">keyboard_arrow_right</mat-icon>
+            </div>
           </div>
         </div>
       </div>
