@@ -37,7 +37,7 @@ app.post("/schema_detect", async (req, res, next) => {
   //const mot_cle = ["entretien", "supply"];
   //const mot_cle = "entretien";
   const mot_cle = list_mot_cle[0];
-  //console.log("here is 1st mot cle passed from flask to node", mot_cle);
+  console.log("here is 1st mot cle passed from flask to node", list_mot_cle);
 
   /* const listofwebsite = [
     "https://www.e-marchespublics.com/appel-offre",
@@ -206,9 +206,7 @@ app.post("/schema_detect", async (req, res, next) => {
             }
           }
           if (new_words.length == 1) {
-            console.log(
-              "not a data page/ page with 1 item => can't detect page schema"
-            );
+            console.log("not a card data, just card with 1 text");
             return "not a data page/ page with 1 item => can't detect page schema ";
           } else {
             var dict = {};

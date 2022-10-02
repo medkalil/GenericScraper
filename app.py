@@ -12,7 +12,7 @@ import json
 import subprocess
 
 import queue
-from time import sleep
+from time import sleep, time
 from unicodedata import numeric
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
@@ -45,6 +45,18 @@ import copy
 import ast
 from typing import Iterable 
 import json5
+import flask
+from urllib.request import urljoin
+from bs4 import BeautifulSoup
+import requests
+from urllib.request import urlparse
+import re
+import time
+
+from models.shema_detect import Shema_detect_class
+import traceback
+
+
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
@@ -503,6 +515,93 @@ async def run_linkextractor():
   return "xx"
 """
 
+#shema_detect with beatuliful soup as LinkExtractor
+@app.route('/shema_detect', methods=['POST','GET'])
+async def shema_detect():
+          root=request.args.get('root')
+          mots_cles = request.args.get('mots_cles').split(",")
+          depth=3
+          
+          if root not in db.list_collection_names():
+            res = crawl_root(depth,root,mots_cles=mots_cles)
+            if res == "table":
+              #table : type,collection_name
+              db.create_collection(root)
+              configuration = {"configuration":{"type":"table_scraper","collection_name":root}}
+              db[root].insert_one(configuration)
+
+            elif isinstance(res,dict):
+            #card :type,collection_name,config,card_css_selector
+              db.create_collection(root)
+              config = res['config']
+              card_css_selector = res['card_css_selector']
+              configuration = {"configuration":{"type":"card_scraper", "collection_name":root, "config":config,"card_css_selector":card_css_selector}}
+              db[root].insert_one(configuration)
+          else:
+            return "taost to the user : root existe already in our sys"
+          return res
+
+""" @app.route('/shema_detect', methods=['POST','GET'])
+async def shema_detect():
+  url_list = []
+  page_type = ""
+
+  root=request.args.get('root')
+  depth=int(request.args.get('depth'))
+  allow_domains = request.args.get('allow_domains')
+  list_mot_cle = request.args.get('list_mot_cle')
+  partition = int(request.args.get('partition'))
+
+  link_extrator_process_id = scrapyd.schedule(PROJECT_NAME, 'url-extractor' ,allowed_domains = get_domain_from_url(root) ,root = root ,depth=depth,list_mot_cle=list_mot_cle, partition=partition )
+  #Message Queue
+  consumer = KafkaConsumer(
+    #"numtest",
+     bootstrap_servers=['localhost:9092'],
+     #earliest->latest
+     auto_offset_reset='latest',
+     enable_auto_commit=True,
+     #group_id='my-group',
+     # 2 min for timing out (1s=1000)
+     consumer_timeout_ms=180000,
+     value_deserializer=lambda x: loads(x.decode('utf-8')))
+ 
+  consumer.assign([TopicPartition('numtest', partition)])
+  #reading from Queue  
+  print("before loop")
+  for message in consumer:
+    collection_list = db.list_collection_names()
+    print("inside the for")
+    message = message.value['link']
+    url_list.append(message)
+      
+    print("the msg from "+ str(partition) +" is :",message)
+      
+    if (len(url_list) == 10 ):
+      data = {"url_list":url_list,"list_mot_cle":list_mot_cle.split(",")}
+      headers = requests.utils.default_headers()
+      res = await call_shema_detect("http://localhost:3000/schema_detect",data)
+      url_list = [] 
+      print("RETERNED RES IS:",res.json())
+      print("and RETERNED RES IS:",res.json()["result"])
+        
+      if isinstance(res.json()["result"],dict):
+        print("collection is created")
+        db.create_collection(root)
+        page_type = res.json()["result"]
+        #type,config,card_css_selector,collection_name
+        break
+      elif res.json()["result"] == "Table":
+        print("collection is created")
+        db.create_collection(root)
+        page_type = "table"
+        #type + collection_name
+        break
+      
+  print("the res is:",page_type)
+
+  return "xx" """
+
+
 @app.route('/run_linkextractor', methods=['POST','GET'])
 async def run_linkextractor():
   url_list = []
@@ -749,7 +848,7 @@ async def cancel_all_job():
 @app.route('/get_root_list', methods=['POST','GET'])
 async def get_root_list():
   return  jsonify( db.list_collection_names())
- 
+
 # without: id,configuration 
 @app.route('/get_root_data', methods=['POST','GET'])
 async def get_root_data():
@@ -859,6 +958,8 @@ async def get_search_data():
 
 #####################################END: Routes for Production #################################################
 
+
+
 def get_url_string_from_list(li):
   # [['travaux', 'amenagement'], ['materiel', 'amenagement']] -> ['travaux', 'amenagement', 'materiel', 'amenagement']
   return list(flatten(li))
@@ -909,9 +1010,160 @@ def get_scraper_status(job_id):
 async def call_shema_detect(api,data):
       return requests.post(api,headers={"User-Agent" :"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"},json=data) 
 
+###############"######"for shema detect wth b4 ##########################""#
+def has_numbers(inputString):
+        return any(char.isdigit() for char in inputString)
+ 
+def url_contains_multiple_digits(url):
+        url = str(url)
+        res = False    
+        if has_numbers(url) and len(max(re.findall(r'\d+', url), key = len)) >= 4:
+            res = True
+        return res
+
+def level_crawler(input_url):
+    links_intern = set()
+    links_extern = set()
+
+    temp_urls = set()
+    current_url_domain = urlparse(input_url).netloc
+  
+    # Creates beautiful soup object to extract html tags
+    beautiful_soup_object = BeautifulSoup(
+        requests.get(input_url).content, "lxml")
+  
+    # Access all anchor tags from input 
+    # url page and divide them into internal
+    # and external categories
+    for anchor in beautiful_soup_object.findAll("a"):
+        href = anchor.attrs.get("href")
+        if(href != "" or href != None):
+            href = urljoin(input_url, href)
+            href_parsed = urlparse(href)
+            href = href_parsed.scheme
+            href += "://"
+            href += href_parsed.netloc
+            href += href_parsed.path
+            final_parsed_href = urlparse(href)
+            is_valid = bool(final_parsed_href.scheme) and bool(
+                final_parsed_href.netloc)
+            if is_valid:
+                if current_url_domain not in href and href not in links_extern and not url_contains_multiple_digits(href):
+                    #print("Extern - {}".format(href))
+                    links_extern.add(href)
+                if current_url_domain in href and href not in links_intern and not url_contains_multiple_digits(href):
+                    #print("Intern - {}".format(href))
+                    links_intern.add(href)
+                    temp_urls.add(href)
+    return temp_urls
+  
+#myList = []
+#special_list = []
+
+def crawl_root(depth,input_url,mots_cles):
+    myList = []
+    special_list = []
+
+    start = time.time()
+
+    res = []
+    # Set for storing urls with same domain
+    if(depth == 0):
+        print("Intern root - {}".format(input_url))
+    
+    elif(depth == 1):
+        level_crawler(input_url)
+    
+    else:
+        # We have used a BFS approach
+        # considering the structure as
+        # a tree. It uses a queue based
+        # approach to traverse
+        # links upto a particular depth.
+        print("the mot clelist ",mots_cles)
+        queue = []
+        queue.append(input_url)
+        for j in range(depth):
+            for count in range(len(queue)):
+                url = queue.pop(0)
+                if not url_contains_multiple_digits(url):
+                    urls = level_crawler(url)
+                    for i in urls:
+                        if not url_contains_multiple_digits(i) and i not in myList:
+                            #print("Intern - {} - with depth - {}".format(i,j))
+                            queue.append(i)
+                            myList.append(i)
+                            #check if one of the mot cle (or) is in the url :
+                            if any(mot in i for mot in mots_cles):
+                                special_list.append(i)
+                                print("FROM SPECIAL LIST",i)
+
+                                ##trying:
+                                try:
+                                    p = Shema_detect_class(res=[],page_type="",input_url=i,list_mot_cle=['service','materiel','ambassade','test' ,'tunisie', 'fourniture','acquisition','benin' ])
+                                    #list of elements that have the mot_cle
+                                    p.page_type = p.get_title_class(p.list_mot_cle, p.res, p.soup, p.visible_text)
+                                    print("page_type:",p.page_type)
+
+                                    if p.page_type == "table":
+                                        print("Saving Schema As Table ")
+                                        #break
+                                        queue = []
+                                        myList = []
+                                        special_list = []
+                                        return p.page_type
+                                    else:
+                                        print("############################ it can be a card shema ############################")    
+                                        #list distinct (without duplicate ele) of classes that it's ele have the mot cle 
+                                        res_list = p.get_class_list(p.res, p.getTagname_className)
+                                        print('the res len is',res_list)
+
+                                        #get the exact class + get the card css selector
+                                        card_css_selector = p.get_card_css_selector( p.soup, p.page_content, res_list)
+                                        print("THE CARD CSS SELECTOR:",card_css_selector)
+
+                                        #print("get_elements_class_in_card_css_selector_for_config :",p.get_elements_class_in_card_css_selector_for_config(p.soup,p.getTagname_className,p.temp_delete_point_from_classes,"fourniture",card_css_selector))
+                                        config = p.get_config(p.soup,p.getTagname_className,p.temp_delete_point_from_classes,p.get_elements_class_in_card_css_selector_for_config,card_css_selector)
+                                        print("config is:",config)   
+                                        if  bool(config):
+                                            p.page_type = config
+                                            print("we got the shema as card")
+                                            #break
+                                            queue = []
+                                            myList = []
+                                            special_list = []
+                                            return {"config":p.page_type,"card_css_selector":card_css_selector}
+
+                                except:
+                                    print('NEXT PAGE : Cant Detect Shema on This Page') 
+                                    traceback.print_exc()
+                                    pass
+                                ##trying:END
+                                
+        print("the len is",len(set(queue)))
+        print("the len is",len(set(myList)))
+        #print("the queue is",queue)
+        """ for it in queue:
+            for mot in mots_cles:
+                if mot in it:
+                    res.append(it) """
+    
+    end = time.time()
+    print("THE TIME TAKEN IS",end - start)
+
+    return set(queue)
+
+   
+ 
+###############"######"for shema detect wth b4 ##########################""#
+
 
 if __name__ == "__main__":
   try:
     app.run(debug=True , threaded=True)
   finally:
     session.clear()
+
+
+class GetOutOfLoop( Exception ):
+    pass

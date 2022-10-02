@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { QueryDbService } from "app/services/query-db.service";
 import "rxjs/Rx";
 import { Observable } from "rxjs/Rx";
@@ -19,6 +19,7 @@ export class FeedComponent implements OnInit {
   noUrlBtn = true;
   dataSelectedLeght = 0;
   selectedIndex: number;
+  eventData: any;
 
   constructor(private queryDbService: QueryDbService) {}
 
@@ -26,6 +27,12 @@ export class FeedComponent implements OnInit {
     this.queryDbService.get_root_list().subscribe((res) => {
       this.rootList = res;
     });
+
+    /* var eventSource = new EventSource("http://127.0.0.1:5000/stream");
+    eventSource.addEventListener("message", (e) => {
+      this.eventData = e.data;
+      console.log("aeaze", e.data);
+    }); */
   }
 
   select(index: number) {

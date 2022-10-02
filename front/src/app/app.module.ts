@@ -28,7 +28,7 @@ import {
 import { AdminLayoutModule } from "./layouts/admin-layout/admin-layout.module";
 import { DeleteDialogComponent } from "./delete-dialog/delete-dialog.component";
 import { JobsComponent } from "./jobs/jobs.component";
-import { SiteDeReferenceComponent } from './site-de-reference/site-de-reference.component';
+import { SiteDeReferenceComponent } from "./site-de-reference/site-de-reference.component";
 
 @NgModule({
   imports: [
@@ -39,6 +39,7 @@ import { SiteDeReferenceComponent } from './site-de-reference/site-de-reference.
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+
     AgmCoreModule.forRoot({
       apiKey: "YOUR_GOOGLE_MAPS_API_KEY",
     }),

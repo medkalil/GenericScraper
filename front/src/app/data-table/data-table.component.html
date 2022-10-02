@@ -54,30 +54,32 @@
                   <ng-container *ngFor="let key of keys">
                     <td>{{ item[key] }}</td>
                   </ng-container>
-                  <td>
+                  <td title="Voir plus de détail">
                     <button
                       [disabled]="noUrlBtn"
                       class="btn btn-primary m-1 p-1 text-capitalize"
                       (click)="navigateTo(item)"
                     >
-                      Voir plus de détail
+                      <i
+                        class="fa fa-external-link-square"
+                        aria-hidden="true"
+                      ></i>
                     </button>
                   </td>
-                  <td>
+                  <td title="Add To Favorit">
                     <button
                       (click)="AddItem(item)"
                       class="btn btn-danger left-icon-holder"
                     >
                       <i class="fa fa-plus" aria-hidden="true"></i>
-                      Add To Favorit
                     </button>
                   </td>
-                  <td>
+                  <td title="Delete Item">
                     <button
-                      (click)="deleteItem(item, idx)"
                       class="btn btn-danger"
+                      (click)="deleteItem(item, idx)"
                     >
-                      Delete
+                      <mat-icon>delete</mat-icon>
                     </button>
                   </td>
                 </tr>
