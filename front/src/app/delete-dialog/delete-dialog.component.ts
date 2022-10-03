@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { DataTableComponent } from "app/data-table/data-table.component";
 import { QueryDbService } from "app/services/query-db.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-delete-dialog",
@@ -13,6 +14,7 @@ export class DeleteDialogComponent implements OnInit {
   constructor(
     private queryDbService: QueryDbService,
     private dialogRef: MatDialogRef<DataTableComponent>,
+    private toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.currRoot = data;
@@ -25,5 +27,9 @@ export class DeleteDialogComponent implements OnInit {
     console.log("deleting project");
     this.dialogRef.close();
     this.queryDbService.delete_collection(this.currRoot["root"]).subscribe();
+    this.toastr.success(
+      `${this.currRoot["root"]} deleted successfully!`,
+      "Deleting Site!"
+    );
   }
 }

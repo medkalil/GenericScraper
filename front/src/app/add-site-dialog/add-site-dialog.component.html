@@ -1,0 +1,25 @@
+<div>
+  <h3>
+    <strong>Adding Site</strong>
+  </h3>
+
+  <strong> <p>to Add Site just enter it root</p> </strong>
+
+  <form [formGroup]="rootForm" class="text-center" (ngSubmit)="AddSiteAuto()">
+    <input type="text" type="url" class="w-100" formControlName="root" />
+
+    <div mat-dialog-actions class="">
+      <button
+        [disabled]="rootForm.invalid"
+        mat-button
+        mat-dialog-close
+        class="btn btn-danger center-align"
+        type="submit"
+        style="justify-content: center"
+      >
+        Add Site
+      </button>
+      <h1>{{ shemaDetectResult | json }}</h1>
+    </div>
+  </form>
+</div>

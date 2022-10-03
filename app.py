@@ -518,6 +518,7 @@ async def run_linkextractor():
 #shema_detect with beatuliful soup as LinkExtractor
 @app.route('/shema_detect', methods=['POST','GET'])
 async def shema_detect():
+          #service,materiel,ambassade,test,tunisie, fourniture,acquisitio,activite
           root=request.args.get('root')
           mots_cles = request.args.get('mots_cles').split(",")
           depth=3
@@ -538,7 +539,7 @@ async def shema_detect():
               configuration = {"configuration":{"type":"card_scraper", "collection_name":root, "config":config,"card_css_selector":card_css_selector}}
               db[root].insert_one(configuration)
           else:
-            return "taost to the user : root existe already in our sys"
+            return jsonify("taost to the user : root existe already in our sys")
           return res
 
 """ @app.route('/shema_detect', methods=['POST','GET'])

@@ -29,6 +29,10 @@ import { AdminLayoutModule } from "./layouts/admin-layout/admin-layout.module";
 import { DeleteDialogComponent } from "./delete-dialog/delete-dialog.component";
 import { JobsComponent } from "./jobs/jobs.component";
 import { SiteDeReferenceComponent } from "./site-de-reference/site-de-reference.component";
+import { ToastComponent } from "./toast/toast.component";
+
+import { ToastrModule } from "ngx-toastr";
+import { AddSiteDialogComponent } from "./add-site-dialog/add-site-dialog.component";
 
 @NgModule({
   imports: [
@@ -39,6 +43,14 @@ import { SiteDeReferenceComponent } from "./site-de-reference/site-de-reference.
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      progressBar: true,
+      progressAnimation: "increasing",
+      preventDuplicates: true,
+      resetTimeoutOnDuplicate: true,
+      maxOpened: 1,
+    }),
 
     AgmCoreModule.forRoot({
       apiKey: "YOUR_GOOGLE_MAPS_API_KEY",
@@ -50,6 +62,8 @@ import { SiteDeReferenceComponent } from "./site-de-reference/site-de-reference.
     DeleteDialogComponent,
     JobsComponent,
     SiteDeReferenceComponent,
+    ToastComponent,
+    AddSiteDialogComponent,
   ],
   //PathLocationStrategy : to get rid of the # in the link : /#/path  -> /path
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],

@@ -8,6 +8,7 @@ import { ProcessHttpmsgService } from "./process-httpmsg.service";
   providedIn: "root",
 })
 export class QueryDbService {
+  BASE_URL = "http://127.0.0.1:5000/";
   private data = new BehaviorSubject<any[]>([]);
   currentData = this.data.asObservable();
   private items: any[] = [];
@@ -93,5 +94,12 @@ export class QueryDbService {
     return this.http
       .get<any>("http://127.0.0.1:5000/get_list_jobs")
       .pipe(catchError(this.processHttpmsgService.handleError));
+  }
+
+  //http://127.0.0.1:5000/shema_detect?root=https://tunisie-appels-doffres.com&mots_cles=service,materiel,ambassade,test,tunisie, fourniture,acquisitio,activite
+  shema_detect(root, list_mot_cle): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/shema_detect?root=${root}&mots_cles=${list_mot_cle}`
+    );
   }
 }
