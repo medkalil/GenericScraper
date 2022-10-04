@@ -4,6 +4,7 @@ import { AddSiteDialogComponent } from "app/add-site-dialog/add-site-dialog.comp
 import { DeleteDialogComponent } from "app/delete-dialog/delete-dialog.component";
 import { QueryDbService } from "app/services/query-db.service";
 import { ToastService } from "app/services/toast.service";
+import { SiteDetailDialogComponent } from "app/site-detail-dialog/site-detail-dialog.component";
 import { ToastrService } from "ngx-toastr";
 import { Subject } from "rxjs";
 
@@ -49,7 +50,7 @@ export class SiteDeReferenceComponent implements OnInit {
 
   openAddDialog() {
     this.dialog.open(AddSiteDialogComponent, {
-      width: "30%",
+      width: "50%",
       data: { root: "test" },
     });
   }
@@ -60,5 +61,15 @@ export class SiteDeReferenceComponent implements OnInit {
       width: "30%",
       data: { root: url },
     });
+  }
+
+  openSiteDetailDialog(url) {
+    this.dialog.open(SiteDetailDialogComponent, {
+      width: "50%",
+      data: { root: url },
+    });
+  }
+  openAddManuelDialogDialog() {
+    console.log("Ajout Manuel");
   }
 }

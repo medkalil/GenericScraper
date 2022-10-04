@@ -102,4 +102,11 @@ export class QueryDbService {
       `http://127.0.0.1:5000/shema_detect?root=${root}&mots_cles=${list_mot_cle}`
     );
   }
+
+  //http://127.0.0.1:5000/get_configuration?root=https://www.e-marchespublics.com
+  get_configuration(root): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/get_configuration?root=${root}`
+    );
+  }
 }

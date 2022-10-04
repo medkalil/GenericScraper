@@ -33,9 +33,28 @@ import { ToastComponent } from "./toast/toast.component";
 
 import { ToastrModule } from "ngx-toastr";
 import { AddSiteDialogComponent } from "./add-site-dialog/add-site-dialog.component";
+import { SiteDetailDialogComponent } from "./site-detail-dialog/site-detail-dialog.component";
 
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSelectModule } from "@angular/material/select";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+
+const MaterialModules = [
+  MatDialogModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatSelectModule,
+  MatCheckboxModule,
+];
 @NgModule({
   imports: [
+    MaterialModules,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -64,6 +83,7 @@ import { AddSiteDialogComponent } from "./add-site-dialog/add-site-dialog.compon
     SiteDeReferenceComponent,
     ToastComponent,
     AddSiteDialogComponent,
+    SiteDetailDialogComponent,
   ],
   //PathLocationStrategy : to get rid of the # in the link : /#/path  -> /path
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],

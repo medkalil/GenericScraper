@@ -17,7 +17,7 @@ export class AddSiteDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private dialogRef: MatDialogRef<SiteDeReferenceComponent>,
+    public dialogRef: MatDialogRef<SiteDeReferenceComponent>,
     private queryDbService: QueryDbService
   ) {}
 

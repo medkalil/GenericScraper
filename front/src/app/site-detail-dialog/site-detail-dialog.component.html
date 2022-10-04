@@ -1,0 +1,85 @@
+<!-- link : https://edupala.com/how-to-implement-angular-material-dialog/ -->
+<div *ngIf="isLoading; else dataExiste">Loading...</div>
+<ng-template #dataExiste>
+  <div *ngIf="isCard; else table">
+    <div class="form-container">
+      <h2 mat-dialog-title>{{ configuration["collection_name"] }}</h2>
+      <mat-dialog-content>
+        <form>
+          <mat-form-field appearance="standard">
+            <mat-label>type</mat-label>
+            <input matInput [value]="configuration['type']" readonly />
+          </mat-form-field>
+
+          <mat-form-field appearance="standard">
+            <mat-label>card_css_selector</mat-label>
+            <input
+              matInput
+              [value]="configuration['card_css_selector']"
+              readonly
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="standard">
+            <mat-label>config</mat-label>
+            <input matInput [value]="configuration['config']" readonly />
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill" hintLabel="Country name required">
+          <mat-label>Country</mat-label>
+          <mat-select matNativeControl name="country" 
+            <mat-option value="india">India</mat-option>
+            <mat-option value="france">France</mat-option>
+            <mat-option value="germany">Germany</mat-option>
+            <mat-option value="japan">Japan</mat-option>
+            <mat-option value="Mongolia">Mongolia</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button
+          mat-raised-button
+          (click)="dialogRef.close(false)"
+          color="primary"
+        >
+          Close
+        </button>
+        <!--  <button mat-raised-button color="primary">Submit</button> -->
+      </mat-dialog-actions>
+    </div>
+  </div>
+  <ng-template #table>
+    <div class="form-container">
+      <h2 mat-dialog-title>{{ configuration["collection_name"] }}</h2>
+      <mat-dialog-content>
+        <form>
+          <mat-form-field appearance="standard">
+            <mat-label>type</mat-label>
+            <input matInput [value]="configuration['type']" readonly />
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill" hintLabel="Country name required">
+              <mat-label>Country</mat-label>
+              <mat-select matNativeControl name="country" 
+                <mat-option value="india">India</mat-option>
+                <mat-option value="france">France</mat-option>
+                <mat-option value="germany">Germany</mat-option>
+                <mat-option value="japan">Japan</mat-option>
+                <mat-option value="Mongolia">Mongolia</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button
+          mat-raised-button
+          (click)="dialogRef.close(false)"
+          color="primary"
+        >
+          Close
+        </button>
+        <!--  <button mat-raised-button color="primary">Submit</button> -->
+      </mat-dialog-actions>
+    </div>
+  </ng-template>
+</ng-template>

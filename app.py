@@ -536,7 +536,7 @@ async def shema_detect():
               db.create_collection(root)
               config = res['config']
               card_css_selector = res['card_css_selector']
-              configuration = {"configuration":{"type":"card_scraper", "collection_name":root, "config":config,"card_css_selector":card_css_selector}}
+              configuration = {"configuration":{"type":"card_scraper", "collection_name":root, "config":str(config),"card_css_selector":card_css_selector}}
               db[root].insert_one(configuration)
           else:
             return jsonify("taost to the user : root existe already in our sys")
@@ -957,6 +957,18 @@ async def get_search_data():
   return jsonify(data[:10])
 
 
+@app.route('/get_configuration', methods=['POST','GET'])
+async def get_configuration():
+  root = request.args.get("root")
+
+  data = list(db[root].find({"configuration":{"$exists":True}},{"_id":0}))[0]
+  if data['configuration']['type'] == 'table_scraper':
+    if 'table_match' in data['configuration']:
+      data['configuration'].pop('table_match')
+  elif data['configuration']['type'] == 'card_scraper':
+    if 'mot_cle' in data['configuration']:
+      data['configuration'].pop('mot_cle')
+  return jsonify(data['configuration'])
 #####################################END: Routes for Production #################################################
 
 
