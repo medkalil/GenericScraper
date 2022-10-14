@@ -1,9 +1,16 @@
 <!-- link : https://edupala.com/how-to-implement-angular-material-dialog/ -->
-<div *ngIf="isLoading; else dataExiste">Loading...</div>
+<div *ngIf="isLoading; else dataExiste">
+  <div [hidden]="!isLoading" class="text-center position-relative">
+    <div class="spinner-border" role="status"></div>
+    <h4>Loading...please waite</h4>
+  </div>
+</div>
 <ng-template #dataExiste>
   <div *ngIf="isCard; else table">
     <div class="form-container">
-      <h2 mat-dialog-title>{{ configuration["collection_name"] }}</h2>
+      <h2 class="text-center" mat-dialog-title>
+        {{ configuration["collection_name"] }}
+      </h2>
       <mat-dialog-content>
         <form>
           <mat-form-field appearance="standard">
@@ -41,7 +48,7 @@
         <button
           mat-raised-button
           (click)="dialogRef.close(false)"
-          color="primary"
+          class="btn btn-danger center-align"
         >
           Close
         </button>
@@ -51,7 +58,9 @@
   </div>
   <ng-template #table>
     <div class="form-container">
-      <h2 mat-dialog-title>{{ configuration["collection_name"] }}</h2>
+      <h2 class="text-center" mat-dialog-title>
+        {{ configuration["collection_name"] }}
+      </h2>
       <mat-dialog-content>
         <form>
           <mat-form-field appearance="standard">

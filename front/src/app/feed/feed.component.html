@@ -97,11 +97,14 @@
           class="selectpicker"
           multiple
         >
-          <option *ngFor="let it of mot_cles">
-            <span value="{{ it }}">
-              {{ it }}
-            </span>
-          </option>
+          <ng-container *ngIf="mot_cles?.length > 0; else noKeys">
+            <option *ngFor="let it of mot_cles">
+              <span value="{{ it }}">
+                {{ it }}
+              </span>
+            </option>
+          </ng-container>
+          <div *ngIf="noKeys">NoKeys</div>
         </select>
       </div>
 
@@ -112,7 +115,7 @@
       ></app-data-table>
       <ng-template #noCurrentRoot> noCurrentRoot </ng-template> -->
       <div
-        *ngIf="isWaiting; else notWaiting"
+        *ngIf="isWaiting"
         [hidden]="!isWaiting"
         class="text-center position-relative"
         style="top: 15%"
@@ -121,7 +124,7 @@
         <h4>Loading...please waite</h4>
       </div>
 
-      <ng-template #notWaiting>
+      <div *ngIf="data?.length > 0; else noData">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
@@ -195,7 +198,10 @@
             </div>
           </div>
         </div>
-      </ng-template>
+      </div>
+      <ng-container *ngIf="noData">
+        pas de données pour {{ currentRoot }}
+      </ng-container>
 
       <!-- <h4>
         keys :

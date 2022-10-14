@@ -35,7 +35,10 @@ export class AddSiteDialogComponent implements OnInit {
   //service,materiel,ambassade,test,tunisie, fourniture,acquisitio,activite
   AddSiteAuto() {
     console.log("value :", this.rootForm.value.root);
-    this.toastr.info("L'ajout du site est en cour", "Analyse du site!");
+    this.toastr.info(
+      "L'ajout Automatique du site est en cour",
+      "Analyse du site!"
+    );
     this.queryDbService
       .shema_detect(
         this.rootForm.value.root,

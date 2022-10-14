@@ -34,7 +34,6 @@
               (click)="scrolling_right()"
               role="button"
             >
-              top
               <mat-icon style="font-size: 50px">keyboard_arrow_left</mat-icon>
             </div>
             <table class="table">
@@ -49,6 +48,15 @@
                 </th>
               </thead>
               <!-- for data : *ngFor in tr and values in td -->
+              <div
+                *ngIf="isWaiting"
+                class="text-center position-relative"
+                style="width: 100vh"
+              >
+                <div class="spinner-border" role="status"></div>
+                <h4>Loading...please waite</h4>
+              </div>
+
               <tbody *ngIf="data?.length > 0; else noData">
                 <tr *ngFor="let item of data; let idx = index">
                   <ng-container *ngFor="let key of keys">
@@ -84,17 +92,11 @@
                   </td>
                 </tr>
               </tbody>
-              <div
-                [hidden]="!isWaiting"
-                class="text-center position-relative"
-                style="width: 100vh"
-              >
-                <div class="spinner-border" role="status"></div>
-                <h4>Loading...please waite</h4>
-              </div>
-              <ng-template #noData>
+
+              <ng-container *ngIf="noData"> noData </ng-container>
+              <!-- <ng-template #noData>
                 <h4 [hidden]="isWaiting">NoData</h4>
-              </ng-template>
+              </ng-template> -->
             </table>
             <div
               class="pr-3"

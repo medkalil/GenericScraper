@@ -1,9 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { AddSiteDialogComponent } from "app/add-site-dialog/add-site-dialog.component";
+import { AddSiteManuelComponent } from "app/add-site-manuel/add-site-manuel.component";
 import { DeleteDialogComponent } from "app/delete-dialog/delete-dialog.component";
 import { QueryDbService } from "app/services/query-db.service";
 import { ToastService } from "app/services/toast.service";
+import { WebsocketService } from "app/services/websocket.service";
 import { SiteDetailDialogComponent } from "app/site-detail-dialog/site-detail-dialog.component";
 import { ToastrService } from "ngx-toastr";
 import { Subject } from "rxjs";
@@ -15,7 +17,7 @@ import { Subject } from "rxjs";
 })
 export class SiteDeReferenceComponent implements OnInit {
   urlList: any[];
-
+  testRootList: any;
   /* urlList = [
     {
       url: "https://www.google.com",
@@ -31,10 +33,17 @@ export class SiteDeReferenceComponent implements OnInit {
     private queryDbService: QueryDbService,
     private toastr: ToastrService,
     private dialog: MatDialog
-  ) {}
+  ) // private webSocketService: WebsocketService
+  {}
 
   ngOnInit(): void {
     this.getRootList();
+    /*this.queryDbService.get_testRootList().subscribe((message) => {
+      this.queryDbService.testRootList.push(message);
+    }); */
+    /* this.webSocketService.listen("end").subscribe((data) => {
+      console.log("data from socket io", data);
+    }); */
   }
 
   getRootList() {
@@ -58,7 +67,7 @@ export class SiteDeReferenceComponent implements OnInit {
   openDeleteDialog(url) {
     console.log("url:", url);
     this.dialog.open(DeleteDialogComponent, {
-      width: "30%",
+      width: "50%",
       data: { root: url },
     });
   }
@@ -71,5 +80,9 @@ export class SiteDeReferenceComponent implements OnInit {
   }
   openAddManuelDialogDialog() {
     console.log("Ajout Manuel");
+    this.dialog.open(AddSiteManuelComponent, {
+      width: "50%",
+      data: { root: "test" },
+    });
   }
 }

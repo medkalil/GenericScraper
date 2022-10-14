@@ -1,9 +1,11 @@
 from ast import Return
+import asyncio
 from fileinput import close
 #from crypt import methods
 from logging import root
 from os import urandom
 from pickletools import int4
+import string
 from turtle import title
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
@@ -55,12 +57,16 @@ import time
 
 from models.shema_detect import Shema_detect_class
 import traceback
-
-
+#from flask_socketio import SocketIO
+import threading
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
+#socketio = SocketIO(app, cors_allowed_origins="*")
 CORS(app)
+
+#socketio = SocketIO(app)
 
 api = Api(app)
 scrapyd = ScrapydAPI('http://localhost:6800')
@@ -72,6 +78,11 @@ print(client.list_database_names())
 db = client['mydb']
 
 ########################################### testing for the demo with flask : BEGIN ###############################
+
+""" @socketio.on('my event')
+def handle_my_custom_event(json):
+    socketio.emit('my response', json)
+ """
 
 @app.route('/')
 def home():
@@ -542,6 +553,120 @@ async def shema_detect():
             return jsonify("taost to the user : root existe already in our sys")
           return res
 
+
+#shema_detect with beatuliful soup as LinkExtractor
+@app.route('/run_scraper', methods=['POST','GET'])
+async def run_scraper():
+    #clear session 
+
+    input_url = request.args.get('root')
+    mots_cles = request.args.get('mots_cles')
+    depth = int(request.args.get('depth'))
+
+    print("list_mot_cle:",mots_cles)
+    print("list_mot_cle type:",type(mots_cles))
+
+    myList = []
+    special_list = []
+    temp_list = []
+    page_type = ""
+
+    start = time.time()
+
+    # 1- get configuration
+    configuration = list(db.get_collection(str(input_url)).find({"configuration":{"$type" : "object"}},{"_id":0}))
+    configuration = configuration[0]["configuration"]
+    print("configuration:",configuration)
+    if configuration["type"] == "table_scraper":
+      page_type = "table"
+    elif configuration["type"] == "card_scraper":
+      page_type = configuration
+
+    threading.Thread(target=scrape(input_url, mots_cles, depth, myList, special_list, page_type)).start()
+    #await asyncio.gather(scrape(input_url, mots_cles, depth, myList, special_list, page_type))
+    
+    end = time.time()
+    print("THE TIME TAKEN IS",end - start)
+    scraper_urls = []
+    queue = []
+    myList = []
+    special_list = []
+    return jsonify("Scaper Running")
+
+def scrape(input_url, mots_cles, depth, myList, special_list, page_type):
+    # Set for storing urls with same domain
+    if(depth == 0):
+      print("Intern root - {}".format(input_url))
+    
+    elif(depth == 1):
+        level_crawler(input_url)
+    
+    else:
+        # We have used a BFS approach
+        # considering the structure as
+        # a tree. It uses a queue based
+        # approach to traverse
+        # links upto a particular depth.
+        print("the mot clelist ",mots_cles)
+        queue = []
+        queue.append(input_url)
+        for j in range(depth):
+            for count in range(len(queue)):
+                url = queue.pop(0)
+                if not url_contains_multiple_digits(url):
+                    urls = level_crawler(url)
+                    for i in urls:
+                        if not url_contains_multiple_digits(i) and i not in myList:
+                            #print("Intern - {} - with depth - {}".format(i,j))
+                            queue.append(i)
+                            myList.append(i)
+                            #check if one of the mot cle (or) is in the url :
+                            if any(mot in i.lower() for mot in mots_cles) or any(mot in requests.get(i).content.decode().lower() for mot in mots_cles):
+                                special_list.append(i)
+                                print("FROM SPECIAL LIST - {} - with depth - {}".format(i,j))
+                                # 2- get 10 Links
+                                if len(special_list) >= 10:
+                                  temp_list = special_list[:10]
+                                  special_list = special_list[10:]
+                                  scraper_urls = special_list
+                                  # 3- run scraper
+                                  if page_type == "table":
+                                    print("*************************** table running***************************************")
+                                    print("nomBER OF URLS:",len(scraper_urls))
+                                    scraper_urls = "".join([str(elem)+"," for elem in temp_list])
+                                    scrapyd.schedule(PROJECT_NAME, 'table', start_urls_list=scraper_urls , table_match=mots_cles, collection_name=input_url)
+                                    scraper_urls = []
+                                  elif isinstance(page_type,dict):
+                                    print("*************************** Card running***************************************")
+                                    scraper_urls = "".join([str(elem)+"," for elem in temp_list])
+                                    scrapyd.schedule(PROJECT_NAME, 'scraper', config = str(page_type["config"]), start_urls_list=scraper_urls, card_css_selector=page_type["card_css_selector"],collection_name=root,mot_cle=mots_cles)
+                                    scraper_urls = []
+
+        print("the len is",len(set(queue)))
+        print("the len is",len(set(myList)))
+    scraper_urls = []     
+    queue = []
+    myList = []
+    special_list = []
+    return 
+  
+@app.route('/get_old_data', methods=['POST','GET'])
+async def get_old_data():
+  root = request.args.get("root")
+  data = list(db[root].find({},{"_id":0,"configuration":0}))
+  data = [x for x in data if x]
+  return jsonify(json.loads(bson.json_util.dumps(data)))
+
+""" 
+@app.route('/get_root_data', methods=['POST','GET'])
+async def get_root_data():
+  root = request.args.get('root')
+  data = list(db[root].find({},{"_id":0,"configuration":0}).limit(5))
+  data = [x for x in data if x]
+  print("data:",data)
+  # [1:] : get rid of the configuration obj
+  return jsonify(json.loads(bson.json_util.dumps(data[1:])))
+"""
 """ @app.route('/shema_detect', methods=['POST','GET'])
 async def shema_detect():
   url_list = []
@@ -855,6 +980,7 @@ async def get_root_list():
 async def get_root_data():
   root = request.args.get('root')
   data = list(db[root].find({},{"_id":0,"configuration":0}).limit(5))
+  data = [x for x in data if x]
   print("data:",data)
   # [1:] : get rid of the configuration obj
   return jsonify(json.loads(bson.json_util.dumps(data[1:])))
@@ -864,16 +990,23 @@ async def get_mot_cles():
   root = request.args.get('root')
   res_list = []
 
-  data = list(db[root].find({"configuration":{"$exists":True}},{"_id":0}))
-  print("data:",data)
-  for i in range(len(data)):
-    data[i] = data[i]['configuration']
-    if data[i]['type']=="card_scraper":
-      res_list.append(data[i]['mot_cle'])
-    else:
-      res_list.append(data[i]['table_match'])
-  res_list = get_url_string_from_list(res_list)
-  print("res_list is",res_list)
+  try:
+    data = list(db[root].find({"configuration":{"$exists":True}},{"_id":0}))
+    print("data:",data)
+    for i in range(len(data)):
+      try:
+        data[i] = data[i]['configuration']
+        if data[i]['type']=="card_scraper":
+          res_list.append(data[i]['mot_cle'])
+        else:
+          res_list.append(data[i]['table_match'])
+      except:
+        #if a config dosent have mot_cle/table_match: like 1st config
+        pass
+    res_list = get_url_string_from_list(res_list)
+    print("res_list is",res_list)
+  except:
+    return jsonify(res_list)
   return jsonify(res_list)
 
 @app.route('/filter_resulat_by_mot_cle', methods=['POST','GET'])
@@ -969,8 +1102,81 @@ async def get_configuration():
     if 'mot_cle' in data['configuration']:
       data['configuration'].pop('mot_cle')
   return jsonify(data['configuration'])
-#####################################END: Routes for Production #################################################
 
+@app.route('/shema_detect_manuel', methods=['POST','GET'])
+async def shema_detect_manuel():
+  data = request.get_json()
+  print("THE DATA IS:",data)
+  
+  if data['root'] not in db.list_collection_names():
+    print("inside 1")
+    if data['type'] == 'table_scraper':
+      print("INSIDE TABLE:")
+      db.create_collection(data['root'])
+      configuration = {"configuration":{"type":"table_scraper","collection_name":data['root']}}
+      db[data['root']].insert_one(configuration)
+    if data['type'] == 'card_scraper':
+      print("INSIDE CARD:")
+      db.create_collection(data['root'])
+      card_css_selector = data['card_css_selector']
+      collection_name = data['root']
+      config = data['config']
+      #config = res['config']
+      configuration = {"configuration":{"type":"card_scraper", "collection_name":collection_name, "config":str(config),"card_css_selector":card_css_selector}}
+      db[data['root']].insert_one(configuration)
+  else:
+    return jsonify("root existe")
+  return jsonify("site added manuely")
+
+######################################socket test start#####################################
+""" @socketio.on('message')
+def messaging( message , methods=['GET', 'POST']):
+  try:
+    print('received message: ' + str(message))
+    socketio.emit('message', db.list_collection_names(), room="my_room")
+  except Exception as e:
+    print("the exception:",e) """
+######################################socket test end #####################################
+""" @app.route('/stream')
+def stream():
+    li = db.list_collection_names()
+    def get_data():
+      while True:
+        if db.list_collection_names () != li:
+          yield "".join(db.list_collection_names())
+
+    return flask.Response(get_data(),
+                          mimetype="text/event-stream") """
+
+
+#####################################END: Routes for Production #################################################
+""" 
+@app.route('/shema_detect', methods=['POST','GET'])
+async def shema_detect():
+          #service,materiel,ambassade,test,tunisie, fourniture,acquisitio,activite
+          root=request.args.get('root')
+          mots_cles = request.args.get('mots_cles').split(",")
+          depth=3
+          
+          if root not in db.list_collection_names():
+            res = crawl_root(depth,root,mots_cles=mots_cles)
+            if res == "table":
+              #table : type,collection_name
+              db.create_collection(root)
+              configuration = {"configuration":{"type":"table_scraper","collection_name":root}}
+              db[root].insert_one(configuration)
+
+            elif isinstance(res,dict):
+            #card :type,collection_name,config,card_css_selector
+              db.create_collection(root)
+              config = res['config']
+              card_css_selector = res['card_css_selector']
+              configuration = {"configuration":{"type":"card_scraper", "collection_name":root, "config":str(config),"card_css_selector":card_css_selector}}
+              db[root].insert_one(configuration)
+          else:
+            return jsonify("taost to the user : root existe already in our sys")
+          return res
+           """
 
 
 def get_url_string_from_list(li):
@@ -1156,10 +1362,6 @@ def crawl_root(depth,input_url,mots_cles):
         print("the len is",len(set(queue)))
         print("the len is",len(set(myList)))
         #print("the queue is",queue)
-        """ for it in queue:
-            for mot in mots_cles:
-                if mot in it:
-                    res.append(it) """
     
     end = time.time()
     print("THE TIME TAKEN IS",end - start)
@@ -1173,7 +1375,9 @@ def crawl_root(depth,input_url,mots_cles):
 
 if __name__ == "__main__":
   try:
+    #socketio.run(app, debug=True)
     app.run(debug=True , threaded=True)
+    #socketio.run(app)
   finally:
     session.clear()
 

@@ -1,5 +1,5 @@
 <div>
-  <h3>
+  <h3 class="text-center">
     <strong>Adding Site</strong>
   </h3>
 
@@ -8,7 +8,7 @@
   <form [formGroup]="rootForm" class="text-center" (ngSubmit)="AddSiteAuto()">
     <input type="text" type="url" class="w-100" formControlName="root" />
 
-    <div mat-dialog-actions class="">
+    <div mat-dialog-actions class="justify-content-center">
       <button
         [disabled]="rootForm.invalid"
         mat-button

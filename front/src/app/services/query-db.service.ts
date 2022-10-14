@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+//import { Socket } from "ngx-socket-io";
 import { BehaviorSubject, Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { ProcessHttpmsgService } from "./process-httpmsg.service";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -12,10 +14,11 @@ export class QueryDbService {
   private data = new BehaviorSubject<any[]>([]);
   currentData = this.data.asObservable();
   private items: any[] = [];
+  testRootList: any[];
 
   constructor(
     private http: HttpClient,
-    private processHttpmsgService: ProcessHttpmsgService
+    private processHttpmsgService: ProcessHttpmsgService //private socket: Socket
   ) {}
 
   setData(data: any) {
@@ -42,6 +45,12 @@ export class QueryDbService {
   get_root_data(root): Observable<any[]> {
     return this.http.get<any>(
       `http://127.0.0.1:5000/get_root_data?root=${root} `
+    );
+  }
+
+  get_old_data(root): Observable<any[]> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/get_old_data?root=${root} `
     );
   }
 
@@ -107,6 +116,25 @@ export class QueryDbService {
   get_configuration(root): Observable<any> {
     return this.http.get<any>(
       `http://127.0.0.1:5000/get_configuration?root=${root}`
+    );
+  }
+
+  add_manuel_site(data) {
+    //console.log("data in service:", data);
+    return this.http.post<any>(
+      `http://127.0.0.1:5000/shema_detect_manuel`,
+      data
+    );
+  }
+
+  /* get_testRootList() {
+    console.log("inside service sockets");
+    return this.socket.fromEvent("message").pipe(map((data: any) => data));
+  } */
+
+  run_scraper(root, mots_cles): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/run_scraper?root=${root}&depth=3&mots_cles=${mots_cles} `
     );
   }
 }

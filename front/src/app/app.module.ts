@@ -42,6 +42,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { AddSiteManuelComponent } from "./add-site-manuel/add-site-manuel.component";
+import { MatRadioModule } from "@angular/material/radio";
 
 const MaterialModules = [
   MatDialogModule,
@@ -51,6 +53,7 @@ const MaterialModules = [
   MatIconModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatRadioModule,
 ];
 @NgModule({
   imports: [
@@ -84,6 +87,7 @@ const MaterialModules = [
     ToastComponent,
     AddSiteDialogComponent,
     SiteDetailDialogComponent,
+    AddSiteManuelComponent,
   ],
   //PathLocationStrategy : to get rid of the # in the link : /#/path  -> /path
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],

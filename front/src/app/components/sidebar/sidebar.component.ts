@@ -34,7 +34,7 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: "/notifications",
-    title: "Notifications",
+    title: "Favorites",
     icon: "notifications",
     class: "",
   },

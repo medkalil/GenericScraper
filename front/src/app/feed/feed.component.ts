@@ -20,6 +20,8 @@ export class FeedComponent implements OnInit {
   dataSelectedLeght = 0;
   selectedIndex: number;
   eventData: any;
+  noData = false;
+  noKeys = false;
 
   constructor(private queryDbService: QueryDbService) {}
 
@@ -27,12 +29,6 @@ export class FeedComponent implements OnInit {
     this.queryDbService.get_root_list().subscribe((res) => {
       this.rootList = res;
     });
-
-    /* var eventSource = new EventSource("http://127.0.0.1:5000/stream");
-    eventSource.addEventListener("message", (e) => {
-      this.eventData = e.data;
-      console.log("aeaze", e.data);
-    }); */
   }
 
   select(index: number) {
@@ -46,18 +42,32 @@ export class FeedComponent implements OnInit {
     this.noUrlBtn = true;
 
     this.queryDbService.get_root_data(this.currentRoot).subscribe((res) => {
-      this.data = res;
-      this.keys = Object.keys(res[0]);
-      console.log("curre", this.data);
-      console.log("keys", this.keys);
-      this.isWaiting = false;
-      this.itemHaveUrl(this.data);
-      this.dataSelectedLeght = 5;
+      if (res.length == 0) {
+        this.data = [];
+        this.noData = true;
+        this.isWaiting = false;
+      } else {
+        this.data = res;
+        this.keys = Object.keys(res[0]);
+        console.log("curre", this.data);
+        console.log("keys", this.keys);
+        this.isWaiting = false;
+        this.noData = false;
+        this.itemHaveUrl(this.data);
+        this.dataSelectedLeght = this.data.length;
+      }
     });
     this.queryDbService.get_mot_cles(this.currentRoot).subscribe((res) => {
-      this.mot_cles = res;
-      console.log("mot_cles", this.mot_cles);
-      this.mot_cles = Array.from(new Set(this.mot_cles));
+      console.log("the mot cle res is ", res);
+
+      if (res.length == 0) {
+        this.noKeys = true;
+        this.mot_cles = [];
+      } else {
+        this.mot_cles = res;
+        console.log("mot_cles", this.mot_cles);
+        this.mot_cles = Array.from(new Set(this.mot_cles));
+      }
     });
   }
 

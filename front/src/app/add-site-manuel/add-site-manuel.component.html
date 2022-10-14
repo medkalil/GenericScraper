@@ -1,0 +1,68 @@
+<div class="form-container">
+  <h2 class="text-center" mat-dialog-title>Ajout Manuel</h2>
+  <form [formGroup]="myForm">
+    <mat-dialog-content>
+      <mat-form-field appearance="standard">
+        <mat-label>root</mat-label>
+        <input matInput placeholder="Enter your root" formControlName="root" />
+      </mat-form-field>
+      <br />
+      <div>
+        <mat-radio-group
+          aria-label="Select an option"
+          (change)="radioChange($event)"
+          formControlName="type"
+        >
+          <mat-radio-button color="warn" name="table" value="table_scraper"
+            >Table
+          </mat-radio-button>
+          <mat-radio-button color="warn" name="card" value="card_scraper"
+            >Card
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field
+        [class.cdk-visually-hidden]="!isCard"
+        appearance="standard"
+      >
+        <mat-label>card css selector</mat-label>
+        <input
+          matInput
+          placeholder="Enter your card_css_selector"
+          formControlName="card_css_selector"
+        />
+      </mat-form-field>
+      <mat-form-field
+        [class.cdk-visually-hidden]="!isCard"
+        appearance="standard"
+      >
+        <mat-label>config</mat-label>
+        <input
+          matInput
+          placeholder="Enter your config"
+          formControlName="config"
+        />
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button
+        mat-raised-button
+        (click)="dialogRef.close(false)"
+        class="btn btn-danger center-align"
+        type="cancel"
+      >
+        Close
+      </button>
+      <button
+        mat-raised-button
+        class="btn btn-danger center-align"
+        style="justify-content: center"
+        type="submit"
+        [disabled]="!myForm.valid"
+        (click)="onSubmit(myForm.value)"
+      >
+        Submit
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

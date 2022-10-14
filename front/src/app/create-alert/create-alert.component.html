@@ -68,8 +68,8 @@
     </div>
 
     <button
-      [disabled]="isMaxRecherhe"
-      class="w-100 btn-danger"
+      [disabled]="emptyForm"
+      class="w-100 btn btn-danger"
       (click)="onRecherhe()"
     >
       Recherche
@@ -82,6 +82,27 @@
     <div [hidden]="!isScraping" class="text-center position-relative mt-5">
       <div class="spinner-border" role="status"></div>
       <h4>La Recherche est encour</h4>
+    </div>
+    <div>
+      les mots cles de recherche :
+      <mat-form-field appearance="fill">
+        <mat-label>Mots Cles</mat-label>
+        <mat-select [formControl]="motCleSelect" multiple>
+          <mat-option *ngFor="let mot of localMotCles" [value]="mot">{{
+            mot
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngFor="let root of localRoots; let i = index">
+        <!-- root : {{ root }}
+        <p>
+          <span> {{ newdata[i] | json }}</span>
+        </p> -->
+        <app-recherche-data-display
+          [root]="root"
+          [dataList]="newdata[i]"
+        ></app-recherche-data-display>
+      </div>
     </div>
   </form>
 </div>

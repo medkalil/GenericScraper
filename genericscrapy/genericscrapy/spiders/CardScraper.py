@@ -4,7 +4,7 @@ import re
 import scrapy
 import ast
 from scrapy_splash import SplashRequest
-from gerapy_pyppeteer import PyppeteerRequest
+#from gerapy_pyppeteer import PyppeteerRequest
 import ast
 from inline_requests import inline_requests
 

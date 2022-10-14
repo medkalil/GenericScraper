@@ -24,6 +24,7 @@ export class DataTableComponent implements OnInit {
   isWaiting = true;
   listDataNotification: any[];
   myRouterObserver = null;
+  noData = false;
 
   constructor(
     private queryDbService: QueryDbService,
@@ -55,8 +56,15 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.queryDbService.get_root_data(this.rootProperty).subscribe((res) => {
+      if (res.length == 0) {
+        this.noData = true;
+        this.isWaiting = false;
+      }
+      //console.log(`res from ${this.rootProperty} is:`, res);
+
       this.data = res;
       this.keys = Object.keys(res[0]);
+
       this.isWaiting = false;
       this.itemHaveUrl(this.data);
     });
@@ -67,9 +75,6 @@ export class DataTableComponent implements OnInit {
       console.log("the VV", res.toLowerCase());
       console.log("the VM", this.search_mot_param);
 
-      /* if (this.search_mot_param == res) {
-        this.myRouterObserver.unsubscribe();
-      } */
       this.queryDbService
         .get_search_data(this.rootProperty, res.toLowerCase())
         .subscribe((res) => {
