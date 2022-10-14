@@ -30,6 +30,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatDialogModule } from "@angular/material/dialog";
 import { OpportuniteComponent } from "../../opportunite/opportunite.component";
 import { RechercheDataDisplayComponent } from "app/recherche-data-display/recherche-data-display.component";
+import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import { RechercheDataDisplayComponent } from "app/recherche-data-display/recher
     DataTableComponent,
     OpportuniteComponent,
     RechercheDataDisplayComponent,
+    Dashboardv2Component,
   ],
   providers: [],
   exports: [FeedComponent, MatFormFieldModule, OpportuniteComponent],

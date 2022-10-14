@@ -12,6 +12,7 @@ import { FeedComponent } from "app/feed/feed.component";
 import { JobsComponent } from "app/jobs/jobs.component";
 import { OpportuniteComponent } from "app/opportunite/opportunite.component";
 import { SiteDeReferenceComponent } from "app/site-de-reference/site-de-reference.component";
+import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -60,6 +61,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "Sites-de-References", component: SiteDeReferenceComponent },
   { path: "feed", component: FeedComponent },
   { path: "dashboard", component: DashboardComponent },
+  { path: "dashboardv2", component: Dashboardv2Component },
   { path: "user-profile", component: UserProfileComponent },
   { path: "table-list", component: TableListComponent },
 

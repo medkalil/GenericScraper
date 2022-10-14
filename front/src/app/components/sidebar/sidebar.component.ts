@@ -30,6 +30,7 @@ export const ROUTES: RouteInfo[] = [
   }, */
   { path: "/jobs", title: "Jobs", icon: "library_books", class: "" },
   { path: "/dashboard", title: "Dashboard", icon: "dashboard", class: "" },
+  { path: "dashboardv2", title: "DashboardV2", icon: "dashboard", class: "" },
   { path: "/user-profile", title: "User Profile", icon: "person", class: "" },
 
   {

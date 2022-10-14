@@ -657,6 +657,12 @@ async def get_old_data():
   data = [x for x in data if x]
   return jsonify(json.loads(bson.json_util.dumps(data)))
 
+@app.route('/get_all_data', methods=['POST','GET'])
+async def get_all_data():
+  root = request.args.get("root")
+  data = list(db[root].find({},{"_id":0}))
+  data = [x for x in data if x]
+  return jsonify(json.loads(bson.json_util.dumps(data)))
 """ 
 @app.route('/get_root_data', methods=['POST','GET'])
 async def get_root_data():

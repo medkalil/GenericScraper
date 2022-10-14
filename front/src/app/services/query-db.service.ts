@@ -54,6 +54,12 @@ export class QueryDbService {
     );
   }
 
+  get_all_data(root): Observable<any[]> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/get_all_data?root=${root} `
+    );
+  }
+
   get_mot_cles(root): Observable<any[]> {
     return this.http.get<any>(
       `http://127.0.0.1:5000/get_mot_cles?root=${root} `
