@@ -60,6 +60,9 @@ import traceback
 #from flask_socketio import SocketIO
 import threading
 from flask_socketio import SocketIO
+from itertools import groupby
+from operator import itemgetter
+import itertools
 
 app = Flask(__name__)
 app.secret_key = 'session_key'
@@ -663,6 +666,31 @@ async def get_all_data():
   data = list(db[root].find({},{"_id":0}))
   data = [x for x in data if x]
   return jsonify(json.loads(bson.json_util.dumps(data)))
+
+
+@app.route('/get_data_grouped_by_classified_as', methods=['POST','GET'])
+async def get_data_grouped_by_classified_as():
+  root = request.args.get("root")
+  res = []
+
+  data = list(db[root].find({},{"_id":0,"configuration":0}))
+  data = [x for x in data if x]
+  try:
+    #1- sort by clasified_as
+    #2- group by
+    data = sorted(data,key = itemgetter('classified_as'))
+   
+    for k, g in itertools.groupby(data, lambda x: x["classified_as"]):
+      #res.append({k:list(g)})
+      res.append({k:len(list(g))})
+    print("res : ",res)
+  except:
+    print("EXCEPTION HERE")
+    pass
+
+  return jsonify(json.loads(bson.json_util.dumps(res)))
+
+
 """ 
 @app.route('/get_root_data', methods=['POST','GET'])
 async def get_root_data():

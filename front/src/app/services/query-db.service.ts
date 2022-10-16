@@ -143,4 +143,10 @@ export class QueryDbService {
       `http://127.0.0.1:5000/run_scraper?root=${root}&depth=3&mots_cles=${mots_cles} `
     );
   }
+
+  get_data_grouped_by_classified_as(root): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/get_data_grouped_by_classified_as?root=${root}`
+    );
+  }
 }

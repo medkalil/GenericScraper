@@ -1,3 +1,4 @@
+import { ThrowStmt } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 import { QueryDbService } from "app/services/query-db.service";
 import * as Chartist from "chartist";
@@ -16,6 +17,13 @@ export class Dashboardv2Component implements OnInit {
   topMotCle: string;
   topMotClelength: number;
   topMotClePersentqge: number;
+  topCategorie: string;
+  topCategorielength: number;
+  topCategoriePersentqge: number;
+  chartBarData: any[] = [];
+  websiteViewsChart: any;
+  keys: any[];
+  tableData: any[];
 
   constructor(private queryDbService: QueryDbService) {}
 
@@ -84,6 +92,21 @@ export class Dashboardv2Component implements OnInit {
   ngOnInit() {
     this.getRootList();
 
+    new Chartist.Pie(
+      "#ct-chart",
+      {
+        labels: ["x", "y", "z", "r"],
+        series: [20, 40, 30, 40],
+      },
+      {
+        donut: true,
+        donutWidth: 60,
+        //donutSolid: true,
+        startAngle: 270,
+        showLabel: true,
+      }
+    );
+
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: ["M", "T", "W", "T", "F", "S", "S"],
@@ -135,16 +158,20 @@ export class Dashboardv2Component implements OnInit {
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
     var datawebsiteViewsChart = {
-      labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
-      series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]],
+      /* labels: this.chartBarData[0],
+      series: [this.chartBarData[1]], */
+      /* labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+      series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]], */
+      labels: ["Lundi", "Mardi", "Mercredi"],
+      series: [[10, 20, 50]],
     };
     var optionswebsiteViewsChart = {
       axisX: {
         showGrid: false,
       },
       low: 0,
-      high: 1000,
-      chartPadding: { top: 0, right: 5, bottom: 0, left: 0 },
+      high: this.topMotClelength,
+      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
     };
     var responsiveOptions: any[] = [
       [
@@ -159,7 +186,7 @@ export class Dashboardv2Component implements OnInit {
         },
       ],
     ];
-    var websiteViewsChart = new Chartist.Bar(
+    this.websiteViewsChart = new Chartist.Bar(
       "#websiteViewsChart",
       datawebsiteViewsChart,
       optionswebsiteViewsChart,
@@ -167,7 +194,8 @@ export class Dashboardv2Component implements OnInit {
     );
 
     //start animation for the Emails Subscription Chart
-    this.startAnimationForBarChart(websiteViewsChart);
+    this.startAnimationForBarChart(this.websiteViewsChart);
+    /* ----------==========    END : Emails Subscription Chart initialization    ==========---------- */
   }
 
   getRootList() {
@@ -182,6 +210,10 @@ export class Dashboardv2Component implements OnInit {
     //1- get root data
     this.queryDbService.get_all_data(this.selectedRoot).subscribe((res) => {
       this.selectedRootData = res;
+      this.keys = Object.keys(res[3]);
+      this.tableData = res.slice(3, 7);
+      console.log("keys ;", this.keys);
+
       console.log("data is:", this.selectedRootData);
       //list mot cle
       this.getListMotCles(this.selectedRoot);
@@ -196,6 +228,12 @@ export class Dashboardv2Component implements OnInit {
         this.selectedRootMotCleList
       );
     });
+    this.queryDbService
+      .get_data_grouped_by_classified_as(this.selectedRoot)
+      .subscribe((res) => {
+        console.log("Now FROM HERE", res);
+        this.getTopCategorie(res);
+      });
   }
   getListMotcleAndDataLength(root, motCleList) {
     this.selectedRootMotCleAndItemsList = [];
@@ -213,6 +251,10 @@ export class Dashboardv2Component implements OnInit {
           this.selectedRootMotCleAndItemsList.push(temp);
           console.log(`the data for mot cle ${motCleList[i]} is`, res.length);
           this.getTopMotCle(this.selectedRootMotCleAndItemsList);
+          console.log(
+            "res from getChartBarData",
+            this.getChartBarData(this.selectedRootMotCleAndItemsList)
+          );
         });
     }
     console.log("final resulat list", this.selectedRootMotCleAndItemsList);
@@ -220,11 +262,9 @@ export class Dashboardv2Component implements OnInit {
   getTopMotCle(motCleList) {
     console.log("AHHHAYYYYYYYYYY 1", motCleList);
     motCleList = motCleList.filter((elm) => elm);
-    //console.log("AHHHAYYYYYYYYYY 2", motCleList[0]);
     let max = -1;
     let maxKey: any;
     for (let i = 0; i < motCleList.length; i++) {
-      //console.log("keysis :", motCleList[i]);
       Object.entries(motCleList[i]).forEach(([key, value]) => {
         if ((value as number) > max) {
           max = value as number;
@@ -238,18 +278,48 @@ export class Dashboardv2Component implements OnInit {
     this.topMotClePersentqge =
       (this.topMotClelength / this.selectedRootData.length) * 100;
   }
-}
 
-/* 
-    this.queryDbService
-      .filter_resulat_by_mot_cle(this.currentRoot, value)
-      .subscribe((res) => {
-        this.data = res;
-        this.keys = Object.keys(res[0]);
-        this.isWaiting = false;
-        console.log("data CHANGES", this.data);
-        this.itemHaveUrl(this.data);
-        this.dataSelectedLeght = res.length;
-        console.log("dataSelectedLeght:", this.dataSelectedLeght);
+  getTopCategorie(CategorieList) {
+    CategorieList = CategorieList.filter((elm) => elm);
+    let max = -1;
+    let maxKey: any;
+    for (let i = 0; i < CategorieList.length; i++) {
+      Object.entries(CategorieList[i]).forEach(([key, value]) => {
+        if ((value as number) > max) {
+          max = value as number;
+          maxKey = key as string;
+        }
       });
- */
+    }
+
+    console.log("max Categorie is", maxKey);
+    console.log("max this.selectedRootData.length", this.selectedRootData);
+    this.topCategorie = maxKey;
+    this.topCategorielength = max;
+    this.topCategoriePersentqge =
+      (this.topCategorielength / this.selectedRootData.length) * 100;
+  }
+
+  getChartBarData(data: any[]) {
+    let tempMots: any[] = [];
+    let tempLength: any[] = [];
+    for (let i = 0; i < data.length; i++) {
+      Object.entries(data[i]).forEach(([key, value]) => {
+        tempMots.push(key);
+        tempLength.push(value);
+      });
+    }
+    this.chartBarData = [tempMots, tempLength];
+
+    console.log("mot of bar charts", this.chartBarData[0]);
+    console.log("lenght of bar charts", this.chartBarData[1]);
+
+    this.websiteViewsChart.update({
+      //labels: this.chartBarData[0],
+      labels: this.chartBarData[0].map((v) => v[0].toUpperCase()),
+      series: [this.chartBarData[1]],
+    });
+
+    return [tempMots, tempLength];
+  }
+}
