@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { ProcessHttpmsgService } from "./process-httpmsg.service";
 import { map } from "rxjs/operators";
+import { User } from "app/user-profile/user-profile.component";
 
 @Injectable({
   providedIn: "root",
@@ -149,4 +150,32 @@ export class QueryDbService {
       `http://127.0.0.1:5000/get_data_grouped_by_classified_as?root=${root}`
     );
   }
+
+  get_user(username: string): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/get_user?username=${username}`
+    );
+  }
+  update_profile(username: string, newProfile: User): Observable<any> {
+    return this.http.put<User>(
+      //`http://127.0.0.1:5000/update_profile/${username}?item=${newProfile}`
+      `http://127.0.0.1:5000/update_profile/${username}`,
+      newProfile
+    );
+  }
+
+  authentification(authUser): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/authentification?authUser=${authUser}`
+    );
+  }
 }
+
+/* 
+add_manuel_site(data) {
+    //console.log("data in service:", data);
+    return this.http.post<any>(
+      `http://127.0.0.1:5000/shema_detect_manuel`,
+      data
+    );
+  } */

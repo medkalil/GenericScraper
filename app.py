@@ -1,5 +1,6 @@
 from ast import Return
 import asyncio
+#from crypt import methods
 from fileinput import close
 #from crypt import methods
 from logging import root
@@ -691,6 +692,41 @@ async def get_data_grouped_by_classified_as():
   return jsonify(json.loads(bson.json_util.dumps(res)))
 
 
+
+  #1 - when sign in:
+  #2 - store user in localstorage 
+  #data = list(db["users"].find({"username":username},{"_id":0,"configuration":0}))
+@app.route('/get_user', methods=['POST','GET'])
+async def get_user():
+  username = request.args.get("username")
+  data = list(db["users"].find({"username":"clubisty8"},{"_id":0,"configuration":0}))
+  print("data : ",data)
+  return jsonify(json.loads(bson.json_util.dumps(data)))
+
+
+@app.route('/update_profile/<string:username>', methods=['PUT'])
+async def update_profile(username):
+  newProfile = request.get_json()
+  try:
+    db["users"].replace_one({"username":username},newProfile)
+  except :
+    return jsonify("user not found")
+  return jsonify("profile Updated")
+
+
+#return list:
+# len(list) = 0 : pas de user 
+# if len(list) = 1 : user existe and return it :(len(list)=1 car username est unique)
+@app.route('/authentification', methods=['GET'])
+async def authentification():
+  authUser = json.loads(request.args.get("authUser"))
+
+  data = list(db["users"].find({"username":authUser['username'],"pass":authUser["password"]},{"_id":0,"configuration":0}))
+  print("authUser : ",authUser)
+  print("data : : ",data)
+
+  return jsonify(data)
+
 """ 
 @app.route('/get_root_data', methods=['POST','GET'])
 async def get_root_data():
@@ -1007,7 +1043,10 @@ async def cancel_all_job():
 
 @app.route('/get_root_list', methods=['POST','GET'])
 async def get_root_list():
-  return  jsonify( db.list_collection_names())
+  data = db.list_collection_names()
+  print("res :",data)
+  data.remove('users')
+  return  jsonify(data)
 
 # without: id,configuration 
 @app.route('/get_root_data', methods=['POST','GET'])

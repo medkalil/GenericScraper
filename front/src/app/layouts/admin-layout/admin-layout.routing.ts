@@ -13,64 +13,53 @@ import { JobsComponent } from "app/jobs/jobs.component";
 import { OpportuniteComponent } from "app/opportunite/opportunite.component";
 import { SiteDeReferenceComponent } from "app/site-de-reference/site-de-reference.component";
 import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
+import { SignInComponent } from "app/sign-in/sign-in.component";
+import { AuthGuard } from "app/services/auth.guard";
 
 export const AdminLayoutRoutes: Routes = [
-  // {
-  //   path: '',
-  //   children: [ {
-  //     path: 'dashboard',
-  //     component: DashboardComponent
-  // }]}, {
-  // path: '',
-  // children: [ {
-  //   path: 'userprofile',
-  //   component: UserProfileComponent
-  // }]
-  // }, {
-  //   path: '',
-  //   children: [ {
-  //     path: 'icons',
-  //     component: IconsComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'notifications',
-  //         component: NotificationsComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'maps',
-  //         component: MapsComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'typography',
-  //         component: TypographyComponent
-  //     }]
-  // }, {
-  //     path: '',
-  //     children: [ {
-  //         path: 'upgrade',
-  //         component: UpgradeComponent
-  //     }]
-  // }
-  { path: "create-alert", component: CreateAlertComponent },
-  { path: "Sites-de-References", component: SiteDeReferenceComponent },
-  { path: "feed", component: FeedComponent },
+  {
+    path: "create-alert",
+    component: CreateAlertComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "Sites-de-References",
+    component: SiteDeReferenceComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "feed", component: FeedComponent, canActivate: [AuthGuard] },
   { path: "dashboard", component: DashboardComponent },
-  { path: "dashboardv2", component: Dashboardv2Component },
-  { path: "user-profile", component: UserProfileComponent },
-  { path: "table-list", component: TableListComponent },
+  {
+    path: "dashboardv2",
+    component: Dashboardv2Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "user-profile",
+    component: UserProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "table-list",
+    component: TableListComponent,
+    canActivate: [AuthGuard],
+  },
 
-  { path: "jobs", component: JobsComponent },
+  { path: "jobs", component: JobsComponent, canActivate: [AuthGuard] },
   /* { path: "typography", component: TypographyComponent }, */
 
-  { path: "icons", component: IconsComponent },
+  { path: "icons", component: IconsComponent, canActivate: [AuthGuard] },
 
-  { path: "notifications", component: NotificationsComponent },
-  { path: "opportunites", component: OpportuniteComponent },
-  { path: "upgrade", component: UpgradeComponent },
+  {
+    path: "notifications",
+    component: NotificationsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "opportunites",
+    component: OpportuniteComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: "upgrade", component: UpgradeComponent, canActivate: [AuthGuard] },
+  { path: "sign-in", component: SignInComponent },
 ];

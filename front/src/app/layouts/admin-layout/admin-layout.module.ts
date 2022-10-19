@@ -5,6 +5,7 @@ import {
   LocationStrategy,
   PathLocationStrategy,
 } from "@angular/common";
+
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../dashboard/dashboard.component";
@@ -31,6 +32,9 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { OpportuniteComponent } from "../../opportunite/opportunite.component";
 import { RechercheDataDisplayComponent } from "app/recherche-data-display/recherche-data-display.component";
 import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
+import { SignInComponent } from "app/sign-in/sign-in.component";
+import { MatCardModule } from "@angular/material/card";
+import { AuthGuard } from "app/services/auth.guard";
 
 @NgModule({
   imports: [
@@ -49,6 +53,7 @@ import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
     MatIconModule,
     MatAutocompleteModule,
     MatDialogModule,
+    MatCardModule,
   ],
   declarations: [
     CreateAlertComponent,
@@ -64,8 +69,9 @@ import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
     OpportuniteComponent,
     RechercheDataDisplayComponent,
     Dashboardv2Component,
+    SignInComponent,
   ],
-  providers: [],
+  providers: [AuthGuard],
   exports: [FeedComponent, MatFormFieldModule, OpportuniteComponent],
 })
 export class AdminLayoutModule {}

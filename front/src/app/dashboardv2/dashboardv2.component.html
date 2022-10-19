@@ -156,8 +156,42 @@
           </div>
         </div>
       </div>
+
+      <!-- 
+   <div class="card card-chart">
+          <div class="card-header card-header-warning">
+            <div class="ct-chart" id="ct-chart-pie"></div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> campaign sent 2 days ago
+            </div>
+          </div>
+        </div>
+ -->
+
       <div class="col-6">
-        <div class="ct-chart" id="ct-chart"></div>
+        <div class="card card-chart">
+          <div class="card-header card-header text-center">
+            <div class="ct-chart" id="ct-chart-pie"></div>
+          </div>
+
+          <div class="card-body">
+            <h4 class="card-title">Categories Utiliser</h4>
+            <div class="card-category" *ngFor="let c of chartPieData[0]">
+              <span>
+                {{ c }}
+              </span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> campaign sent 2 days ago
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -165,7 +199,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title">{{ selectedRoot }}</h4>
-            <p class="card-category">New employees on 15th September, 2016</p>
+            <!--  <p class="card-category">New employees on 15th September, 2016</p> -->
           </div>
           <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -186,3 +220,19 @@
     </div>
   </div>
 </div>
+
+<style>
+  .ct-chart-bar {
+    overflow: visible;
+    margin: 0 0 30px 0;
+  }
+
+  .ct-chart .ct-label.ct-horizontal.ct-end {
+    position: relative;
+    justify-content: flex-end;
+    text-align: right;
+    transform-origin: 100% 0;
+    transform: translate(-100%) rotate(-45deg);
+    white-space: nowrap;
+  }
+</style>

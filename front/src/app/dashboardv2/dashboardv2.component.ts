@@ -21,7 +21,10 @@ export class Dashboardv2Component implements OnInit {
   topCategorielength: number;
   topCategoriePersentqge: number;
   chartBarData: any[] = [];
+  chartPieData: any[] = [];
   websiteViewsChart: any;
+  categoriePieChart: any;
+
   keys: any[];
   tableData: any[];
 
@@ -83,6 +86,48 @@ export class Dashboardv2Component implements OnInit {
             easing: "ease",
           },
         });
+        //test/
+        data.element.attr({
+          style:
+            "stroke: hsl(" +
+            Math.floor((Chartist.getMultiValue(data.value) / 100) * 100) +
+            ", 50%, 50%);",
+        });
+        //test/
+      }
+    });
+
+    seq2 = 0;
+  }
+
+  startAnimationForPieChart(chart) {
+    let seq2: any, delays2: any, durations2: any;
+
+    seq2 = 0;
+    delays2 = 80;
+    durations2 = 500;
+    chart.on("draw", function (data) {
+      console.log("hay lalalalal", data);
+
+      if (data.type === "slice") {
+        seq2++;
+        data.element.animate({
+          opacity: {
+            begin: seq2 * delays2,
+            dur: durations2,
+            from: 0,
+            to: 1,
+            easing: "ease",
+          },
+        });
+        //test/
+        data.element.attr({
+          style:
+            "stroke: hsl(" +
+            Math.floor((Chartist.getMultiValue(data.value) / 100) * 100) +
+            ", 50%, 50%);",
+        });
+        //test/
       }
     });
 
@@ -92,21 +137,33 @@ export class Dashboardv2Component implements OnInit {
   ngOnInit() {
     this.getRootList();
 
-    new Chartist.Pie(
-      "#ct-chart",
-      {
-        labels: ["x", "y", "z", "r"],
-        series: [20, 40, 30, 40],
-      },
-      {
-        donut: true,
-        donutWidth: 60,
-        //donutSolid: true,
-        startAngle: 270,
-        showLabel: true,
-      }
+    /* 
+    const dataDailySalesChart: any = {
+      labels: ["M", "T", "W", "T", "F", "S", "S"],
+      series: [[12, 17, 7, 17, 23, 18, 38]],
+    };
+ */
+    var pieData: any = {
+      labels: ["M", "T", "W", "T", "F", "S", "S"],
+      series: [12, 17, 7, 17, 23, 18, 38],
+    };
+
+    var pieOptions = {
+      width: "200px",
+      height: "180px",
+      chartPadding: 30,
+      labelOffset: 50,
+      labelDirection: "explode",
+    };
+    this.categoriePieChart = new Chartist.Pie(
+      "#ct-chart-pie",
+      pieData,
+      pieOptions
     );
 
+    this.startAnimationForPieChart(this.categoriePieChart);
+
+    // this.startAnimationForLineChart(this.categoriePieChart);
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
     const dataDailySalesChart: any = {
       labels: ["M", "T", "W", "T", "F", "S", "S"],
@@ -158,14 +215,11 @@ export class Dashboardv2Component implements OnInit {
     /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
     var datawebsiteViewsChart = {
-      /* labels: this.chartBarData[0],
-      series: [this.chartBarData[1]], */
-      /* labels: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
-      series: [[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]], */
       labels: ["Lundi", "Mardi", "Mercredi"],
       series: [[10, 20, 50]],
     };
     var optionswebsiteViewsChart = {
+      seriesBarDistance: 30,
       axisX: {
         showGrid: false,
       },
@@ -178,6 +232,7 @@ export class Dashboardv2Component implements OnInit {
         "screen and (max-width: 640px)",
         {
           seriesBarDistance: 5,
+
           axisX: {
             labelInterpolationFnc: function (value) {
               return value[0];
@@ -213,8 +268,7 @@ export class Dashboardv2Component implements OnInit {
       this.keys = Object.keys(res[3]);
       this.tableData = res.slice(3, 7);
       console.log("keys ;", this.keys);
-
-      console.log("data is:", this.selectedRootData);
+      //console.log("data is:", this.selectedRootData);
       //list mot cle
       this.getListMotCles(this.selectedRoot);
     });
@@ -233,15 +287,15 @@ export class Dashboardv2Component implements OnInit {
       .subscribe((res) => {
         console.log("Now FROM HERE", res);
         this.getTopCategorie(res);
+        console.log("ALAY  HALALALY", this.getChartPieData(res));
       });
   }
+
+  //call filter_resulat_by_mot_cle() for every mot cle
   getListMotcleAndDataLength(root, motCleList) {
     this.selectedRootMotCleAndItemsList = [];
     console.log("iniside getListMotcleAndDataLength 1", motCleList);
-    console.log("iniside getListMotcleAndDataLength 2", motCleList[0]);
 
-    //call filter_resulat_by_mot_cle() for every mot cle
-    //this.selectedRootMotCleAndItemsList
     for (let i = 0; i < motCleList.length; i++) {
       this.queryDbService
         .filter_resulat_by_mot_cle(root, motCleList[i])
@@ -315,11 +369,32 @@ export class Dashboardv2Component implements OnInit {
     console.log("lenght of bar charts", this.chartBarData[1]);
 
     this.websiteViewsChart.update({
-      //labels: this.chartBarData[0],
       labels: this.chartBarData[0].map((v) => v[0].toUpperCase()),
       series: [this.chartBarData[1]],
     });
 
+    return [tempMots, tempLength];
+  }
+
+  // return list 2 length 2 : l[0] => list of categories exp: ['Agriculture et Agroalimentaire', 'BTP Bâtiment', 'Fourni...]
+  //                          l[1] => list of occurence of every categorie respecting order exp :  [1, 5, 8, 1, 1, 8, 1, 37]   (Agriculture et Agroalimentaire : 1,BTP Bâtiment:5....)
+  getChartPieData(data: any[]) {
+    let tempMots: any[] = [];
+    let tempLength: any[] = [];
+    for (let i = 0; i < data.length; i++) {
+      Object.entries(data[i]).forEach(([key, value]) => {
+        tempMots.push(key);
+        tempLength.push(value);
+      });
+    }
+    this.chartPieData = [tempMots, tempLength];
+    console.log("mot of chartPieData :", this.chartPieData[0]);
+    console.log("lenght of chartPieData", this.chartPieData[1]);
+    this.categoriePieChart.update({
+      labels: this.chartPieData[0].map((v) => v[0].toUpperCase()),
+      series: this.chartPieData[1],
+    });
+    this.startAnimationForPieChart(this.categoriePieChart);
     return [tempMots, tempLength];
   }
 }

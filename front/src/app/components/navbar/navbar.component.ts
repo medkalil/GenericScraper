@@ -1,4 +1,10 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from "@angular/core";
 import { ROUTES } from "../sidebar/sidebar.component";
 import {
   Location,
@@ -9,13 +15,15 @@ import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { FormControl, FormGroup } from "@angular/forms";
 import { QueryDbService } from "app/services/query-db.service";
 import { HttpParams } from "@angular/common/http";
+import { User } from "app/user-profile/user-profile.component";
+import { SignStatusService } from "app/services/sign-status.service";
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -23,6 +31,8 @@ export class NavbarComponent implements OnInit {
   private sidebarVisible: boolean;
   isSearch = true;
   nomberOfNotification: any = 0;
+  user: User;
+  signStatus: string;
 
   searchForm = new FormGroup({
     searchValue: new FormControl(""),
@@ -33,7 +43,8 @@ export class NavbarComponent implements OnInit {
     private element: ElementRef,
     private router: Router,
     private route: ActivatedRoute,
-    private queryDbService: QueryDbService
+    private queryDbService: QueryDbService,
+    private signStatusService: SignStatusService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -48,6 +59,20 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  //1 - no user in localstorage : sign in click -> navigate to Sing In
+  //2 - if user existe : sign out click -> remove user fromlocal storage + update status service : this.signStatusService.updateSingStatus("Sign In");
+  signInOutHandler() {
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      this.router.navigate(["sign-in"]);
+    } else {
+      localStorage.removeItem("user");
+      this.signStatusService.updateSingStatus("Sign In");
+      this.router.navigate(["dashboard"]);
+    }
+  }
+
+  ngAfterViewInit() {}
   ngOnInit() {
     this.listTitles = ROUTES.filter((listTitle) => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
@@ -65,12 +90,11 @@ export class NavbarComponent implements OnInit {
       this.nomberOfNotification = res.length;
     });
 
-    /* this.searchForm.controls.searchValue.valueChanges.subscribe((res) => {
-      console.log("the VV", res);
-    }); */
+    //this.user = JSON.parse(localStorage.getItem("user"));
+    this.signStatusService.currentSignSattus.subscribe((res) => {
+      this.signStatus = res;
+    });
   }
-
-  ngAfterViewInit() {}
 
   onDashboard() {
     this.router.navigateByUrl("/dashboard");
