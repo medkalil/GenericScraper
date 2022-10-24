@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Login</mat-card-title>
+  <mat-card-title>Sign Up</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
       <p>
@@ -19,7 +19,18 @@
             type="password"
             matInput
             placeholder="Password"
-            formControlName="password"
+            formControlName="pass"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="role"
+            formControlName="role"
           />
         </mat-form-field>
       </p>
@@ -29,10 +40,7 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Login</button>
-      </div>
-      <div class="button">
-        <button mat-button><a routerLink="/sign-up">Sign Up</a></button>
+        <button type="submit" mat-button>Sign Up</button>
       </div>
     </form>
   </mat-card-content>

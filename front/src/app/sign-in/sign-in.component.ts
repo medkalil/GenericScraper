@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { QueryDbService } from "app/services/query-db.service";
 import { SignStatusService } from "app/services/sign-status.service";
 import { User } from "app/user-profile/user-profile.component";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-sign-in",
@@ -20,7 +21,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private queryDbService: QueryDbService,
     private router: Router,
-    private signStatusService: SignStatusService
+    private signStatusService: SignStatusService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -38,6 +40,10 @@ export class SignInComponent implements OnInit {
             localStorage.setItem("user", JSON.stringify(res[0]));
             this.signStatusService.updateSingStatus("Sign Out");
             this.router.navigate(["user-profile"]);
+            this.toastr.success(
+              "Sign In successfully!",
+              `Welocme ${res[0].username}!`
+            );
           }
         });
     } else {

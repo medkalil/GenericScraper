@@ -32,9 +32,8 @@ export class SiteDeReferenceComponent implements OnInit {
   constructor(
     private queryDbService: QueryDbService,
     private toastr: ToastrService,
-    private dialog: MatDialog
-  ) // private webSocketService: WebsocketService
-  {}
+    private dialog: MatDialog // private webSocketService: WebsocketService
+  ) {}
 
   ngOnInit(): void {
     this.getRootList();

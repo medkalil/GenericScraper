@@ -65,6 +65,7 @@ from itertools import groupby
 from operator import itemgetter
 import itertools
 
+
 app = Flask(__name__)
 app.secret_key = 'session_key'
 #socketio = SocketIO(app, cors_allowed_origins="*")
@@ -726,6 +727,21 @@ async def authentification():
   print("data : : ",data)
 
   return jsonify(data)
+
+@app.route('/signup', methods=['GET'])
+async def signup():
+  newUser = json.loads(request.args.get("newUser"))
+  print("newUser : ",newUser)
+  # existe return username existe
+  data = list(db["users"].find({"username":newUser['username']},{"_id":0,"configuration":0}))
+  if len(data) > 0:
+    return jsonify([])
+  # else insert a user and return it
+  else:
+    db["users"].insert_one(newUser)
+    data = list(db["users"].find({"username":newUser['username']},{"_id":0,"configuration":0}))
+    return jsonify(data)
+
 
 """ 
 @app.route('/get_root_data', methods=['POST','GET'])

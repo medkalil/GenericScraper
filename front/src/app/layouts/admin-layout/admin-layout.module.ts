@@ -35,6 +35,7 @@ import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
 import { SignInComponent } from "app/sign-in/sign-in.component";
 import { MatCardModule } from "@angular/material/card";
 import { AuthGuard } from "app/services/auth.guard";
+import { SignUpComponent } from "app/sign-up/sign-up.component";
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import { AuthGuard } from "app/services/auth.guard";
     RechercheDataDisplayComponent,
     Dashboardv2Component,
     SignInComponent,
+    SignUpComponent,
   ],
   providers: [AuthGuard],
   exports: [FeedComponent, MatFormFieldModule, OpportuniteComponent],

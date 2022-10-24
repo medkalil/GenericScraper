@@ -15,6 +15,7 @@ import { SiteDeReferenceComponent } from "app/site-de-reference/site-de-referenc
 import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
 import { SignInComponent } from "app/sign-in/sign-in.component";
 import { AuthGuard } from "app/services/auth.guard";
+import { SignUpComponent } from "app/sign-up/sign-up.component";
 
 export const AdminLayoutRoutes: Routes = [
   {
@@ -62,4 +63,5 @@ export const AdminLayoutRoutes: Routes = [
   },
   { path: "upgrade", component: UpgradeComponent, canActivate: [AuthGuard] },
   { path: "sign-in", component: SignInComponent },
+  { path: "sign-up", component: SignUpComponent },
 ];
