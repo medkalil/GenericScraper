@@ -712,7 +712,8 @@ async def update_profile(username):
     db["users"].replace_one({"username":username},newProfile)
   except :
     return jsonify("user not found")
-  return jsonify("profile Updated")
+  data = list(db["users"].find({"username":newProfile['username']},{"_id":0,"configuration":0}))
+  return jsonify(data)
 
 
 #return list:
@@ -1473,3 +1474,29 @@ if __name__ == "__main__":
 
 class GetOutOfLoop( Exception ):
     pass
+
+
+#flask cron : https://stackoverflow.com/questions/21214270/how-to-schedule-a-function-to-run-every-hour-on-flask
+
+""" You may use flask-crontab module, which is quite easy.
+
+Step 1: pip install flask-crontab
+
+Step 2:
+
+from flask import Flask
+from flask_crontab import Crontab
+
+app = Flask(__name__)
+crontab = Crontab(app)
+Step 3:
+
+@crontab.job(minute="0", hour="6", day="*", month="*", day_of_week="*")
+def my_scheduled_job():
+    do_something()
+Step 4: On cmd, hit
+
+flask crontab add
+Done. now simply run your flask application, and you can check your function will call at 6:00 every day.
+
+You may take reference from Here (Official DOc). """

@@ -26,14 +26,14 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   motCleList: string[] = [];
-  isDisabledAdd: boolean = false;
+  //isDisabledAdd: boolean = false;
   isDisabledRemove: boolean = true;
   options = ["Sam", "Varun", "Jasmine"];
   filteredOptions: any[];
   existingRoots: any[];
   isMaxRecherhe: boolean = false;
   urlExtractorCount: number = 0;
-  isScraping: any;
+  isScraping: boolean = false;
   emptyForm = false;
 
   localRoots: any;
@@ -101,24 +101,16 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   }
 
   removeUrl(index: number) {
-    if (this.myForm.value.urls.length == 2) {
-      this.isDisabledRemove = true;
-    }
     this.urls.removeAt(index);
     if (this.myForm.value.urls.length < 2) {
-      this.isDisabledAdd = false;
+      this.isDisabledRemove = true;
     }
   }
 
   addUrl() {
-    if (this.myForm.value.urls.length == 1) {
-      this.isDisabledAdd = true;
-    }
     this.urls.push(this.fb.group({ url: "" }));
+    this.isDisabledRemove = false;
     console.log("the url list", this.myForm.value.urls);
-    if (this.myForm.value.urls.length >= 1) {
-      this.isDisabledRemove = false;
-    }
   }
 
   add(event: MatChipInputEvent): void {
@@ -141,8 +133,8 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   onRecherhe() {
     //clear old localstorage data
     localStorage.clear();
-    localStorage.setItem("roots", "");
-    localStorage.setItem("mot_cles", "");
+    /* localStorage.setItem("roots", "");
+    localStorage.setItem("mot_cles", ""); */
     this.newdata = [];
 
     console.log("motCleList", this.motCleList);
@@ -152,6 +144,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     );
     var roots = this.myForm.value["urls"].map((ele) => ele["url"]);
     var mot_cle = this.motCleList;
+
     console.log("the roots typed:", roots);
     //saving roots + mot_cles in session to display it on the buttom
     localStorage.setItem("roots", JSON.stringify(roots));
@@ -160,24 +153,16 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     this.localMotCles = mot_cle;
 
     if (!this.checker(this.existingRoots, roots)) {
-      console.log("all items in roots are not in");
       this.toastr.error(
         "ajouter les sites avant de faire les recherches",
         "Error!"
       );
     } else {
-      if (this.ismaxScraperRunning()) {
-        console.log("maximum number of urls running");
-        this.isMaxRecherhe = true;
-      } else {
-        console.log("you can run a recherche");
-        //1- get the old data
-        this.getOld_Data(roots);
-        this.pollUntillCompleted(roots);
-
-        //this.scrape(roots, mot_cle);
-        //this.isScraping = true;
-      }
+      console.log("you can run a recherche");
+      this.getOld_Data(roots);
+      this.pollUntillCompleted(roots);
+      this.scrape(roots, mot_cle);
+      this.isScraping = true;
     }
   }
 
@@ -194,7 +179,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     //2- get the new data
     for (let i = 0; i < roots.length; i++) {
       this.queryDbService.get_old_data(roots[i]).subscribe((res) => {
-        console.log("the res is !!", res);
+        console.log("new Data ", res);
         console.log("old DATA", this.getOldDataValues(this.oldData, roots[i]));
 
         let temp = this.getNewItems(
@@ -207,6 +192,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
 
         if (temp.length > 0) {
           this.newdata[i] = temp;
+          this.isScraping = false;
         } else {
           this.newdata[i] = 0;
         }
@@ -257,7 +243,6 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   checker = (arr, target) => target.every((v) => arr.includes(v));
 
   scrape(roots, mot_cle_list) {
-    //partition = i
     for (let i = 0; i < roots.length; i++) {
       this.queryDbService
         .run_scraper(roots[i], mot_cle_list)
@@ -265,11 +250,6 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
           console.log("SCRAper ARE RUNNING");
           this.toastr.success("Recherche Terminer", "Succès!");
         });
-      /* if (this.existingRoots.some((x) => x === roots[i])) {
-        this.queryDbService
-          .run_existing_root(roots[i], mot_cle_list, i)
-          .subscribe((res) => console.log("scrapers are running ..."));
-      } */
     }
   }
 

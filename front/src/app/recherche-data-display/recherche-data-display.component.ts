@@ -63,3 +63,8 @@ export class RechercheDataDisplayComponent implements OnInit, OnChanges {
     }
   }
 }
+
+// bug to fix : after session end : on displaing data :
+//    - for every site passed with @Input we save the data in localstorage with the same key "dataList"
+//    - de que on lance la recherche : in ngOnChanges: for every site :   this.localDataList = this.dataList   --> No Bug
+//    - sow after session end: we get the data with onInit: we get the data of 1 root and displayet for all the roots --> Bug

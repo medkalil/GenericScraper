@@ -23,7 +23,7 @@ export interface User {
 })
 export class UserProfileComponent implements OnInit {
   profileForm: FormGroup;
-  currUser: User;
+  currUser: User = null;
 
   constructor(
     private fb: FormBuilder,
@@ -63,9 +63,12 @@ export class UserProfileComponent implements OnInit {
   onSubmit(data: User) {
     console.log("data:", data);
     localStorage.setItem("user", JSON.stringify(data));
-    this.queryDbService.update_profile(data.username, data).subscribe((res) => {
-      console.log("proile updated ");
-    });
+    this.queryDbService
+      .update_profile(data.username, data)
+      .subscribe((res: User) => {
+        console.log("rs :", res);
+        this.currUser = res[0];
+      });
   }
 }
 

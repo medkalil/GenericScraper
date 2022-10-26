@@ -13,12 +13,13 @@ import { ToastrService } from "ngx-toastr";
 })
 export class SignUpComponent implements OnInit {
   error: any;
+  user: User;
+
   form: FormGroup = new FormGroup({
     username: new FormControl("", Validators.required),
     pass: new FormControl("", Validators.required),
     role: new FormControl("", Validators.required),
   });
-  user: User;
 
   constructor(
     private queryDbService: QueryDbService,
@@ -44,19 +45,19 @@ export class SignUpComponent implements OnInit {
     this.queryDbService
       .signUp(JSON.stringify(newuser))
       .subscribe((res: User[]) => {
-        console.log("res from backend", res);
         if (res.length == 0) {
           this.error = "username existe ";
         } else {
-          localStorage.setItem("user", JSON.stringify(res[0]));
-          this.signStatusService.updateSingStatus("Sign Out");
-          this.router.navigate(["user-profile"]);
-          this.toastr.success(
-            "Sign Up successfully!",
-            `Welocme ${res[0].username}!`
-          );
+          this.saveUser(res);
         }
       });
+  }
+
+  private saveUser(res: User[]) {
+    localStorage.setItem("user", JSON.stringify(res[0]));
+    this.signStatusService.updateSingStatus("Sign Out");
+    this.router.navigate(["user-profile"]);
+    this.toastr.success("Sign Up successfully!", `Welocme ${res[0].username}!`);
   }
 
   setUser(formValue) {
