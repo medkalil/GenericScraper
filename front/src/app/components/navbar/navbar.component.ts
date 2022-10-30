@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   nomberOfNotification: any = 0;
   user: User;
   signStatus: string;
+  showSearchIcon: boolean;
 
   searchForm = new FormGroup({
     searchValue: new FormControl(""),
@@ -93,6 +94,10 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     //this.user = JSON.parse(localStorage.getItem("user"));
     this.signStatusService.currentSignSattus.subscribe((res) => {
       this.signStatus = res;
+    });
+
+    this.queryDbService.currentshowSearchingIcon.subscribe((res) => {
+      this.showSearchIcon = res;
     });
   }
 

@@ -16,33 +16,37 @@ import {
 export class RechercheDataDisplayComponent implements OnInit, OnChanges {
   @Input() root: string;
   @Input() dataList: any[];
+  @Input() idx: number;
 
   keys: any[];
   localDataList: any[];
   localKeys: any[];
+  tempList: any[] = [];
+  data: any[] = [];
+  temp: any = {};
+  roots: any[];
+  listOfKeys: any[];
 
   constructor() {}
   ngOnChanges(changes: SimpleChanges): void {
+    console.log("changes here");
     this.localDataList = [];
     this.localKeys = [];
-    //if roots in localStorage changes => empty all localStorage
 
-    console.log("log the changes", changes);
-
-    console.log("INSIDE ngOnChanges");
     this.keys = Object.keys(this.dataList[0]);
-    console.log("the keys is:", this.keys);
-    localStorage.setItem("keys", JSON.stringify(this.keys));
     this.localKeys = this.keys;
-    localStorage.setItem("dataList", JSON.stringify(this.dataList));
     this.localDataList = this.dataList;
   }
 
   ngOnInit(): void {
-    console.log("inside OnInit");
+    console.log("inside OnInit display");
+    this.roots = JSON.parse(localStorage.getItem("roots"));
+    this.data = JSON.parse(localStorage.getItem("data"));
+    this.listOfKeys = this.getKeys(this.data);
 
-    this.localDataList = JSON.parse(localStorage.getItem("dataList"));
-    this.localKeys = JSON.parse(localStorage.getItem("keys"));
+    console.log("from display roots", this.roots);
+    console.log("from display data", this.data);
+    console.log("from display keys", this.listOfKeys);
   }
 
   scrolling_right() {
@@ -62,9 +66,41 @@ export class RechercheDataDisplayComponent implements OnInit, OnChanges {
       window.open(item["url"]);
     }
   }
+  getKeys(listItems) {
+    var res = [];
+    for (let i = 0; i < listItems.length; i++) {
+      if (listItems[i] != 0) {
+        res.push(Object.keys(listItems[i][0]));
+      } else {
+        res.push(0);
+      }
+    }
+    return res;
+  }
 }
 
-// bug to fix : after session end : on displaing data :
-//    - for every site passed with @Input we save the data in localstorage with the same key "dataList"
-//    - de que on lance la recherche : in ngOnChanges: for every site :   this.localDataList = this.dataList   --> No Bug
-//    - sow after session end: we get the data with onInit: we get the data of 1 root and displayet for all the roots --> Bug
+/*   rootExiste() {
+    var data = JSON.parse(localStorage.getItem("data"));
+    if (data.length == 0 || !this.isRootHere(this.root, data)) {
+      return false;
+    }
+    return true;
+  }
+
+  isRootHere(root, newdata) {
+    for (let v of newdata) {
+      if (v.key == root) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getRootFromData(root, newdata) {
+    for (let v of newdata) {
+      if (v.key == root) {
+        return v;
+      }
+    }
+    //return false;
+  } */

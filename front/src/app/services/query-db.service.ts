@@ -17,10 +17,17 @@ export class QueryDbService {
   private items: any[] = [];
   testRootList: any[];
 
+  private showSearchingIcon = new BehaviorSubject<boolean>(true);
+  currentshowSearchingIcon = this.showSearchingIcon.asObservable();
+
   constructor(
     private http: HttpClient,
     private processHttpmsgService: ProcessHttpmsgService //private socket: Socket
   ) {}
+
+  updateCurrentshowSearchingIcon(valuer: boolean) {
+    this.showSearchingIcon.next(valuer);
+  }
 
   setData(data: any) {
     this.items.push(data);
@@ -173,6 +180,12 @@ export class QueryDbService {
   signUp(newUser): Observable<any> {
     return this.http.get<any>(
       `http://127.0.0.1:5000/signup?newUser=${newUser}`
+    );
+  }
+
+  run_cron_scrape(root, mots_cles, timerForm): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/run_cron_scrape?root=${root}&mots_cles=${mots_cles}&depth=3&timerForm=${timerForm}`
     );
   }
 }

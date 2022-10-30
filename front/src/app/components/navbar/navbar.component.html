@@ -37,6 +37,15 @@ class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top" -->
           </button>
         </div>
       </form>
+
+      <div
+        class="spinner-border spinner-border-sm"
+        role="status"
+        [hidden]="showSearchIcon"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+
       <ul class="navbar-nav">
         <li (click)="onDashboard()" class="nav-item">
           <a class="nav-link" href="javascript:void(0)">

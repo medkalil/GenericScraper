@@ -70,6 +70,33 @@
       Recherche
     </button>
 
+    <div class="container">
+      <div class="d-flex flex-row mb-3">
+        <button
+          [disabled]="emptyForm"
+          class="col-6 btn btn-primary"
+          (click)="onCreateCron()"
+        >
+          Create Cron
+        </button>
+
+        <form [formGroup]="cronTimer" class="col-6 my-auto">
+          <input
+            class="col-4"
+            type="number"
+            placeholder="Hour"
+            formControlName="hour"
+          />
+          <input
+            class="col-4"
+            type="number"
+            placeholder="Minute"
+            formControlName="minute"
+          />
+        </form>
+      </div>
+    </div>
+
     <div [hidden]="!isMaxRecherhe" class="alert alert-danger mt-3" role="alert">
       Max Number Of Scraper (2) Running!
     </div>
@@ -88,14 +115,15 @@
           }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div *ngFor="let root of localRoots; let i = index">
+      <div *ngFor="let root of localRoots; let idx = index">
         <!-- root : {{ root }}
         <p>
           <span> {{ newdata[i] | json }}</span>
         </p> -->
         <app-recherche-data-display
-          [root]="root"
-          [dataList]="newdata[i]"
+          [localRoots]="localRoots"
+          [dataList]="newdata[idx]"
+          [idx]="idx"
         ></app-recherche-data-display>
       </div>
     </div>

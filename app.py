@@ -9,6 +9,7 @@ from pickletools import int4
 import string
 from turtle import title
 from flask import Flask
+from pytz import HOUR
 from flask_restful import Resource, Api, reqparse
 from flask import request
 import json
@@ -64,6 +65,9 @@ from flask_socketio import SocketIO
 from itertools import groupby
 from operator import itemgetter
 import itertools
+from apscheduler.schedulers.background import BackgroundScheduler
+import atexit
+
 
 
 app = Flask(__name__)
@@ -81,6 +85,8 @@ client = MongoClient('mongodb+srv://posts:posts@cluster0.lkclz.mongodb.net/')
 #db = client['mydb']
 print(client.list_database_names())
 db = client['mydb']
+
+scheduler = BackgroundScheduler()
 
 ########################################### testing for the demo with flask : BEGIN ###############################
 
@@ -558,6 +564,60 @@ async def shema_detect():
             return jsonify("taost to the user : root existe already in our sys")
           return res
 
+def test_fn_cron():
+  print("func de cron")
+
+@app.route('/run_cron_scrape', methods=['GET'])
+async def run_cron_scrape():
+  try:
+    root = request.args.get('root')
+    mots_cles = request.args.get('mots_cles')
+    depth = int(request.args.get('depth'))
+    timerForm = json.loads(request.args.get('timerForm'))
+    
+    print("from ",timerForm)
+
+    myList = []
+    special_list = []
+    temp_list = []
+    page_type = ""
+
+    print("list_mot_cle:",mots_cles)
+    print("list_mot_cle type:",type(mots_cles))
+    print("root:",root)
+
+    # 1- get configuration
+    configuration = list(db.get_collection(str(root)).find({"configuration":{"$type" : "object"}},{"_id":0}))
+    configuration = configuration[0]["configuration"]
+    print("configuration:",configuration)
+    if configuration["type"] == "table_scraper":
+      page_type = "table"
+    elif configuration["type"] == "card_scraper":
+      page_type = configuration
+
+    # 2- run a cron
+    if timerForm['hour'] or timerForm['minute']:
+      scheduler.add_job(scrape, "cron",[root, mots_cles, depth, myList, special_list, page_type], hour=timerForm['hour'],minute=timerForm['minute'])
+      scheduler.start()
+    else:
+      #defaulty is minuit
+      scheduler.add_job(scrape, "cron",[root, mots_cles, depth, myList, special_list, page_type], hour=23,minute=59)
+      scheduler.start()
+
+    scraper_urls = []
+    queue = []
+    myList = []
+    special_list = []
+
+    print('root:',root)
+    print('mots_cles:',mots_cles)
+  except Exception as e:
+    return("the Exception is:",e)
+
+  
+  return jsonify("cron is up")
+
+
 
 #shema_detect with beatuliful soup as LinkExtractor
 @app.route('/run_scraper', methods=['POST','GET'])
@@ -742,6 +802,9 @@ async def signup():
     db["users"].insert_one(newUser)
     data = list(db["users"].find({"username":newUser['username']},{"_id":0,"configuration":0}))
     return jsonify(data)
+
+
+
 
 
 """ 
@@ -1468,6 +1531,8 @@ if __name__ == "__main__":
     #socketio.run(app, debug=True)
     app.run(debug=True , threaded=True)
     #socketio.run(app)
+    # Shut down the scheduler when exiting the app
+    atexit.register(lambda: scheduler.shutdown())
   finally:
     session.clear()
 

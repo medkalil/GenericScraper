@@ -1,4 +1,5 @@
 <div *ngIf="localDataList?.length > 0">
+  is searching
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -70,3 +71,79 @@
     </div>
   </div>
 </div>
+
+<!-- for onInit -->
+
+<!-- <div *ngIf="data[idx]?.length > 0">
+  from inot
+  <div *ngFor="let di of data[idx]" class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div
+            class="card-header card-header-danger d-flex justify-content-between"
+          >
+            <div>
+              <h4 class="card-title">{{ roots[idx] }}</h4>
+              <p class="card-category">Here is a subtitle for this table</p>
+            </div>
+            <strong> {{ data[idx].length }}</strong>
+          </div>
+          <div class="card-body d-flex flex-row">
+            <div
+              (click)="scrolling_left()"
+              style="z-index: 1"
+              class="mr-3"
+              role="button"
+            >
+              <mat-icon style="position: fixed; font-size: 50px"
+                >keyboard_arrow_left</mat-icon
+              >
+            </div>
+            <div class="table-responsive scol-container">
+              <table class="table">
+                <thead class="text-primary">
+                  <th *ngFor="let key of listOfKeys[idx]">
+                    <input
+                      type="text"
+                      class="text-primary shadow-none"
+                      value="{{ key }}"
+                      style="border: none"
+                      readonly
+                    />
+                  </th>
+                  <th>Link</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let it of data[idx]">
+                    <ng-container *ngFor="let key of listOfKeys[idx]">
+                      <td>{{ it[key] }}</td>
+                    </ng-container>
+                    <td>
+                      <button
+                        class="btn btn-primary m-1 p-1 text-capitalize"
+                        (click)="clickMe(it)"
+                      >
+                        Voir plus de détail
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="pr-3"
+              style="z-index: 1"
+              (click)="scrolling_right()"
+              role="button"
+            >
+              <mat-icon style="position: fixed; font-size: 50px"
+                >keyboard_arrow_right</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

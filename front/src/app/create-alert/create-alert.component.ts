@@ -42,6 +42,12 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   newdata: any[] = [];
   subscription: any;
 
+  tempList: any[] = [];
+  data: any[] = [];
+  tempObj: any = {};
+
+  cronTimer: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private queryDbService: QueryDbService,
@@ -59,6 +65,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.initcromTimerForm();
     this.initForm();
     this.getNames();
     this.queryDbService.get_root_list().subscribe((res) => {
@@ -71,6 +78,13 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     );
     this.localRoots = JSON.parse(localStorage.getItem("roots"));
     this.localMotCles = JSON.parse(localStorage.getItem("mot_cles"));
+  }
+
+  initcromTimerForm() {
+    this.cronTimer = this.fb.group({
+      hour: ["", Validators.required],
+      minute: ["", Validators.required],
+    });
   }
 
   initForm() {
@@ -131,10 +145,11 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   }
 
   onRecherhe() {
-    //clear old localstorage data
-    localStorage.clear();
-    /* localStorage.setItem("roots", "");
-    localStorage.setItem("mot_cles", ""); */
+    //clear old localstorage data but user
+    localStorage.removeItem("roots");
+    localStorage.removeItem("data");
+    localStorage.removeItem("mot_cles");
+
     this.newdata = [];
 
     console.log("motCleList", this.motCleList);
@@ -146,7 +161,6 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     var mot_cle = this.motCleList;
 
     console.log("the roots typed:", roots);
-    //saving roots + mot_cles in session to display it on the buttom
     localStorage.setItem("roots", JSON.stringify(roots));
     this.localRoots = roots;
     localStorage.setItem("mot_cles", JSON.stringify(mot_cle));
@@ -161,8 +175,10 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
       console.log("you can run a recherche");
       this.getOld_Data(roots);
       this.pollUntillCompleted(roots);
-      this.scrape(roots, mot_cle);
+
+      //this.scrape(roots, mot_cle);
       this.isScraping = true;
+      this.queryDbService.updateCurrentshowSearchingIcon(false);
     }
   }
 
@@ -170,11 +186,12 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     this.subscription = interval(10000)
       .pipe(
         tap((x) => console.log(x)),
-        //takeUntil(this.unsub),
         switchMap(() => this.getNewData(roots))
       )
       .subscribe();
   }
+
+  //checkfinishedStatus : responsable for checking if the jobs are finished to hide the search icon in navBar
   getNewData(roots) {
     //2- get the new data
     for (let i = 0; i < roots.length; i++) {
@@ -197,10 +214,35 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
           this.newdata[i] = 0;
         }
         console.log("the New Data:", this.newdata);
+        localStorage.setItem("data", JSON.stringify(this.newdata));
       });
     }
+    this.checkfinishedStatus();
     return this.newdata;
   }
+
+  checkfinishedStatus = () => {
+    this.queryDbService.get_list_jobs().subscribe(
+      (res) => {
+        var temp = res;
+        var pending = temp["pending"];
+        var running = temp["running"];
+        if (
+          typeof pending !== "undefined" &&
+          pending.length == 0 &&
+          typeof running !== "undefined" &&
+          running.length == 0
+        ) {
+          console.log("HAYAHAYAYAYAYAYAY");
+          this.queryDbService.updateCurrentshowSearchingIcon(true);
+          this.isScraping = false;
+        }
+      } /* ,
+      (err) => {
+        this.queryDbService.updateCurrentshowSearchingIcon(true);
+      } */
+    );
+  };
 
   getNewItems = (newData, olddata) =>
     newData.filter(
@@ -248,12 +290,77 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
         .run_scraper(roots[i], mot_cle_list)
         .subscribe((res) => {
           console.log("SCRAper ARE RUNNING");
-          this.toastr.success("Recherche Terminer", "Succès!");
         });
     }
   }
 
-  ismaxScraperRunning() {
+  //return a list with objt of unique keys
+  //if 2 objet have the same key return only 1
+  tempListWithUniqueKeys(tempList) {
+    return Array.from(new Set(tempList.map((v) => JSON.stringify(v)))).map(
+      (v: any) => JSON.parse(v)
+    );
+  }
+
+  onCreateCron() {
+    console.log("ahzeazeazaz: onCreateCron");
+    //clear old localstorage data but user
+    localStorage.removeItem("roots");
+    localStorage.removeItem("data");
+    localStorage.removeItem("mot_cles");
+
+    this.newdata = [];
+
+    console.log("motCleList", this.motCleList);
+    console.log(
+      "roots",
+      this.myForm.value["urls"].map((ele) => ele["url"])
+    );
+    var roots = this.myForm.value["urls"].map((ele) => ele["url"]);
+    var mot_cle = this.motCleList;
+
+    console.log("the roots typed:", roots);
+    localStorage.setItem("roots", JSON.stringify(roots));
+    this.localRoots = roots;
+    localStorage.setItem("mot_cles", JSON.stringify(mot_cle));
+    this.localMotCles = mot_cle;
+
+    if (!this.checker(this.existingRoots, roots)) {
+      this.toastr.error(
+        "ajouter les sites avant de faire les recherches",
+        "Error!"
+      );
+    } else {
+      console.log("you can run a recherche");
+      this.getOld_Data(roots);
+      this.pollUntillCompleted(roots);
+
+      console.log("timert", this.cronTimer.value);
+
+      this.scrape_cron(roots, mot_cle);
+      this.toastr.info(
+        `Cron a été creer et va être lancer à ${this.cronTimer.value.hour} et ${this.cronTimer.value.minute} minute`,
+        "Sucess!"
+      );
+    }
+  }
+
+  scrape_cron(roots: any, mot_cle: string[]) {
+    for (let i = 0; i < roots.length; i++) {
+      this.queryDbService
+        .run_cron_scrape(
+          roots[i],
+          mot_cle,
+          JSON.stringify(this.cronTimer.value)
+        )
+        .subscribe((res) => {
+          console.log("res", res);
+        });
+    }
+  }
+}
+
+/*   ismaxScraperRunning() {
     this.queryDbService.get_list_jobs().subscribe((res) => {
       console.log("inside ismaxScraperRunning", res);
       for (var val of res["pending"]) {
@@ -276,8 +383,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
       return true;
     }
     return false;
-  }
-}
+  } */
 
 /* LocalStorage to list:
 var names = [];
