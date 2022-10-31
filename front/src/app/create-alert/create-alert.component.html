@@ -70,33 +70,34 @@
       Recherche
     </button>
 
-    <div class="container">
-      <div class="d-flex flex-row mb-3">
-        <button
-          [disabled]="emptyForm"
-          class="col-6 btn btn-primary"
-          (click)="onCreateCron()"
-        >
-          Create Cron
-        </button>
+    <div class="d-flex flex-row mb-3">
+      <button
+        [disabled]="emptyForm"
+        class="col-6 btn btn-primary"
+        (click)="onCreateCron()"
+      >
+        Create Cron
+      </button>
 
-        <form [formGroup]="cronTimer" class="col-6 my-auto">
-          <input
-            class="col-4"
-            type="number"
-            placeholder="Hour"
-            formControlName="hour"
-          />
-          <input
-            class="col-4"
-            type="number"
-            placeholder="Minute"
-            formControlName="minute"
-          />
-        </form>
-      </div>
+      <form [formGroup]="cronTimer" class="col-6 my-auto">
+        <input
+          class="col-4 mr-1"
+          type="number"
+          placeholder="Hour"
+          formControlName="hour"
+        />
+        <input
+          class="col-4"
+          type="number"
+          placeholder="Minute"
+          formControlName="minute"
+        />
+      </form>
     </div>
 
+    <p *ngIf="error" class="error my-auto">
+      {{ error }}
+    </p>
     <div [hidden]="!isMaxRecherhe" class="alert alert-danger mt-3" role="alert">
       Max Number Of Scraper (2) Running!
     </div>
@@ -121,7 +122,7 @@
           <span> {{ newdata[i] | json }}</span>
         </p> -->
         <app-recherche-data-display
-          [localRoots]="localRoots"
+          [root]="root"
           [dataList]="newdata[idx]"
           [idx]="idx"
         ></app-recherche-data-display>

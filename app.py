@@ -600,7 +600,7 @@ async def run_cron_scrape():
       scheduler.add_job(scrape, "cron",[root, mots_cles, depth, myList, special_list, page_type], hour=timerForm['hour'],minute=timerForm['minute'])
       scheduler.start()
     else:
-      #defaulty is minuit
+      #defaulty is minuit : 23 : 59
       scheduler.add_job(scrape, "cron",[root, mots_cles, depth, myList, special_list, page_type], hour=23,minute=59)
       scheduler.start()
 

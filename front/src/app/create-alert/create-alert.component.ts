@@ -47,6 +47,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   tempObj: any = {};
 
   cronTimer: FormGroup;
+  error: any;
 
   constructor(
     private fb: FormBuilder,
@@ -68,9 +69,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     this.initcromTimerForm();
     this.initForm();
     this.getNames();
-    this.queryDbService.get_root_list().subscribe((res) => {
-      this.existingRoots = res;
-    });
+    this.getRoots();
     console.log("localsorage roots", JSON.parse(localStorage.getItem("roots")));
     console.log(
       "localsorage mot_cles",
@@ -80,10 +79,16 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     this.localMotCles = JSON.parse(localStorage.getItem("mot_cles"));
   }
 
+  private getRoots() {
+    this.queryDbService.get_root_list().subscribe((res) => {
+      this.existingRoots = res;
+    });
+  }
+
   initcromTimerForm() {
     this.cronTimer = this.fb.group({
-      hour: ["", Validators.required],
-      minute: ["", Validators.required],
+      hour: ["", [Validators.max(23), Validators.min(0)]],
+      minute: ["", [Validators.max(59), Validators.min(0)]],
     });
   }
 
@@ -146,10 +151,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
 
   onRecherhe() {
     //clear old localstorage data but user
-    localStorage.removeItem("roots");
-    localStorage.removeItem("data");
-    localStorage.removeItem("mot_cles");
-
+    this.cleanLocalStorageVars();
     this.newdata = [];
 
     console.log("motCleList", this.motCleList);
@@ -303,46 +305,64 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   }
 
   onCreateCron() {
-    console.log("ahzeazeazaz: onCreateCron");
-    //clear old localstorage data but user
-    localStorage.removeItem("roots");
-    localStorage.removeItem("data");
-    localStorage.removeItem("mot_cles");
+    if (this.cronTimer.valid) {
+      this.checkCronFormEmpty();
+      this.cleanLocalStorageVars();
+      this.newdata = [];
 
-    this.newdata = [];
+      console.log("motCleList", this.motCleList);
+      console.log(
+        "roots",
+        this.myForm.value["urls"].map((ele) => ele["url"])
+      );
+      var roots = this.myForm.value["urls"].map((ele) => ele["url"]);
+      var mot_cle = this.motCleList;
 
-    console.log("motCleList", this.motCleList);
-    console.log(
-      "roots",
-      this.myForm.value["urls"].map((ele) => ele["url"])
-    );
-    var roots = this.myForm.value["urls"].map((ele) => ele["url"]);
-    var mot_cle = this.motCleList;
+      this.setRootsAndMotClesInLocalStorage(roots, mot_cle);
 
+      if (!this.checker(this.existingRoots, roots)) {
+        this.toastr.error(
+          "ajouter les sites avant de faire les recherches",
+          "Error!"
+        );
+      } else {
+        console.log("you can run a recherche");
+        console.log("cronTimer value", this.cronTimer.value);
+        this.getOld_Data(roots);
+        this.pollUntillCompleted(roots);
+
+        this.scrape_cron(roots, mot_cle);
+        this.toastr.info(
+          `Cron a été creer et va être lancer à ${this.cronTimer.value.hour} et ${this.cronTimer.value.minute} minute`,
+          "Sucess!"
+        );
+      }
+    } else {
+      this.error = "vérifier l'heure ou les minutes";
+    }
+  }
+
+  private setRootsAndMotClesInLocalStorage(roots: any, mot_cle: string[]) {
     console.log("the roots typed:", roots);
     localStorage.setItem("roots", JSON.stringify(roots));
     this.localRoots = roots;
     localStorage.setItem("mot_cles", JSON.stringify(mot_cle));
     this.localMotCles = mot_cle;
+  }
 
-    if (!this.checker(this.existingRoots, roots)) {
-      this.toastr.error(
-        "ajouter les sites avant de faire les recherches",
-        "Error!"
-      );
+  private checkCronFormEmpty() {
+    if (!this.cronTimer.value.hour && !this.cronTimer.value.minute) {
+      this.error = "Cron va être exécuté par défaut chaque jour à 23: 59";
     } else {
-      console.log("you can run a recherche");
-      this.getOld_Data(roots);
-      this.pollUntillCompleted(roots);
-
-      console.log("timert", this.cronTimer.value);
-
-      this.scrape_cron(roots, mot_cle);
-      this.toastr.info(
-        `Cron a été creer et va être lancer à ${this.cronTimer.value.hour} et ${this.cronTimer.value.minute} minute`,
-        "Sucess!"
-      );
+      this.error = null;
     }
+  }
+
+  private cleanLocalStorageVars() {
+    console.log("inside cleanLocalStorageVars");
+    localStorage.removeItem("roots");
+    localStorage.removeItem("data");
+    localStorage.removeItem("mot_cles");
   }
 
   scrape_cron(roots: any, mot_cle: string[]) {

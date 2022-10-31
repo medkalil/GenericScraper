@@ -32,6 +32,7 @@ export class RechercheDataDisplayComponent implements OnInit, OnChanges {
     console.log("changes here");
     this.localDataList = [];
     this.localKeys = [];
+    this.data = [];
 
     this.keys = Object.keys(this.dataList[0]);
     this.localKeys = this.keys;
