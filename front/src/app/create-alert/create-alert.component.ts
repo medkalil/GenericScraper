@@ -153,6 +153,8 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     //clear old localstorage data but user
     this.cleanLocalStorageVars();
     this.newdata = [];
+    //setting data on local storage to []
+    localStorage.setItem("data", JSON.stringify([]));
 
     console.log("motCleList", this.motCleList);
     console.log(
@@ -309,6 +311,8 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
       this.checkCronFormEmpty();
       this.cleanLocalStorageVars();
       this.newdata = [];
+      //setting data on local storage to []
+      localStorage.setItem("data", JSON.stringify([]));
 
       console.log("motCleList", this.motCleList);
       console.log(

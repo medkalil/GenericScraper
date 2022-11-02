@@ -1,6 +1,8 @@
 from ast import Return
 import asyncio
 #from crypt import methods
+from datetime import date, datetime
+#from crypt import methods
 from fileinput import close
 #from crypt import methods
 from logging import root
@@ -67,7 +69,8 @@ from operator import itemgetter
 import itertools
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
-
+from dateutil.parser import parse
+from collections import Counter
 
 
 app = Flask(__name__)
@@ -805,6 +808,71 @@ async def signup():
 
 
 
+@app.route('/getDateDataOfRootIfExiste',methods=['GET'])
+async def getDateDataOfRootIfExiste():
+  root = request.args.get('root')
+  
+  try:
+    data = list(db[root].find({},{"_id":0,"configuration":0}))
+    data = list(filter(None,data))
+    data_first_row = data[0]
+    print("the data input is:",data_first_row)
+    date_col = getDateCol(data_first_row)
+    print("the data col is:",date_col)
+    if date_col is None:
+      raise Exception("No Date Column in the data")
+  
+
+    data = getOnlyDateValues(data,date_col)
+    #delete the digit values
+    data = [x for x in data if not x.isnumeric()]
+    #deleting the no date values : "test1" => (string)
+    data = [x for x in data if is_date(x) ]
+    res = get_date_and_occurences_lises(data)
+    print("the list res :",res)
+  except:
+    return jsonify([])
+
+  return jsonify(res)
+
+# {'08/24/2022': 20, 08/22/2022': 10,...
+# return [keys , values]
+def get_date_and_occurences_lises(data):
+    res = dict(Counter(data))
+    return [list(res.keys()),list(res.values())]
+
+
+def getOnlyDateValues(data,date_col):
+    temp = []
+    try:
+      for x in data:
+        temp.append(x[date_col])
+    except:
+      pass
+    return temp
+    
+
+def getDateCol(item):
+  copy_item = copy.deepcopy(item)
+  for res in list(copy_item):
+    print("col value :",copy_item[res])
+    if is_date(copy_item[res]):
+      return res
+
+
+def is_date(string, fuzzy=False):
+    """
+    Return whether the string can be interpreted as a date.
+
+    :param string: str, string to check for date
+    :param fuzzy: bool, ignore unknown tokens in string if True
+    """
+    try: 
+        parse(string, fuzzy=fuzzy)
+        return True
+
+    except ValueError:
+        return False
 
 
 """ 

@@ -91,14 +91,22 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.nomberOfNotification = res.length;
     });
 
-    //this.user = JSON.parse(localStorage.getItem("user"));
-    this.signStatusService.currentSignSattus.subscribe((res) => {
-      this.signStatus = res;
-    });
+    this.getSignStatus();
 
     this.queryDbService.currentshowSearchingIcon.subscribe((res) => {
       this.showSearchIcon = res;
     });
+  }
+
+  getSignStatus() {
+    this.signStatusService.currentSignSattus.subscribe((res) => {
+      this.signStatus = res;
+    });
+
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      this.signStatus = "Sign Out";
+    }
   }
 
   onDashboard() {
@@ -211,5 +219,9 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       });
       this.searchForm.reset();
     }
+  }
+
+  navigateToFavorite() {
+    this.router.navigate(["/favorites"]);
   }
 }

@@ -24,6 +24,10 @@ export class Dashboardv2Component implements OnInit {
   chartPieData: any[] = [];
   websiteViewsChart: any;
   categoriePieChart: any;
+  selectedRootDate: any[];
+  selectedRootDateOccurence: number[];
+  dates: any;
+  //isDateData: any[] = [];
 
   keys: any[];
   tableData: any[];
@@ -135,14 +139,48 @@ export class Dashboardv2Component implements OnInit {
   }
 
   ngOnInit() {
+    /*BEGIN: init for table data */
+    this.tableData = [
+      {
+        classified_as: "Télécom",
+        item0:
+          "Supply of VHF radio Repeaters, Base radios, mobile radios, portable radios and their accessories under Framework Contract for Mara, Simiyu, Kagera, Mwanza, Geita Songwe,Njombe, Mbeya, Iringa, Songea, Rukwa, Lindi, Mtwara, …",
+        item1: "Location Remaining time",
+        item2:
+          "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+        item3: "Location Remaining time",
+        item4: "",
+        item5: "08/24/2022",
+      },
+      {
+        classified_as: "Télécom",
+        item0:
+          "Supply of Radio Mast for Tanesco Substation and offices for KIA, Karatu, Mzakwe, Kiteto, Kigoma, Urambo, Bariadi, Nyamongo, Nkasi, Sumbawanga, Newala, Mtwara, Kibaha, Ilala, Mikumi and Iyovi in Tanesco Substation …",
+        item1: "Location Remaining time",
+        item2:
+          "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+        item3: "Location Remaining time",
+        item4: "",
+        item5: "08/22/2022",
+      },
+      {
+        classified_as: "Télécom",
+        item0:
+          "Supply and Commissioning Of ICT Equipment (Laptops, Projectors, Printers and APC Smart Ups)",
+        item1: "Location Remaining time",
+        item2:
+          "Ongoing tenders\n      \n     \n   \n                   \n                   Tanzania",
+        item3: "Location Remaining time",
+        item4: "5 days, 21 hours",
+        item5: "08/18/2022",
+      },
+    ];
+    this.keys = Object.keys(this.tableData[0]);
+    this.selectedRoot = "Root";
+    /*END: init for table data */
+
     this.getRootList();
 
-    /* 
-    const dataDailySalesChart: any = {
-      labels: ["M", "T", "W", "T", "F", "S", "S"],
-      series: [[12, 17, 7, 17, 23, 18, 38]],
-    };
- */
     var pieData: any = {
       labels: ["M", "T", "W", "T", "F", "S", "S"],
       series: [12, 17, 7, 17, 23, 18, 38],
@@ -163,35 +201,42 @@ export class Dashboardv2Component implements OnInit {
 
     this.startAnimationForPieChart(this.categoriePieChart);
 
-    // this.startAnimationForLineChart(this.categoriePieChart);
-    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-    const dataDailySalesChart: any = {
-      labels: ["M", "T", "W", "T", "F", "S", "S"],
-      series: [[12, 17, 7, 17, 23, 18, 38]],
+    /* ----------==========     Dates Chart initialization For Documentation    ==========---------- */
+    var dataDates: any = {
+      labels: [
+        "27/07/2022",
+        "18/07/2022",
+        "27/06/2022",
+        "16/07/2022",
+        "13/02/2014",
+      ],
+      series: [[230, 750, 450, 300, 280]],
     };
 
-    const optionsDailySalesChart: any = {
+    const optionsDates: any = {
       lineSmooth: Chartist.Interpolation.cardinal({
         tension: 0,
       }),
       low: 0,
-      high: 50, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+      //high: 100,
+      chartPadding: { top: 5, right: 0, bottom: 20, left: 0 },
     };
 
-    var dailySalesChart = new Chartist.Line(
-      "#dailySalesChart",
-      dataDailySalesChart,
-      optionsDailySalesChart
-    );
+    this.dates = new Chartist.Line("#dates", dataDates, optionsDates);
 
-    this.startAnimationForLineChart(dailySalesChart);
+    this.startAnimationForLineChart(this.dates);
 
     /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
 
-    const dataCompletedTasksChart: any = {
-      labels: ["12p", "3p", "6p", "9p", "12p", "3a", "6a", "9a"],
-      series: [[230, 750, 450, 300, 280, 240, 200, 190]],
+    /*  const dataCompletedTasksChart: any = {
+      labels: [
+        "27/07/2022",
+        "18/07/2022",
+        "27/06/2022",
+        "16/07/2022",
+        "13/02/2014",
+      ],
+      series: [[230, 750, 450, 300, 280]],
     };
 
     const optionsCompletedTasksChart: any = {
@@ -210,9 +255,9 @@ export class Dashboardv2Component implements OnInit {
     );
 
     // start animation for the Completed Tasks Chart - Line Chart
-    this.startAnimationForLineChart(completedTasksChart);
+    this.startAnimationForLineChart(completedTasksChart); */
 
-    /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
+    /* ----------==========     Mot cle utiliser chart Chart initialization    ==========---------- */
 
     var datawebsiteViewsChart = {
       labels: ["Lundi", "Mardi", "Mercredi"],
@@ -225,7 +270,7 @@ export class Dashboardv2Component implements OnInit {
       },
       low: 0,
       high: this.topMotClelength,
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 },
+      chartPadding: { top: 0, right: 0, bottom: 5, left: 0 },
     };
     var responsiveOptions: any[] = [
       [
@@ -258,6 +303,21 @@ export class Dashboardv2Component implements OnInit {
       this.rootList = res;
     });
   }
+  getDatesofRoot(root) {
+    this.queryDbService.getDateDataOfRootIfExiste(root).subscribe((res) => {
+      console.log("DATE :", res);
+
+      //this.isDateData = res;
+      this.selectedRootDate = res[0];
+      this.selectedRootDateOccurence = res[1];
+
+      this.dates.update({
+        labels: this.selectedRootDate.slice(0, 20),
+        series: [this.selectedRootDateOccurence.slice(0, 20)],
+      });
+      this.startAnimationForLineChart(this.categoriePieChart);
+    });
+  }
 
   getUrl($event): void {
     console.log("selected value: ", $event);
@@ -267,10 +327,15 @@ export class Dashboardv2Component implements OnInit {
       this.selectedRootData = res;
       this.keys = Object.keys(res[3]);
       this.tableData = res.slice(3, 7);
+      console.log("this.tableData : ", this.tableData);
+
       console.log("keys ;", this.keys);
       //console.log("data is:", this.selectedRootData);
       //list mot cle
       this.getListMotCles(this.selectedRoot);
+
+      //get date data of tyhe selected root
+      this.getDatesofRoot(this.selectedRoot);
     });
   }
   getListMotCles(root) {
@@ -369,7 +434,8 @@ export class Dashboardv2Component implements OnInit {
     console.log("lenght of bar charts", this.chartBarData[1]);
 
     this.websiteViewsChart.update({
-      labels: this.chartBarData[0].map((v) => v[0].toUpperCase()),
+      //labels: this.chartBarData[0].map((v) => v[0].toUpperCase()),
+      labels: this.chartBarData[0],
       series: [this.chartBarData[1]],
     });
 
@@ -392,6 +458,7 @@ export class Dashboardv2Component implements OnInit {
     console.log("lenght of chartPieData", this.chartPieData[1]);
     this.categoriePieChart.update({
       labels: this.chartPieData[0].map((v) => v[0].toUpperCase()),
+      //labels: this.chartPieData[0],
       series: this.chartPieData[1],
     });
     this.startAnimationForPieChart(this.categoriePieChart);

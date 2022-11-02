@@ -29,9 +29,9 @@ export const AdminLayoutRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: "feed", component: FeedComponent, canActivate: [AuthGuard] },
-  { path: "dashboard", component: DashboardComponent },
+  /*   { path: "dashboard", component: DashboardComponent }, */
   {
-    path: "dashboardv2",
+    path: "dashboard",
     component: Dashboardv2Component,
     canActivate: [AuthGuard],
   },
@@ -52,7 +52,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "icons", component: IconsComponent, canActivate: [AuthGuard] },
 
   {
-    path: "notifications",
+    path: "favorites",
     component: NotificationsComponent,
     canActivate: [AuthGuard],
   },

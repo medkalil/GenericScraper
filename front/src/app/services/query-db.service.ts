@@ -188,6 +188,11 @@ export class QueryDbService {
       `http://127.0.0.1:5000/run_cron_scrape?root=${root}&mots_cles=${mots_cles}&depth=3&timerForm=${timerForm}`
     );
   }
+  getDateDataOfRootIfExiste(root): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/getDateDataOfRootIfExiste?root=${root}`
+    );
+  }
 }
 
 /* 
