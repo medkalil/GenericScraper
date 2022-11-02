@@ -27,7 +27,7 @@ export class Dashboardv2Component implements OnInit {
   selectedRootDate: any[];
   selectedRootDateOccurence: number[];
   dates: any;
-  //isDateData: any[] = [];
+  isDateData: any[] = ["", ""];
 
   keys: any[];
   tableData: any[];
@@ -307,16 +307,52 @@ export class Dashboardv2Component implements OnInit {
     this.queryDbService.getDateDataOfRootIfExiste(root).subscribe((res) => {
       console.log("DATE :", res);
 
-      //this.isDateData = res;
+      this.isDateData = res;
+
+      console.log("DATE len :", this.isDateData.length);
+
       this.selectedRootDate = res[0];
       this.selectedRootDateOccurence = res[1];
 
-      this.dates.update({
+      //create a bug hidding (in html) data if table.lenght == 0
+      //the tring t dasplya data where not hidden (table.lenght > 0)
+      /* this.dates.update({
         labels: this.selectedRootDate.slice(0, 20),
         series: [this.selectedRootDateOccurence.slice(0, 20)],
-      });
-      this.startAnimationForLineChart(this.categoriePieChart);
+      }); */
+      let temp = this.getTop20Dates(
+        this.selectedRootDate,
+        this.selectedRootDateOccurence
+      );
+      let data: any = {
+        labels: temp[0],
+        series: [temp[1]],
+      };
+
+      // creating new chart for the new data
+      /*  let data: any = {
+        labels: this.selectedRootDate.slice(0, 20),
+        series: [this.selectedRootDateOccurence.slice(0, 20)],
+      }; */
+      this.dates = new Chartist.Line("#dates", data, {});
+      this.startAnimationForLineChart(this.dates);
     });
+  }
+
+  getTop20Dates(dates: any[], occurences: any[]) {
+    let resList = [];
+    let idx = -1;
+
+    console.log("before", occurences);
+    let temp = occurences.sort((a, b) => b - a).slice(0, 20);
+    console.log("after", temp);
+
+    for (let i = 0; i < temp.length; i++) {
+      idx = occurences.indexOf(temp[i]);
+      resList.push(dates[idx]);
+    }
+
+    return [resList, temp];
   }
 
   getUrl($event): void {
@@ -333,10 +369,9 @@ export class Dashboardv2Component implements OnInit {
       //console.log("data is:", this.selectedRootData);
       //list mot cle
       this.getListMotCles(this.selectedRoot);
-
-      //get date data of tyhe selected root
-      this.getDatesofRoot(this.selectedRoot);
     });
+    //get date data of tyhe selected root
+    this.getDatesofRoot(this.selectedRoot);
   }
   getListMotCles(root) {
     this.queryDbService.get_mot_cles(root).subscribe((res) => {
