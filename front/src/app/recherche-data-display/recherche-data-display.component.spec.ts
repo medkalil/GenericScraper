@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RechercheDataDisplayComponent } from './recherche-data-display.component';
+import { RechercheDataDisplayComponent } from "./recherche-data-display.component";
 
-describe('RechercheDataDisplayComponent', () => {
+describe("RechercheDataDisplayComponent", () => {
   let component: RechercheDataDisplayComponent;
   let fixture: ComponentFixture<RechercheDataDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RechercheDataDisplayComponent ]
-    })
-    .compileComponents();
+      declarations: [RechercheDataDisplayComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('RechercheDataDisplayComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

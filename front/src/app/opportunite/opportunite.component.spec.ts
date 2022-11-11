@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { OpportuniteComponent } from './opportunite.component';
+import { OpportuniteComponent } from "./opportunite.component";
 
-describe('OpportuniteComponent', () => {
+describe("OpportuniteComponent", () => {
   let component: OpportuniteComponent;
   let fixture: ComponentFixture<OpportuniteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OpportuniteComponent ]
-    })
-    .compileComponents();
+      declarations: [OpportuniteComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('OpportuniteComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

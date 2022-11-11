@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SiteDetailDialogComponent } from './site-detail-dialog.component';
+import { SiteDetailDialogComponent } from "./site-detail-dialog.component";
 
-describe('SiteDetailDialogComponent', () => {
+describe("SiteDetailDialogComponent", () => {
   let component: SiteDetailDialogComponent;
   let fixture: ComponentFixture<SiteDetailDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SiteDetailDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [SiteDetailDialogComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('SiteDetailDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

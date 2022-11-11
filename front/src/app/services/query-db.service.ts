@@ -188,18 +188,25 @@ export class QueryDbService {
       `http://127.0.0.1:5000/run_cron_scrape?root=${root}&mots_cles=${mots_cles}&depth=3&timerForm=${timerForm}`
     );
   }
+
   getDateDataOfRootIfExiste(root): Observable<any> {
     return this.http.get<any>(
       `http://127.0.0.1:5000/getDateDataOfRootIfExiste?root=${root}`
     );
   }
-}
 
-/* 
-add_manuel_site(data) {
-    //console.log("data in service:", data);
-    return this.http.post<any>(
-      `http://127.0.0.1:5000/shema_detect_manuel`,
-      data
+  getRecherches(): Observable<any> {
+    return this.http.get<any>(`http://127.0.0.1:5000/get_recherches`);
+  }
+
+  createRecherche(roots, data, type, date): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/createRecherche?roots=${roots}&data=${data}&type=${type}&date=${date}`
     );
-  } */
+  }
+  updateRecherche(rechercheId, data): Observable<any> {
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/updateRecherche?rechercheId=${rechercheId}&data=${data}`
+    );
+  }
+}

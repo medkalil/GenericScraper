@@ -111,7 +111,7 @@ export class Dashboardv2Component implements OnInit {
     delays2 = 80;
     durations2 = 500;
     chart.on("draw", function (data) {
-      console.log("hay lalalalal", data);
+      //console.log("hay lalalalal", data);
 
       if (data.type === "slice") {
         seq2++;
@@ -303,23 +303,26 @@ export class Dashboardv2Component implements OnInit {
       this.rootList = res;
     });
   }
+
+  //res : [[dates],[occurences]]
   getDatesofRoot(root) {
     this.queryDbService.getDateDataOfRootIfExiste(root).subscribe((res) => {
       console.log("DATE :", res);
-
       this.isDateData = res;
-
-      console.log("DATE len :", this.isDateData.length);
-
       this.selectedRootDate = res[0];
       this.selectedRootDateOccurence = res[1];
-
       //create a bug hidding (in html) data if table.lenght == 0
       //the tring t dasplya data where not hidden (table.lenght > 0)
       /* this.dates.update({
         labels: this.selectedRootDate.slice(0, 20),
         series: [this.selectedRootDateOccurence.slice(0, 20)],
-      }); */
+      }); 
+      //creating new chart for the new data
+       let data: any = {
+        labels: this.selectedRootDate.slice(0, 20),
+        series: [this.selectedRootDateOccurence.slice(0, 20)],
+      };
+      */
       let temp = this.getTop20Dates(
         this.selectedRootDate,
         this.selectedRootDateOccurence
@@ -328,12 +331,6 @@ export class Dashboardv2Component implements OnInit {
         labels: temp[0],
         series: [temp[1]],
       };
-
-      // creating new chart for the new data
-      /*  let data: any = {
-        labels: this.selectedRootDate.slice(0, 20),
-        series: [this.selectedRootDateOccurence.slice(0, 20)],
-      }; */
       this.dates = new Chartist.Line("#dates", data, {});
       this.startAnimationForLineChart(this.dates);
     });
@@ -343,15 +340,11 @@ export class Dashboardv2Component implements OnInit {
     let resList = [];
     let idx = -1;
 
-    console.log("before", occurences);
     let temp = occurences.sort((a, b) => b - a).slice(0, 20);
-    console.log("after", temp);
-
     for (let i = 0; i < temp.length; i++) {
       idx = occurences.indexOf(temp[i]);
       resList.push(dates[idx]);
     }
-
     return [resList, temp];
   }
 
@@ -368,12 +361,28 @@ export class Dashboardv2Component implements OnInit {
       console.log("keys ;", this.keys);
       //console.log("data is:", this.selectedRootData);
       //list mot cle
-      this.getListMotCles(this.selectedRoot);
+      this.getListMotClesAndData(this.selectedRoot);
     });
     //get date data of tyhe selected root
     this.getDatesofRoot(this.selectedRoot);
   }
-  getListMotCles(root) {
+
+  getListMotClesAndData(root) {
+    this.getMotCles(root);
+    this.getDataGroupedByClassified();
+  }
+
+  private getDataGroupedByClassified() {
+    this.queryDbService
+      .get_data_grouped_by_classified_as(this.selectedRoot)
+      .subscribe((res) => {
+        console.log("Now FROM HERE", res);
+        this.getTopCategorie(res);
+        console.log("ALAY  HALALALY", this.getChartPieData(res));
+      });
+  }
+
+  private getMotCles(root: any) {
     this.queryDbService.get_mot_cles(root).subscribe((res) => {
       console.log("list mot cle", res);
       this.selectedRootMotCleList = res;
@@ -382,13 +391,6 @@ export class Dashboardv2Component implements OnInit {
         this.selectedRootMotCleList
       );
     });
-    this.queryDbService
-      .get_data_grouped_by_classified_as(this.selectedRoot)
-      .subscribe((res) => {
-        console.log("Now FROM HERE", res);
-        this.getTopCategorie(res);
-        console.log("ALAY  HALALALY", this.getChartPieData(res));
-      });
   }
 
   //call filter_resulat_by_mot_cle() for every mot cle

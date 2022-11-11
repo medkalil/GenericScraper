@@ -48,6 +48,9 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
 
   cronTimer: FormGroup;
   error: any;
+  rechercheId: string = "";
+  type: number = 0;
+  date: string;
 
   constructor(
     private fb: FormBuilder,
@@ -58,11 +61,11 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
   motCleSelect = new FormControl("");
 
   ngOnDestroy() {
-    if (this.subscription) {
+    /* if (this.subscription) {
       this.subscription.unsubscribe();
     }
     console.log("out roots list:", JSON.parse(localStorage.getItem("roots")));
-    console.log("out data", this.newdata);
+    console.log("out data", this.newdata); */
   }
 
   ngOnInit(): void {
@@ -178,9 +181,12 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     } else {
       console.log("you can run a recherche");
       this.getOld_Data(roots);
+      this.date = new Date().toLocaleString();
+      this.type = 0;
       this.pollUntillCompleted(roots);
 
       //this.scrape(roots, mot_cle);
+
       this.isScraping = true;
       this.queryDbService.updateCurrentshowSearchingIcon(false);
     }
@@ -221,9 +227,46 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
         localStorage.setItem("data", JSON.stringify(this.newdata));
       });
     }
+
+    console.log("the New Data out side:", this.newdata);
+    //affecting the recherches DB : tableList(roots/localRoots),data(newdata)
+    this.createOrUpdateRechercheData(
+      roots.toString(),
+      JSON.stringify(this.newdata),
+      this.type,
+      this.date
+    );
+
     this.checkfinishedStatus();
     return this.newdata;
   }
+
+  createOrUpdateRechercheData = (roots, newdata, type, date) => {
+    // check if rechercheId is empty => create recherche && return the rechercheId
+    //  if not empty => find recherche by rechercheId && update only the data list in DB(newdata)
+    this.rechercheId
+      ? this.updateRechercheDocument(this.rechercheId, newdata)
+      : this.createRechercheDocument(roots, newdata, type, date);
+  };
+
+  updateRechercheDocument = (rechercheId, newdata) => {
+    //  if not empty => find recherche by rechercheId && update only the data list in DB(newdata)
+    this.queryDbService
+      .updateRecherche(rechercheId, newdata)
+      .subscribe((res) => {
+        console.log("updating recherches with the rechercheId", rechercheId);
+      });
+  };
+
+  createRechercheDocument = (roots, newdata, type, date) => {
+    // check if rechercheId is empty => create recherche && return the rechercheId
+    this.queryDbService
+      .createRecherche(roots, newdata, type, date)
+      .subscribe((res) => {
+        console.log("retunred", res);
+        this.rechercheId = res;
+      });
+  };
 
   checkfinishedStatus = () => {
     this.queryDbService.get_list_jobs().subscribe(
@@ -333,9 +376,12 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
         console.log("you can run a recherche");
         console.log("cronTimer value", this.cronTimer.value);
         this.getOld_Data(roots);
+        this.date = new Date().toLocaleString();
+        this.type = 1;
         this.pollUntillCompleted(roots);
 
-        this.scrape_cron(roots, mot_cle);
+        //this.scrape_cron(roots, mot_cle);
+
         this.toastr.info(
           `Cron a été creer et va être lancer à ${this.cronTimer.value.hour} et ${this.cronTimer.value.minute} minute`,
           "Sucess!"

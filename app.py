@@ -71,6 +71,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 from dateutil.parser import parse
 from collections import Counter
+from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
@@ -1194,6 +1195,7 @@ async def get_root_list():
   data = db.list_collection_names()
   print("res :",data)
   data.remove('users')
+  data.remove('recherches')
   return  jsonify(data)
 
 # without: id,configuration 
@@ -1348,6 +1350,48 @@ async def shema_detect_manuel():
   else:
     return jsonify("root existe")
   return jsonify("site added manuely")
+
+
+@app.route('/get_recherches', methods=['POST','GET'])
+async def get_recherches():
+  temp = list(db["recherches"].find())
+  return jsonify(json.loads(bson.json_util.dumps(temp)))
+  
+
+@app.route('/createRecherche', methods=['POST','GET'])
+async def createRecherche():
+  typee = int(request.args.get('type'))
+  date = request.args.get("date")
+  roots = request.args.get('roots').split(',')
+  data = eval(request.args.get('data'))
+
+  """ print("typee :",typee)
+  print("date :",date)
+  print("roots :",roots)
+  print("data :",data) """
+  
+  
+  recherche = {"type":typee,"date_execution":date,"tables":roots,"data":data}
+  
+  temp = db["recherches"].insert_one(recherche)
+  rechercheId = temp.inserted_id
+  
+  return json.dumps(rechercheId, default=str)
+
+@app.route('/updateRecherche', methods=['POST','GET'])
+async def updateRecherche():
+  rechercheId = request.args.get("rechercheId")
+  data = eval(request.args.get('data'))
+  
+  print("rechercheId :",rechercheId)
+  print("data :",data)
+
+  db["recherches"].update_one({'_id':ObjectId(rechercheId)},{ "$set": { 'data': data } })
+
+  print("rechercheId :",rechercheId)
+  print("data :",data)
+
+  return jsonify("")
 
 ######################################socket test start#####################################
 """ @socketio.on('message')

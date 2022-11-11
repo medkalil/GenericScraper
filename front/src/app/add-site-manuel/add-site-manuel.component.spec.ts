@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AddSiteManuelComponent } from './add-site-manuel.component';
+import { AddSiteManuelComponent } from "./add-site-manuel.component";
 
-describe('AddSiteManuelComponent', () => {
+describe("AddSiteManuelComponent", () => {
   let component: AddSiteManuelComponent;
   let fixture: ComponentFixture<AddSiteManuelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddSiteManuelComponent ]
-    })
-    .compileComponents();
+      declarations: [AddSiteManuelComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +20,7 @@ describe('AddSiteManuelComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

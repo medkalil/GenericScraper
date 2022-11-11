@@ -1,16 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { TestBed } from "@angular/core/testing";
 
-import { QueryDbService } from './query-db.service';
+import { QueryDbService } from "./query-db.service";
 
-describe('QueryDbService', () => {
+describe("QueryDbService", () => {
   let service: QueryDbService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ imports: [HttpClientModule] });
     service = TestBed.inject(QueryDbService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

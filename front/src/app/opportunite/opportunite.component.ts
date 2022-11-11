@@ -20,7 +20,7 @@ export class OpportuniteComponent implements OnInit {
         startWith(0),
         switchMap(() => this.queryDbService.get_root_list())
       )
-      .subscribe((res) => (this.rootList = res));
+      .subscribe((res) => (this.rootList = res.sort()));
   }
 
   ngOnDestroy() {

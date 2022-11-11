@@ -99,6 +99,9 @@
       </form>
     </div>
 
+    <!-- divider -->
+    <hr class="mt-5 mb-5" />
+
     <p *ngIf="error" class="error my-auto">
       {{ error }}
     </p>
@@ -121,10 +124,6 @@
         </mat-select>
       </mat-form-field>
       <div *ngFor="let root of localRoots; let idx = index">
-        <!-- root : {{ root }}
-        <p>
-          <span> {{ newdata[i] | json }}</span>
-        </p> -->
         <app-recherche-data-display
           [root]="root"
           [dataList]="newdata[idx]"

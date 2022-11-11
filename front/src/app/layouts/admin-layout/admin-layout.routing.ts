@@ -16,6 +16,7 @@ import { Dashboardv2Component } from "app/dashboardv2/dashboardv2.component";
 import { SignInComponent } from "app/sign-in/sign-in.component";
 import { AuthGuard } from "app/services/auth.guard";
 import { SignUpComponent } from "app/sign-up/sign-up.component";
+import { RecherchesComponent } from "app/recherches/recherches.component";
 
 export const AdminLayoutRoutes: Routes = [
   {
@@ -26,6 +27,11 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: "Sites-de-References",
     component: SiteDeReferenceComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "recherches",
+    component: RecherchesComponent,
     canActivate: [AuthGuard],
   },
   { path: "feed", component: FeedComponent, canActivate: [AuthGuard] },

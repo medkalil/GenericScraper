@@ -155,5 +155,15 @@ export class DataTableComponent implements OnInit {
   ngOnDestroy() {
     this.myRouterObserver.unsubscribe();
   }
-  scrolling_right() {}
+
+  scrolling_right() {
+    var right = document.querySelector(".scol-container");
+    right.scrollBy(350, 0);
+    console.log("is right");
+  }
+  scrolling_left() {
+    var right = document.querySelector(".scol-container");
+    right.scrollBy(-350, 0);
+    console.log("is left");
+  }
 }

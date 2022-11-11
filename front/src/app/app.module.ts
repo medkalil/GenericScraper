@@ -44,6 +44,9 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { AddSiteManuelComponent } from "./add-site-manuel/add-site-manuel.component";
 import { MatRadioModule } from "@angular/material/radio";
+import { RecherchesComponent } from "./recherches/recherches.component";
+import { MatTableModule } from "@angular/material/table";
+import { RechercheDataTablesComponent } from './recherche-data-tables/recherche-data-tables.component';
 
 const MaterialModules = [
   MatDialogModule,
@@ -54,6 +57,7 @@ const MaterialModules = [
   MatSelectModule,
   MatCheckboxModule,
   MatRadioModule,
+  MatTableModule,
 ];
 @NgModule({
   imports: [
@@ -88,6 +92,8 @@ const MaterialModules = [
     AddSiteDialogComponent,
     SiteDetailDialogComponent,
     AddSiteManuelComponent,
+    RecherchesComponent,
+    RechercheDataTablesComponent,
   ],
   //PathLocationStrategy : to get rid of the # in the link : /#/path  -> /path
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
