@@ -3,7 +3,7 @@
     mat-table
     [dataSource]="dataSource"
     multiTemplateDataRows
-    class="mat-elevation-z8"
+    class="mat-elevation-z8 mw-100"
   >
     <ng-container
       *ngFor="let column of columnsToDisplay"
@@ -70,7 +70,7 @@
 
 <style>
   table {
-    width: 100%;
+   max-width: 100%;
   }
 
   tr.example-detail-row {

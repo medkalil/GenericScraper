@@ -2,6 +2,10 @@ import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { QueryDbService } from "app/services/query-db.service";
 import "rxjs/Rx";
 import { Observable } from "rxjs/Rx";
+import jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx'; 
 
 @Component({
   selector: "app-feed",
@@ -121,4 +125,56 @@ export class FeedComponent implements OnInit {
     right.scrollBy(-350, 0);
     console.log("is left");
   }
+
+  exportAsPDF(divId,currentRoot){
+        console.log("expprting pdf",divId);
+        let data = document.getElementById(divId);  
+        html2canvas(data, { allowTaint: true }).then(canvas => {
+          let HTML_Width = canvas.width;
+          let HTML_Height = canvas.height;
+          let top_left_margin = 15;
+          let PDF_Width = HTML_Width + (top_left_margin * 2);
+          let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+          let canvas_image_width = HTML_Width;
+          let canvas_image_height = HTML_Height;
+          let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+          canvas.getContext('2d');
+          let imgData = canvas.toDataURL("image/jpeg", 1.0);
+          let pdf = new jspdf('p', 'pt', [PDF_Width, PDF_Height]);
+          pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+          for (let i = 1; i <= totalPDFPages; i++) {
+            pdf.addPage([PDF_Width, PDF_Height], 'p');
+            pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+          }
+           pdf.save(`${currentRoot}.pdf`);
+        });
+    }
+
+    exportAsCSV(currentRoot){
+      console.log("csv data",this.data);
+      const data = this.data;
+      const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+      const header = Object.keys(data[0]);
+      let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+      csv.unshift(header.join(','));
+      let csvArray = csv.join('\r\n');
+  
+      var blob = new Blob(["\uFEFF"+csvArray], {type: 'text/csv; charset=utf-8' })
+      saveAs(blob, `${currentRoot}.csv`);
+    }
+
+    exportAsXLSX(currentRoot){
+      console.log("excel data",this.data);
+       /* table id is passed over here */   
+       let element = document.getElementById('excel-table'); 
+       const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+       /* generate workbook and add the worksheet */
+       const wb: XLSX.WorkBook = XLSX.utils.book_new();
+       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+       /* save to file */
+       XLSX.writeFile(wb, `${currentRoot}.xlsx`);
+    } 
+
 }

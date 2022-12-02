@@ -138,9 +138,14 @@
                       Here is a subtitle for this table
                     </p>
                   </div>
-                  <strong>{{ dataSelectedLeght }} Items</strong>
+                  <div>
+                    <button (click)="exportAsPDF('dataTable',currentRoot);">Export PDF </button>
+                    <button (click)="exportAsCSV(currentRoot)" > expot csv </button>
+                    <button (click)="exportAsXLSX(currentRoot)" > expot excel </button>
+                    <strong>{{ dataSelectedLeght }} Items</strong>
+                  </div>
                 </div>
-                <div class="card-body d-flex flex-row">
+                <div class="card-body d-flex flex-row" id="dataTable" style="width: 3000px !important; height: 3000px !important;">
                   <div
                     (click)="scrolling_left()"
                     style="z-index: 1"
@@ -152,7 +157,7 @@
                     >
                   </div>
                   <div class="table-responsive scol-container">
-                    <table class="table">
+                    <table class="table" id="excel-table">
                       <thead class="text-primary">
                         <th *ngFor="let key of keys">
                           <input
