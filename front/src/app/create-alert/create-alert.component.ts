@@ -185,7 +185,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
       this.type = 0;
       this.pollUntillCompleted(roots);
 
-      //this.scrape(roots, mot_cle);
+      this.scrape(roots, mot_cle);
 
       this.isScraping = true;
       this.queryDbService.updateCurrentshowSearchingIcon(false);
@@ -380,7 +380,7 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
         this.type = 1;
         this.pollUntillCompleted(roots);
 
-        //this.scrape_cron(roots, mot_cle);
+        this.scrape_cron(roots, mot_cle);
 
         this.toastr.info(
           `Cron a été creer et va être lancer à ${this.cronTimer.value.hour} et ${this.cronTimer.value.minute} minute`,
@@ -429,53 +429,3 @@ export class CreateAlertComponent implements OnInit, OnDestroy {
     }
   }
 }
-
-/*   ismaxScraperRunning() {
-    this.queryDbService.get_list_jobs().subscribe((res) => {
-      console.log("inside ismaxScraperRunning", res);
-      for (var val of res["pending"]) {
-        if (val["spider"] == "url-extractor") {
-          console.log("inside pending");
-          this.urlExtractorCount++;
-        }
-      }
-      for (var val of res["running"]) {
-        if (val["spider"] == "url-extractor") {
-          this.urlExtractorCount++;
-          console.log("inside running");
-        }
-      }
-    });
-    console.log("THE this.urlExtractorCount", this.urlExtractorCount);
-    if (this.urlExtractorCount > 1) {
-      this.isMaxRecherhe = true;
-      console.log("returning true");
-      return true;
-    }
-    return false;
-  } */
-
-/* LocalStorage to list:
-var names = [];
-names[0] = prompt("New member name?");
-localStorage.setItem("names", JSON.stringify(names));
-//...
-var storedNames = JSON.parse(localStorage.getItem("names")); 
-----------------------------------------------------------------------------
- to dict:
-localStorage.setItem("meta", JSON.stringify(meta));
-var meta1 = JSON.parse(localStorage.getItem("meta"));
-alert(meta1['foo']);
-*/
-
-/* 
-var input = [{key:"key1", value:"value1"},{key:"key2", value:"value2"}];
-
-var result = {};
-
-for(var i = 0; i < input.length; i++)
-{
-    result[input[i].key] = input[i].value;
-}
-
-console.log(result); // Just for testing */

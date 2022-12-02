@@ -40,12 +40,12 @@ export const ROUTES: RouteInfo[] = [
     class: "",
   },
 
-  {
+/*   {
     path: "/upgrade",
     title: "Upgrade to PRO",
     icon: "unarchive",
     class: "active-pro",
-  },
+  }, */
 ];
 
 @Component({

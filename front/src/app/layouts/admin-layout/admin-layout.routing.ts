@@ -67,7 +67,7 @@ export const AdminLayoutRoutes: Routes = [
     component: OpportuniteComponent,
     canActivate: [AuthGuard],
   },
-  { path: "upgrade", component: UpgradeComponent, canActivate: [AuthGuard] },
+  /* { path: "upgrade", component: UpgradeComponent, canActivate: [AuthGuard] }, */
   { path: "sign-in", component: SignInComponent },
   { path: "sign-up", component: SignUpComponent },
 ];
