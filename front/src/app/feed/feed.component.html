@@ -152,7 +152,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-body d-flex flex-row" id="dataTable" style="width: 3000px !important; height: 3000px !important;">
+                <!-- <div class="card-body d-flex flex-row" id="dataTable" style="width: 3000px !important; height: 3000px !important;"> -->
+                <div class="card-body d-flex flex-row" id="dataTable">
                   <div
                     (click)="scrolling_left()"
                     style="z-index: 1"
@@ -214,20 +215,14 @@
       <ng-container *ngIf="noData">
         pas de données pour {{ currentRoot }}
       </ng-container>
-
-      <!-- <h4>
-        keys :
-        <p>{{ keys }}</p>
-      </h4> -->
-      <!-- <h4>this is data :{{ data[0] }}</h4> -->
     </div>
   </div>
 </div>
 
-<!-- <script>
-  function scrolling_right() {
-    var right = document.querySelector(".scol-container");
-    right.scrollBy(-350, 0);
-    console.log("is right");
-  }
-</script> -->
+<style>
+  .dropdown-menu  > a:hover {
+    background-image: none;
+    background-color: #e73e3a;
+}
+</style>
+
