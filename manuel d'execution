@@ -1,0 +1,6 @@
+# run the app
+
+1- .\venv\Scripts\activate + scrapyd
+2- .\venv\Scripts\activate + flask run
+3- cd front + ng serve
+4- docker run -it -p 8050:8050 scrapinghub/splash --max-timeout 3600

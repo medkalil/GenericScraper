@@ -11,7 +11,7 @@ import { User } from "app/user-profile/user-profile.component";
   providedIn: "root",
 })
 export class QueryDbService {
-  BASE_URL = "http://127.0.0.1:5000/";
+  BASE_URL = "http://127.0.0.1:5000";
   private data = new BehaviorSubject<any[]>([]);
   currentData = this.data.asObservable();
   private items: any[] = [];
@@ -47,96 +47,96 @@ export class QueryDbService {
   }
 
   get_root_list(): Observable<any[]> {
-    return this.http.get<any>("http://127.0.0.1:5000/get_root_list");
+    return this.http.get<any>(`${this.BASE_URL}/get_root_list`);
   }
 
   get_root_data(root): Observable<any[]> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_root_data?root=${root} `
+      `${this.BASE_URL}/get_root_data?root=${root} `
     );
   }
 
   get_old_data(root): Observable<any[]> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_old_data?root=${root} `
+      `${this.BASE_URL}/get_old_data?root=${root} `
     );
   }
 
   get_all_data(root): Observable<any[]> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_all_data?root=${root} `
+      `${this.BASE_URL}/get_all_data?root=${root} `
     );
   }
 
   get_mot_cles(root): Observable<any[]> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_mot_cles?root=${root} `
+      `${this.BASE_URL}/get_mot_cles?root=${root} `
     );
   }
 
   filter_resulat_by_mot_cle(root, mot_cle): Observable<any[]> {
-    //http://127.0.0.1:5000/filter_resulat_by_mot_cle?root=https://www.appeloffres.com&mot_cle=câbles&item={"sudo" : "ca" , "url" : "https://www.google.com"}
+    //${this.BASE_URL}/filter_resulat_by_mot_cle?root=https://www.appeloffres.com&mot_cle=câbles&item={"sudo" : "ca" , "url" : "https://www.google.com"}
     return this.http.get<any>(
-      `http://127.0.0.1:5000/filter_resulat_by_mot_cle?root=${root}&mot_cle=${mot_cle} `
+      `${this.BASE_URL}/filter_resulat_by_mot_cle?root=${root}&mot_cle=${mot_cle} `
     );
   }
 
   delete_collection(root): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/delete_collection?root=${root}`
+      `${this.BASE_URL}/delete_collection?root=${root}`
     );
   }
 
-  //http://127.0.0.1:5000/run_scraper_for_root_exist?root=https://www.appeloffres.com&depth=4&list_mot_cle=materiel,téléphonique&partition=1
+  //${this.BASE_URL}/run_scraper_for_root_exist?root=https://www.appeloffres.com&depth=4&list_mot_cle=materiel,téléphonique&partition=1
   run_existing_root(root, list_mot_cle, partition): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/run_scraper_for_root_exist?root=${root}&depth=4&list_mot_cle=${list_mot_cle}&partition=${partition} `
+      `${this.BASE_URL}/run_scraper_for_root_exist?root=${root}&depth=4&list_mot_cle=${list_mot_cle}&partition=${partition} `
     );
   }
 
-  //http://127.0.0.1:5000/run_linkextractor?root=https://www.e-marchespublics.com&depth=4&list_mot_cle=amenagement,materiel&partition=1
+  //${this.BASE_URL}/run_linkextractor?root=https://www.e-marchespublics.com&depth=4&list_mot_cle=amenagement,materiel&partition=1
   run_no_existing_root(root, list_mot_cle, partition): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/run_linkextractor?root=${root}&depth=4&list_mot_cle=${list_mot_cle}&partition=${partition} `
+      `${this.BASE_URL}/run_linkextractor?root=${root}&depth=4&list_mot_cle=${list_mot_cle}&partition=${partition} `
     );
   }
 
   delete_item(root, item) {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/delete_item?root=${root}&item=${item}`
+      `${this.BASE_URL}/delete_item?root=${root}&item=${item}`
     );
   }
 
   get_search_data(root, mot) {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_search_data?root=${root}&search_mot=${mot}`
+      `${this.BASE_URL}/get_search_data?root=${root}&search_mot=${mot}`
     );
   }
 
   get_list_jobs() {
     return this.http
-      .get<any>("http://127.0.0.1:5000/get_list_jobs")
+      .get<any>(`${this.BASE_URL}/get_list_jobs`)
       .pipe(catchError(this.processHttpmsgService.handleError));
   }
 
-  //http://127.0.0.1:5000/shema_detect?root=https://tunisie-appels-doffres.com&mots_cles=service,materiel,ambassade,test,tunisie, fourniture,acquisitio,activite
+  //${this.BASE_URL}/shema_detect?root=https://tunisie-appels-doffres.com&mots_cles=service,materiel,ambassade,test,tunisie, fourniture,acquisitio,activite
   shema_detect(root, list_mot_cle): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/shema_detect?root=${root}&mots_cles=${list_mot_cle}`
+      `${this.BASE_URL}/shema_detect?root=${root}&mots_cles=${list_mot_cle}`
     );
   }
 
-  //http://127.0.0.1:5000/get_configuration?root=https://www.e-marchespublics.com
+  //${this.BASE_URL}/get_configuration?root=https://www.e-marchespublics.com
   get_configuration(root): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_configuration?root=${root}`
+      `${this.BASE_URL}/get_configuration?root=${root}`
     );
   }
 
   add_manuel_site(data) {
     //console.log("data in service:", data);
     return this.http.post<any>(
-      `http://127.0.0.1:5000/shema_detect_manuel`,
+      `${this.BASE_URL}/shema_detect_manuel`,
       data
     );
   }
@@ -148,65 +148,65 @@ export class QueryDbService {
 
   run_scraper(root, mots_cles): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/run_scraper?root=${root}&depth=3&mots_cles=${mots_cles} `
+      `${this.BASE_URL}/run_scraper?root=${root}&depth=3&mots_cles=${mots_cles} `
     );
   }
 
   get_data_grouped_by_classified_as(root): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_data_grouped_by_classified_as?root=${root}`
+      `${this.BASE_URL}/get_data_grouped_by_classified_as?root=${root}`
     );
   }
 
   get_user(username: string): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/get_user?username=${username}`
+      `${this.BASE_URL}/get_user?username=${username}`
     );
   }
   update_profile(username: string, newProfile: User): Observable<any> {
     return this.http.put<User>(
-      //`http://127.0.0.1:5000/update_profile/${username}?item=${newProfile}`
-      `http://127.0.0.1:5000/update_profile/${username}`,
+      //`${this.BASE_URL}/update_profile/${username}?item=${newProfile}`
+      `${this.BASE_URL}/update_profile/${username}`,
       newProfile
     );
   }
 
   authentification(authUser): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/authentification?authUser=${authUser}`
+      `${this.BASE_URL}/authentification?authUser=${authUser}`
     );
   }
 
   signUp(newUser): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/signup?newUser=${newUser}`
+      `${this.BASE_URL}/signup?newUser=${newUser}`
     );
   }
 
   run_cron_scrape(root, mots_cles, timerForm): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/run_cron_scrape?root=${root}&mots_cles=${mots_cles}&depth=3&timerForm=${timerForm}`
+      `${this.BASE_URL}/run_cron_scrape?root=${root}&mots_cles=${mots_cles}&depth=3&timerForm=${timerForm}`
     );
   }
 
   getDateDataOfRootIfExiste(root): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/getDateDataOfRootIfExiste?root=${root}`
+      `${this.BASE_URL}/getDateDataOfRootIfExiste?root=${root}`
     );
   }
 
   getRecherches(): Observable<any> {
-    return this.http.get<any>(`http://127.0.0.1:5000/get_recherches`);
+    return this.http.get<any>(`${this.BASE_URL}/get_recherches`);
   }
 
   createRecherche(roots, data, type, date): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/createRecherche?roots=${roots}&data=${data}&type=${type}&date=${date}`
+      `${this.BASE_URL}/createRecherche?roots=${roots}&data=${data}&type=${type}&date=${date}`
     );
   }
   updateRecherche(rechercheId, data): Observable<any> {
     return this.http.get<any>(
-      `http://127.0.0.1:5000/updateRecherche?rechercheId=${rechercheId}&data=${data}`
+      `${this.BASE_URL}/updateRecherche?rechercheId=${rechercheId}&data=${data}`
     );
   }
 }
